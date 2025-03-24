@@ -87,6 +87,7 @@ class QuizPageState extends State<PostTestScreen> {
                         onPressed: () => answerQuestion(answer),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
+                          foregroundColor: isSelected? Colors.white : null,
                         ),
                         child: Text(answer),
                       );
