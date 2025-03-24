@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'module1.dart';
+import 'module2.dart';
+import 'module3.dart';
+import 'test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,11 +11,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Climate Change',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
@@ -30,21 +33,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        elevation: 5.0, // Add drop shadow
+        elevation: 5.0,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.primary, // Use color scheme
+              backgroundColor: Theme.of(context).colorScheme.primary,
               child: IconButton(
-                icon: const Icon(Icons.person, color: Colors.white), // Set the icon and its color
+                icon: const Icon(Icons.person, color: Colors.white),
                 onPressed: () {
                   // Handle the button press here
                 },
@@ -111,20 +113,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  elevation: 5.0, // Add drop shadow
+                  elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary, // Use color scheme
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                          ),
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Cover Section',
-                            style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module1Screen()),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Cover Section',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
@@ -132,8 +142,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
                           title: Text('Module 1'),
-                          subtitle: Text('Introduction to Climate Change'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Introduction to Climate Change'),
+                              Text('มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ'),
+                            ],
+                          ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module1Screen()),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -146,22 +168,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5.0, // Add drop shadow
+                    borderRadius: BorderRadius.circular(15.0)),
+                  elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary, // Use color scheme
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                          ),
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Cover Section',
-                            style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module2Screen()),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Cover Section',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
@@ -169,8 +198,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
                           title: Text('Module 2'),
-                          subtitle: Text('Effects of Climate Change'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Effects of Climate Change'),
+                              Text('ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ'),
+                            ],
+                          ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module2Screen()),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -184,20 +225,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
-                  elevation: 5.0, // Add drop shadow
+                  elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary, // Use color scheme
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                          ),
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Cover Section',
-                            style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module3Screen()),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Cover Section',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
@@ -205,8 +254,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
                           title: Text('Module 3'),
-                          subtitle: Text('Mitigation and Adaptation Strategies'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Mitigation and Adaptation Strategies'),
+                              Text('การปรับตัวและช่วยโลกของเรา'),
+                            ],
+                          ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module3Screen()),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -220,20 +281,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
-                  elevation: 5.0, // Add drop shadow
+                  elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary, // Use color scheme
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                          ),
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Cover Section',
-                            style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => PostTestScreen()),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Cover Section',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
@@ -243,6 +312,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           title: Text('Post Test'),
                           subtitle: Text('Post Test'),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => PostTestScreen()),
+                            );
+                          },
                         ),
                       ),
                     ],
