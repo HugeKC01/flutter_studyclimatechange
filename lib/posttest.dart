@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
 class PostTestScreen extends StatefulWidget {
-  const PostTestScreen({Key? key}) : super(key: key);
+  const PostTestScreen({super.key});
 
   @override
   QuizPageState createState() => QuizPageState();
@@ -10,6 +10,7 @@ class PostTestScreen extends StatefulWidget {
 
 class QuizPageState extends State<PostTestScreen> {
   int questionIndex = 0;
+  int score = 0;
   final Logger _logger = Logger('QuizPageState');
 
   final List<Map<String, Object>> questions = [
@@ -29,6 +30,7 @@ class QuizPageState extends State<PostTestScreen> {
     setState(() {
       if (answer == questions[questionIndex]['correctAnswer']) {
         _logger.info('Correct Answer!');
+        score++;
       } else {
         _logger.info('Wrong Answer!');
       }
@@ -88,6 +90,11 @@ class QuizPageState extends State<PostTestScreen> {
                           child: Text('Next'),
                         ),
                       ],
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Score: $score',
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
