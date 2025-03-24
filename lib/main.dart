@@ -37,16 +37,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        elevation: 5.0, // Add drop shadow
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundColor: Colors.blue, // Set the background color
+              backgroundColor: Theme.of(context).colorScheme.primary, // Use color scheme
               child: IconButton(
-              icon: const Icon(Icons.person, color: Colors.white), // Set the icon and its color
-              onPressed: () {
-                // Handle the button press here
-              },
+                icon: const Icon(Icons.person, color: Colors.white), // Set the icon and its color
+                onPressed: () {
+                  // Handle the button press here
+                },
               ),
             ),
           ),
@@ -103,150 +104,152 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-          children: <Widget>[
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                ),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Cover Section',
-                  style: TextStyle(color: Colors.white),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 5.0, // Add drop shadow
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary, // Use color scheme
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                          ),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Cover Section',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ListTile(
+                          title: Text('Module 1'),
+                          subtitle: Text('Introduction to Climate Change'),
+                          trailing: Icon(Icons.lock),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ListTile(
-                title: Text('Module 1'),
-                subtitle: Text('Introduction to Climate Change'),
-                trailing: Icon(Icons.lock),
-              ),
-            ),
-          ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-          children: <Widget>[
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                ),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Cover Section',
-                  style: TextStyle(color: Colors.white),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 5.0, // Add drop shadow
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary, // Use color scheme
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                          ),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Cover Section',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ListTile(
+                          title: Text('Module 2'),
+                          subtitle: Text('Effects of Climate Change'),
+                          trailing: Icon(Icons.lock),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ListTile(
-                title: Text('Module 2'),
-                subtitle: Text('Effects of Climate Change'),
-                trailing: Icon(Icons.lock),
-              ),
-            ),
-          ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-          children: <Widget>[
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                ),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Cover Section',
-                  style: TextStyle(color: Colors.white),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                  elevation: 5.0, // Add drop shadow
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary, // Use color scheme
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                          ),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Cover Section',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ListTile(
+                          title: Text('Module 3'),
+                          subtitle: Text('Mitigation and Adaptation Strategies'),
+                          trailing: Icon(Icons.lock),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ListTile(
-                title: Text('Module 3'),
-                subtitle: Text('Mitigation and Adaptation Strategies'),
-                trailing: Icon(Icons.lock),
-              ),
-            ),
-          ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Column(
-          children: <Widget>[
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
-                ),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Cover Section',
-                  style: TextStyle(color: Colors.white),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                  elevation: 5.0, // Add drop shadow
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary, // Use color scheme
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                          ),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Cover Section',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ListTile(
+                          title: Text('Post Test'),
+                          subtitle: Text('Post Test'),
+                          trailing: Icon(Icons.lock),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ListTile(
-                title: Text('Post Test'),
-                subtitle: Text('Post Test'),
-                trailing: Icon(Icons.lock),
-              ),
-            ),
-          ],
-              ),
-            ),
-          ),
-        ),
           ],
         ),
       ),
