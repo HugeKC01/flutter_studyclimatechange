@@ -32,8 +32,18 @@ class QuizPageState extends State<PostTestScreen> {
       } else {
         _logger.info('Wrong Answer!');
       }
+    });
+  }
 
-      questionIndex = (questionIndex + 1) % questions.length; // Next question
+  void nextQuestion() {
+    setState(() {
+      questionIndex = (questionIndex + 1) % questions.length;
+    });
+  }
+
+  void previousQuestion() {
+    setState(() {
+      questionIndex = (questionIndex - 1 + questions.length) % questions.length;
     });
   }
 
@@ -65,6 +75,20 @@ class QuizPageState extends State<PostTestScreen> {
                         child: Text(answer),
                       );
                     }).toList(),
+                    SizedBox(height: 20.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: previousQuestion,
+                          child: Text('Previous'),
+                        ),
+                        ElevatedButton(
+                          onPressed: nextQuestion,
+                          child: Text('Next'),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
