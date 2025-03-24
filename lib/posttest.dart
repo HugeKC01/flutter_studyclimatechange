@@ -18,22 +18,19 @@ class QuizPageState extends State<PostTestScreen> {
       'questionText': 'What is Flutter?',
       'answers': ['A framework', 'A bird', 'A car', 'A programming language'],
       'correctAnswer': 'A framework',
+      'selectedAnswer': '',
     },
     {
       'questionText': 'Who developed Flutter?',
       'answers': ['Google', 'Apple', 'Microsoft', 'Facebook'],
       'correctAnswer': 'Google',
+      'selectedAnswer': '',
     },
   ];
 
   void answerQuestion(String answer) {
     setState(() {
-      if (answer == questions[questionIndex]['correctAnswer']) {
-        _logger.info('Correct Answer!');
-        score++;
-      } else {
-        _logger.info('Wrong Answer!');
-      }
+      questions[questionIndex]['selectedAnswer'] = answer;
     });
   }
 
@@ -47,6 +44,19 @@ class QuizPageState extends State<PostTestScreen> {
     setState(() {
       questionIndex = (questionIndex - 1 + questions.length) % questions.length;
     });
+  }
+
+  void submitQuiz() {
+    setState(() {
+      score = 0;
+      for (var question in questions) {
+        if (question['selectedAnswer'] == question['correctAnswer']) {
+          score++;
+        }
+      }
+      _logger.info('Quiz Submitted! Final Score: $score');
+    });
+    // Add any additional submission logic here
   }
 
   @override
@@ -72,8 +82,12 @@ class QuizPageState extends State<PostTestScreen> {
                     ),
                     SizedBox(height: 20.0),
                     ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+                      bool isSelected = questions[questionIndex]['selectedAnswer'] == answer;
                       return ElevatedButton(
                         onPressed: () => answerQuestion(answer),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
+                        ),
                         child: Text(answer),
                       );
                     }).toList(),
@@ -85,10 +99,16 @@ class QuizPageState extends State<PostTestScreen> {
                           onPressed: previousQuestion,
                           child: Text('Previous'),
                         ),
-                        ElevatedButton(
-                          onPressed: nextQuestion,
-                          child: Text('Next'),
-                        ),
+                        if (questionIndex < questions.length - 1)
+                          ElevatedButton(
+                            onPressed: nextQuestion,
+                            child: Text('Next'),
+                          )
+                        else
+                          ElevatedButton(
+                            onPressed: submitQuiz,
+                            child: Text('Submit'),
+                          ),
                       ],
                     ),
                     SizedBox(height: 20.0),
