@@ -7,10 +7,10 @@ class Module3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Module 1: Introduction to Climate Change'),
+        title: Text('Module 3: Adapting and saving our world'),
       ),
       body: Center(
-        child: Text('Content for Module 1'),
+        child: Text('Content for Module 3'),
       ),
     );
   }
