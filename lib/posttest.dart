@@ -43,26 +43,31 @@ class QuizPageState extends State<PostTestScreen> {
       appBar: AppBar(
         title: Text('Quiz App'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Card(
-          elevation: 5,
+      body: Center(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text(
-                  questions[questionIndex]['questionText'] as String,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            child: Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      questions[questionIndex]['questionText'] as String,
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20.0),
+                    ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+                      return ElevatedButton(
+                        onPressed: () => answerQuestion(answer),
+                        child: Text(answer),
+                      );
+                    }).toList(),
+                  ],
                 ),
-                SizedBox(height: 20.0),
-                ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-                  return ElevatedButton(
-                    onPressed: () => answerQuestion(answer),
-                    child: Text(answer),
-                  );
-                }).toList(),
-              ],
+              ),
             ),
           ),
         ),
