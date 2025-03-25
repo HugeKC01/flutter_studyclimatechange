@@ -91,7 +91,7 @@ class QuizPageState extends State<PostTestScreen> {
                         ),
                         child: Text(answer),
                       );
-                    }).toList(),
+                    }),
                     SizedBox(height: 20.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
