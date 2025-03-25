@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'module1.dart';
-import 'module2.dart';
-import 'module3.dart';
-import 'test.dart';
+import 'learningpage/module1/m1_main.dart';
+import 'learningpage/module2/m2_main.dart';
+import 'learningpage/module3/m3_main.dart';
+import 'posttest.dart';
 
 void main() {
   runApp(const MyApp());
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Mitigation and Adaptation Strategies'),
+                              Text('Adapting and saving our world'),
                               Text('การปรับตัวและช่วยโลกของเรา'),
                             ],
                           ),
