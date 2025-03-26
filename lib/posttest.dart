@@ -72,6 +72,7 @@ class QuizPageState extends State<PostTestScreen> {
             child: Card(
               elevation: 5,
               child: Padding(
+<<<<<<< HEAD
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -103,6 +104,28 @@ class QuizPageState extends State<PostTestScreen> {
                   ),
                   );
                 }),
+=======
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      questions[questionIndex]['questionText'] as String,
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20.0),
+                    ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+                      bool isSelected = questions[questionIndex]['selectedAnswer'] == answer;
+                      return ElevatedButton(
+                        onPressed: () => answerQuestion(answer),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
+                          foregroundColor: isSelected? Colors.white : null,
+                        ),
+                        child: Text(answer),
+                      );
+                    }),
+>>>>>>> ac3318dc767025c21ae0d93b98d3b9386847fe58
                     SizedBox(height: 20.0),
                     Divider(), // Add this line for the divider
                     Row(
