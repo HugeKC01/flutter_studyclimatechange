@@ -76,39 +76,58 @@ class QuizPageState extends State<PostTestScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      questions[questionIndex]['questionText'] as String,
-                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        questions[questionIndex]['questionText'] as String,
+                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
                     ),
+                    Divider(),
                     SizedBox(height: 20.0),
                     ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
                       bool isSelected = questions[questionIndex]['selectedAnswer'] == answer;
-                      return ElevatedButton(
-                        onPressed: () => answerQuestion(answer),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
-                          foregroundColor: isSelected? Colors.white : null,
+                      return Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.symmetric(vertical: 5.0),
+                        child: ElevatedButton(
+                          onPressed: () => answerQuestion(answer),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
+                            foregroundColor: isSelected ? Colors.white : null,
+                          ),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(answer),
+                          ),
                         ),
-                        child: Text(answer),
                       );
                     }).toList(),
                     SizedBox(height: 20.0),
+                    Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ElevatedButton(
-                          onPressed: previousQuestion,
-                          child: Text('Previous'),
-                        ),
+                        if (questionIndex > 0)
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: previousQuestion,
+                              child: Text('Previous'),
+                            ),
+                          ),
                         if (questionIndex < questions.length - 1)
-                          ElevatedButton(
-                            onPressed: nextQuestion,
-                            child: Text('Next'),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: nextQuestion,
+                              child: Text('Next'),
+                            ),
                           )
                         else
-                          ElevatedButton(
-                            onPressed: submitQuiz,
-                            child: Text('Submit'),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: submitQuiz,
+                              child: Text('Submit'),
+                            ),
                           ),
                       ],
                     ),

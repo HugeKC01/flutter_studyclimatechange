@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
+import 'help.dart';
+import 'manual.dart';
+import 'settings.dart';
 import 'posttest.dart';
 
 void main() {
@@ -107,8 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: buildAppBar(widget.title, context),
       drawer: buildDrawer(context),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
