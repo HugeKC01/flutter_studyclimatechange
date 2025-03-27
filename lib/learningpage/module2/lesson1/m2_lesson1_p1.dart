@@ -59,7 +59,7 @@ class m2_lesson1_p1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Lesson 2.2: Global Warming'),
+        title: Text('Module 2 : Global Warming'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(
@@ -146,7 +146,7 @@ class m2_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
+                    'ภาวะโลกร้อน คือภาวะที่โลกมีอุณหภูมิสูงขึ้นอย่างต่อเนื่อง',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -200,7 +200,7 @@ class m2_lesson1_p1 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'เรื่องที่ 2.2',
+                            'เรื่องที่ 2.1',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,

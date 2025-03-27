@@ -59,7 +59,7 @@ class m2_lesson2_p2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Lesson 2.2: Global Warming'),
+        title: Text('Module 2: Global Warming'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(

@@ -105,6 +105,14 @@ class Module1Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m1_lesson2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

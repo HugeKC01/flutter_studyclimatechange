@@ -110,6 +110,14 @@ class Module3Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m3_lesson1_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

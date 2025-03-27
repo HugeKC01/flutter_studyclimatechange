@@ -59,7 +59,7 @@ class m1_lesson1_p2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Lesson 2.2: Global Warming'),
+        title: Text('Lesson 1: Introduction To Climate Change'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(
@@ -129,7 +129,7 @@ class m1_lesson1_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'lorem ipson',
+                    'เมื่อธรรมชาติเสียสมดุล จะส่งผลกระทบที่อันตรายมากมาย',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -146,7 +146,7 @@ class m1_lesson1_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
+                    'โลกนี้อาจกลายเป็นน้ำแข็ง',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -163,7 +163,7 @@ class m1_lesson1_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
+                    'หรือแห้งแล้งจนอาศัยอยู่ไม่ได้',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -200,7 +200,7 @@ class m1_lesson1_p2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'เรื่องที่ 2.2',
+                            'เรื่องที่ 1',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -208,7 +208,7 @@ class m1_lesson1_p2 extends StatelessWidget {
                           ),
                           SizedBox(height: 5.0),
                           Text(
-                            'อธิบายโลกร้อน',
+                            'โลกร้อน',
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.normal,
