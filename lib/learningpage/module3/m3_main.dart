@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable widgets are defined.
+import 'm3_learn2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
 
 class Module3Screen extends StatelessWidget {
   const Module3Screen({super.key});
@@ -6,9 +8,8 @@ class Module3Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 3: Adapting and saving our world'),
-      ),
+      appBar: buildAppBar('Module 3: Adapting and saving our world', context),
+      drawer: buildDrawer(context),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -18,7 +19,8 @@ class Module3Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0)),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -28,7 +30,9 @@ class Module3Screen extends StatelessWidget {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.0),
+                              ),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -41,7 +45,7 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('หัวข้อที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -62,17 +66,28 @@ class Module3Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0)),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
                         child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m3_learn2_p1(),
+                              ),
+                            );
+                          },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.0),
+                              ),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -85,7 +100,7 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('หัวข้อที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -94,6 +109,14 @@ class Module3Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m3_learn2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
