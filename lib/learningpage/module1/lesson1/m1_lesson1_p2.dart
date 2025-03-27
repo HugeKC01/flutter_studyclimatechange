@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
-import 'm3_learn2_p3.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
+//
+import 'package:climatechange/style/style.dart' as style;
+
+//pages
+import 'm1_lesson1_p3.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
 
 class CustomBackButton extends StatefulWidget {
   @override
@@ -49,7 +53,7 @@ class _CustomBackButtonState extends State<CustomBackButton> {
   }
 }
 
-class m3_learn2_p2 extends StatelessWidget {
+class m1_lesson1_p2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,8 +129,8 @@ class m3_learn2_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'อุณหภูมิโลกเพิ่มขึ้นจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
-                    style: TextStyle(fontSize: 16.0),
+                    'lorem ipson',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -143,7 +147,7 @@ class m3_learn2_p2 extends StatelessWidget {
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
                     'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                    style: TextStyle(fontSize: 16.0),
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -160,7 +164,7 @@ class m3_learn2_p2 extends StatelessWidget {
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
                     'พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
-                    style: TextStyle(fontSize: 16.0),
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -228,27 +232,12 @@ class m3_learn2_p2 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => m3_learn2_p3(),
+              builder: (context) => m1_lesson1_p3(),
             ), // Next Screen
           );
         },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.arrow_forward), // Next icon
-      ),
-    );
-  }
-}
-
-class m3_learn2_p3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar('Lesson 2.3: Next Topic', context),
-      body: Center(
-        child: Text(
-          'This is the next screen for Lesson 2.2',
-          style: TextStyle(fontSize: 20.0),
-        ),
       ),
     );
   }

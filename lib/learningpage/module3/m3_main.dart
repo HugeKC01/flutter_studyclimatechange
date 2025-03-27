@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable widgets are defined.
-import 'm3_learn2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
+
+import 'lesson1/m3_lesson1_p1.dart';
+import 'lesson2/m3_lesson2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
 
 class Module3Screen extends StatelessWidget {
   const Module3Screen({super.key});
@@ -99,12 +101,12 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('หัวข้อที่ 1'),
+                          title: Text('บทเรียนที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('Lets Fix The Climate Change Problem'),
+                              Text('มาแก้ไขปัญหาที่ทำให้ภูมิอากาศเปลี่ยนไปกันเถอะ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
@@ -131,7 +133,7 @@ class Module3Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m3_learn2_p1(),
+                                builder: (context) => m3_lesson1_p1(),
                               ),
                             );
                           },
@@ -154,7 +156,7 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('หัวข้อที่ 2'),
+                          title: Text('บทเรียนที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -167,7 +169,7 @@ class Module3Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m3_learn2_p1(),
+                                builder: (context) => m3_lesson2_p1(),
                               ),
                             );
                           },

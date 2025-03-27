@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Cover Section',
+                              'Module 1',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -209,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Module 1'),
+                          title: Text('เนื้อหาที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -265,7 +265,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Cover Section',
+                              'Module 2',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -274,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Module 2'),
+                          title: Text('เนื้อหาที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -328,7 +328,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Cover Section',
+                              'Module 3',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -337,12 +337,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Module 3'),
+                          title: Text('เนื้อหาที่ 3'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('Fix The Problem And Stop The Cause'),
+                              Text('การแก้ปัญหาและปรับตัวเพื่อโลกของเรา'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
@@ -391,7 +391,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Cover Section',
+                              'Post Test',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -400,8 +400,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
-                          subtitle: Text('Post Test'),
+                          title: Text('ทดสอบหลังเรียน'),
+                          subtitle: Text('ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว'),
                           trailing: Icon(Icons.lock),
                           onTap: () {
                             Navigator.push(

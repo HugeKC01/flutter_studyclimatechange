@@ -70,7 +70,7 @@ class QuizPageState extends State<PostTestScreen> {
     },
     {
       'questionText': 'สัตว์ชนิดใดที่มักอพยพไปอยู่ในที่ที่มีอุณหภูมิพอเหมาะเมื่อฤดูกาลเปลี่ยนไป?',
-      'answers': [' a) ช้าง', 'b) นก', 'c) แมว', ' d) ลิง'],
+      'answers': ['a) ช้าง', 'b) นก', 'c) แมว', ' d) ลิง'],
       'correctAnswer': 'a) ช้าง',
       'selectedAnswer': '',
     },
