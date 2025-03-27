@@ -110,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
@@ -167,12 +166,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-=======
-      
-      appBar: buildAppBar(widget.title, context),
-      drawer: buildDrawer(context),
-
->>>>>>> origin/50
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
