@@ -76,6 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Home'),
               onTap: () {
                 // Handle the home tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
+                );
               },
             ),
             ListTile(
@@ -83,20 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Manual'),
               onTap: () {
                 // Handle the manual tap here
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.help_rounded),
-              title: Text('Help'),
-              onTap: () {
-                // Handle the manual tap here
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {
-                // Handle the settings tap here
               },
             ),
           ],
