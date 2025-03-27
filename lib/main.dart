@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
+import 'help.dart';
+import 'manual.dart';
+import 'settings.dart';
 import 'posttest.dart';
 
 void main() {
@@ -75,28 +78,40 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(Icons.home_rounded),
               title: Text('Home'),
               onTap: () {
-                // Handle the home tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.book_rounded),
               title: Text('Manual'),
               onTap: () {
-                // Handle the manual tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Manual()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.help_rounded),
               title: Text('Help'),
               onTap: () {
-                // Handle the manual tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Help()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                // Handle the settings tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+                );
               },
             ),
           ],
