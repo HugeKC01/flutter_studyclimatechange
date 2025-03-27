@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
 class PostTestScreen extends StatefulWidget {
-  const PostTestScreen({Key? key}) : super(key: key);
+  const PostTestScreen({super.key});
 
   @override
   QuizPageState createState() => QuizPageState();
@@ -57,7 +57,7 @@ class QuizPageState extends State<PostTestScreen> {
                 onPressed: () => answerQuestion(answer),
                 child: Text(answer),
               );
-            }).toList(),
+            }),
           ],
         ),
       ),
