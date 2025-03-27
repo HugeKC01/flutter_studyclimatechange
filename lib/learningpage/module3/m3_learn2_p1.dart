@@ -53,8 +53,62 @@ class m3_learn2_p1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Lesson 2.1: Global Warming', context),
-      drawer: buildDrawer(context),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('Lesson 2.1: Global Warming'),
+        elevation: 5.0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: IconButton(
+                icon: const Icon(Icons.person, color: Colors.white),
+                onPressed: () {
+                  // Handle the button press here
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home_rounded),
+              title: Text('Home'),
+              onTap: () {
+                // Handle the home tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.book_rounded),
+              title: Text('Manual'),
+              onTap: () {
+                // Handle the manual tap here
+              },
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           // Main Scrollable Content
