@@ -150,7 +150,7 @@ class QuizPageState extends State<PostTestScreen> {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                     SizedBox(height: 20.0),
                     Divider(),
                     Row(

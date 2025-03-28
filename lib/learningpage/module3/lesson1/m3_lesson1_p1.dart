@@ -1,4 +1,3 @@
-import 'package:climatechange/learningpage/module3/lesson2/m3_lesson2_p2.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
 import 'm3_lesson1_p2.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
@@ -7,6 +6,8 @@ import 'package:climatechange/style/style.dart' as style;
 //import 'package:climatechange/buttons/buttons.dart' as buttons;
 
 class CustomBackButton extends StatefulWidget {
+  const CustomBackButton({super.key});
+
   @override
   _CustomBackButtonState createState() => _CustomBackButtonState();
 }
@@ -54,6 +55,8 @@ class _CustomBackButtonState extends State<CustomBackButton> {
 }
 
 class m3_lesson1_p1 extends StatelessWidget {
+  const m3_lesson1_p1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -232,7 +235,7 @@ class m3_lesson1_p1 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => m3_lesson2_p2(),
+              builder: (context) => m3_lesson1_p2(),
             ), // Next Screen
           );
         },

@@ -6,6 +6,8 @@ import 'package:climatechange/style/style.dart' as style;
 //import 'package:climatechange/buttons/buttons.dart' as buttons;
 
 class CustomBackButton extends StatefulWidget {
+  const CustomBackButton({super.key});
+
   @override
   _CustomBackButtonState createState() => _CustomBackButtonState();
 }
@@ -53,6 +55,8 @@ class _CustomBackButtonState extends State<CustomBackButton> {
 }
 
 class m3_lesson2_p1 extends StatelessWidget {
+  const m3_lesson2_p1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

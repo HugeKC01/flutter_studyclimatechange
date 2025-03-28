@@ -7,6 +7,8 @@ import 'package:climatechange/style/style.dart' as style;
 import 'm2_lesson2_p3.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
 
 class CustomBackButton extends StatefulWidget {
+  const CustomBackButton({super.key});
+
   @override
   _CustomBackButtonState createState() => _CustomBackButtonState();
 }
@@ -54,6 +56,8 @@ class _CustomBackButtonState extends State<CustomBackButton> {
 }
 
 class m2_lesson2_p2 extends StatelessWidget {
+  const m2_lesson2_p2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

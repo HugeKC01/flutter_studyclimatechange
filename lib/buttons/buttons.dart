@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:climatechange/style/style.dart';
 
 
 class NextButton extends StatelessWidget {
