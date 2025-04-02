@@ -111,6 +111,14 @@ class Module2Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m2_learn2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -168,6 +176,14 @@ class Module2Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m2_learn2_p2(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -227,6 +243,14 @@ class Module2Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m2_learn2_p3(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
