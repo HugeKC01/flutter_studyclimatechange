@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
-import 'posttest/posttest.dart';
+import 'posttest/posttestintro.dart';
 
 void main() {
   runApp(const MyApp());
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'title': 'Post Test',
               'subtitle': 'ทดสอบหลังเรียน',
               'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-              'screen': PostTestScreen(),
+              'screen': PostTestIntroduction(),
             },
           ];
 
@@ -200,21 +200,43 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ListTile(
-                    title: Text(module['subtitle'] as String),
-                    subtitle: Text(module['description'] as String),
-                    trailing: Icon(Icons.lock),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => module['screen'] as Widget,
+                Column(
+                  children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        ListTile(
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          title: Text(
+                          module['title'] as String,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          ),
+                          subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(module['subtitle'] as String),
+                            Text(module['description'] as String),
+                          ],
+                          ),
+                          trailing: Icon(Icons.lock),
+                          onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                            builder: (context) => module['screen'] as Widget,
+                            ),
+                          );
+                          },
                         ),
-                      );
-                    },
+                      ],
+                    ),
                   ),
+                  ],
                 ),
               ],
             ),

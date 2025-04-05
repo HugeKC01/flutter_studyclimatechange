@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable widgets are defined.
 
 import 'lesson1/m3_lesson1_p1.dart';
 import 'lesson2/m3_lesson2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
