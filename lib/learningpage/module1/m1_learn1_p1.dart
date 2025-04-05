@@ -226,24 +226,9 @@ class Module1p1 extends StatelessWidget {
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
-                              
-                              Text(
-                                '\n1. กระทบต่อสุขภาพของเรา',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              
-                              const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer.jpeg',
+                                  imagePath: 'asset/module1/Weather.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
