@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'm1_subject2_page1.dart';
-
+import 'm1_learn1_p1.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -30,7 +30,7 @@ class Module1Screen extends StatelessWidget {
                            onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Module1Page()),
+                              MaterialPageRoute(builder: (context) => Module1p1()),
                             );
                           },
                           child: Container(
