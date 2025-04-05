@@ -18,61 +18,78 @@ class QuizResultScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Quiz Results'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Your Score: $score / $totalQuestions',
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: questions.length,
-                itemBuilder: (context, index) {
-                  final question = questions[index];
-                  final questionText = question['questionText'] as String;
-                  final correctAnswer = question['correctAnswer'] as String;
-                  final selectedAnswer = question['selectedAnswer'] as String;
-
-                  return Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      title: Text(
-                        questionText,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Correct Answer: $correctAnswer'),
-                          Text(
-                            'Your Answer: $selectedAnswer',
-                            style: TextStyle(
-                              color: selectedAnswer == correctAnswer
-                                  ? Colors.green
-                                  : Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                  'Your Score',
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                  '$score / $totalQuestions',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                  },
+                  child: const Text('Back to Home'),
+                  ),
+                ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Back to Home'),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
+
+// Expanded(
+            //   child: ListView.builder(
+            //     itemCount: questions.length,
+            //     itemBuilder: (context, index) {
+            //       final question = questions[index];
+            //       final questionText = question['questionText'] as String;
+            //       final correctAnswer = question['correctAnswer'] as String;
+            //       final selectedAnswer = question['selectedAnswer'] as String;
+
+            //       return Card(
+            //         margin: const EdgeInsets.symmetric(vertical: 8.0),
+            //         child: ListTile(
+            //           title: Text(
+            //             questionText,
+            //             style: const TextStyle(fontWeight: FontWeight.bold),
+            //           ),
+            //           subtitle: Column(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               Text('Correct Answer: $correctAnswer'),
+            //               Text(
+            //                 'Your Answer: $selectedAnswer',
+            //                 style: TextStyle(
+            //                   color: selectedAnswer == correctAnswer
+            //                       ? Colors.green
+            //                       : Colors.red,
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),

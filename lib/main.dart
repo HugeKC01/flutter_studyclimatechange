@@ -126,297 +126,100 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home_rounded),
-              title: Text('Home'),
-              onTap: () {
-                // Handle the home tap here
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.book_rounded),
-              title: Text('Manual'),
-              onTap: () {
-                // Handle the manual tap here
-              },
-            ),
-          ],
+      drawer: buildDrawer(context),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(8.0),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2, // 1 column on mobile, 2 on larger screens
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          childAspectRatio: 3 / 2, // Adjust the aspect ratio as needed
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5.0,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module1Screen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Module 1',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
+        itemCount: 4, // Number of items (modules + post-test)
+        itemBuilder: (context, index) {
+          final modules = [
+            {
+              'title': 'Module 1',
+              'subtitle': 'Introduction to Climate Change',
+              'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+              'screen': Module1Screen(),
+            },
+            {
+              'title': 'Module 2',
+              'subtitle': 'Effects of Climate Change',
+              'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+              'screen': Module2Screen(),
+            },
+            {
+              'title': 'Module 3',
+              'subtitle': 'Fix The Problem And Stop The Cause',
+              'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+              'screen': Module3Screen(),
+            },
+            {
+              'title': 'Post Test',
+              'subtitle': 'ทดสอบหลังเรียน',
+              'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
+              'screen': PostTestScreen(),
+            },
+          ];
+
+          final module = modules[index];
+
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 5.0,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => module['screen'] as Widget,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(15.0),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ListTile(
-                          title: Text('เนื้อหาที่ 1'),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Introduction to Climate Change'),
-                              Text(
-                                'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                              ),
-                            ],
-                          ),
-                          trailing: Icon(Icons.lock),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module1Screen(),
-                              ),
-                            );
-                          },
-                        ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        module['title'] as String,
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5.0,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module2Screen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Module 2',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ListTile(
+                    title: Text(module['subtitle'] as String),
+                    subtitle: Text(module['description'] as String),
+                    trailing: Icon(Icons.lock),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => module['screen'] as Widget,
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ListTile(
-                          title: Text('เนื้อหาที่ 2'),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Effects of Climate Change'),
-                              Text('ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ'),
-                            ],
-                          ),
-                          trailing: Icon(Icons.lock),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module2Screen(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
-              ),
+              ],
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5.0,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module3Screen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Module 3',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ListTile(
-                          title: Text('เนื้อหาที่ 3'),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Fix The Problem And Stop The Cause'),
-                              Text('การแก้ปัญหาและปรับตัวเพื่อโลกของเรา'),
-                            ],
-                          ),
-                          trailing: Icon(Icons.lock),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module3Screen(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 5.0,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => PostTestScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
-                            ),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Post Test',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ListTile(
-                          title: Text('ทดสอบหลังเรียน'),
-                          subtitle: Text('ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว'),
-                          trailing: Icon(Icons.lock),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => PostTestScreen(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
