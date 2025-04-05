@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'm1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm1_learn1_p1.dart';
+import 'm1_learn1_p3.dart';
 import '../../help.dart';
 import '../../manual.dart';
 import '../../main.dart';
@@ -203,31 +203,16 @@ class Module1p2 extends StatelessWidget {
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    const TextSpan(text: ' หมายถึง การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก ซึ่งอาจเกิดจากการกระทำของมนุษย์หรือจากธรรมชาติ โดยการเปลี่ยนแปลงนี้สามารถส่งผลกระทบต่อสิ่งมีชีวิตและสิ่งแวดล้อมได้' ),                                   
+                                    const TextSpan(text: ' หมายถึง การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก ซึ่งอาจเกิดจากการกระทำของมนุษย์หรือจากธรรมชาติ โดยการเปลี่ยนแปลงนี้สามารถส่งผลกระทบต่อสิ่งมีชีวิตและสิ่งแวดล้อมได้ เช่น อุณหภูมิโลกที่สูงขึ้น น้ำแข็งขั้วโลกละลาย หรือฤดูกาลที่เปลี่ยนไป ซึ่งเกิดขึ้นจากปัจจัยต่าง ๆ' ),                                   
                                   ],
                                 ),
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
-
-                              Text(
-                                '\n     ปัจจัยที่ทำให้เกิดการเปลี่ยนแปลงสภาพภูมิอากาศ\n',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                '         การเปลี่ยนแปลงสภาพภูมิอากาศเกิดจากหลายปัจจัย เช่น การปล่อยก๊าซเรือนกระจกจากกิจกรรมของมนุษย์ เช่น การเผาไหม้เชื้อเพลิงฟอสซิล การตัดไม้ทำลายป่า และการเกษตรกรรม นอกจากนี้ยังมีปัจจัยทางธรรมชาติ เช่น การเปลี่ยนแปลงของวงโคจรของโลกและการระเบิดของภูเขาไฟ',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              
-                              const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer.jpeg',
+                                  imagePath: 'asset/module1/grobal climate.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -295,7 +280,7 @@ class Module1p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
+                                  builder: (context) => const Module1p3()),
                             );
                           },
                           backgroundColor:

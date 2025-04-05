@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'm1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'package:flutter/material.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm1_learn1_p2.dart';
+import 'm1_learn1_p4.dart';
 import '../../help.dart';
 import '../../manual.dart';
 import '../../main.dart';
@@ -22,13 +22,13 @@ class ClimateChangeApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const Module1p1(),
+      home: const Module1p3(),
     );
   }
 }
 
-class Module1p1 extends StatelessWidget {
-  const Module1p1({super.key});
+class Module1p3 extends StatelessWidget {
+  const Module1p3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +156,7 @@ class Module1p1 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '1.1) ความหมายของสภาพอากาศและภูมิอากาศ',
+                            '1.2) การเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -189,56 +189,40 @@ class Module1p1 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                '         สภาพอากาศและภูมิอากาศเป็นคำที่มักถูกใช้สลับกัน แต่จริง ๆ แล้วมีความหมายที่แตกต่างกัน',
+                              
+                              Text(
+                                '  ปัจจัยที่ทำให้เกิดการเปลี่ยนแปลงสภาพภูมิอากาศ\n',
                                 textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 18),
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(
-                                      text: '         สภาพอากาศ (weather)',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย' ),                                   
-                                  ],
-                                ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         ปัจจัยที่เกิดจากกิจกรรมของมนุษย์ เช่น การปล่อยก๊าซเรือนกระจกจากกิจกรรมของมนุษย์'
+                                ' เช่น การเผาไหม้เชื้อเพลิงฟอสซิล การตัดไม้ทำลายป่า และการเกษตรกรรม',                                
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Weather.png',
-                                  
+                                  imagePath: 'asset/module1/human_act.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
-
-                              Text.rich(
-                                TextSpan(children:[
-                                  const TextSpan(
-                                    text: '         ภูมิอากาศ (climate)',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว' ),
-                                  ],
-                                 ),
+                              Text(
+                                ' ปัจจัยทางธรรมชาติ เช่น การเปลี่ยนแปลงของวงโคจรของโลกและการระเบิดของภูเขาไฟ',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/climate.jpeg',
+                                  imagePath: 'asset/module1/nature_act.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
+                              
                             ],
                           ),
                         ),
@@ -248,6 +232,7 @@ class Module1p1 extends StatelessWidget {
                 ),
               ),
             ),
+
             // Fixed footer
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -272,7 +257,7 @@ class Module1p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
+                                  builder: (context) => const Module1p2()),
                             );
                           },
                           backgroundColor:
@@ -302,7 +287,7 @@ class Module1p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1p2()),
+                                  builder: (context) => const Module1p4()),
                             );
                           },
                           backgroundColor:

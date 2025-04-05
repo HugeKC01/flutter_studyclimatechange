@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'm1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm1_learn1_p2.dart';
+import 'm1_learn1_p3.dart';
 import '../../help.dart';
 import '../../manual.dart';
 import '../../main.dart';
@@ -22,13 +22,13 @@ class ClimateChangeApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const Module1p1(),
+      home: const Module1p4(),
     );
   }
 }
 
-class Module1p1 extends StatelessWidget {
-  const Module1p1({super.key});
+class Module1p4 extends StatelessWidget {
+  const Module1p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +156,7 @@ class Module1p1 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '1.1) ความหมายของสภาพอากาศและภูมิอากาศ',
+                            '1.3) ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -190,53 +190,61 @@ class Module1p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                '         สภาพอากาศและภูมิอากาศเป็นคำที่มักถูกใช้สลับกัน แต่จริง ๆ แล้วมีความหมายที่แตกต่างกัน',
-                                textAlign: TextAlign.left,
+                                ' ⦿ อากาศร้อนขึ้น อุณหภูมิโลกสูงขึ้น ทำให้เกิดคลื่นความร้อน ไฟป่า และภัยแล้ง     ',
+                                textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 18),
                               ),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(
-                                      text: '         สภาพอากาศ (weather)',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย' ),                                   
-                                  ],
-                                ),
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
                               const SizedBox(height: 8),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath: 'asset/module1/Weather.png',
-                                  
-                                ),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/dry.jpg',
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 12),
-
-                              Text.rich(
-                                TextSpan(children:[
-                                  const TextSpan(
-                                    text: '         ภูมิอากาศ (climate)',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                              Text(
+                                ' ⦿ น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/polarb.jpg',
                                   ),
-                                  const TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว' ),
-                                  ],
-                                 ),
-                                textAlign: TextAlign.left,
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              Text(
+                                ' ⦿ เกิดพายุรุนแรงมากขึ้น เช่น พายุเฮอริเคน ไต้ฝุ่น',
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath: 'asset/module1/climate.jpeg',
-                                ),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/strom.jpg',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              Text(
+                                ' ⦿ เกิดการเปลี่ยนแปลงของระบบนิเวศ เช่น การสูญพันธุ์ของสัตว์และพืช',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 12),
+                              
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/ext.jpg',
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 12),
                             ],
@@ -248,6 +256,7 @@ class Module1p1 extends StatelessWidget {
                 ),
               ),
             ),
+
             // Fixed footer
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -272,7 +281,7 @@ class Module1p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
+                                  builder: (context) => const Module1p3()),
                             );
                           },
                           backgroundColor:
@@ -302,7 +311,7 @@ class Module1p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1p2()),
+                                  builder: (context) => const Module1Screen()),
                             );
                           },
                           backgroundColor:
