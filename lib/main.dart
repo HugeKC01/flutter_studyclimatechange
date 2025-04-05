@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
-import 'posttest.dart';
+import 'posttest/posttest.dart';
 
 void main() {
   runApp(const MyApp());

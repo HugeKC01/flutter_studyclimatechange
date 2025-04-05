@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'testsummary.dart';
 
 class PostTestScreen extends StatefulWidget {
   const PostTestScreen({super.key});
@@ -18,54 +19,6 @@ class QuizPageState extends State<PostTestScreen> {
       'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศมีผลกระทบโดยตรงต่อสิ่งใดบ้างมากที่สุด?',
       'answers': ['a) อาหารที่เรากิน', 'b) อาชีพที่เราทำ', 'c) คู่ชีวิตในอนาคต', 'd) ราคาน้ำมัน'],
       'correctAnswer': 'a) อาหารที่เรากิน',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'ทำไมเราต้องสนใจเรื่องการเปลี่ยนแปลงสภาพภูมิอากาศ?',
-      'answers': ['a) เพราะมันไม่มีผลกระทบต่อเรา', 'b) เพราะมันมีผลกระทบต่อชีวิตของมนุษย์และสิ่งแวดล้อม', 'c) เพราะมันทำให้เรารวยขึ้น', 'd) เพราะมันทำให้เรามีความสุข'],
-      'correctAnswer': 'a) เพราะมันไม่มีผลกระทบต่อเรา',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'วิธีใดที่ช่วยลดการใช้พลังงานได้?',
-      'answers': ['a) ปิดไฟเมื่อไม่ใช้', 'b) เปิดไฟตลอดเวลา', 'c) ใช้เครื่องใช้ไฟฟ้าเก่า', 'd) เปิดแอร์ให้เย็นที่สุด'],
-      'correctAnswer': 'a) ปิดไฟเมื่อไม่ใช้',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'พาหนะใดที่เป็นมิตรต่อสิ่งแวดล้อม?',
-      'answers': ['a) รถยนต์ส่วนตัว', 'b) เครื่องบิน', 'c) เดิน ขี่จักรยาน หรือใช้ขนส่งสาธารณะ', 'd) เรือสำราญ'],
-      'correctAnswer': 'a) รถยนต์ส่วนตัว',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'ต้นไม้มีบทบาทอย่างไรในการลดภาวะโลกร้อน?',
-      'answers': ['a) ปล่อยก๊าซคาร์บอนไดออกไซด์', 'b) ดูดซับก๊าซคาร์บอนไดออกไซด์', 'c) ปล่อยก๊าซมีเทน', 'd) ดูดซับก๊าซมีเทน'],
-      'correctAnswer': 'a) ปล่อยก๊าซคาร์บอนไดออกไซด์',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'ข้อใดเป็นวิธีที่ช่วยให้ร่างกายเย็นลงเมื่ออุณหภูมิสูงขึ้น?',
-      'answers': ['a) ดื่มน้ำมากขึ้น', 'b) ใส่เสื้อผ้าหนา ๆ', 'c) ออกแดดตอนเที่ยงวัน', 'd) ปิดหน้าต่างให้สนิท'],
-      'correctAnswer': 'a) ดื่มน้ำมากขึ้น',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'ทำไมการปลูกต้นไม้รอบบ้านจึงช่วยลดอุณหภูมิได้?',
-      'answers': ['a) เพราะต้นไม้ทำให้แดดร้อนขึ้น', 'b) เพราะต้นไม้ดูดซับน้ำฝน', 'c) เพราะต้นไม้ให้ร่มเงาและช่วยลดความร้อน', 'd) เพราะต้นไม้ทำให้ลมแรงขึ้น'],
-      'correctAnswer': 'a) เพราะต้นไม้ทำให้แดดร้อนขึ้น',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'ควรทำอย่างไรเมื่ออากาศเปลี่ยนแปลงไม่ตรงกับฤดูกาล?',
-      'answers': [' a) ไม่ต้องสนใจ เพราะอากาศเปลี่ยนเองได้', 'b) ใส่เสื้อผ้าให้เหมาะสมกับอากาศ', 'c) ออกไปทำกิจกรรมกลางแจ้งโดยไม่ดูพยากรณ์อากาศ', 'd) ปลูกพืชที่ต้องการน้ำมากเสมอ'],
-      'correctAnswer': 'a) ไม่ต้องสนใจ เพราะอากาศเปลี่ยนเองได้',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'เพราะเหตุใดการติดตามข่าวพยากรณ์อากาศจึงสำคัญ?',
-      'answers': ['a) เพื่อให้รู้ว่าใครเป็นผู้ประกาศข่าว', 'b) เพื่อเตรียมตัวและวางแผนกิจกรรมให้เหมาะสม', 'c) เพื่อให้สามารถเปลี่ยนฤดูกาลได้', 'd) เพื่อให้รู้ว่าเมฆสีอะไร'],
-      'correctAnswer': 'a) เพื่อให้รู้ว่าใครเป็นผู้ประกาศข่าว',
       'selectedAnswer': '',
     },
     {
@@ -105,6 +58,17 @@ class QuizPageState extends State<PostTestScreen> {
       _logger.info('Quiz Submitted! Final Score: $score');
     });
     // Add any additional submission logic here
+    // Navigate to the QuizResultScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizResultScreen(
+          score: score,
+          totalQuestions: questions.length,
+          questions: questions,
+        ),
+      ),
+    );
   }
 
   @override
@@ -180,10 +144,6 @@ class QuizPageState extends State<PostTestScreen> {
                       ],
                     ),
                     SizedBox(height: 20.0),
-                    Text(
-                      'Score: $score',
-                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                    ),
                   ],
                 ),
               ),
