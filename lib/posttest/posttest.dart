@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'testsummary.dart';
 
 class PostTestScreen extends StatefulWidget {
   const PostTestScreen({super.key});
@@ -15,15 +16,15 @@ class QuizPageState extends State<PostTestScreen> {
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'What is Flutter?',
-      'answers': ['A framework', 'A bird', 'A car', 'A programming language'],
-      'correctAnswer': 'A framework',
+      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศมีผลกระทบโดยตรงต่อสิ่งใดบ้างมากที่สุด?',
+      'answers': ['a) อาหารที่เรากิน', 'b) อาชีพที่เราทำ', 'c) คู่ชีวิตในอนาคต', 'd) ราคาน้ำมัน'],
+      'correctAnswer': 'a) อาหารที่เรากิน',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'Who developed Flutter?',
-      'answers': ['Google', 'Apple', 'Microsoft', 'Facebook'],
-      'correctAnswer': 'Google',
+      'questionText': 'สัตว์ชนิดใดที่มักอพยพไปอยู่ในที่ที่มีอุณหภูมิพอเหมาะเมื่อฤดูกาลเปลี่ยนไป?',
+      'answers': ['a) ช้าง', 'b) นก', 'c) แมว', 'd) ลิง'],
+      'correctAnswer': 'a) ช้าง',
       'selectedAnswer': '',
     },
   ];
@@ -57,6 +58,17 @@ class QuizPageState extends State<PostTestScreen> {
       _logger.info('Quiz Submitted! Final Score: $score');
     });
     // Add any additional submission logic here
+    // Navigate to the QuizResultScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PostTestResultScreen(
+          score: score,
+          totalQuestions: questions.length,
+          questions: questions,
+        ),
+      ),
+    );
   }
 
   @override
@@ -102,7 +114,7 @@ class QuizPageState extends State<PostTestScreen> {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                     SizedBox(height: 20.0),
                     Divider(),
                     Row(
@@ -132,10 +144,6 @@ class QuizPageState extends State<PostTestScreen> {
                       ],
                     ),
                     SizedBox(height: 20.0),
-                    Text(
-                      'Score: $score',
-                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                    ),
                   ],
                 ),
               ),
