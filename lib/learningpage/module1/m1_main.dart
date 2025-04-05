@@ -86,7 +86,7 @@ class Module1Screen extends StatelessWidget {
                            onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => m1_lesson1_p1()),
+                              MaterialPageRoute(builder: (context) => m1_lesson2_p1()),
                             );
                           },
                           child: Container(
