@@ -103,7 +103,62 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late List<Animation<Offset>> _offsetAnimations;
+  late List<Animation<double>> _fadeAnimations;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+
+    // Create staggered animations for each card
+    _offsetAnimations = List.generate(4, (index) {
+      return Tween<Offset>(
+        begin: const Offset(0, 0.3), // Start slightly below the screen
+        end: Offset.zero, // End at the original position
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: Interval(
+            index * 0.1, // Stagger each card by 10%
+            1.0,
+            curve: Curves.easeOut,
+          ),
+        ),
+      );
+    });
+
+    // Create fade animations for each card
+    _fadeAnimations = List.generate(4, (index) {
+      return Tween<double>(
+        begin: 0.0, // Start fully transparent
+        end: 1.0, // End fully visible
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: Interval(
+            index * 0.1, // Stagger each card by 10%
+            1.0,
+            curve: Curves.easeIn,
+          ),
+        ),
+      );
+    });
+
+    _animationController.forward(); // Start the animation
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,79 +222,85 @@ class _MyHomePageState extends State<MyHomePage> {
 
             final module = modules[index];
 
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              elevation: 5.0,
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => module['screen'] as Widget,
+            return FadeTransition(
+              opacity: _fadeAnimations[index],
+              child: SlideTransition(
+                position: _offsetAnimations[index],
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 5.0,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => module['screen'] as Widget,
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.0),
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              module['title'] as String,
+                              style: TextStyle(color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        );
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15.0),
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          module['title'] as String,
-                          style: TextStyle(color: Colors.white),
-                          textAlign: TextAlign.center,
                         ),
                       ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ListTile(
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                              title: Text(
-                                module['title'] as String,
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(module['subtitle'] as String),
-                                  Text(module['description'] as String),
-                                ],
-                              ),
-                              trailing: Icon(Icons.lock),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => module['screen'] as Widget,
+                      Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                  title: Text(
+                                    module['title'] as String,
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                );
-                              },
+                                  subtitle: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(module['subtitle'] as String),
+                                      Text(module['description'] as String),
+                                    ],
+                                  ),
+                                  trailing: Icon(Icons.lock),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => module['screen'] as Widget,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             );
           },
