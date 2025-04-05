@@ -62,7 +62,7 @@ class QuizPageState extends State<PostTestScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => QuizResultScreen(
+        builder: (context) => PostTestResultScreen(
           score: score,
           totalQuestions: questions.length,
           questions: questions,

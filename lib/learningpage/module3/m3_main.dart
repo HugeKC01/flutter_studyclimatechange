@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m3_lesson1_p1.dart';
 import 'lesson2/m3_lesson2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
 
@@ -9,8 +9,9 @@ class Module3Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 1: Introduction to Climate Change'),
+      appBar: buildAppBar(
+        'Module 3', // Replace with a valid title string
+        context,
       ),
       body: Center(
         child: Column(
