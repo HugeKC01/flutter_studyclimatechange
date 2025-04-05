@@ -26,4 +26,5 @@ flutter:
   assets:
     - asset/module3/
     - asset/module1/
+    - asset/module2/
 
