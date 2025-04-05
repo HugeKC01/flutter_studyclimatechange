@@ -3,6 +3,9 @@ import 'm2_learn2_p1.dart';
 import 'm2_learn2_p2.dart';
 import 'm2_learn2_p3.dart';
 
+import 'lesson1/m2_lesson1_p1.dart';
+import 'lesson2/m2_lesson2_p1.dart';
+
 class Module2Screen extends StatelessWidget {
   const Module2Screen({super.key});
 
@@ -45,15 +48,23 @@ class Module2Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('บทเรียนที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('The Effect of Climate Change'),
+                              Text('ผลกระทบจากการเปลี่ยนไปของภูมิอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m2_lesson1_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -290,15 +301,23 @@ class Module2Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('บทเรียนที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('The Cause of Climate Change'),
+                              Text('สาเหตุของที่ภูมิอากาศเปลี่ยนไป'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m2_lesson2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

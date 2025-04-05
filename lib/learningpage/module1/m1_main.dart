@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'lesson2/m1_lesson2_p1.dart';
+import 'lesson1/m1_lesson1_p1.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -16,6 +18,7 @@ class Module1Screen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
+                
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
@@ -24,6 +27,9 @@ class Module1Screen extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: GestureDetector(
+                           onTap: () {
+                           
+                          },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -41,19 +47,28 @@ class Module1Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('เรื่องที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ'),
                             ],
-                          ),
+                          ), 
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m1_lesson1_p1(),
+                              ),
+                            );
+                          },
                         ),
+                        
                       ),
                     ],
                   ),
+                  
                 ),
               ),
             ),
@@ -68,6 +83,12 @@ class Module1Screen extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: GestureDetector(
+                           onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => m1_lesson1_p1()),
+                            );
+                          },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -85,15 +106,22 @@ class Module1Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('เรื่องที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m1_lesson2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
