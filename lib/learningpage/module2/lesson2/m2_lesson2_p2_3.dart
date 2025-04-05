@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../m2_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1_2.dart';
+import 'm2_lesson2_p3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p2_2.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
@@ -21,13 +21,13 @@ class ClimateChangeApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const m2_lesson2_p1(),
+      home: const m2_lesson2_p2_3(),
     );
   }
 }
 
-class m2_lesson2_p1 extends StatelessWidget {
-  const m2_lesson2_p1({super.key});
+class m2_lesson2_p2_3 extends StatelessWidget {
+  const m2_lesson2_p2_3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +154,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '2.1) อธิบายโลกร้อน',
+                            '2.2) อธิบายสภาพอากาศผิดฤดู',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -188,7 +188,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '1.) อุณหภูมิโลกเพิ่มขึ้นเนื่องมาจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
+                                '3.) พายุและภัยธรรมชาติเกิดขึ้นบ่อยและรุนแรงมากขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   fontSize: 18,
@@ -197,19 +197,19 @@ class m2_lesson2_p1 extends StatelessWidget {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'โลกของเราร้อนขึ้นเพราะก๊าซเรือนกระจกเยอะเกินไป! ก๊าซเหล่านี้เหมือนผ้าห่มหนา ๆ ห่อหุ้มโลก ทำให้ความร้อนออกไปไม่ได้ อุณหภูมิโลกเลยสูงขึ้น เหมือนเวลาที่เราห่มผ้าห่มหนา ๆ แล้วรู้สึกร้อนนั่นแหละ!',
+                                'เมื่อโลกของเราร้อนขึ้น พายุและภัยธรรมชาติก็เหมือนเพื่อนที่ไม่ดี ที่ชอบมาหาเราบ่อยขึ้น แถมยังมาแต่ละครั้งก็รุนแรงกว่าเดิม! พายุอาจจะพัดแรงจนหลังคาบ้านปลิว น้ำอาจจะท่วมสูงจนเดินทางไม่ได้ แผ่นดินอาจจะสั่นไหวรุนแรงกว่าเดิม หรือไฟป่าอาจจะลุกลามเร็วมากจนน่ากลัว เหมือนเวลาที่เราเล่นตึกต่อไม้ แล้วมีคนมาเขย่าแรง ๆ ตึกก็จะพังง่ายขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'ก๊าซเรือนกระจกมาจากหลายที่ เช่น รถยนต์ โรงงาน และการเผาขยะ เมื่อโลกของเราร้อนขึ้น น้ำแข็งขั้วโลกจะละลาย ทำให้น้ำทะเลสูงขึ้น และสัตว์หลายชนิดอาจไม่มีที่อยู่',
+                                'อากาศที่ร้อนขึ้นเป็นเหมือนตัวกระตุ้น ที่ทำให้พายุและภัยธรรมชาติเหล่านี้เกิดขึ้นบ่อยขึ้น เหมือนเวลาที่เราเติมลมลูกโป่งมากเกินไป มันก็พร้อมที่จะแตกได้ง่ายขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลงนะ! เราทำได้!',
+                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และดูแลโลกของเราให้ดี เพื่อลดความเสี่ยงที่จะเกิดพายุและภัยธรรมชาติที่รุนแรงเหล่านี้กันนะ!',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -218,7 +218,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                               Center(
                                 child: HoverableImage(
                                   imagePath:
-                                      'asset/module2/module2_learn2_pic1.png',
+                                      'asset/module2/module2_learn2_pic6.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -255,7 +255,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Module2Screen(),
+                                builder: (context) => const m2_lesson2_p2_2(),
                               ),
                             );
                           },
@@ -293,7 +293,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p1_2(),
+                                builder: (context) => m2_lesson2_p3(),
                               ),
                             );
                           },

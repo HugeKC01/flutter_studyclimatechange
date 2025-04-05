@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'lesson2/m2_lesson2_p1.dart';
-import 'lesson2/m2_lesson2_p2.dart';
-import 'lesson2/m2_lesson2_p3.dart';
-import 'lesson1/m2_lesson1_p1.dart';
 
 class Module2Screen extends StatelessWidget {
   const Module2Screen({super.key});
@@ -59,7 +56,7 @@ class Module2Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson1_p1(),
+                                builder: (context) => m2_lesson2_p1(),
                               ),
                             );
                           },
@@ -70,7 +67,7 @@ class Module2Screen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
