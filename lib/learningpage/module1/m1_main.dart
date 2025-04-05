@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'lesson1/m1_lesson1_p1.dart';
+import 'lesson2/m1_lesson2_p1.dart';
+
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
 
@@ -41,15 +44,23 @@ class Module1Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('บทเรียนที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('Get to know climate changes'),
+                              Text('ทำความรู้จักกับการเปลี่ยนแปลงของสภาพอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m1_lesson1_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -85,15 +96,23 @@ class Module1Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('บทเรียนที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Adapting and saving our world'),
-                              Text('การปรับตัวและช่วยโลกของเรา'),
+                              Text('The Importance of Climate Change'),
+                              Text('ความสำคัญของสภาพภูมิอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m1_lesson2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
