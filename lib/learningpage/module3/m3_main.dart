@@ -22,8 +22,7 @@ class Module3Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                    borderRadius: BorderRadius.circular(15.0)),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -33,9 +32,7 @@ class Module3Screen extends StatelessWidget {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -48,12 +45,11 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('บทเรียนที่ 1'),
+                          title: Text('เรื่องที่ 1'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Lets Fix The Climate Change Problem'),
-                              Text('มาแก้ไขปัญหาที่ทำให้ภูมิอากาศเปลี่ยนไปกันเถอะ'),
+                              Text('วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
@@ -77,28 +73,66 @@ class Module3Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                    borderRadius: BorderRadius.circular(15.0)),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
                       Expanded(
                         child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => m3_lesson1_p1(),
-                              ),
-                            );
-                          },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Cover Section',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: ListTile(
+                          title: Text('เรื่องที่ 2'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('การปรับตัวและการใช้ชีวิต'),
+                            ],
+                          ),
+                          trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Module3Subject2Page1()),
+                            );
+                          },                          
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                  elevation: 5.0,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
