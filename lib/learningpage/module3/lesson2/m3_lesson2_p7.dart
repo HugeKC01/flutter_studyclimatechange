@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import 'm3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm3_subject2_p2.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import '../m3_main.dart';
+import 'm3_lesson2_p6.dart';
 
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module3Subject2Page1(),
-    );
-  }
-}
-
-class Module3Subject2Page1 extends StatelessWidget {
-  const Module3Subject2Page1({super.key});
+class m3_lesson2_p7 extends StatelessWidget {
+  const m3_lesson2_p7({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +135,7 @@ class Module3Subject2Page1 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.1) วิธีปรับตัวและใช้ชีวิตต่ออุณหภูมิที่เปลี่ยนแปลง',
+                            'สรุป',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -189,25 +168,9 @@ class Module3Subject2Page1 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '         การเปลี่ยนแปลงของสภาพภูมิอากาศทำให้มนุษย์และสิ่งมีชีวิตต้องปรับตัวหลายด้าน เช่น'
-                                'สัตว์ บางสายพันธุ์อพยพไปยังพื้นที่ที่มีสภาพแวดล้อมเหมาะสมกว่า มนุษย์ ปรับเปลี่ยนวิถีชีวิต การสร้างที่อยู่อาศัยที่ทนทานต่อภัยพิบัติ ',
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 18),
-                              ),
                               const SizedBox(height: 8),
-
                               Text(
-                                '\n1. วิธีปรับตัวและใช้ชีวิตเมื่ออากาศร้อนขึ้น',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-
-                              Text(
-                                '         สภาพอากาศที่ร้อนขึ้นกว่าเดิม ทำให้เราต้องรู้จักวิธีดูแลตัวเองและปรับตัวให้เข้ากับอากาศที่ร้อนขึ้น เช่น '
-                                'เมื่ออากาศร้อน ร่างกายของเราจะเสียเหงื่อมากขึ้น เราต้องดื่มน้ำให้เพียงพอ อย่างน้อยวันละ 6-8 แก้ว หาที่ร่มและอยู่ในที่เย็นถ้าอากาศข้างนอกร้อนจัด พยายามอยู่ในที่ร่มหรือในห้องที่มีพัดลมหรือแอร์ ปลูกต้นไม้รอบบ้านเพื่อลดอุณหภูมิในบ้าน',
+                                '         การเปลี่ยนแปลงสภาพภูมิอากาศเป็นปัญหาที่ทุกคนต้องช่วยกันแก้ไข เราสามารถช่วยได้โดยการลดการใช้พลังงาน ทิ้งขยะให้ถูกต้อง และปรับตัวต่อสภาพอากาศที่เปลี่ยนแปลง เพื่อให้โลกของเราน่าอยู่ต่อไปในอนาคต',
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -215,7 +178,7 @@ class Module3Subject2Page1 extends StatelessWidget {
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1_m1.png',
+                                  imagePath: 'asset/module3/s1_m7.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -252,7 +215,7 @@ class Module3Subject2Page1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Screen()),
+                                  builder: (context) => const m3_lesson2_p6()),
                             );
                           },
                           backgroundColor:
@@ -282,7 +245,7 @@ class Module3Subject2Page1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page2()),
+                                  builder: (context) => const Module3Screen()),
                             );
                           },
                           backgroundColor:

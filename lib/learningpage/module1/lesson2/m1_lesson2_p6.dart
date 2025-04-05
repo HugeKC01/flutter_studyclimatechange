@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm3_subject2_p4.dart';
-import 'm3_subject2_p6.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm1_lesson2_p5.dart';
+import '../m1_main.dart';
 
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module3Subject2Page5(),
-    );
-  }
-}
-
-class Module3Subject2Page5 extends StatelessWidget {
-  const Module3Subject2Page5({super.key});
+class m1_lesson2_p6 extends StatelessWidget {
+  const m1_lesson2_p6({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +94,7 @@ class Module3Subject2Page5 extends StatelessWidget {
         // Background decoration for the entire screen
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module3/background1.png'),
+            image: AssetImage('asset/module1/background1.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -151,12 +130,12 @@ class Module3Subject2Page5 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'เรื่องที่ 2',
+                            'สรุป',
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต',
+                            'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -189,45 +168,21 @@ class Module3Subject2Page5 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '2. พืชก็ปรับตัวได้นะ',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
 
-                              Text(
-                                '         ในโลกนี้มีพื้นที่หลากหลายแบบ ทั้งที่ร้อนจัด หนาวเย็น ฝนตกเยอะ หรือแห้งแล้งมาก ๆ พืชแต่ละชนิดก็จะมีวิธีพิเศษในการเอาตัวรอด มาดูกันว่า พืชแต่ละชนิดมีวิธีการปรับตัวอย่างไร',
+                             Text(
+                                '         การเปลี่ยนแปลงสภาพภูมิอากาศเป็นปัญหาที่สำคัญและมีผลกระทบต่อทุกชีวิตบนโลก เราทุกคนสามารถมีส่วนช่วยลดผลกระทบนี้ได้โดยการใช้พลังงานอย่างคุ้มค่า ลดการปล่อยก๊าซเรือนกระจก และดูแลสิ่งแวดล้อมเพื่อให้โลกของเราน่าอยู่ต่อไปในอนาคต',
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 8),
+                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
 
-                              Text(
-                                '\n⦿    กระบองเพชร มีใบเป็นหนาม ช่วยลดการระเหยของน้ำ และลำต้นสามารถเก็บน้ำไว้ใช้ในช่วงแล้ง',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
-
-                              Text(
-                                '\n⦿    ต้นไม้บางชนิด ผลิใบในฤดูฝนและทิ้งใบในฤดูแล้ง เพื่อประหยัดน้ำ',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
-
-                              Text(
-                                '\n⦿    เมื่อสภาพแวดล้อมเปลี่ยน ทำให้ต้นไม้บางชนิด ต้องปรับตัว บางต้นออกดอกเร็วขึ้น เพื่อให้มีโอกาสสร้างเมล็ดก่อนที่อากาศจะร้อนหรือแห้งเกินไป บางต้นออกดอกช้าลง เพราะรอให้อากาศเหมาะสมจึงจะเริ่มเจริญเติบโต',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
+                        
                               
                               const SizedBox(height: 12),
+
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1_m5.png',
+                                  imagePath: 'asset/module1/Designer5.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -264,7 +219,7 @@ class Module3Subject2Page5 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page4()),
+                                  builder: (context) => const m1_lesson2_p5()),
                             );
                           },
                           backgroundColor:
@@ -294,7 +249,7 @@ class Module3Subject2Page5 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page6()),
+                                  builder: (context) => const Module1Screen()),
                             );
                           },
                           backgroundColor:
@@ -350,7 +305,7 @@ class HoverableImageState extends State<HoverableImage> {
         duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
         curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
         alignment: _isHovered
-            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
+            ? const Alignment(-0.5, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
             : Alignment.center, // ตำแหน่งปกติ
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
@@ -378,7 +333,7 @@ class HoverableImageState extends State<HoverableImage> {
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
             child: Image.asset(
               widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.7 : 0.6), // ขยายขนาดเมื่อ hover
               fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),

@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import 'm1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm1_subject2_page2.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm3_lesson2_p4.dart';
+import 'm3_lesson2_p6.dart';
 
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module1Page(),
-    );
-  }
-}
-
-class Module1Page extends StatelessWidget {
-  const Module1Page({super.key});
+class m3_lesson2_p5 extends StatelessWidget {
+  const m3_lesson2_p5({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +94,7 @@ class Module1Page extends StatelessWidget {
         // Background decoration for the entire screen
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module1/background1.png'),
+            image: AssetImage('asset/module3/background1.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -156,7 +135,7 @@ class Module1Page extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.1) ทำไมเราต้องสนใจเรื่องนี้?',
+                            '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -190,21 +169,36 @@ class Module1Page extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '         การเปลี่ยนแปลงสภาพภูมิอากาศมีผลต่อชีวิตของมนุษย์และสิ่งแวดล้อม เช่น'
-                                'อาหารที่เรากิน อากาศที่เราหายใจ และที่อยู่อาศัยของเรา หากเราไม่ช่วยกันลดผลกระทบ โลกอาจเผชิญกับปัญหามากขึ้นในอนาคต',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                '\n1. กระทบต่อสุขภาพของเรา',
+                                '2. พืชก็ปรับตัวได้นะ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 8),
+
                               Text(
-                                '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
+                                '         ในโลกนี้มีพื้นที่หลากหลายแบบ ทั้งที่ร้อนจัด หนาวเย็น ฝนตกเยอะ หรือแห้งแล้งมาก ๆ พืชแต่ละชนิดก็จะมีวิธีพิเศษในการเอาตัวรอด มาดูกันว่า พืชแต่ละชนิดมีวิธีการปรับตัวอย่างไร',
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '\n⦿    กระบองเพชร มีใบเป็นหนาม ช่วยลดการระเหยของน้ำ และลำต้นสามารถเก็บน้ำไว้ใช้ในช่วงแล้ง',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '\n⦿    ต้นไม้บางชนิด ผลิใบในฤดูฝนและทิ้งใบในฤดูแล้ง เพื่อประหยัดน้ำ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '\n⦿    เมื่อสภาพแวดล้อมเปลี่ยน ทำให้ต้นไม้บางชนิด ต้องปรับตัว บางต้นออกดอกเร็วขึ้น เพื่อให้มีโอกาสสร้างเมล็ดก่อนที่อากาศจะร้อนหรือแห้งเกินไป บางต้นออกดอกช้าลง เพราะรอให้อากาศเหมาะสมจึงจะเริ่มเจริญเติบโต',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -212,7 +206,7 @@ class Module1Page extends StatelessWidget {
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer.jpeg',
+                                  imagePath: 'asset/module3/s1_m5.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -249,7 +243,7 @@ class Module1Page extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
+                                  builder: (context) => const m3_lesson2_p4()),
                             );
                           },
                           backgroundColor:
@@ -279,7 +273,7 @@ class Module1Page extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page2()),
+                                  builder: (context) => const m3_lesson2_p6()),
                             );
                           },
                           backgroundColor:

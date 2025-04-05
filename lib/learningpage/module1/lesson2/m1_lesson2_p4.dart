@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm1_subject2_page3.dart';
-import 'm1_subject2_page5.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm1_lesson2_p3.dart';
+import 'm1_lesson2_p5.dart';
 
-
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module1Page4(),
-    );
-  }
-}
-
-class Module1Page4 extends StatelessWidget {
-  const Module1Page4({super.key});
+class m1_lesson2_p4 extends StatelessWidget {
+  const m1_lesson2_p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -252,7 +230,7 @@ class Module1Page4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page3()),
+                                  builder: (context) => const m1_lesson2_p4()),
                             );
                           },
                           backgroundColor:
@@ -282,7 +260,7 @@ class Module1Page4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page5()),
+                                  builder: (context) => const m1_lesson2_p5()),
                             );
                           },
                           backgroundColor:

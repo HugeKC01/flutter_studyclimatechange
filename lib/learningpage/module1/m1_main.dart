@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'm1_subject2_page1.dart';
-
-
-import 'lesson1/m1_lesson1_p1.dart';
 import 'lesson2/m1_lesson2_p1.dart';
+import 'lesson1/m1_lesson1_p1.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -31,10 +28,7 @@ class Module1Screen extends StatelessWidget {
                       Expanded(
                         child: GestureDetector(
                            onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Module1Page()),
-                            );
+                           
                           },
                           child: Container(
                             width: double.infinity,
@@ -92,7 +86,7 @@ class Module1Screen extends StatelessWidget {
                            onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Module1Page()),
+                              MaterialPageRoute(builder: (context) => m1_lesson1_p1()),
                             );
                           },
                           child: Container(

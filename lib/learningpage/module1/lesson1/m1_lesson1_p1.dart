@@ -4,7 +4,6 @@ import 'package:climatechange/main.dart'; // Import the main.dart file where the
 import 'package:climatechange/style/style.dart' as style;
 
 //pages
-import 'm1_lesson1_p2.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
 
 class CustomBackButton extends StatefulWidget {
   const CustomBackButton({super.key});
@@ -63,7 +62,7 @@ class m1_lesson1_p1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Lesson 1: Introduction To Climate Change'),
+        title: Text('Module 2 : Global Warming'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(
@@ -133,7 +132,7 @@ class m1_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'ภูมิอากาศคือสภาพสิ่งแวดล้อมรอบตัวเรา',
+                    'lorem ipson',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -150,7 +149,7 @@ class m1_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'เมื่อภูมิอากาศผิดแปลกไปจากเดิม จะทำให้ธรรมชาติเสียสมดุล',
+                    'ภาวะโลกร้อน คือภาวะที่โลกมีอุณหภูมิสูงขึ้นอย่างต่อเนื่อง',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -167,7 +166,7 @@ class m1_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'นั่นไม่ใช่เรื่องดีแน่',
+                    'พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -204,7 +203,7 @@ class m1_lesson1_p1 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'เรื่องที่ 1',
+                            'เรื่องที่ 2.1',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -212,7 +211,7 @@ class m1_lesson1_p1 extends StatelessWidget {
                           ),
                           SizedBox(height: 5.0),
                           Text(
-                            'โลก',
+                            'อธิบายโลกร้อน',
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.normal,
@@ -233,12 +232,6 @@ class m1_lesson1_p1 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Navigate to the next screen (replace `NextScreen` with your actual screen)
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => m1_lesson1_p2(),
-            ), // Next Screen
-          );
         },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.arrow_forward), // Next icon

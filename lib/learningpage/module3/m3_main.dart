@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m3_lesson1_p1.dart';
-import 'lesson2/m3_lesson2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
+import 'lesson2/m3_lesson2_p1.dart';
 
 class Module3Screen extends StatelessWidget {
   const Module3Screen({super.key});
@@ -107,7 +107,7 @@ class Module3Screen extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Module3Subject2Page1()),
+                              MaterialPageRoute(builder: (context) => m3_lesson1_p1()),
                             );
                           },                          
                         ),

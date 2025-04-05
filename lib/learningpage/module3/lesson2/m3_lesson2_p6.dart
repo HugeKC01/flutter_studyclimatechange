@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm1_subject2_page4.dart';
-import 'm1_subject2_page6.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm3_lesson2_p5.dart';
+import 'm3_lesson2_p7.dart';
 
-
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module1Page5(),
-    );
-  }
-}
-
-class Module1Page5 extends StatelessWidget {
-  const Module1Page5({super.key});
+class m3_lesson2_p6 extends StatelessWidget {
+  const m3_lesson2_p6({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +94,7 @@ class Module1Page5 extends StatelessWidget {
         // Background decoration for the entire screen
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module1/background1.png'),
+            image: AssetImage('asset/module3/background1.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -157,7 +135,7 @@ class Module1Page5 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                            '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -190,28 +168,52 @@ class Module1Page5 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Text(
+                                '3. มนุษย์ก็ปรับตัวเหมือนกัน',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
 
                               Text(
-                            '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
+                                '         ไม่ใช่แค่สัตว์หรือพืชเท่านั้นที่ต้องปรับตัว  มนุษย์อย่างพวกเราก็ต้องปรับตัว เมื่อโลกเปลี่ยนแปลง ไม่ว่าจะเป็นอากาศที่ร้อนขึ้น หนาวลง หรือฝนตกไม่ตรงฤดูถ้าเราไม่ปรับตัว อาจทำให้ใช้ชีวิตลำบากหรือเจ็บป่วยได้ มาดูกันเลยว่าเราจะปรับตัวได้อย่างไร',
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
 
-                          Text(
-                            '\n⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontSize: 18,),
-                          ),
-                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
+                              Text(
+                                '\n⦿    ใส่เสื้อผ้าให้เหมาะกับอากาศ เช่น เสื้อกันหนาวเวลาหนาว หรือเสื้อบางในหน้าร้อน',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
 
-                        
+                              Text(
+                                '\n⦿    สร้างบ้านที่สามารถป้องกันฝน ลม และแดดได้ดี เช่น บ้านที่มีหลังคาใหญ่ๆ หรือบ้านที่มีการระบายอากาศได้ดี',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '\n⦿    ใช้เทคโนโลยี เช่น เครื่องปรับอากาศ หรือเครื่องทำความร้อน เพื่อให้สบายขึ้น',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '\n⦿    ปรับกิจกรรมตามสภาพอากาศ ออกไปทำกิจกรรมตอนเช้าหรือเย็น เพื่อเลี่ยงอากาศร้อนจัด หรือพักผ่อนมากขึ้นเมื่ออากาศเย็น เพื่อรักษาพลังงาน',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),                              
                               
                               const SizedBox(height: 12),
-
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer4.jpeg',
+                                  imagePath: 'asset/module3/s1_m6.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -248,7 +250,7 @@ class Module1Page5 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page4()),
+                                  builder: (context) => const m3_lesson2_p5()),
                             );
                           },
                           backgroundColor:
@@ -278,7 +280,7 @@ class Module1Page5 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page6()),
+                                  builder: (context) => const m3_lesson2_p7()),
                             );
                           },
                           backgroundColor:
@@ -371,4 +373,3 @@ class HoverableImageState extends State<HoverableImage> {
     );
   }
 }
-

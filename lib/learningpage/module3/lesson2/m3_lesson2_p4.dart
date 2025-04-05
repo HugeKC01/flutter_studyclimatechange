@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm3_subject2_p2.dart';
-import 'm3_subject2_p4.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm3_lesson2_p3.dart';
+import 'm3_lesson2_p5.dart';
 
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module3Subject2Page3(),
-    );
-  }
-}
-
-class Module3Subject2Page3 extends StatelessWidget {
-  const Module3Subject2Page3({super.key});
+class m3_lesson2_p4 extends StatelessWidget {
+  const m3_lesson2_p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +135,7 @@ class Module3Subject2Page3 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.2) วิธีปรับตัวและใช้ชีวิตต่อสภาพอากาศที่ไม่ตรงต่อฤดูกาล',
+                            '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -190,29 +169,44 @@ class Module3Subject2Page3 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '         เคยสังเกตไหมว่า บางครั้งหน้าร้อนกลับมีฝนตกหนัก หรือหน้าหนาวกลับอากาศอุ่นผิดปกติ? นี่เป็นเพราะสภาพอากาศของโลกเราเปลี่ยนแปลงไป ทำให้ฤดูกาลไม่เป็นไปตามปกติ เช่น '
-                                'ฝนตกในช่วงที่ไม่ควรตก อากาศร้อนจัดในช่วงที่ควรจะเย็น หรือบางทีอากาศก็เปลี่ยนแปลงเร็วมากในวันเดียวกัน การที่ฤดูกาลเปลี่ยนแปลงไม่แน่นอน เราต้องรู้จักปรับตัวให้เข้ากับสภาพอากาศที่เปลี่ยนแปลง',
+                                '         ธรรมชาติรอบตัวเราเต็มไปด้วยสิ่งมีชีวิตมากมาย ตั้งแต่ต้นไม้ ดอกไม้ สัตว์เล็ก ๆ ไปจนถึงสัตว์ใหญ่ แต่ทุกสิ่งมีชีวิตต้องเผชิญกับการเปลี่ยนแปลงของสภาพแวดล้อม เช่น อากาศที่ร้อนขึ้น ฤดูกาลที่เปลี่ยนไป หรือภัยธรรมชาติที่เกิดขึ้น สิ่งมีชีวิตจึงต้อง ปรับตัว เพื่อความอยู่รอด',
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+                              
+                              Text(
+                                '\n1. สัตว์ปรับตัวเพื่อความอยู่รอด',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+
+                              Text(
+                                '         ธรรมชาติและสิ่งมีชีวิตต่างๆ บนโลก ไม่ว่าจะเป็นต้นไม้ สัตว์ หรือแม้แต่มนุษย์ ต่างก็ต้องปรับตัวเมื่อสภาพแวดล้อมเปลี่ยนแปลงไป เช่น อากาศร้อนขึ้น หนาวจัด หรือฝนตกน้อยลง'
+                                'มาดูกันว่า สิ่งมีชีวิตในธรรมชาติมีวิธีปรับตัวอย่างไรบ้าง',
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
 
                               Text(
-                                '\n⦿    พกอุปกรณ์กันฝนเสมอ เช่น ร่มหรือเสื้อกันฝน เพราะอาจมีฝนตกในช่วงที่ไม่คาดคิด',
+                                '\n⦿    หมีขั้วโลก มีขนหนาและชั้นไขมันใต้ผิวหนัง ช่วยให้ร่างกายอบอุ่นในที่หนาวจัด',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
 
                               Text(
-                                '\n⦿    แต่งตัวให้เหมาะกับอากาศ เช่น ใส่เสื้อผ้าที่ระบายอากาศได้ดีและไม่หนาเกินไป',
+                                '\n⦿    นกบางชนิด จะบินอพยพไปอยู่ที่ที่อากาศอบอุ่นกว่าในฤดูหนาว',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 8),
 
                               Text(
-                                '\n⦿    เช็กพยากรณ์อากาศก่อนออกจากบ้าน เช่น เช็กว่ามีโอกาสฝนตกหรือไม่ หรืออากาศจะร้อนจัดหรือไม่',
+                                '\n⦿    สัตว์บางตัว เช่น งู หรือหมี จำศีลในช่วงที่อากาศหนาวจัด เพื่อประหยัดพลังงาน',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -220,7 +214,7 @@ class Module3Subject2Page3 extends StatelessWidget {
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1_m3.png',
+                                  imagePath: 'asset/module3/s1_m4.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -257,7 +251,7 @@ class Module3Subject2Page3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page2()),
+                                  builder: (context) => const m3_lesson2_p3()),
                             );
                           },
                           backgroundColor:
@@ -287,7 +281,7 @@ class Module3Subject2Page3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page4()),
+                                  builder: (context) => const m3_lesson2_p5()),
                             );
                           },
                           backgroundColor:

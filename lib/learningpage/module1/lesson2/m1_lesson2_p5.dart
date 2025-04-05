@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm3_main.dart';
-import 'm3_subject2_p6.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
+import 'm1_lesson2_p4.dart';
+import 'm1_lesson2_p6.dart';
 
-
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module3Subject2Page7(),
-    );
-  }
-}
-
-class Module3Subject2Page7 extends StatelessWidget {
-  const Module3Subject2Page7({super.key});
+class m1_lesson2_p5 extends StatelessWidget {
+  const m1_lesson2_p5({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +94,7 @@ class Module3Subject2Page7 extends StatelessWidget {
         // Background decoration for the entire screen
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module3/background1.png'),
+            image: AssetImage('asset/module1/background1.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -157,7 +135,7 @@ class Module3Subject2Page7 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            'สรุป',
+                            '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -190,17 +168,28 @@ class Module3Subject2Page7 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(height: 8),
+
                               Text(
-                                '         การเปลี่ยนแปลงสภาพภูมิอากาศเป็นปัญหาที่ทุกคนต้องช่วยกันแก้ไข เราสามารถช่วยได้โดยการลดการใช้พลังงาน ทิ้งขยะให้ถูกต้อง และปรับตัวต่อสภาพอากาศที่เปลี่ยนแปลง เพื่อให้โลกของเราน่าอยู่ต่อไปในอนาคต',
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 18),
-                              ),
+                            '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
+
+                          Text(
+                            '\n⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(fontSize: 18,),
+                          ),
+                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
+
+                        
                               
                               const SizedBox(height: 12),
+
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1_m7.png',
+                                  imagePath: 'asset/module1/Designer4.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -237,7 +226,7 @@ class Module3Subject2Page7 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Subject2Page6()),
+                                  builder: (context) => const m1_lesson2_p4()),
                             );
                           },
                           backgroundColor:
@@ -267,7 +256,7 @@ class Module3Subject2Page7 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3Screen()),
+                                  builder: (context) => const m1_lesson2_p6()),
                             );
                           },
                           backgroundColor:
@@ -360,3 +349,4 @@ class HoverableImageState extends State<HoverableImage> {
     );
   }
 }
+
