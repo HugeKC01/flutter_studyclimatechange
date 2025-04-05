@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'm3_subject2_p1.dart';
+import 'package:climatechange/component/appbar.dart';
+import 'lesson1/m3_lesson1_p1.dart';
+import 'lesson2/m3_lesson2_p1.dart'; // Import the m3_learn2_p1.dart file where the CustomBackButton widget is defined.
 
 class Module3Screen extends StatelessWidget {
   const Module3Screen({super.key});
@@ -7,8 +9,9 @@ class Module3Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 3: Adapting and saving our world'),
+      appBar: buildAppBar(
+        'Module 3', // Replace with a valid title string
+        context,
       ),
       body: Center(
         child: Column(
@@ -50,6 +53,14 @@ class Module3Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m3_lesson1_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -134,7 +145,7 @@ class Module3Screen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ListTile(
-                          title: Text('Post Test'),
+                          title: Text('บทเรียนที่ 2'),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -143,6 +154,14 @@ class Module3Screen extends StatelessWidget {
                             ],
                           ),
                           trailing: Icon(Icons.lock),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => m3_lesson2_p1(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
