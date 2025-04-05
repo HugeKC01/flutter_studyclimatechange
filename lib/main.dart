@@ -5,6 +5,7 @@ import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
 import 'component/drawer.dart';
+import 'style/transition.dart';
 
 void main() {
   runApp(const MyApp());
@@ -170,9 +171,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                 : () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) => module['screen'] as Widget,
-                                      ),
+                                      createCustomRoute(module['screen'] as Widget),
                                     );
                                   },
                             child: Container(
