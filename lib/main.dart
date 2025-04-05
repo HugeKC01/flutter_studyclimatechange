@@ -11,77 +11,6 @@ void main() {
   runApp(const MyApp());
 }
 
-// Reusable AppBar Widget
-PreferredSizeWidget buildAppBar(String title, BuildContext context) {
-  return AppBar(
-    backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-    title: Text(title),
-    elevation: 5.0,
-    actions: <Widget>[
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          child: IconButton(
-            icon: const Icon(Icons.person, color: Colors.white),
-            onPressed: () {
-              // Handle the button press here
-            },
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-// Reusable Drawer Widget
-Widget buildDrawer(BuildContext context) {
-  return Drawer(
-    child: ListView(
-      padding: EdgeInsets.zero,
-      children: <Widget>[
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          child: Text(
-            'Menu',
-            style: TextStyle(color: Colors.white, fontSize: 24),
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.home_rounded),
-          title: Text('Home'),
-          onTap: () {
-            // Handle the home tap here
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.book_rounded),
-          title: Text('Manual'),
-          onTap: () {
-            // Handle the manual tap here
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.help_rounded),
-          title: Text('Help'),
-          onTap: () {
-            // Handle the help tap here
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
-          onTap: () {
-            // Handle the settings tap here
-          },
-        ),
-      ],
-    ),
-  );
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -110,10 +39,84 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      appBar: buildAppBar(widget.title, context),
-      drawer: buildDrawer(context),
-
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+        elevation: 5.0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: IconButton(
+                icon: const Icon(Icons.person, color: Colors.white),
+                onPressed: () {
+                  // Handle the button press here
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home_rounded),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.book_rounded),
+              title: Text('Manual'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Manual()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.help_rounded),
+              title: Text('Help'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Help()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Settings()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -133,18 +136,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module1Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module1Screen()),
                             );
                           },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -162,18 +161,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Introduction to Climate Change'),
-                              Text(
-                                'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                              ),
+                              Text('มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ'),
                             ],
                           ),
                           trailing: Icon(Icons.lock),
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module1Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module1Screen()),
                             );
                           },
                         ),
@@ -188,8 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                    borderRadius: BorderRadius.circular(15.0)),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -198,18 +192,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module2Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module2Screen()),
                             );
                           },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -234,9 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module2Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module2Screen()),
                             );
                           },
                         ),
@@ -251,8 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                    borderRadius: BorderRadius.circular(15.0)),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -261,18 +248,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module3Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module3Screen()),
                             );
                           },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -297,9 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Module3Screen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => Module3Screen()),
                             );
                           },
                         ),
@@ -314,8 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+                    borderRadius: BorderRadius.circular(15.0)),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -324,18 +304,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => PostTestScreen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => PostTestScreen()),
                             );
                           },
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.0),
-                              ),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -354,9 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => PostTestScreen(),
-                              ),
+                              MaterialPageRoute(builder: (context) => PostTestScreen()),
                             );
                           },
                         ),
