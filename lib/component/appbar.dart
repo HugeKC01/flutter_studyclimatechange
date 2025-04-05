@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 
 PreferredSizeWidget buildAppBar(String title, BuildContext context) {
   return AppBar(
-    backgroundColor: Theme.of(context).colorScheme.inversePrimary,
     title: Text(title),
-    elevation: 5.0,
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.all(8.0),
