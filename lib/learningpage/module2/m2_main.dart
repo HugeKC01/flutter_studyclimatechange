@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lesson2/m2_lesson2_p1.dart';
+import 'lesson1/m2_lesson1_p1.dart';
 import 'package:climatechange/component/appbar.dart';
 
 class Module2Screen extends StatelessWidget {
@@ -60,7 +61,7 @@ class Module2Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p1(),
+                                builder: (context) => Module2l1p1(),
                               ),
                             );
                           },
