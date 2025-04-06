@@ -1,69 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
-//
-import 'package:climatechange/style/style.dart' as style;
+import 'package:flutter/material.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm1_lesson1_p2.dart';
+import 'm1_lesson1_p4.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
 
-//pages
-
-
-class CustomBackButton extends StatefulWidget {
-  const CustomBackButton({super.key});
-
-  @override
-  _CustomBackButtonState createState() => _CustomBackButtonState();
-}
-
-class _CustomBackButtonState extends State<CustomBackButton> {
-  bool _isPressed = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTapDown: (_) {
-        setState(() {
-          _isPressed = true;
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          _isPressed = false;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isPressed = false;
-        });
-        Navigator.pop(context);
-      },
-      child: Container(
-        width: 48.0,
-        height: 48.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: const Color.fromARGB(255, 255, 255, 255),
-          border:
-              _isPressed ? Border.all(color: Colors.blue, width: 4.0) : null,
-        ),
-        child: Center(
-          child: Icon(
-            Icons.arrow_back,
-            color: const Color.fromARGB(255, 171, 212, 223),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class m1_lesson1_p3 extends StatelessWidget {
-  const m1_lesson1_p3({super.key});
+class Module1l1p3 extends StatelessWidget {
+  const Module1l1p3({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Lesson 1: Introduction To Climate Change'),
+        title: const Text('Climate Change App'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(
@@ -88,7 +39,7 @@ class m1_lesson1_p3 extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
               ),
-              child: Text(
+              child: const Text(
                 'Menu',
                 style: TextStyle(
                   color: Colors.white,
@@ -97,137 +48,313 @@ class m1_lesson1_p3 extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home_rounded),
-              title: Text('Home'),
+              leading: const Icon(Icons.home_rounded),
+              title: const Text('Home'),
               onTap: () {
-                // Handle the home tap here
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
+                  MaterialPageRoute(builder: (context) => const MyApp()),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.book_rounded),
-              title: Text('Manual'),
+              leading: const Icon(Icons.book_rounded),
+              title: const Text('Manual'),
               onTap: () {
-                // Handle the manual tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Manual()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.help_rounded),
+              title: const Text('Help'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Help()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Settings()),
+                );
               },
             ),
           ],
         ),
       ),
-      body: Stack(
-        children: <Widget>[
-          // Main Scrollable Content
-          SingleChildScrollView(
-            padding: EdgeInsets.only(
-              top: 150.0,
-              left: 30.0,
-              right: 30.0,
-              bottom: 25.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 6.0),
-                  child: Text(
-                    'ในแต่ละปี โลกมีอุณหภูมิสูงขึ้นประมาณ 0.6 องศา',
-                    style: TextStyle(fontSize: style.fontSizeBody),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      height: 250.0,
-                      color: Colors.lightBlue[100],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 36.0),
-                  child: Text(
-                    'หากเป็นแบบนี้ต่อไป โลกก็จะร้อนจนเราใช้ชีวิตไม่ได้',
-                    style: TextStyle(fontSize: style.fontSizeBody),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      height: 250.0,
-                      color: Colors.lightBlue[100],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 36.0),
-                  child: Text(
-                    'พื้นดินจะแห้งแล้งและทำให้การเพาะปลูกย่ำแย่',
-                    style: TextStyle(fontSize: style.fontSizeBody),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      height: 250.0,
-                      color: Colors.lightBlue[100],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+      body: Container(
+        // Background decoration for the entire screen
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('asset/module1/background1.png'),
+            fit: BoxFit.cover,
           ),
-
-          // Fixed blue header section
-          Positioned(
-            top: 0.0,
-            left: 0.0,
-            right: 0.0,
-            child: Column(
-              children: <Widget>[
-                Container(height: 40.0, color: Colors.lightBlue[100]),
-                Container(
-                  padding: EdgeInsets.all(16.0),
-                  color: Colors.lightBlue[100],
-                  child: Row(
-                    children: <Widget>[
-                      CustomBackButton(),
-                      SizedBox(width: 10.0),
-                      Column(
+        ),
+        child: Column(
+          children: [
+            // Scrollable content
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromARGB(255, 106, 117, 142),
+                            Color.fromARGB(255, 214, 237, 252)
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: const SizedBox(height: 12),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 214, 237, 252),
+                      ),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
+                        children: const [
                           Text(
-                            'เรื่องที่ 1',
+                            'เรื่องที่ 1 : รู้จักกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: 5.0),
                           Text(
-                            'โลกร้อน ขึ้น',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.normal,
-                            ),
+                            '1.2) การเปลี่ยนแปลงสภาพภูมิอากาศ',
+                            style: TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromARGB(255, 214, 237, 252),
+                            Color.fromARGB(255, 75, 82, 142)
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: const SizedBox(height: 12),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Card(
+                        color: const Color.fromARGB(200, 255, 255, 255),
+                        elevation: 4,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              
+                              Text(
+                                '  ปัจจัยที่ทำให้เกิดการเปลี่ยนแปลงสภาพภูมิอากาศ\n',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         ปัจจัยที่เกิดจากกิจกรรมของมนุษย์ เช่น การปล่อยก๊าซเรือนกระจกจากกิจกรรมของมนุษย์'
+                                ' เช่น การเผาไหม้เชื้อเพลิงฟอสซิล การตัดไม้ทำลายป่า และการเกษตรกรรม',                                
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module1/human_act.jpeg',
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                              Text(
+                                ' ปัจจัยทางธรรมชาติ เช่น การเปลี่ยนแปลงของวงโคจรของโลกและการระเบิดของภูเขาไฟ',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module1/nature_act.jpeg',
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                              
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Container(height: 10.0, color: Colors.lightBlue[100]),
-              ],
+              ),
+            ),
+
+            // Fixed footer
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Back button
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 0, 122, 255),
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: FloatingActionButton(
+                          heroTag: 'btnBack',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Module1l1p2()),
+                            );
+                          },
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
+                          shape: const CircleBorder(),
+                          child: const Icon(Icons.arrow_back,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Forward button
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 0, 122, 255),
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: FloatingActionButton(
+                          heroTag: 'btnForward',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Module1l1p4()),
+                            );
+                          },
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
+                          shape: const CircleBorder(),
+                          child: const Icon(Icons.arrow_forward,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HoverableImage extends StatefulWidget {
+  final String imagePath; // เส้นทางของรูปภาพ
+
+  const HoverableImage({super.key, required this.imagePath});
+
+  @override
+  HoverableImageState createState() => HoverableImageState();
+}
+
+class HoverableImageState extends State<HoverableImage> {
+  bool _isHovered = false; // สถานะ hover หรือกดค้าง
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) {
+        setState(() {
+          _isHovered = true; // เมื่อกดค้าง
+        });
+      },
+      onTapUp: (_) {
+        setState(() {
+          _isHovered = false; // เมื่อปล่อย
+        });
+      },
+      onTapCancel: () {
+        setState(() {
+          _isHovered = false; // เมื่อยกเลิกการกด
+        });
+      },
+      child: AnimatedAlign(
+        duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
+        curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+        alignment: _isHovered
+            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
+            : Alignment.center, // ตำแหน่งปกติ
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
+          curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white, // เส้นขอบสีขาว
+              width: 4.0, // ความหนาของเส้นขอบ
+            ),
+            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
+                      blurRadius: 10.0,
+                      offset: const Offset(0, 5),
+                    ),
+                  ]
+                : [],
+          ),
+          transform: _isHovered
+              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+              : Matrix4.identity(),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
+            child: Image.asset(
+              widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
+              fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),
-        ],
+        ),
       ),
     );
   }

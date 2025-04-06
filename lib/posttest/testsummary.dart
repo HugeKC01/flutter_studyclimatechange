@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class QuizResultScreen extends StatelessWidget {
+class PostTestResultScreen extends StatelessWidget {
   final int score;
   final int totalQuestions;
   final List<Map<String, Object>> questions;
 
-  const QuizResultScreen({
-    Key? key,
+  const PostTestResultScreen({
+    super.key,
     required this.score,
     required this.totalQuestions,
     required this.questions,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz Results'),
+        title: const Text('Post Test Results'),
       ),
       body: Center(
         child: Padding(
