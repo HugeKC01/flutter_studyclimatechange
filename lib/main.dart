@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
 import 'component/drawer.dart';
+import 'component/shared_state.dart'; // Import the shared state
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await _loadLockStatus(); // Load lock status before running the app
   runApp(const MyApp());
+}
+
+// Load lock status from SharedPreferences
+Future<void> _loadLockStatus() async {
+  final prefs = await SharedPreferences.getInstance();
+  final List<String>? savedStatus = prefs.getStringList('moduleLockedStatus');
+
+  if (savedStatus != null) {
+    moduleLockedStatusNotifier.value = savedStatus.map((status) => status == 'true').toList();
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -39,12 +53,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   late List<Animation<Offset>> _offsetAnimations;
   late List<Animation<double>> _fadeAnimations;
 
-  // Track locked/unlocked status for each module
-  List<bool> moduleLockedStatus = [false, true, true, true]; // Module 1 unlocked, others locked
-
   @override
   void initState() {
     super.initState();
+
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
@@ -102,137 +114,136 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
       drawer: buildDrawer(
         context,
-        moduleLockedStatus,
-        (updatedStatus) {
-          setState(() {
-            moduleLockedStatus = updatedStatus; // Update the lock status
-          });
-        },
       ),
       body: SafeArea(
-        child: Scrollbar( // Add Scrollbar here
-          thumbVisibility: true, // Makes the scrollbar always visible
-          child: GridView.builder(
-            padding: const EdgeInsets.all(8.0),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-              childAspectRatio: 1 / 1,
-            ),
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              final modules = [
-                {
-                  'title': 'Module 1',
-                  'subtitle': 'Introduction to Climate Change',
-                  'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                  'screen': Module1Screen(),
-                },
-                {
-                  'title': 'Module 2',
-                  'subtitle': 'Effects of Climate Change',
-                  'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                  'screen': Module2Screen(),
-                },
-                {
-                  'title': 'Module 3',
-                  'subtitle': 'Fix The Problem And Stop The Cause',
-                  'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
-                  'screen': Module3Screen(),
-                },
-                {
-                  'title': 'Post Test',
-                  'subtitle': 'ทดสอบหลังเรียน',
-                  'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-                  'screen': PostTestIntroduction(),
-                },
-              ];
+        child: Scrollbar(
+          thumbVisibility: true,
+          child: ValueListenableBuilder<List<bool>>(
+            valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
+            builder: (context, lockedStatus, child) {
+              return GridView.builder(
+                padding: const EdgeInsets.all(8.0),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                  childAspectRatio: 1 / 1,
+                ),
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  final modules = [
+                    {
+                      'title': 'Module 1',
+                      'subtitle': 'Introduction to Climate Change',
+                      'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                      'screen': Module1Screen(),
+                    },
+                    {
+                      'title': 'Module 2',
+                      'subtitle': 'Effects of Climate Change',
+                      'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                      'screen': Module2Screen(),
+                    },
+                    {
+                      'title': 'Module 3',
+                      'subtitle': 'Fix The Problem And Stop The Cause',
+                      'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+                      'screen': Module3Screen(),
+                    },
+                    {
+                      'title': 'Post Test',
+                      'subtitle': 'ทดสอบหลังเรียน',
+                      'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
+                      'screen': PostTestIntroduction(),
+                    },
+                  ];
 
-              final module = modules[index];
-              final isLocked = moduleLockedStatus[index];
+                  final module = modules[index];
+                  final isLocked = lockedStatus[index];
 
-              return FadeTransition(
-                opacity: _fadeAnimations[index],
-                child: SlideTransition(
-                  position: _offsetAnimations[index],
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    elevation: 5.0,
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: isLocked
-                                ? null
-                                : () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => module['screen'] as Widget,
+                  return FadeTransition(
+                    opacity: _fadeAnimations[index],
+                    child: SlideTransition(
+                      position: _offsetAnimations[index],
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        elevation: 5.0,
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: isLocked
+                                    ? null
+                                    : () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => module['screen'] as Widget,
+                                          ),
+                                        );
+                                      },
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: isLocked
+                                        ? Colors.grey
+                                        : Theme.of(context).colorScheme.primary,
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(15.0),
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        module['title'] as String,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.center,
                                       ),
-                                    );
-                                  },
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: isLocked
-                                    ? Colors.grey
-                                    : Theme.of(context).colorScheme.primary,
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(15.0),
+                                      if (isLocked)
+                                        const Icon(
+                                          Icons.lock,
+                                          color: Colors.white,
+                                          size: 24.0,
+                                        ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                            ),
+                            ListTile(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                              title: Text(
+                                module['title'] as String,
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    module['title'] as String,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  if (isLocked)
-                                    const Icon(
-                                      Icons.lock,
-                                      color: Colors.white,
-                                      size: 24.0,
-                                    ),
+                                  Text(module['subtitle'] as String),
+                                  Text(module['description'] as String),
                                 ],
                               ),
+                              trailing: Icon(
+                                isLocked ? Icons.lock : Icons.lock_open,
+                                color: isLocked ? Colors.red : Colors.green,
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                        ListTile(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          title: Text(
-                            module['title'] as String,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(module['subtitle'] as String),
-                              Text(module['description'] as String),
-                            ],
-                          ),
-                          trailing: Icon(
-                            isLocked ? Icons.lock : Icons.lock_open,
-                            color: isLocked ? Colors.red : Colors.green,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               );
             },
           ),

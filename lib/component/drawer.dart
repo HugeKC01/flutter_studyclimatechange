@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/admin.dart';
 
-Widget buildDrawer(BuildContext context, List<bool> moduleLockedStatus, Function(List<bool>) onLockStatusChanged) {
+Widget buildDrawer(BuildContext context) {
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -50,12 +50,7 @@ Widget buildDrawer(BuildContext context, List<bool> moduleLockedStatus, Function
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AdminScreen(
-                  moduleLockedStatus: moduleLockedStatus,
-                  onLockStatusChanged: (updatedStatus) {
-                    onLockStatusChanged(updatedStatus); // Call the callback
-                  },
-                ),
+                builder: (context) => AdminScreen(),
               ),
             );
           },

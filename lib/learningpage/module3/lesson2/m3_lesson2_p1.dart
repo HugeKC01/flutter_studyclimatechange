@@ -1,94 +1,24 @@
 import 'package:flutter/material.dart';
 import '../m3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm3_lesson2_p2.dart';
-import '../../../help.dart';
-import '../../../manual.dart';
-import '../../../main.dart';
-import '../../../settings.dart';
+import 'package:climatechange/component/appbar.dart';
+import 'package:climatechange/component/drawer.dart';
 
 class m3_lesson2_p1 extends StatelessWidget {
-  const m3_lesson2_p1({super.key});
+
+  const m3_lesson2_p1({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Climate Change App'),
-        elevation: 5.0,
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              child: IconButton(
-                icon: const Icon(Icons.person, color: Colors.white),
-                onPressed: () {
-                  // Handle the button press here
-                },
-              ),
-            ),
-          ),
-        ],
+      appBar: buildAppBar(
+        'เรื่องที่ 2 การปรับตัวและการใช้ชีวิต',
+        context,
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              child: const Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home_rounded),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.book_rounded),
-              title: const Text('Manual'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Manual()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.help_rounded),
-              title: const Text('Help'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Help()),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Settings()),
-                );
-              },
-            ),
-          ],
-        ),
+      drawer: buildDrawer(
+        context,
       ),
       body: Container(
         // Background decoration for the entire screen
