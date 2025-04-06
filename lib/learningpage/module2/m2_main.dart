@@ -57,7 +57,7 @@ class Module2Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson1_p1(),
+                                builder: (context) => Module2Page(),
                               ),
                             );
                           },
