@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1 p3.dart';
+import 'm3_lesson1_p4.dart';
 
-class Module3l1p2 extends StatelessWidget {
-  const Module3l1p2 ({super.key});
+class Module3l1p3 extends StatelessWidget {
+  const Module3l1p3 ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,33 +95,28 @@ class Module3l1p2 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '• ลดการใช้พลังงาน ',
+                                '• ปลูกต้นไม้เพื่อช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                              const SizedBox(height: 8),
-                              Text(
-                                '         โดยวิธีการนี้เป็นวิธีการที่สามารถเริ่มด้วยตัวเราเองได้ เช่น ปิดไฟเมื่อไม่ใช้ และเลือกใช้พลังงานสะอาด',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(fontSize: 18),
-                              ),
+            
                               
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m9.jpg',
+                                  imagePath: 'asset/module3/s1m11.jpg',
                                 ),
                               ),
                               Text(
-                                '• ใช้ระบบขนส่งที่ลดมลพิษ ',
+                                '• ใช้ทรัพยากรอย่างประหยัด ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                '         เพื่อลดการปล่อยก๊าซเรือนกระจก เช่น  ขี่จักรยาน เดิน หรือใช้รถสาธารณะ',
+                                '         โดยเราต้องใช้ทรัพยากรให้คุ้มค่าที่สุด เช่น ประหยัดการใช้น้ำ การใช้กระดาษ 2 หน้า หรือหันไปใช้เอกสารอิเล็กทรอนิกส์แทน',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -129,7 +124,26 @@ class Module3l1p2 extends StatelessWidget {
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m9.jpg',
+                                  imagePath: 'asset/module3/s1m12.jpg',
+                                ),
+                              ),
+                               Text(
+                                '• แยกขยะ และทิ้งขยะให้ถูกที่ ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         ซึ่งการแยกขยะให้ถูกต้องช่วยให้เราสามารถจำแนกประเภทของขยะได้เพื่อนำไปใช้ประโยชน์ต่อ เช่น ขวดน้ำก็ควรทิ้งในถังขยะรีไซเคิล เศษอาหารทิ้งในถังขยะสำหรับขยะเปียก',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m13.jpg',
                                 ),
                               ),
                             ],
@@ -165,7 +179,7 @@ class Module3l1p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p3()),
+                                  builder: (context) => const Module3l1p4()),
                             );
                           },
                           backgroundColor:
@@ -196,7 +210,7 @@ class Module3l1p2 extends StatelessWidget {
                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p3()),
+                                  builder: (context) => const Module3l1p4()),
                             );
                           },
                           backgroundColor:
