@@ -9,8 +9,8 @@ import '../../../component/drawer.dart';
 import '../../../component/appbar.dart';
 
 
-class m3_lesson2_p2 extends StatelessWidget {
-  const m3_lesson2_p2({super.key});
+class Module3l2p2 extends StatelessWidget {
+  const Module3l2p2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +154,7 @@ class m3_lesson2_p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => m3_lesson2_p1()
+                                  builder: (context) => Module3l2p1()
                                   ),
                             );
                           },
@@ -185,7 +185,7 @@ class m3_lesson2_p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const m3_lesson2_p3()),
+                                  builder: (context) => const Module3l2p3()),
                             );
                           },
                           backgroundColor:

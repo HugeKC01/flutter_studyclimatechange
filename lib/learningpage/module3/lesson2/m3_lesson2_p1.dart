@@ -4,11 +4,8 @@ import 'm3_lesson2_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 
-class m3_lesson2_p1 extends StatelessWidget {
-
-  const m3_lesson2_p1({
-    super.key,
-  });
+class Module3l2p1 extends StatelessWidget {
+  const Module3l2p1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +188,7 @@ class m3_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const m3_lesson2_p2()),
+                                  builder: (context) => const Module3l2p2()),
                             );
                           },
                           backgroundColor:

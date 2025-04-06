@@ -12,12 +12,12 @@ class Module3Screen extends StatelessWidget {
       {
         'title': 'บทเรียนที่ 1',
         'subtitle': 'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'screen': m3_lesson1_p1(),
+        'screen': Module3l1p1(),
       },
       {
         'title': 'บทเรียนที่ 2',
-        'subtitle': 'Adapting and saving our world\nการปรับตัวและช่วยโลกของเรา',
-        'screen': m3_lesson2_p1(),
+        'subtitle': 'การปรับตัวและการใช้ชีวิต',
+        'screen': Module3l2p1(),
       },
     ];
 
@@ -31,10 +31,10 @@ class Module3Screen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2, // Adjust columns based on screen width
+              crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
-              childAspectRatio: 3 / 2, // Adjust the aspect ratio of the cards
+              childAspectRatio: 1 / 1,
             ),
             itemCount: lessons.length,
             itemBuilder: (context, index) {

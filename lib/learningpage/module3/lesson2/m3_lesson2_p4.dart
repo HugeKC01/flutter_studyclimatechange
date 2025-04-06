@@ -6,8 +6,8 @@ import '../../../settings.dart';
 import 'm3_lesson2_p3.dart';
 import 'm3_lesson2_p5.dart';
 
-class m3_lesson2_p4 extends StatelessWidget {
-  const m3_lesson2_p4({super.key});
+class Module3l2p4 extends StatelessWidget {
+  const Module3l2p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +251,7 @@ class m3_lesson2_p4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const m3_lesson2_p3()),
+                                  builder: (context) => const Module3l2p3()),
                             );
                           },
                           backgroundColor:
@@ -281,7 +281,7 @@ class m3_lesson2_p4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const m3_lesson2_p5()),
+                                  builder: (context) => const Module3l2p5()),
                             );
                           },
                           backgroundColor:

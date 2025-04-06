@@ -54,8 +54,8 @@ class _CustomBackButtonState extends State<CustomBackButton> {
   }
 }
 
-class m3_lesson1_p1 extends StatelessWidget {
-  const m3_lesson1_p1({super.key});
+class Module3l1p1 extends StatelessWidget {
+  const Module3l1p1({super.key});
 
   @override
   Widget build(BuildContext context) {
