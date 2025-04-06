@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../m1_main.dart';
 import 'm1_lesson1_p2.dart';
-import '../../../help.dart';
-import '../../../manual.dart';
-import '../../../main.dart';
-import '../../../settings.dart';
+import 'package:climatechange/component/appbar.dart';
+import 'package:climatechange/component/drawer.dart';
 
 class Module1l1p1 extends StatelessWidget {
   const Module1l1p1({super.key});
@@ -12,24 +10,12 @@ class Module1l1p1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Climate Change App'),
-        elevation: 5.0,
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              child: IconButton(
-                icon: const Icon(Icons.person, color: Colors.white),
-                onPressed: () {
-                  // Handle the button press here
-                },
-              ),
-            ),
-          ),
-        ],
+      appBar: buildAppBar(
+        'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        context,
+      ),
+      drawer: buildDrawer(
+        context,
       ),
       body: Container(
         // Background decoration for the entire screen

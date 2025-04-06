@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../help.dart';
-import '../../../manual.dart';
-import '../../../main.dart';
-import '../../../settings.dart';
+import 'package:climatechange/component/appbar.dart';
+import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson2_p1.dart';
 import 'm3_lesson2_p3.dart';
-import '../../../component/drawer.dart';
-import '../../../component/appbar.dart';
 
 
 class Module3l2p2 extends StatelessWidget {

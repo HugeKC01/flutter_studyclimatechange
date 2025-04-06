@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import '../m3_main.dart';
 import 'm3_lesson2_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
