@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
-import 'm3_lesson1_p2.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
 //
 import 'package:climatechange/style/style.dart' as style;
-//import 'package:climatechange/buttons/buttons.dart' as buttons;
+
+//pages
 
 class CustomBackButton extends StatefulWidget {
   const CustomBackButton({super.key});
@@ -62,7 +62,7 @@ class m3_lesson1_p1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Module 3 : Fix The Problem'),
+        title: Text('Module 2 : Global Warming'),
         elevation: 5.0,
         actions: <Widget>[
           Padding(
@@ -132,7 +132,7 @@ class m3_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'อุณหภูมิโลกเพิ่มขึ้นจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
+                    'lorem ipson',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -149,7 +149,7 @@ class m3_lesson1_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
+                    'ภาวะโลกร้อน คือภาวะที่โลกมีอุณหภูมิสูงขึ้นอย่างต่อเนื่อง',
                     style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
@@ -232,12 +232,6 @@ class m3_lesson1_p1 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Navigate to the next screen (replace `NextScreen` with your actual screen)
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => m3_lesson1_p2(),
-            ), // Next Screen
-          );
         },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.arrow_forward), // Next icon

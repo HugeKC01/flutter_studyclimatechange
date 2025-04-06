@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
 import 'component/drawer.dart';
+import 'component/shared_state.dart'; // Import the shared state
 import 'style/transition.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await _loadLockStatus(); // Load lock status before running the app
   runApp(const MyApp());
+}
+
+// Load lock status from SharedPreferences
+Future<void> _loadLockStatus() async {
+  final prefs = await SharedPreferences.getInstance();
+  final List<String>? savedStatus = prefs.getStringList('moduleLockedStatus');
+
+  if (savedStatus != null) {
+    moduleLockedStatusNotifier.value = savedStatus.map((status) => status == 'true').toList();
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -40,12 +54,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   late List<Animation<Offset>> _offsetAnimations;
   late List<Animation<double>> _fadeAnimations;
 
-  // Track locked/unlocked status for each module
-  List<bool> moduleLockedStatus = [false, true, true, true]; // Module 1 unlocked, others locked
-
   @override
   void initState() {
     super.initState();
+
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
@@ -103,12 +115,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
       drawer: buildDrawer(
         context,
-        moduleLockedStatus,
-        (updatedStatus) {
-          setState(() {
-            moduleLockedStatus = updatedStatus; // Update the lock status
-          });
-        },
       ),
       body: SafeArea(
         child: Scrollbar( // Add Scrollbar here
@@ -184,54 +190,34 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                   top: Radius.circular(15.0),
                                 ),
                               ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                            ),
+                            ListTile(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                              title: Text(
+                                module['title'] as String,
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    module['title'] as String,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  if (isLocked)
-                                    const Icon(
-                                      Icons.lock,
-                                      color: Colors.white,
-                                      size: 24.0,
-                                    ),
+                                  Text(module['subtitle'] as String),
+                                  Text(module['description'] as String),
                                 ],
                               ),
+                              trailing: Icon(
+                                isLocked ? Icons.lock : Icons.lock_open,
+                                color: isLocked ? Colors.red : Colors.green,
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                        ListTile(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          title: Text(
-                            module['title'] as String,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(module['subtitle'] as String),
-                              Text(module['description'] as String),
-                            ],
-                          ),
-                          trailing: Icon(
-                            isLocked ? Icons.lock : Icons.lock_open,
-                            color: isLocked ? Colors.red : Colors.green,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               );
             },
           ),

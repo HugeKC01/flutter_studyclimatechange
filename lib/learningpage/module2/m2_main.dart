@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'lesson1/m2_lesson1_p1.dart';
 import 'lesson2/m2_lesson2_p1.dart';
+import 'package:climatechange/component/appbar.dart';
 
 class Module2Screen extends StatelessWidget {
   const Module2Screen({super.key});
@@ -9,8 +8,9 @@ class Module2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 1: Introduction to Climate Change'),
+      appBar: buildAppBar(
+        'Module 2',
+        context,
       ),
       body: Center(
         child: Column(
@@ -21,7 +21,8 @@ class Module2Screen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0)),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -31,7 +32,9 @@ class Module2Screen extends StatelessWidget {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.0),
+                              ),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -57,7 +60,7 @@ class Module2Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson1_p1(),
+                                builder: (context) => m2_lesson2_p1(),
                               ),
                             );
                           },
@@ -68,12 +71,14 @@ class Module2Screen extends StatelessWidget {
                 ),
               ),
             ),
+
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0)),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   elevation: 5.0,
                   child: Column(
                     children: <Widget>[
@@ -83,7 +88,9 @@ class Module2Screen extends StatelessWidget {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.0),
+                              ),
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
