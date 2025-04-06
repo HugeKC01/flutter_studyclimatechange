@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
-import 'm3_learn2_p3.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
+//
+import 'package:climatechange/style/style.dart' as style;
+
+//pages
+
 
 class CustomBackButton extends StatefulWidget {
+  const CustomBackButton({super.key});
+
   @override
   _CustomBackButtonState createState() => _CustomBackButtonState();
 }
@@ -49,12 +55,68 @@ class _CustomBackButtonState extends State<CustomBackButton> {
   }
 }
 
-class m3_learn2_p2 extends StatelessWidget {
+class m2_lesson1_p3 extends StatelessWidget {
+  const m2_lesson1_p3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Lesson 2.2: Global Warming', context),
-      drawer: buildDrawer(context),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('Module 2: Global Warming'),
+        elevation: 5.0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: IconButton(
+                icon: const Icon(Icons.person, color: Colors.white),
+                onPressed: () {
+                  // Handle the button press here
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home_rounded),
+              title: Text('Home'),
+              onTap: () {
+                // Handle the home tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.book_rounded),
+              title: Text('Manual'),
+              onTap: () {
+                // Handle the manual tap here
+              },
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           // Main Scrollable Content
@@ -71,8 +133,8 @@ class m3_learn2_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'อุณหภูมิโลกเพิ่มขึ้นจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
-                    style: TextStyle(fontSize: 16.0),
+                    'ไม่ได้มีแค่มนุษย์ที่ได้รับผลกระทบจากโลกร้อน',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -88,8 +150,8 @@ class m3_learn2_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                    style: TextStyle(fontSize: 16.0),
+                    'เมื่อสภาพอากาศแปลกไปจากปกติ จะทำให้สัตว์มีพฤติกรรมที่เปลี่ยนไป',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -105,8 +167,8 @@ class m3_learn2_p2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
-                    style: TextStyle(fontSize: 16.0),
+                    'แม้แต่ต้นไม้ก็ไม่สามารถอยู่ในสภาพแวดล้อมที่ย่ำแย่ได้',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -142,7 +204,7 @@ class m3_learn2_p2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'เรื่องที่ 2.2',
+                            'เรื่องที่ 2.1',
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -150,7 +212,7 @@ class m3_learn2_p2 extends StatelessWidget {
                           ),
                           SizedBox(height: 5.0),
                           Text(
-                            'อธิบายโลกร้อน',
+                            'อธิบายโลกร้อน - โลกและชีวิต',
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.normal,
@@ -166,35 +228,6 @@ class m3_learn2_p2 extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      // Add FloatingActionButton (Next button)
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Navigate to the next screen (replace `NextScreen` with your actual screen)
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => m3_learn2_p3(),
-            ), // Next Screen
-          );
-        },
-        backgroundColor: Colors.lightBlue,
-        child: Icon(Icons.arrow_forward), // Next icon
-      ),
-    );
-  }
-}
-
-class m3_learn2_p3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar('Lesson 2.3: Next Topic', context),
-      body: Center(
-        child: Text(
-          'This is the next screen for Lesson 2.2',
-          style: TextStyle(fontSize: 20.0),
-        ),
       ),
     );
   }

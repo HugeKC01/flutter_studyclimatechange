@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
-import 'm3_learn2_p2.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
+//
+import 'package:climatechange/style/style.dart' as style;
+
+//pages
 
 class CustomBackButton extends StatefulWidget {
+  const CustomBackButton({super.key});
+
   @override
   _CustomBackButtonState createState() => _CustomBackButtonState();
 }
@@ -49,12 +54,68 @@ class _CustomBackButtonState extends State<CustomBackButton> {
   }
 }
 
-class m3_learn2_p1 extends StatelessWidget {
+class m1_lesson1_p1 extends StatelessWidget {
+  const m1_lesson1_p1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Lesson 2.1: Global Warming', context),
-      drawer: buildDrawer(context),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('Module 2 : Global Warming'),
+        elevation: 5.0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: IconButton(
+                icon: const Icon(Icons.person, color: Colors.white),
+                onPressed: () {
+                  // Handle the button press here
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home_rounded),
+              title: Text('Home'),
+              onTap: () {
+                // Handle the home tap here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Climate Change App')),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.book_rounded),
+              title: Text('Manual'),
+              onTap: () {
+                // Handle the manual tap here
+              },
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           // Main Scrollable Content
@@ -71,8 +132,8 @@ class m3_learn2_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 6.0),
                   child: Text(
-                    'อุณหภูมิโลกเพิ่มขึ้นจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
-                    style: TextStyle(fontSize: 16.0),
+                    'lorem ipson',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -88,8 +149,8 @@ class m3_learn2_p1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
-                    'ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                    style: TextStyle(fontSize: 16.0),
+                    'ภาวะโลกร้อน คือภาวะที่โลกมีอุณหภูมิสูงขึ้นอย่างต่อเนื่อง',
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -106,7 +167,7 @@ class m3_learn2_p1 extends StatelessWidget {
                   padding: EdgeInsets.only(top: 36.0),
                   child: Text(
                     'พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
-                    style: TextStyle(fontSize: 16.0),
+                    style: TextStyle(fontSize: style.fontSizeBody),
                   ),
                 ),
                 Padding(
@@ -171,12 +232,6 @@ class m3_learn2_p1 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Navigate to the next screen (replace `NextScreen` with your actual screen)
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => m3_learn2_p2(),
-            ), // Next Screen
-          );
         },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.arrow_forward), // Next icon
