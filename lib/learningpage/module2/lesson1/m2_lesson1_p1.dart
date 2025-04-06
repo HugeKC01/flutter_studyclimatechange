@@ -12,28 +12,8 @@ import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
 
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'การเปลี่ยนแปลงสภาพภูมิอากาศและความสำคัญ',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module2Page(),
-    );
-  }
-}
-
-class Module2Page extends StatelessWidget {
-  const Module2Page({super.key});
+class Module2l1p1 extends StatelessWidget {
+  const Module2l1p1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -300,7 +280,7 @@ class Module2Page extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Module2Page2()),
+                                builder: (context) => const Module2l1p2()),
                             );
                           },
                           backgroundColor:
