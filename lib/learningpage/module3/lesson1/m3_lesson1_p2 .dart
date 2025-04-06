@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import '../m1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm1_lesson2_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'm3_lesson1 p3.dart';
 
-class Module1l2p1 extends StatelessWidget {
-  const Module1l2p1({super.key});
+class Module3l1p2 extends StatelessWidget {
+  const Module3l1p2 ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
-        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'เรื่องที่ 1' ,
         context,
       ),
       drawer: buildDrawer(
@@ -57,12 +56,12 @@ class Module1l2p1 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'เรื่องที่ 2',
+                            'เรื่องที่ 1 ',
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.1) ทำไมเราต้องสนใจเรื่องนี้?',
+                            'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพทางภูมิอากาศและการปรับตัวของมนุษย์และธรรมชาติ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -95,22 +94,15 @@ class Module1l2p1 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                '         การเปลี่ยนแปลงสภาพภูมิอากาศมีผลต่อชีวิตของมนุษย์และสิ่งแวดล้อม เช่น'
-                                'อาหารที่เรากิน อากาศที่เราหายใจ และที่อยู่อาศัยของเรา หากเราไม่ช่วยกันลดผลกระทบ โลกอาจเผชิญกับปัญหามากขึ้นในอนาคต',
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
                               Text(
-                                '\n1. กระทบต่อสุขภาพของเรา',
+                                '• ลดการใช้พลังงาน ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
+                                '         โดยวิธีการนี้เป็นวิธีการที่สามารถเริ่มด้วยตัวเราเองได้ เช่น ปิดไฟเมื่อไม่ใช้ และเลือกใช้พลังงานสะอาด',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -118,10 +110,28 @@ class Module1l2p1 extends StatelessWidget {
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer.jpeg',
+                                  imagePath: 'asset/module3/s1m9.jpg',
                                 ),
                               ),
+                              Text(
+                                '• ใช้ระบบขนส่งที่ลดมลพิษ ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         เพื่อลดการปล่อยก๊าซเรือนกระจก เช่น  ขี่จักรยาน เดิน หรือใช้รถสาธารณะ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
                               const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m9.jpg',
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -155,7 +165,7 @@ class Module1l2p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
+                                  builder: (context) => const Module3l1p3()),
                             );
                           },
                           backgroundColor:
@@ -163,6 +173,7 @@ class Module1l2p1 extends StatelessWidget {
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_back,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                              
                         ),
                       ),
                     ),
@@ -182,10 +193,10 @@ class Module1l2p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
+                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1l2p2()),
+                                  builder: (context) => const Module3l1p3()),
                             );
                           },
                           backgroundColor:
@@ -278,3 +289,4 @@ class HoverableImageState extends State<HoverableImage> {
     );
   }
 }
+
