@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../m2_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1_2.dart';
+import 'm2_lesson2_p1_3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p1.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
@@ -21,13 +21,13 @@ class ClimateChangeApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const m2_lesson2_p1(),
+      home: const m2_lesson2_p1_2(),
     );
   }
 }
 
-class m2_lesson2_p1 extends StatelessWidget {
-  const m2_lesson2_p1({super.key});
+class m2_lesson2_p1_2 extends StatelessWidget {
+  const m2_lesson2_p1_2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +188,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '1.) อุณหภูมิโลกเพิ่มขึ้นเนื่องมาจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
+                                '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   fontSize: 18,
@@ -197,19 +197,19 @@ class m2_lesson2_p1 extends StatelessWidget {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'โลกของเราร้อนขึ้นเพราะก๊าซเรือนกระจกเยอะเกินไป! ก๊าซเหล่านี้เหมือนผ้าห่มหนา ๆ ห่อหุ้มโลก ทำให้ความร้อนออกไปไม่ได้ อุณหภูมิโลกเลยสูงขึ้น เหมือนเวลาที่เราห่มผ้าห่มหนา ๆ แล้วรู้สึกร้อนนั่นแหละ!',
+                                'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'ก๊าซเรือนกระจกมาจากหลายที่ เช่น รถยนต์ โรงงาน และการเผาขยะ เมื่อโลกของเราร้อนขึ้น น้ำแข็งขั้วโลกจะละลาย ทำให้น้ำทะเลสูงขึ้น และสัตว์หลายชนิดอาจไม่มีที่อยู่',
+                                'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลงนะ! เราทำได้!',
+                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -218,7 +218,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                               Center(
                                 child: HoverableImage(
                                   imagePath:
-                                      'asset/module2/module2_learn2_pic1.png',
+                                      'asset/module2/module2_learn2_pic2.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -255,7 +255,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Module2Screen(),
+                                builder: (context) => const m2_lesson2_p1(),
                               ),
                             );
                           },
@@ -293,7 +293,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p1_2(),
+                                builder: (context) => m2_lesson2_p1_3(),
                               ),
                             );
                           },
