@@ -1,3 +1,4 @@
+import 'package:climatechange/main.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/admin.dart';
 
@@ -19,7 +20,12 @@ Widget buildDrawer(BuildContext context) {
           leading: Icon(Icons.home_rounded),
           title: Text('Home'),
           onTap: () {
-            // Handle the home tap here
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyApp(),
+              ),
+            );
           },
         ),
         ListTile(

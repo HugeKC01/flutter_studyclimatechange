@@ -108,6 +108,33 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final modules = [
+      {
+        'title': 'Module 1',
+        'subtitle': 'Introduction to Climate Change',
+        'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': Module1Screen(),
+      },
+      {
+        'title': 'Module 2',
+        'subtitle': 'Effects of Climate Change',
+        'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': Module2Screen(),
+      },
+      {
+        'title': 'Module 3',
+        'subtitle': 'Fix The Problem And Stop The Cause',
+        'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+        'screen': Module3Screen(),
+      },
+      {
+        'title': 'Post Test',
+        'subtitle': 'ทดสอบหลังเรียน',
+        'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
+        'screen': PostTestIntroduction(),
+      },
+    ];
+
     return Scaffold(
       appBar: buildAppBar(
         widget.title,
@@ -132,33 +159,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 itemCount: 4,
                 itemBuilder: (context, index) {
-                  final modules = [
-                    {
-                      'title': 'Module 1',
-                      'subtitle': 'Introduction to Climate Change',
-                      'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                      'screen': Module1Screen(),
-                    },
-                    {
-                      'title': 'Module 2',
-                      'subtitle': 'Effects of Climate Change',
-                      'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-                      'screen': Module2Screen(),
-                    },
-                    {
-                      'title': 'Module 3',
-                      'subtitle': 'Fix The Problem And Stop The Cause',
-                      'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
-                      'screen': Module3Screen(),
-                    },
-                    {
-                      'title': 'Post Test',
-                      'subtitle': 'ทดสอบหลังเรียน',
-                      'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-                      'screen': PostTestIntroduction(),
-                    },
-                  ];
-
                   final module = modules[index];
                   final isLocked = lockedStatus[index];
 
@@ -166,32 +166,32 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     opacity: _fadeAnimations[index],
                     child: SlideTransition(
                       position: _offsetAnimations[index],
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        elevation: 5.0,
-                        child: Column(
-                          children: <Widget>[
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: isLocked
-                                    ? null
-                                    : () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => module['screen'] as Widget,
-                                          ),
-                                        );
-                                      },
+                      child: GestureDetector(
+                        onTap: isLocked
+                            ? null
+                            : () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => module['screen'] as Widget,
+                                  ),
+                                );
+                              },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          elevation: 5.0,
+                          child: Column(
+                            children: <Widget>[
+                              Expanded(
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: isLocked
                                         ? Colors.grey
                                         : Theme.of(context).colorScheme.primary,
-                                    borderRadius: BorderRadius.vertical(
+                                    borderRadius: const BorderRadius.vertical(
                                       top: Radius.circular(15.0),
                                     ),
                                   ),
@@ -201,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     children: [
                                       Text(
                                         module['title'] as String,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -217,29 +217,29 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                   ),
                                 ),
                               ),
-                            ),
-                            ListTile(
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                              title: Text(
-                                module['title'] as String,
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
+                              ListTile(
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                title: Text(
+                                  module['title'] as String,
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(module['subtitle'] as String),
+                                    Text(module['description'] as String),
+                                  ],
+                                ),
+                                trailing: Icon(
+                                  isLocked ? Icons.lock : Icons.lock_open,
+                                  color: isLocked ? Colors.red : Colors.green,
                                 ),
                               ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(module['subtitle'] as String),
-                                  Text(module['description'] as String),
-                                ],
-                              ),
-                              trailing: Icon(
-                                isLocked ? Icons.lock : Icons.lock_open,
-                                color: isLocked ? Colors.red : Colors.green,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
