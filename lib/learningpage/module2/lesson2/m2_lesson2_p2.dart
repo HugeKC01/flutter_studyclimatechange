@@ -1,30 +1,10 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p2_2.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1_3.dart';
+import 'm2_lesson2_p3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p1.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const m2_lesson2_p2(),
-    );
-  }
-}
 
 class m2_lesson2_p2 extends StatelessWidget {
   const m2_lesson2_p2({super.key});
@@ -154,7 +134,7 @@ class m2_lesson2_p2 extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '2.2) อธิบายสภาพอากาศผิดฤดู',
+                            '2.1) อธิบายโลกร้อน',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -188,7 +168,7 @@ class m2_lesson2_p2 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '1.) ฤดูฝนและฤดูร้อนเปลี่ยนแปลงไป ทำให้เกิดฝนตกหนักหรือแล้งผิดปกติ',
+                                '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   fontSize: 18,
@@ -197,19 +177,19 @@ class m2_lesson2_p2 extends StatelessWidget {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เมื่อโลกของเราร้อนขึ้น ฤดูฝนและฤดูร้อนก็เปลี่ยนไป! ฝนอาจตกหนักจนน้ำท่วม หรือบางที่ก็แห้งแล้งจนไม่มีน้ำใช้เลย เหมือนเวลาที่เราเล่นเกม แล้วกฎกติกาเปลี่ยนไป เราก็ต้องเล่นเกมแบบใหม่',
+                                'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'อากาศที่ร้อนขึ้นทำให้เกิดพายุและภัยพิบัติมากขึ้น เช่น พายุที่รุนแรงขึ้น น้ำท่วม แผ่นดินไหว และไฟป่า เหมือนเวลาที่เราเป่าลูกโป่งจนใหญ่เกินไป ลูกโป่งก็จะแตก',
+                                'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
+                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -218,7 +198,7 @@ class m2_lesson2_p2 extends StatelessWidget {
                               Center(
                                 child: HoverableImage(
                                   imagePath:
-                                      'asset/module2/module2_learn2_pic4.png',
+                                      'asset/module2/module2_learn2_pic2.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -255,7 +235,7 @@ class m2_lesson2_p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const m2_lesson2_p1_3(),
+                                builder: (context) => const m2_lesson2_p1(),
                               ),
                             );
                           },
@@ -293,7 +273,7 @@ class m2_lesson2_p2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p2_2(),
+                                builder: (context) => m2_lesson2_p3(),
                               ),
                             );
                           },

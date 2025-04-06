@@ -1,30 +1,10 @@
 import 'package:flutter/material.dart';
 import '../m2_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1_2.dart';
+import 'm2_lesson2_p2.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const m2_lesson2_p1(),
-    );
-  }
-}
 
 class m2_lesson2_p1 extends StatelessWidget {
   const m2_lesson2_p1({super.key});
@@ -293,7 +273,7 @@ class m2_lesson2_p1 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p1_2(),
+                                builder: (context) => m2_lesson2_p2(),
                               ),
                             );
                           },

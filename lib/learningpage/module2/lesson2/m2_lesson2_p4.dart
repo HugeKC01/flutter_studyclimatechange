@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../help.dart';
-import '../../manual.dart';
-import '../../main.dart';
-import '../../settings.dart';
-import 'm1_subject2_page3.dart';
-import 'm1_subject2_page5.dart';
+import 'm2_lesson2_p5.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p3.dart';
+import '../../../help.dart';
+import '../../../manual.dart';
+import '../../../main.dart';
+import '../../../settings.dart';
 
-
-
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const Module1Page4(),
-    );
-  }
-}
-
-class Module1Page4 extends StatelessWidget {
-  const Module1Page4({super.key});
+class m2_lesson2_p4 extends StatelessWidget {
+  const m2_lesson2_p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +41,7 @@ class Module1Page4 extends StatelessWidget {
               ),
               child: const Text(
                 'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
             ListTile(
@@ -134,7 +109,7 @@ class Module1Page4 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252)
+                            Color.fromARGB(255, 214, 237, 252),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -154,10 +129,12 @@ class Module1Page4 extends StatelessWidget {
                           Text(
                             'เรื่องที่ 2',
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Text(
-                            '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                            '2.2) อธิบายสภาพอากาศผิดฤดู',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -169,7 +146,7 @@ class Module1Page4 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 214, 237, 252),
-                            Color.fromARGB(255, 75, 82, 142)
+                            Color.fromARGB(255, 75, 82, 142),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -190,32 +167,38 @@ class Module1Page4 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               Text(
-                            '⦿    ลดการใช้พลังงานเกินความจำเป็น  เช่น ปิดไฟเมื่อไม่ใช้ ปรับอุณหภูมิแอร์ให้เหมาะสม',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
+                                '1.) ฤดูฝนและฤดูร้อนเปลี่ยนแปลงไป ทำให้เกิดฝนตกหนักหรือแล้งผิดปกติ',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                'เมื่อโลกของเราร้อนขึ้น ฤดูฝนและฤดูร้อนก็เปลี่ยนไป! ฝนอาจตกหนักจนน้ำท่วม หรือบางที่ก็แห้งแล้งจนไม่มีน้ำใช้เลย เหมือนเวลาที่เราเล่นเกม แล้วกฎกติกาเปลี่ยนไป เราก็ต้องเล่นเกมแบบใหม่',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                'อากาศที่ร้อนขึ้นทำให้เกิดพายุและภัยพิบัติมากขึ้น เช่น พายุที่รุนแรงขึ้น น้ำท่วม แผ่นดินไหว และไฟป่า เหมือนเวลาที่เราเป่าลูกโป่งจนใหญ่เกินไป ลูกโป่งก็จะแตก',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 18),
+                              ),
 
-                          Text(
-                            '\n⦿    ใช้พาหนะที่เป็นมิตรต่อสิ่งแวดล้อมลดการปล่อยก๊าซคาร์บอนไดออกไซด์ เช่น เดิน ขี่จักรยาน หรือใช้ขนส่งสาธารณะ',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontSize: 18,),
-                          ),
-                          const SizedBox(height: 8), // ระยะห่างระหว่างข้อความ
-
-                          Text(
-                            '\n⦿    ปลูกต้นไม้ ต้นไม้ช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ซึ่งเป็นสาเหตุของภาวะโลกร้อน',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(fontSize: 18,),
-                          ),
-                              
-                              const SizedBox(height: 12),
-
+                              const SizedBox(height: 24),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module1/Designer3.jpeg',
+                                  imagePath:
+                                      'asset/module2/module2_learn2_pic4.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -252,14 +235,22 @@ class Module1Page4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page3()),
+                                builder: (context) => const m2_lesson2_p3(),
+                              ),
                             );
                           },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            255,
+                            255,
+                            255,
+                          ),
                           shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            size: 20,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
                         ),
                       ),
                     ),
@@ -282,14 +273,22 @@ class Module1Page4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module1Page5()),
+                                builder: (context) => m2_lesson2_p5(),
+                              ),
                             );
                           },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            255,
+                            255,
+                            255,
+                          ),
                           shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          child: const Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
                         ),
                       ),
                     ),
@@ -337,11 +336,14 @@ class HoverableImageState extends State<HoverableImage> {
       child: AnimatedAlign(
         duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
         curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
-        alignment: _isHovered
-            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-            : Alignment.center, // ตำแหน่งปกติ
+        alignment:
+            _isHovered
+                ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
+                : Alignment.center, // ตำแหน่งปกติ
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
+          duration: const Duration(
+            milliseconds: 200,
+          ), // ระยะเวลาในการเปลี่ยนแปลง
           curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
           decoration: BoxDecoration(
             border: Border.all(
@@ -349,24 +351,30 @@ class HoverableImageState extends State<HoverableImage> {
               width: 4.0, // ความหนาของเส้นขอบ
             ),
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
-                      blurRadius: 10.0,
-                      offset: const Offset(0, 5),
-                    ),
-                  ]
-                : [],
+            boxShadow:
+                _isHovered
+                    ? [
+                      BoxShadow(
+                        color: Colors.black.withAlpha(
+                          (0.2 * 255).toInt(),
+                        ), // ใช้ withAlpha แทน withOpacity
+                        blurRadius: 10.0,
+                        offset: const Offset(0, 5),
+                      ),
+                    ]
+                    : [],
           ),
-          transform: _isHovered
-              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
-              : Matrix4.identity(),
+          transform:
+              _isHovered
+                  ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+                  : Matrix4.identity(),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
             child: Image.asset(
               widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
+              width:
+                  MediaQuery.of(context).size.width *
+                  (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
               fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),

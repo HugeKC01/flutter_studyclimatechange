@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p1_2.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p2.dart';
+import 'm1_lesson1_p1.dart';
+import 'm1_lesson1_p3.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
 
-void main() {
-  runApp(const ClimateChangeApp());
-}
 
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const m2_lesson2_p1_3(),
-    );
-  }
-}
-
-class m2_lesson2_p1_3 extends StatelessWidget {
-  const m2_lesson2_p1_3({super.key});
+class Module1l1p2 extends StatelessWidget {
+  const Module1l1p2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +42,10 @@ class m2_lesson2_p1_3 extends StatelessWidget {
               ),
               child: const Text(
                 'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
             ),
             ListTile(
@@ -129,7 +113,7 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252),
+                            Color.fromARGB(255, 214, 237, 252)
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -147,14 +131,12 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'เรื่องที่ 2',
+                            'เรื่องที่ 1 : รู้จักกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.1) อธิบายโลกร้อน',
+                            '1.2) การเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -166,7 +148,7 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 214, 237, 252),
-                            Color.fromARGB(255, 75, 82, 142),
+                            Color.fromARGB(255, 75, 82, 142)
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -187,38 +169,30 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '3.) พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
+                              const Text(
+                                '          ',
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    const TextSpan(
+                                      text: '         การเปลี่ยนแปลงสภาพภูมิอากาศ (climate change)',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const TextSpan(text: ' หมายถึง การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก ซึ่งอาจเกิดจากการกระทำของมนุษย์หรือจากธรรมชาติ โดยการเปลี่ยนแปลงนี้สามารถส่งผลกระทบต่อสิ่งมีชีวิตและสิ่งแวดล้อมได้ เช่น อุณหภูมิโลกที่สูงขึ้น น้ำแข็งขั้วโลกละลาย หรือฤดูกาลที่เปลี่ยนไป ซึ่งเกิดขึ้นจากปัจจัยต่าง ๆ' ),                                   
+                                  ],
                                 ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เมื่อโลกของเราร้อนขึ้น อากาศก็จะแห้งแล้งมากขึ้น ทำให้ดินแตกระแหงและปลูกพืชไม่ได้เหมือนเดิม เหมือนเวลาที่เราไม่ได้รดน้ำต้นไม้ ต้นไม้ก็จะเหี่ยวเฉาและตายไป',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เมื่อไม่มีน้ำและดินไม่ดี เกษตรกรก็ปลูกข้าว ผัก และผลไม้ไม่ได้ ทำให้เราไม่มีอาหารกิน และอาหารก็จะมีราคาแพงขึ้น เหมือนเวลาที่เราอยากกินขนม แต่ร้านค้าไม่มีขนมขาย เราก็ต้องจ่ายเงินแพงขึ้นเพื่อซื้อขนม',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และมีอาหารกินกันอย่างเพียงพอนะ!',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-
-                              const SizedBox(height: 24),
+                              const SizedBox(height: 8),
                               Center(
                                 child: HoverableImage(
-                                  imagePath:
-                                      'asset/module2/module2_learn2_pic3.png',
+                                  imagePath: 'asset/module1/grobal climate.jpeg',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -231,6 +205,7 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                 ),
               ),
             ),
+
             // Fixed footer
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -255,22 +230,14 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const m2_lesson2_p1_2(),
-                              ),
+                                  builder: (context) => const Module1l1p1()),
                             );
                           },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
+                          child: const Icon(Icons.arrow_back,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                     ),
@@ -293,22 +260,14 @@ class m2_lesson2_p1_3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p2(),
-                              ),
+                                  builder: (context) => const Module1l1p3()),
                             );
                           },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_forward,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
+                          child: const Icon(Icons.arrow_forward,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                     ),
@@ -356,14 +315,11 @@ class HoverableImageState extends State<HoverableImage> {
       child: AnimatedAlign(
         duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
         curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
-        alignment:
-            _isHovered
-                ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-                : Alignment.center, // ตำแหน่งปกติ
+        alignment: _isHovered
+            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
+            : Alignment.center, // ตำแหน่งปกติ
         child: AnimatedContainer(
-          duration: const Duration(
-            milliseconds: 200,
-          ), // ระยะเวลาในการเปลี่ยนแปลง
+          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
           curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
           decoration: BoxDecoration(
             border: Border.all(
@@ -371,30 +327,24 @@ class HoverableImageState extends State<HoverableImage> {
               width: 4.0, // ความหนาของเส้นขอบ
             ),
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
-            boxShadow:
-                _isHovered
-                    ? [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(
-                          (0.2 * 255).toInt(),
-                        ), // ใช้ withAlpha แทน withOpacity
-                        blurRadius: 10.0,
-                        offset: const Offset(0, 5),
-                      ),
-                    ]
-                    : [],
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
+                      blurRadius: 10.0,
+                      offset: const Offset(0, 5),
+                    ),
+                  ]
+                : [],
           ),
-          transform:
-              _isHovered
-                  ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
-                  : Matrix4.identity(),
+          transform: _isHovered
+              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+              : Matrix4.identity(),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
             child: Image.asset(
               widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width:
-                  MediaQuery.of(context).size.width *
-                  (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
               fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'm1_subject2_page1.dart';
-import 'm1_learn1_p1.dart';
-import 'lesson2/m1_lesson2_p1.dart';
 import 'lesson1/m1_lesson1_p1.dart';
-
+import 'lesson2/m1_lesson2_p1.dart';
+import 'package:climatechange/component/appbar.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -11,8 +9,9 @@ class Module1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Module 1: Introduction to Climate Change'),
+      appBar: buildAppBar(
+        'Module 1',
+        context,
       ),
       body: Center(
         child: Column(
@@ -33,7 +32,7 @@ class Module1Screen extends StatelessWidget {
                            onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Module1p1()),
+                              MaterialPageRoute(builder: (context) => Module1l1p1()),
                             );
                           },
                           child: Container(
@@ -65,7 +64,7 @@ class Module1Screen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m1_lesson1_p1(),
+                                builder: (context) => Module1l1p1(),
                               ),
                             );
                           },

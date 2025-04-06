@@ -10,7 +10,7 @@ class Module3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
-        'Module 3', // Replace with a valid title string
+        'Module 3',
         context,
       ),
       body: Center(

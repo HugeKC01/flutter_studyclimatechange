@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lesson2/m2_lesson2_p1.dart';
+import 'package:climatechange/component/appbar.dart';
 
 class Module2Screen extends StatelessWidget {
   const Module2Screen({super.key});
@@ -7,7 +8,10 @@ class Module2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Module 2: Effects of Climate Change')),
+      appBar: buildAppBar(
+        'Module 2',
+        context,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

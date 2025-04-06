@@ -1,30 +1,11 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p3_2.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p2_3.dart';
+import 'm2_lesson2_p2.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p4.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
 
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const m2_lesson2_p3(),
-    );
-  }
-}
 
 class m2_lesson2_p3 extends StatelessWidget {
   const m2_lesson2_p3({super.key});
@@ -154,7 +135,7 @@ class m2_lesson2_p3 extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '2.3) อธิบายผลกระทบที่มีต่อสิ่งแวดล้อม',
+                            '2.1) อธิบายโลกร้อน',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -188,7 +169,7 @@ class m2_lesson2_p3 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '1.) ระบบนิเวศเปลี่ยนแปลง ทำให้สัตว์และพืชบางชนิดสูญพันธุ์',
+                                '3.) พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   fontSize: 18,
@@ -197,19 +178,19 @@ class m2_lesson2_p3 extends StatelessWidget {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เมื่อโลกของเราร้อนขึ้น บ้านของสัตว์และพืชก็เปลี่ยนไป! อากาศที่ร้อนขึ้น น้ำที่เปลี่ยนไป ทำให้บางที่เคยมีป่าไม้ ก็กลายเป็นทะเลทราย บางที่เคยหนาวเย็น ก็อุ่นขึ้น สัตว์และพืชบางชนิดปรับตัวไม่ทันกับบ้านใหม่ที่เปลี่ยนไป ทำให้พวกมันค่อย ๆ หายไปจากโลกนี้ เหมือนเวลาที่เราย้ายบ้าน แล้วไม่มีเพื่อน ไม่มีอาหารที่เราเคยกิน',
+                                'เมื่อโลกของเราร้อนขึ้น อากาศก็จะแห้งแล้งมากขึ้น ทำให้ดินแตกระแหงและปลูกพืชไม่ได้เหมือนเดิม เหมือนเวลาที่เราไม่ได้รดน้ำต้นไม้ ต้นไม้ก็จะเหี่ยวเฉาและตายไป',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'การเปลี่ยนแปลงเหล่านี้ทำให้ระบบนิเวศเสียสมดุล เหมือนเวลาที่เราเล่นเกม แล้วตัวละครสำคัญหายไป เกมก็ไม่สนุกเหมือนเดิม สัตว์และพืชแต่ละชนิดมีความสำคัญต่อโลกของเรา ถ้าพวกมันหายไป ก็จะส่งผลกระทบต่อสิ่งมีชีวิตอื่น ๆ ด้วย',
+                                'เมื่อไม่มีน้ำและดินไม่ดี เกษตรกรก็ปลูกข้าว ผัก และผลไม้ไม่ได้ ทำให้เราไม่มีอาหารกิน และอาหารก็จะมีราคาแพงขึ้น เหมือนเวลาที่เราอยากกินขนม แต่ร้านค้าไม่มีขนมขาย เราก็ต้องจ่ายเงินแพงขึ้นเพื่อซื้อขนม',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'เด็ก ๆ ช่วยกันดูแลโลก ลดการใช้พลังงาน ปลูกต้นไม้ และไม่ทำลายธรรมชาติ เพื่อรักษาบ้านของสัตว์และพืช และช่วยให้พวกมันอยู่รอดต่อไปได้นะ!"',
+                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และมีอาหารกินกันอย่างเพียงพอนะ!',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(fontSize: 18),
                               ),
@@ -218,7 +199,7 @@ class m2_lesson2_p3 extends StatelessWidget {
                               Center(
                                 child: HoverableImage(
                                   imagePath:
-                                      'asset/module2/module2_learn2_pic7.png',
+                                      'asset/module2/module2_learn2_pic3.png',
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -255,7 +236,7 @@ class m2_lesson2_p3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const m2_lesson2_p2_3(),
+                                builder: (context) => const m2_lesson2_p2(),
                               ),
                             );
                           },
@@ -293,7 +274,7 @@ class m2_lesson2_p3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p3_2(),
+                                builder: (context) => m2_lesson2_p4(),
                               ),
                             );
                           },

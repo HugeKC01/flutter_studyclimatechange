@@ -1,33 +1,13 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p1_3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1.dart';
+import '../m1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm1_lesson1_p3.dart';
 import '../../../help.dart';
 import '../../../manual.dart';
 import '../../../main.dart';
 import '../../../settings.dart';
 
-void main() {
-  runApp(const ClimateChangeApp());
-}
-
-class ClimateChangeApp extends StatelessWidget {
-  const ClimateChangeApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const m2_lesson2_p1_2(),
-    );
-  }
-}
-
-class m2_lesson2_p1_2 extends StatelessWidget {
-  const m2_lesson2_p1_2({super.key});
+class Module1l1p4 extends StatelessWidget {
+  const Module1l1p4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +41,10 @@ class m2_lesson2_p1_2 extends StatelessWidget {
               ),
               child: const Text(
                 'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
             ),
             ListTile(
@@ -129,7 +112,7 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252),
+                            Color.fromARGB(255, 214, 237, 252)
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -147,14 +130,12 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'เรื่องที่ 2',
+                            'เรื่องที่ 1 : รู้จักกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2.1) อธิบายโลกร้อน',
+                            '1.3) ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -166,7 +147,7 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Color.fromARGB(255, 214, 237, 252),
-                            Color.fromARGB(255, 75, 82, 142),
+                            Color.fromARGB(255, 75, 82, 142)
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -187,39 +168,62 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const Text(
+                                ' ⦿ อากาศร้อนขึ้น อุณหภูมิโลกสูงขึ้น ทำให้เกิดคลื่นความร้อน ไฟป่า และภัยแล้ง     ',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/dry.jpg',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
                               Text(
-                                '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                                textAlign: TextAlign.left,
+                                ' ⦿ น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น',
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
-                              const SizedBox(height: 16),
+                              const SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/polarb.jpg',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
                               Text(
-                                'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
-                                textAlign: TextAlign.left,
+                                ' ⦿ เกิดพายุรุนแรงมากขึ้น เช่น พายุเฮอริเคน ไต้ฝุ่น',
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 16),
+                              const SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/strom.jpg',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
                               Text(
-                                'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
-                                textAlign: TextAlign.left,
+                                ' ⦿ เกิดการเปลี่ยนแปลงของระบบนิเวศ เช่น การสูญพันธุ์ของสัตว์และพืช',
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-
-                              const SizedBox(height: 24),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath:
-                                      'asset/module2/module2_learn2_pic2.png',
-                                ),
+                              const SizedBox(height: 12),
+                              
+                              Row(
+                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                children: [HoverableImage(
+                                  imagePath: 'asset/module1/ext.jpg',
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 12),
                             ],
@@ -231,6 +235,7 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                 ),
               ),
             ),
+
             // Fixed footer
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -255,22 +260,14 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const m2_lesson2_p1(),
-                              ),
+                                  builder: (context) => const Module1l1p3()),
                             );
                           },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
+                          child: const Icon(Icons.arrow_back,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                     ),
@@ -293,22 +290,14 @@ class m2_lesson2_p1_2 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => m2_lesson2_p1_3(),
-                              ),
+                                  builder: (context) => const Module1Screen()),
                             );
                           },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_forward,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
+                          child: const Icon(Icons.arrow_forward,
+                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                     ),
@@ -356,14 +345,11 @@ class HoverableImageState extends State<HoverableImage> {
       child: AnimatedAlign(
         duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
         curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
-        alignment:
-            _isHovered
-                ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-                : Alignment.center, // ตำแหน่งปกติ
+        alignment: _isHovered
+            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
+            : Alignment.center, // ตำแหน่งปกติ
         child: AnimatedContainer(
-          duration: const Duration(
-            milliseconds: 200,
-          ), // ระยะเวลาในการเปลี่ยนแปลง
+          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
           curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
           decoration: BoxDecoration(
             border: Border.all(
@@ -371,30 +357,24 @@ class HoverableImageState extends State<HoverableImage> {
               width: 4.0, // ความหนาของเส้นขอบ
             ),
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
-            boxShadow:
-                _isHovered
-                    ? [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(
-                          (0.2 * 255).toInt(),
-                        ), // ใช้ withAlpha แทน withOpacity
-                        blurRadius: 10.0,
-                        offset: const Offset(0, 5),
-                      ),
-                    ]
-                    : [],
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
+                      blurRadius: 10.0,
+                      offset: const Offset(0, 5),
+                    ),
+                  ]
+                : [],
           ),
-          transform:
-              _isHovered
-                  ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
-                  : Matrix4.identity(),
+          transform: _isHovered
+              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+              : Matrix4.identity(),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
             child: Image.asset(
               widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width:
-                  MediaQuery.of(context).size.width *
-                  (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
               fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),
