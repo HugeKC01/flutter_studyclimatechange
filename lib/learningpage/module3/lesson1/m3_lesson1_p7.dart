@@ -3,10 +3,10 @@ import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson1_p1.dart';
-import 'm3_lesson1_p3.dart';
+import 'm3_lesson1_p7.dart';
 
-class Module3l1p2 extends StatelessWidget {
-  const Module3l1p2({super.key});
+class Module3l1p3 extends StatelessWidget {
+  const Module3l1p3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,47 +15,44 @@ class Module3l1p2 extends StatelessWidget {
 
     final lessons = [
       {
-        'title': '1. พลาสติกประเภทที่ 1 Polyethylene Terephthalate สัญลักษณ์ 1 และ PET',
-        'description': 'มีความใส เหนียว ทนทาน และป้องกันการแพร่ผ่านของก๊าซได้ดี เช่น แก้วใส ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'title': '1. อุปกรณ์อิเล็กทรอนิกส์ขนาดใหญ่',
+        'description': 'เช่น ตู้เย็น เครื่องซักผ้า เครื่องปรับอากาศ เตาอบไมโครเวฟ เครื่องโทรทัศน์',
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
-        'image': 'asset/module3/m3_01_pic/plastic01.jpg',
+        'image': 'asset/module3/m3_01_p7/image01.jpg',
+        'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
+      
       },
       {
-        'title': '2. พลาสติกประเภทที่ 2 High-Density Polyethylene สัญลักษณ์ 2 และ HDPE',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดนม ขวดน้ำมันพืช ถุงพลาสติก',
-        'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-        'image': 'asset/module3/m3_01_pic/plastic02.jpg',
+        'title': '2. อุปกรณ์อิเล็กทรอนิกส์ขนาดเล็ก',
+        'description': 'เช่น โทรศัพท์มือถือ คอมพิวเตอร์ แท็บเล็ต เครื่องคิดเลข เครื่องพิมพ์',
+        'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
+        'image': 'asset/module3/m3_01_p7/image02.jpg',
+        'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
+      
       },
       {
-        'title': '3. พลาสติกประเภทที่ 3 Polyvinyl Chloride สัญลักษณ์ 3 และ PVC',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
-        'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-        'image': 'asset/module3/m3_01_pic/plastic03.jpg',
+        'title': '3. อุปกรณ์โทรคมนาคม',
+        'description': 'เช่น โทรศัพท์บ้าน โทรศัพท์มือถือ อุปกรณ์เครือข่าย',
+        'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
+        'image': 'asset/module3/m3_01_p7/image03.jpg',
+        'bin': 'ถังขยะ',
       },
       {
-      'title': '4. พลาสติกประเภทที่ 4 Low-Density Polyethylene สัญลักษณ์ 4 และ LDPE',
-      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
-      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-      'image': 'asset/module3/m3_01_pic/plastic04.jpg',
-    },
-    {
-      'title': '5. พลาสติกประเภทที่ 5 Polypropylene สัญลักษณ์ 5 และ PP',
-      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
-      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-      'image': 'asset/module3/m3_01_pic/plastic05.jpg',
-    },
-    {
-      'title': '6. พลาสติกประเภทที่ 6 Polystyrene สัญลักษณ์ 6 และ PS',
-      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
-      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-      'image': 'asset/module3/m3_01_pic/plastic06.jpg',
-    },
-    {
-      'title': '7. พลาสติกประเภทที่ 7 Other สัญลักษณ์ 7 และ O',
-      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
-      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-      'image': 'asset/module3/m3_01_pic/plastic07.jpg',
-    },
+        'title': '4. เครื่องมือแพทย์',
+        'description': 'เช่น เครื่องเอกซเรย์ เครื่องวัดชีพจร อุปกรณ์ผ่าตัด',
+        'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
+        'image': 'asset/module3/m3_01_p7/image04.jpg',
+        'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
+      
+      },
+      {
+        'title': '5. อุปกรณ์อิเล็กทรอนิกส์อื่นๆ',
+        'description': 'เช่น ถ่านไฟฉาย แบตเตอรี่ หลอดไฟ แผงวงจร',
+        'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
+        'image': 'asset/module3/m3_01_p7/image05.jpg',
+        'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
+      },
+      
     ];
 
     return Scaffold(
@@ -93,6 +90,7 @@ class Module3l1p2 extends StatelessWidget {
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
+                        
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(lesson['description']!),
@@ -100,6 +98,10 @@ class Module3l1p2 extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text('การรีไซเคิล : ${lesson['recycle']}'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('ถังขยะ : ${lesson['recycle']}'),
                         ),
                       ],
                     ),
