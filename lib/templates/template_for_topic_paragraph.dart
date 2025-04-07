@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart';
+import '../learningpage/module3/m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1_p1.dart';
-import 'm3_lesson1_p7.dart';
+import '../learningpage/module3/lesson1/m3_lesson1_p1.dart';
+import '../learningpage/module3/lesson1/m3_lesson1_p7.dart';
 
 import 'package:climatechange/style/style.dart' as style;
 

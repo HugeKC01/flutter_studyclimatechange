@@ -3,7 +3,8 @@ import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson1_p1.dart';
-import 'm3_lesson1_p7.dart';
+import 'm3_lesson1_p6.dart';
+import 'm3_lesson1_p8.dart';
 
 class Module3l1p3 extends StatelessWidget {
   const Module3l1p3({super.key});
@@ -163,7 +164,7 @@ class Module3l1p3 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p3()),
+                                  builder: (context) => const Module3l1p8()),
                             );
                           },
                           backgroundColor:

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'learningpage/module1/m1_main.dart';
-import 'learningpage/module2/m2_main.dart';
-import 'learningpage/module3/m3_main.dart';
-import 'posttest/posttestintro.dart';
-import 'component/appbar.dart';
-import 'component/drawer.dart';
-import 'component/shared_state.dart'; // Import the shared ValueNotifier
-import 'style/transition.dart';
+import '../learningpage/module1/m1_main.dart';
+import '../learningpage/module2/m2_main.dart';
+import '../learningpage/module3/m3_main.dart';
+import '../posttest/posttestintro.dart';
+import '../component/appbar.dart';
+import '../component/drawer.dart';
+import '../component/shared_state.dart'; // Import the shared ValueNotifier
+import '../style/transition.dart';
 
 
 void main() async {
