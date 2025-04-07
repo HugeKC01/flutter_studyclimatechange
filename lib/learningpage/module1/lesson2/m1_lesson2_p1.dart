@@ -9,9 +9,14 @@ class Module1l2p1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pagetitle = 'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pageheader = 'เรื่องที่ 2';
+    final pagesubtitle = '2.1) ทำไมเราต้องสนใจเรื่องนี้?';
+    final background = 'asset/module1/background1.png';
+
     return Scaffold(
       appBar: buildAppBar(
-        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        pagetitle,
         context,
       ),
       drawer: buildDrawer(
@@ -19,51 +24,62 @@ class Module1l2p1 extends StatelessWidget {
       ),
       body: Container(
         // Background decoration for the entire screen
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module1/background1.png'),
+            image: AssetImage(background),
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            // Scrollable content
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 214, 237, 252),
+                ),
+                child: Row(
                   children: [
                     Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252)
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                      decoration: BoxDecoration(
+                      color: Colors.white, // Background color for the button
+                      shape: BoxShape.circle, // Circular shape
+                      boxShadow: [
+                        BoxShadow(
+                        color: Colors.black, // Shadow color
+                        blurRadius: 4, // Blur radius for the shadow
+                        offset: const Offset(0, 2), // Shadow offset
                         ),
+                      ],
                       ),
-                      child: const SizedBox(height: 12),
+                      child: IconButton(
+                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                  builder: (context) => const Module1Screen()
+                            ),
+                          );  // Exit the current page
+                      },
+                      ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 214, 237, 252),
-                      ),
+                    const SizedBox(width: 20), // Add spacing between the icon and the header
+                    Expanded( // Ensures the text wraps into a new line
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'เรื่องที่ 2',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                            pageheader,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Text(
-                            '2.1) ทำไมเราต้องสนใจเรื่องนี้?',
-                            style: TextStyle(fontSize: 20),
+                            pagesubtitle,
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
@@ -120,9 +136,97 @@ class Module1l2p1 extends StatelessWidget {
                                 child: HoverableImage(
                                   imagePath: 'asset/module1/Designer.jpeg',
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                            ],
+                                const SizedBox(height: 8),
+                                Text(
+                                  '\n1. กระทบต่อสุขภาพของเรา',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module1/Designer.jpeg',
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Fixed footer
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Back button
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnBack',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Module1Screen()),
+                              );
+                            },
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_back,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Forward button
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnForward',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Module1l2p2()),
+                              );
+                            },
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_forward,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
                       ),
@@ -130,77 +234,8 @@ class Module1l2p1 extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            // Fixed footer
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
-                            );
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module1l2p2()),
-                            );
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

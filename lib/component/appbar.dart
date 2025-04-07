@@ -1,5 +1,6 @@
 // Reusable AppBar Widget
 import 'package:flutter/material.dart';
+import 'package:climatechange/profile.dart';
 
 PreferredSizeWidget buildAppBar(String title, BuildContext context) {
   return AppBar(
@@ -12,23 +13,12 @@ PreferredSizeWidget buildAppBar(String title, BuildContext context) {
           child: IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             onPressed: () {
-              // Navigate to a profile screen or show a dialog
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text('Profile'),
-                    content: const Text('This is the profile section.'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(); // Close the dialog
-                        },
-                        child: const Text('Close'),
-                      ),
-                    ],
-                  );
-                },
+              // Handle profile icon tap here
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(),
+                ),
               );
             },
           ),

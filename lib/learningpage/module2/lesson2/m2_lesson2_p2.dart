@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'm2_lesson2_p3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm2_lesson2_p1.dart';
+import 'package:climatechange/learningpage/module2/m2_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 
@@ -9,9 +10,14 @@ class Module2l2p2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pagetitle = 'เรื่องที่ 2 ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pageheader = 'เรื่องที่ 2';
+    final pagesubtitle = '2.1) อธิบายโลกร้อน';
+    final background = 'asset/module1/background1.png';
+
     return Scaffold(
       appBar: buildAppBar(
-        'เรื่องที่ 2 ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        pagetitle,
         context,
       ),
       drawer: buildDrawer(
@@ -19,120 +25,210 @@ class Module2l2p2 extends StatelessWidget {
       ),
       body: Container(
         // Background decoration for the entire screen
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module1/background1.png'),
+            image: AssetImage(background),
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            // Scrollable content
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 214, 237, 252),
+                ),
+                child: Row(
                   children: [
                     Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                      decoration: BoxDecoration(
+                      color: Colors.white, // Background color for the button
+                      shape: BoxShape.circle, // Circular shape
+                      boxShadow: [
+                        BoxShadow(
+                        color: Colors.black, // Shadow color
+                        blurRadius: 4, // Blur radius for the shadow
+                        offset: const Offset(0, 2), // Shadow offset
                         ),
+                      ],
                       ),
-                      child: const SizedBox(height: 12),
+                      child: IconButton(
+                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                  builder: (context) => const Module2Screen()
+                            ),
+                          );  // Exit the current page
+                      },
+                      ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 214, 237, 252),
-                      ),
+                    const SizedBox(width: 20), // Add spacing between the icon and the header
+                    Expanded( // Ensures the text wraps into a new line
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'เรื่องที่ 2',
-                            style: TextStyle(
+                            pageheader,
+                            style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            '2.1) อธิบายโลกร้อน',
-                            style: TextStyle(fontSize: 20),
+                            pagesubtitle,
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 214, 237, 252),
-                            Color.fromARGB(255, 75, 82, 142),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                  ],
+                ),
+              ),
+              // Scrollable content
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          color: const Color.fromARGB(200, 255, 255, 255),
+                          elevation: 4,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+
+                                const SizedBox(height: 24),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath:
+                                        'asset/module2/module2_learn2_pic2.png',
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      child: const SizedBox(height: 12),
-                    ),
+                    ],
+                  ),
+                ),
+              ),
+              // Fixed footer
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Back button
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Card(
-                        color: const Color.fromARGB(200, 255, 255, 255),
-                        elevation: 4,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnBack',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Module2l2p1(),
                                 ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-
-                              const SizedBox(height: 24),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath:
-                                      'asset/module2/module2_learn2_pic2.png',
+                              );
+                            },
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              255,
+                              255,
+                              255,
+                            ),
+                            shape: const CircleBorder(),
+                            child: const Icon(
+                              Icons.arrow_back,
+                              size: 20,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Forward button
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnForward',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Module2l2p3(),
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                            ],
+                              );
+                            },
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              255,
+                              255,
+                              255,
+                            ),
+                            shape: const CircleBorder(),
+                            child: const Icon(
+                              Icons.arrow_forward,
+                              size: 20,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
                           ),
                         ),
                       ),
@@ -140,93 +236,8 @@ class Module2l2p2 extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            // Fixed footer
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Module2l2p1(),
-                              ),
-                            );
-                          },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
-                          shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Module2l2p3(),
-                              ),
-                            );
-                          },
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            255,
-                            255,
-                            255,
-                          ),
-                          shape: const CircleBorder(),
-                          child: const Icon(
-                            Icons.arrow_forward,
-                            size: 20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
