@@ -25,15 +25,15 @@ class PracticeM3ResultScreen extends StatelessWidget {
     return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 
-  Future<void> _unlockModule3() async {
+  Future<void> _unlockPostTest() async {
     final prefs = await SharedPreferences.getInstance();
 
     // Retrieve the current locked status list
     final List<bool> lockedStatus = moduleLockedStatusNotifier.value;
 
     // Unlock Module 2 (index 1)
-    if (lockedStatus.length > 2) {
-      lockedStatus[2] = false; // Unlock Module 3
+    if (lockedStatus.length > 3) {
+      lockedStatus[3] = false; // Unlock Module 3
     }
 
     // Notify listeners
@@ -161,7 +161,7 @@ class PracticeM3ResultScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      _unlockModule3(); // Unlock Module 2
+                      _unlockPostTest(); // Unlock Module 2
                       Navigator.push(
                         context,
                         MaterialPageRoute(

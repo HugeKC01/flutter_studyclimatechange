@@ -29,7 +29,7 @@ class PracticeM3Introduction extends StatelessWidget {
           children: [
             // Title
             const Text(
-          'ยินต้อนรับเข้าสู่แบบทดสอบ Module 1!',
+          'ยินต้อนรับเข้าสู่แบบทดสอบ Module 3!',
           style: TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,

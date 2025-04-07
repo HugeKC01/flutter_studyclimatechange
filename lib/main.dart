@@ -146,13 +146,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         children: [
           Positioned.fill(
         child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
+          opacity: 0.15, // Adjust the opacity value as needed
           child: Image.asset(
             'asset/overall/background1.png', // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
-          ), SafeArea(
+          ),
+          SafeArea(
         child: Scrollbar(
           thumbVisibility: true,
           child: ValueListenableBuilder<List<bool>>(

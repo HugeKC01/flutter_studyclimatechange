@@ -49,7 +49,18 @@ class Module2Screen extends StatelessWidget {
           },
         ),
       ),
-      body: SafeArea(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.2, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ),
+        SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView.builder(
@@ -119,6 +130,8 @@ class Module2Screen extends StatelessWidget {
             },
           ),
         ),
+      ),
+        ],
       ),
     );
   }

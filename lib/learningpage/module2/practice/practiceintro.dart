@@ -29,7 +29,7 @@ class PracticeM2Introduction extends StatelessWidget {
           children: [
             // Title
             const Text(
-          'ยินต้อนรับเข้าสู่แบบทดสอบ Module 1!',
+          'ยินต้อนรับเข้าสู่แบบทดสอบ Module 2!',
           style: TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,
@@ -41,7 +41,7 @@ class PracticeM2Introduction extends StatelessWidget {
             // Description
             const Text(
           'แบบทดสอบนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
-          'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียนใน Module 1',
+          'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียนใน Module 2',
           style: TextStyle(fontSize: 16.0),
           textAlign: TextAlign.center,
             ),
@@ -67,7 +67,7 @@ class PracticeM2Introduction extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
           ),
           child: const Text(
-            'เริ่มแบบทดสอบ Module 1',
+            'เริ่มแบบทดสอบ Module 2',
             style: TextStyle(fontSize: 18.0),
           ),
             ),
