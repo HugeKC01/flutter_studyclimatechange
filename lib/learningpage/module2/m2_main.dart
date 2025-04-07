@@ -12,13 +12,13 @@ class Module2Screen extends StatelessWidget {
       {
         'title': 'บทเรียนที่ 1',
         'subtitle': 'สาเหตุของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module1/module0201.png',
+        'cover':'asset/module2/module0201.png',
         'screen': Module2l1p1(),
       },
       {
         'title': 'บทเรียนที่ 2',
         'subtitle': 'ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module1/module0202.png',
+        'cover' : 'asset/module2/module0202.png',
         'screen': Module2l2p1(),
       },
     ];
@@ -61,7 +61,11 @@ class Module2Screen extends StatelessWidget {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Colors.blue,
+                            image: DecorationImage(
+                              image: AssetImage(lesson['cover'] as String),
+                              fit: BoxFit.cover,
+                            ),
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(15.0),
                             ),
