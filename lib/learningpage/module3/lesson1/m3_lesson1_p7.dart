@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1_p1.dart';
 import 'm3_lesson1_p6.dart';
 import 'm3_lesson1_p8.dart';
 
