@@ -11,12 +11,12 @@ class Module3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     final lessons = [
       {
-        'title': 'บทเรียนที่ 1',
+        'title': 'เรื่องที่ 1',
         'subtitle': 'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module3l1p1(),
       },
       {
-        'title': 'บทเรียนที่ 2',
+        'title': 'เรื่องที่ 2',
         'subtitle': 'การปรับตัวและการใช้ชีวิต',
         'screen': Module3l2p1(),
       },
