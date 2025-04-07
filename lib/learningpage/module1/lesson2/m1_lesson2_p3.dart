@@ -113,14 +113,14 @@ class Module1l2p3 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '3. อาหารหายากขึ้น',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         ความแปรปรวนของสภาพอากาศส่งผลต่อผลผลิตทางการเกษตร เช่น อุณหภูมิที่สูงขึ้นทำให้พืชเติบโตได้ยากขึ้น และน้ำทะเลที่สูงขึ้นทำให้พื้นที่เพาะปลูกและผลผลิตทางการเกษตรบางส่วนถูกทำลาย',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),

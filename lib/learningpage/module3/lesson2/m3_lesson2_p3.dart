@@ -121,21 +121,21 @@ class Module3l2p3 extends StatelessWidget {
 
                                   Text(
                                     '\n⦿    พกอุปกรณ์กันฝนเสมอ เช่น ร่มหรือเสื้อกันฝน เพราะอาจมีฝนตกในช่วงที่ไม่คาดคิด',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    แต่งตัวให้เหมาะกับอากาศ เช่น ใส่เสื้อผ้าที่ระบายอากาศได้ดีและไม่หนาเกินไป',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    เช็กพยากรณ์อากาศก่อนออกจากบ้าน เช่น เช็กว่ามีโอกาสฝนตกหรือไม่ หรืออากาศจะร้อนจัดหรือไม่',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   

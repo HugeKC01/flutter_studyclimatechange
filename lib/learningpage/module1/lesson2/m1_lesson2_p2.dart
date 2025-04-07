@@ -113,14 +113,14 @@ class Module1l2p2 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '2. ทำให้ภัยพิบัติรุนแรงขึ้น',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         เรากำลังเผชิญกับพายุที่รุนแรงขึ้น อุณหภูมิที่สูงขึ้นทำให้เกิดคลื่นความร้อน น้ําแข็งขั้วโลกละลายและฝนตกแปรปรวนก่อให้เกิดน้ำท่วมและภัยแล้งที่รุนแรงกว่าเดิม',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),

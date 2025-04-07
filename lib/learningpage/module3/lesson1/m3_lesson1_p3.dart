@@ -113,7 +113,7 @@ class Module3l1p3 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '• ปลูกต้นไม้เพื่อช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
@@ -127,14 +127,14 @@ class Module3l1p3 extends StatelessWidget {
                                   ),
                                   Text(
                                     '• ใช้ทรัพยากรอย่างประหยัด ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         โดยเราต้องใช้ทรัพยากรให้คุ้มค่าที่สุด เช่น ประหยัดการใช้น้ำ การใช้กระดาษ 2 หน้า หรือหันไปใช้เอกสารอิเล็กทรอนิกส์แทน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   
@@ -146,14 +146,14 @@ class Module3l1p3 extends StatelessWidget {
                                   ),
                                   Text(
                                     '• แยกขยะ และทิ้งขยะให้ถูกที่ ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         ซึ่งการแยกขยะให้ถูกต้องช่วยให้เราสามารถจำแนกประเภทของขยะได้เพื่อนำไปใช้ประโยชน์ต่อ เช่น ขวดน้ำก็ควรทิ้งในถังขยะรีไซเคิล เศษอาหารทิ้งในถังขยะสำหรับขยะเปียก',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   

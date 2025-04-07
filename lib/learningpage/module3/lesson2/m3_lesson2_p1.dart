@@ -120,7 +120,7 @@ class Module3l2p1 extends StatelessWidget {
 
                                   Text(
                                     '\n1. วิธีปรับตัวและใช้ชีวิตเมื่ออากาศร้อนขึ้น',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),

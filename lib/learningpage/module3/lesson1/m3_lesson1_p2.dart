@@ -112,14 +112,14 @@ class Module3l1p2 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '• ลดการใช้พลังงาน ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         โดยวิธีการนี้เป็นวิธีการที่สามารถเริ่มด้วยตัวเราเองได้ เช่น ปิดไฟเมื่อไม่ใช้ และเลือกใช้พลังงานสะอาด',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   
@@ -131,14 +131,14 @@ class Module3l1p2 extends StatelessWidget {
                                   ),
                                   Text(
                                     '• ใช้ระบบขนส่งที่ลดมลพิษ ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         เพื่อลดการปล่อยก๊าซเรือนกระจก เช่น  ขี่จักรยาน เดิน หรือใช้รถสาธารณะ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   

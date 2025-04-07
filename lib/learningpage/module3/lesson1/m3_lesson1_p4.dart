@@ -113,7 +113,7 @@ class Module3l1p4 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '         วิธีการทิ้งขยะที่เจอในชีวิตประจำวันสามารถแบ่งออกเป็นหลายประเภท และต้องทิ้งให้ถูกวิธีเพื่อช่วยลดผลกระทบต่อสิ่งแวดล้อม',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18,),
                                   ),
@@ -127,14 +127,14 @@ class Module3l1p4 extends StatelessWidget {
                                   ),
                                   Text(
                                     '• ใช้ทรัพยากรอย่างประหยัด ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
                                     '         โดยเราต้องใช้ทรัพยากรให้คุ้มค่าที่สุด เช่น ประหยัดการใช้น้ำ การใช้กระดาษ 2 หน้า หรือหันไปใช้เอกสารอิเล็กทรอนิกส์แทน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   

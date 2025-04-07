@@ -113,20 +113,20 @@ class Module1l2p1 extends StatelessWidget {
                                   const Text(
                                     '         การเปลี่ยนแปลงสภาพภูมิอากาศมีผลต่อชีวิตของมนุษย์และสิ่งแวดล้อม เช่น'
                                     ' อาหารที่เรากิน อากาศที่เราหายใจ และที่อยู่อาศัยของเรา หากเราไม่ช่วยกันลดผลกระทบ โลกอาจเผชิญกับปัญหามากขึ้นในอนาคต',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
                                   const Text(
                                     '\n1. กระทบต่อสุขภาพของเรา',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   const Text(
                                     '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),

@@ -113,7 +113,7 @@ class Module3l2p5 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '2. พืชก็ปรับตัวได้นะ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
@@ -128,14 +128,14 @@ class Module3l2p5 extends StatelessWidget {
 
                                   Text(
                                     '\n⦿    กระบองเพชร มีใบเป็นหนาม ช่วยลดการระเหยของน้ำ และลำต้นสามารถเก็บน้ำไว้ใช้ในช่วงแล้ง',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    ต้นไม้บางชนิด ผลิใบในฤดูฝนและทิ้งใบในฤดูแล้ง เพื่อประหยัดน้ำ',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),

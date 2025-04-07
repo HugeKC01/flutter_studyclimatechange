@@ -113,7 +113,7 @@ class Module3l2p6 extends StatelessWidget {
                                 children: [
                                   Text(
                                     '3. มนุษย์ก็ปรับตัวเหมือนกัน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
@@ -128,28 +128,28 @@ class Module3l2p6 extends StatelessWidget {
 
                                   Text(
                                     '\n⦿    ใส่เสื้อผ้าให้เหมาะกับอากาศ เช่น เสื้อกันหนาวเวลาหนาว หรือเสื้อบางในหน้าร้อน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    สร้างบ้านที่สามารถป้องกันฝน ลม และแดดได้ดี เช่น บ้านที่มีหลังคาใหญ่ๆ หรือบ้านที่มีการระบายอากาศได้ดี',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    ใช้เทคโนโลยี เช่น เครื่องปรับอากาศ หรือเครื่องทำความร้อน เพื่อให้สบายขึ้น',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    ปรับกิจกรรมตามสภาพอากาศ ออกไปทำกิจกรรมตอนเช้าหรือเย็น เพื่อเลี่ยงอากาศร้อนจัด หรือพักผ่อนมากขึ้นเมื่ออากาศเย็น เพื่อรักษาพลังงาน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),                              
                                   

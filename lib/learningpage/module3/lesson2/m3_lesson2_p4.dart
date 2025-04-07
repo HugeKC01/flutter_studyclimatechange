@@ -120,7 +120,7 @@ class Module3l2p4 extends StatelessWidget {
                                   
                                   Text(
                                     '\n1. สัตว์ปรับตัวเพื่อความอยู่รอด',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
@@ -136,21 +136,21 @@ class Module3l2p4 extends StatelessWidget {
 
                                   Text(
                                     '\n⦿    หมีขั้วโลก มีขนหนาและชั้นไขมันใต้ผิวหนัง ช่วยให้ร่างกายอบอุ่นในที่หนาวจัด',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    นกบางชนิด จะบินอพยพไปอยู่ที่ที่อากาศอบอุ่นกว่าในฤดูหนาว',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
 
                                   Text(
                                     '\n⦿    สัตว์บางตัว เช่น งู หรือหมี จำศีลในช่วงที่อากาศหนาวจัด เพื่อประหยัดพลังงาน',
-                                    textAlign: TextAlign.justify,
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   
