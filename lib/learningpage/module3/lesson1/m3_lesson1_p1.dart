@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
 //
 import 'package:climatechange/style/style.dart' as style;
+import 'm3_lesson1_p2.dart';
 
 //pages
 
@@ -231,7 +232,11 @@ class Module3l1p1 extends StatelessWidget {
       // Add FloatingActionButton (Next button)
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to the next screen (replace `NextScreen` with your actual screen)
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const Module3l1p2()),
+          );
         },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.arrow_forward), // Next icon

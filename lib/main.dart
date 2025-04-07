@@ -9,6 +9,7 @@ import 'component/drawer.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
 import 'style/transition.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _loadLockStatus(); // Load lock status before running the app
@@ -113,18 +114,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         'title': 'Module 1',
         'subtitle': 'Introduction to Climate Change',
         'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/default/module01.png',
         'screen': Module1Screen(),
+        
       },
       {
         'title': 'Module 2',
         'subtitle': 'Effects of Climate Change',
         'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/default/module02.png',
         'screen': Module2Screen(),
       },
       {
         'title': 'Module 3',
         'subtitle': 'Fix The Problem And Stop The Cause',
         'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+        'cover' : 'asset/default/module03.png',
         'screen': Module3Screen(),
       },
       {
@@ -191,6 +196,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     color: isLocked
                                         ? Colors.grey
                                         : Theme.of(context).colorScheme.primary,
+                                    image: DecorationImage(
+                                      image: AssetImage(module['cover'] as String),
+                                      fit: BoxFit.cover,
+                                    ),
                                     borderRadius: const BorderRadius.vertical(
                                       top: Radius.circular(15.0),
                                     ),
