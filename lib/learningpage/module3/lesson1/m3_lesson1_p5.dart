@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/learningpage/module3/m3_main.dart';
 
 
 class Module3l1p5 extends StatelessWidget {
@@ -8,9 +9,14 @@ class Module3l1p5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pagetitle = 'เรื่องที่ 1 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pageheader = 'เรื่องที่ 1';
+    final pagesubtitle = '1.1.1)ขยะในครัว';
+    final background = 'asset/module1/background1.png';
+
     return Scaffold(
       appBar: buildAppBar(
-        'เรื่องที่ 1' ,
+        pagetitle,
         context,
       ),
       drawer: buildDrawer(
@@ -18,141 +24,210 @@ class Module3l1p5 extends StatelessWidget {
       ),
       body: Container(
         // Background decoration for the entire screen
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('asset/module1/background1.png'),
+            image: AssetImage(background),
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            // Scrollable content
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 214, 237, 252),
+                ),
+                child: Row(
                   children: [
                     Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 106, 117, 142),
-                            Color.fromARGB(255, 214, 237, 252)
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                      decoration: BoxDecoration(
+                      color: Colors.white, // Background color for the button
+                      shape: BoxShape.circle, // Circular shape
+                      boxShadow: [
+                        BoxShadow(
+                        color: Colors.black, // Shadow color
+                        blurRadius: 4, // Blur radius for the shadow
+                        offset: const Offset(0, 2), // Shadow offset
                         ),
+                      ],
                       ),
-                      child: const SizedBox(height: 12),
+                      child: IconButton(
+                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                  builder: (context) => const Module3Screen()
+                            ),
+                          );  // Exit the current page
+                      },
+                      ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 214, 237, 252),
-                      ),
+                    const SizedBox(width: 20), // Add spacing between the icon and the header
+                    Expanded( // Ensures the text wraps into a new line
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'เรื่องที่ 1 ',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                            pageheader,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Text(
-                            '1.1.1)ขยะในครัว',
-                            style: TextStyle(fontSize: 20),
+                            pagesubtitle,
+                            style: const TextStyle(fontSize: 20),
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 214, 237, 252),
-                            Color.fromARGB(255, 75, 82, 142)
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                  ],
+                ),
+              ),
+              // Scrollable content
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          color: const Color.fromARGB(200, 255, 255, 255),
+                          elevation: 4,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '• เศษอาหาร',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '         ควรนำไปทำปุ๋ยหมักหรือนำไปเลี้ยงสัตว์เพื่อลดขยะอินทรีย์ (ทิ้งในขยะอินทรีย์ - สีเขียว)',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module3/s1m14.png',
+                                  ),
+                                ),
+                                Text(
+                                  '• น้ำมันที่ใช้แล้ว',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '         รอให้เย็นแล้วเทใส่ขวด นำไปทิ้งที่ถังขยะทั่วไป (สีน้ำเงิน) หรือจะนำไปบริจาคหรือขายให้กับสถานที่รับซื้อน้ำมันใช้แล้วเพื่อแปรรูปน้ำมันไบโอดีเซล',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module3/s1m15.png',
+                                  ),
+                                ),
+                                Text(
+                                  '• กล่องโฟม',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '         หลีกเลี่ยงการใช้หากเป็นไปได้ เพราะย่อยสลายยาก ควรแยกทิ้งในถังขยะทั่วไป (สีน้ำเงิน) หรือจุดรับกำจัดขยะโฟมโดยเฉพาะ',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module3/s1m16.jpg',
+                                  ),
+                                ),
+                                
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      child: const SizedBox(height: 12),
-                    ),
+                    ],
+                  ),
+                ),
+              ),
+              // Fixed footer
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Back button
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Card(
-                        color: const Color.fromARGB(200, 255, 255, 255),
-                        elevation: 4,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '• เศษอาหาร',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                               Text(
-                                '         ควรนำไปทำปุ๋ยหมักหรือนำไปเลี้ยงสัตว์เพื่อลดขยะอินทรีย์ (ทิ้งในขยะอินทรีย์ - สีเขียว)',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnBack',
+                            onPressed: () {
                               
-                              const SizedBox(height: 12),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m14.jpg',
-                                ),
-                              ),
-                              Text(
-                                '• น้ำมันที่ใช้แล้ว',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                               Text(
-                                '         รอให้เย็นแล้วเทใส่ขวด นำไปทิ้งที่ถังขยะทั่วไป (สีน้ำเงิน) หรือจะนำไปบริจาคหรือขายให้กับสถานที่รับซื้อน้ำมันใช้แล้วเพื่อแปรรูปน้ำมันไบโอดีเซล',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              
-                              const SizedBox(height: 12),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m15.jpg',
-                                ),
-                              ),
-                              Text(
-                                '• กล่องโฟม',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                               Text(
-                                '         หลีกเลี่ยงการใช้หากเป็นไปได้ เพราะย่อยสลายยาก ควรแยกทิ้งในถังขยะทั่วไป (สีน้ำเงิน) หรือจุดรับกำจัดขยะโฟมโดยเฉพาะ',
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              
-                              const SizedBox(height: 12),
-                              Center(
-                                child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m16.jpg',
-                                ),
-                              ),
-                              
-                            ],
+                            },
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_back,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                                
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Forward button
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnForward',
+                            onPressed: () {
+                            
+                            },
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_forward,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
                       ),
@@ -160,72 +235,10 @@ class Module3l1p5 extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            // Fixed footer
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                              
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
-                           
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

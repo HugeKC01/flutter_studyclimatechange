@@ -2,9 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/profile.dart';
 
-PreferredSizeWidget buildAppBar(String title, BuildContext context) {
+PreferredSizeWidget buildAppBar(String title, BuildContext context, {Widget? leading}) {
   return AppBar(
     title: Text(title),
+    leading: leading, // Show leading only if provided
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.all(8.0),
