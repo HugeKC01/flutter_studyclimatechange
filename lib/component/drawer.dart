@@ -36,20 +36,6 @@ Widget buildDrawer(BuildContext context) {
           },
         ),
         ListTile(
-          leading: Icon(Icons.help_rounded),
-          title: Text('Help'),
-          onTap: () {
-            // Handle the help tap here
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
-          onTap: () {
-            // Handle the settings tap here
-          },
-        ),
-        ListTile(
           leading: Icon(Icons.settings),
           title: Text('Admin'),
           onTap: () {
