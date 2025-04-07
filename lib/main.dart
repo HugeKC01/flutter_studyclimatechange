@@ -7,7 +7,6 @@ import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
 import 'component/drawer.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
-import 'style/transition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

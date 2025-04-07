@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:climatechange/learningpage/module3/m3_main.dart';
-import 'm3_lesson1_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'm3_lesson1_p5.dart';
+import 'package:climatechange/learningpage/module3/m3_main.dart';
 
-class Module3l1p1 extends StatelessWidget {
-  const Module3l1p1 ({super.key});
+class Module3l1p4 extends StatelessWidget {
+  const Module3l1p4 ({super.key});
 
   @override
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 1 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 1';
-    final pagesubtitle = 'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพทางภูมิอากาศและการปรับตัวของมนุษย์และธรรมชาติ';
+    final pagesubtitle = '1.1)วิธีการทิ้งขยะที่เจอในชีวิตประจำวัน';
     final background = 'asset/module1/background1.png';
 
     return Scaffold(
@@ -107,15 +107,36 @@ class Module3l1p1 extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '         วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศการเปลี่ยนแปลงสภาพภูมิอากาศเกิดจากการกระทำของมนุษย์ที่ส่งผลกระทบต่อธรรมชาติ เช่น การใช้พลังงานที่ก่อให้เกิดก๊าซเรือนกระจก การตัดไม้ทำลายป่า และการใช้ทรัพยากรธรรมชาติอย่างไม่ระมัดระวัง โดยการกระทำเหล่านี้ส่งผลให้อุณหภูมิพื้นผิวโลกสูงขึ้น ที่เรียกว่า ภาวะโลกร้อนซึ่งมีความเสี่ยงมากขึ้นที่จะเกิดสภาพอากาศรุนแรง เช่น คลื่นความร้อน ความแห้งแล้ง และ น้ำท่วม โดยในปัจจุบันความแห้งแล้งทั่วโลกได้เพิ่มสูงขึ้นมากกว่าใน 30 ปีที่ผ่านมาถึง 2 เท่า จนกลายเป็นวิกฤติโลกร้อน ที่กำลังส่งผลกระทบต่อระบบนิเวศ และการอยู่รอดของสิ่งมีชีวิตทุกๆ ชีวิตบนโลก ไม่เว้นแม้แต่ตัวมนุษย์เอง เราสามารถช่วยลดผลกระทบนี้ด้วยวิธีต่อไปนี้',
+                                  '         วิธีการทิ้งขยะที่เจอในชีวิตประจำวันสามารถแบ่งออกเป็นหลายประเภท และต้องทิ้งให้ถูกวิธีเพื่อช่วยลดผลกระทบต่อสิ่งแวดล้อม',
                                   textAlign: TextAlign.justify,
                                   style: const TextStyle(
-                                      fontSize: 18),
+                                      fontSize: 18,),
                                 ),
+              
+                                
                                 const SizedBox(height: 12),
                                 Center(
                                   child: HoverableImage(
-                                    imagePath: 'asset/module3/s1m8.jpg',
+                                    imagePath: 'asset/module3/s1m11.jpg',
+                                  ),
+                                ),
+                                Text(
+                                  '• ใช้ทรัพยากรอย่างประหยัด ',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  '         โดยเราต้องใช้ทรัพยากรให้คุ้มค่าที่สุด เช่น ประหยัดการใช้น้ำ การใช้กระดาษ 2 หน้า หรือหันไปใช้เอกสารอิเล็กทรอนิกส์แทน',
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module3/s1m12.png',
                                   ),
                                 ),
                               ],
@@ -151,7 +172,7 @@ class Module3l1p1 extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Module3Screen()),
+                                    builder: (context) => const Module3l1p5()),
                               );
                             },
                             backgroundColor:
@@ -159,6 +180,7 @@ class Module3l1p1 extends StatelessWidget {
                             shape: const CircleBorder(),
                             child: const Icon(Icons.arrow_back,
                                 size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                                
                           ),
                         ),
                       ),
@@ -178,10 +200,10 @@ class Module3l1p1 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Module3l1p2()),
+                                    builder: (context) => const Module3l1p5()),
                               );
                             },
                             backgroundColor:

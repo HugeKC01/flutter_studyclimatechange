@@ -9,14 +9,13 @@ class Module1l2p1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.1) ทำไมเราต้องสนใจเรื่องนี้?';
     final background = 'asset/module1/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
-        pagetitle,
+        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         context,
       ),
       drawer: buildDrawer(
@@ -33,6 +32,7 @@ class Module1l2p1 extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+              // Header Section
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
@@ -43,26 +43,26 @@ class Module1l2p1 extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                      color: Colors.white, // Background color for the button
-                      shape: BoxShape.circle, // Circular shape
-                      boxShadow: [
-                        BoxShadow(
-                        color: Colors.black, // Shadow color
-                        blurRadius: 4, // Blur radius for the shadow
-                        offset: const Offset(0, 2), // Shadow offset
-                        ),
-                      ],
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black, // Shadow color
+                            blurRadius: 4, // Blur radius for the shadow
+                            offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
                       ),
                       child: IconButton(
-                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                      onPressed: () {
-                        Navigator.push(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                        onPressed: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()
+                              builder: (context) => const Module1Screen(),
                             ),
-                          );  // Exit the current page
-                      },
+                          ); // Exit the current page
+                        },
                       ),
                     ),
                     const SizedBox(width: 20), // Add spacing between the icon and the header
@@ -108,22 +108,22 @@ class Module1l2p1 extends StatelessWidget {
                               children: [
                                 const Text(
                                   '         การเปลี่ยนแปลงสภาพภูมิอากาศมีผลต่อชีวิตของมนุษย์และสิ่งแวดล้อม เช่น'
-                                  'อาหารที่เรากิน อากาศที่เราหายใจ และที่อยู่อาศัยของเรา หากเราไม่ช่วยกันลดผลกระทบ โลกอาจเผชิญกับปัญหามากขึ้นในอนาคต',
+                                  ' อาหารที่เรากิน อากาศที่เราหายใจ และที่อยู่อาศัยของเรา หากเราไม่ช่วยกันลดผลกระทบ โลกอาจเผชิญกับปัญหามากขึ้นในอนาคต',
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(fontSize: 18),
                                 ),
                                 const SizedBox(height: 8),
-                                Text(
+                                const Text(
                                   '\n1. กระทบต่อสุขภาพของเรา',
                                   textAlign: TextAlign.justify,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 8),
-                                Text(
+                                const Text(
                                   '         สภาพอากาศที่เปลี่ยนแปลงทำให้เกิดโรคที่เกี่ยวข้องกับความร้อนมากขึ้น เช่น โรคลมแดด และเพิ่มการระบาดของโรคที่มียุงเป็นพาหะอย่างไข้เลือดออกและมาลาเรีย',
                                   textAlign: TextAlign.justify,
-                                  style: const TextStyle(fontSize: 18),
+                                  style: TextStyle(fontSize: 18),
                                 ),
                                 const SizedBox(height: 12),
                                 Center(
@@ -219,7 +219,7 @@ class Module1l2p1 extends StatelessWidget {
 }
 
 class HoverableImage extends StatefulWidget {
-  final String imagePath; // เส้นทางของรูปภาพ
+  final String imagePath; // Path to the image
 
   const HoverableImage({super.key, required this.imagePath});
 
@@ -228,45 +228,45 @@ class HoverableImage extends StatefulWidget {
 }
 
 class HoverableImageState extends State<HoverableImage> {
-  bool _isHovered = false; // สถานะ hover หรือกดค้าง
+  bool _isHovered = false; // Hover state
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (_) {
         setState(() {
-          _isHovered = true; // เมื่อกดค้าง
+          _isHovered = true; // On hover
         });
       },
       onTapUp: (_) {
         setState(() {
-          _isHovered = false; // เมื่อปล่อย
+          _isHovered = false; // On release
         });
       },
       onTapCancel: () {
         setState(() {
-          _isHovered = false; // เมื่อยกเลิกการกด
+          _isHovered = false; // On cancel
         });
       },
       child: AnimatedAlign(
-        duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-        curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+        duration: const Duration(milliseconds: 200), // Animation duration
+        curve: Curves.easeInOut, // Animation curve
         alignment: _isHovered
-            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-            : Alignment.center, // ตำแหน่งปกติ
+            ? const Alignment(-0.1, 0.0) // Slight left shift on hover
+            : Alignment.center, // Default position
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-          curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+          duration: const Duration(milliseconds: 200), // Animation duration
+          curve: Curves.easeInOut, // Animation curve
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.white, // เส้นขอบสีขาว
-              width: 4.0, // ความหนาของเส้นขอบ
+              color: Colors.white, // White border
+              width: 4.0, // Border width
             ),
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
+            borderRadius: BorderRadius.circular(16.0), // Rounded corners
             boxShadow: _isHovered
                 ? [
                     BoxShadow(
-                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
+                      color: Colors.black.withAlpha((0.2 * 255).toInt()),
                       blurRadius: 10.0,
                       offset: const Offset(0, 5),
                     ),
@@ -274,14 +274,14 @@ class HoverableImageState extends State<HoverableImage> {
                 : [],
           ),
           transform: _isHovered
-              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+              ? (Matrix4.identity()..scale(1.1)) // Scale up on hover
               : Matrix4.identity(),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
+            borderRadius: BorderRadius.circular(16.0), // Rounded corners for image
             child: Image.asset(
-              widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
-              fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
+              widget.imagePath,
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4),
+              fit: BoxFit.contain, // Fit image within bounds
             ),
           ),
         ),
