@@ -15,11 +15,13 @@ class Module3Screen extends StatelessWidget {
       {
         'title': 'เรื่องที่ 1',
         'subtitle': 'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module3/module0301.png',
         'screen': Module3l1p1(),
       },
       {
         'title': 'เรื่องที่ 2',
         'subtitle': 'การปรับตัวและการใช้ชีวิต',
+        'cover' : 'asset/module3/module0302.png',
         'screen': Module3l2p1(),
       },
       {
@@ -94,6 +96,10 @@ class Module3Screen extends StatelessWidget {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).colorScheme.primary,
+                                image: DecorationImage(
+                                  image: AssetImage(lesson['cover'] as String),
+                                  fit: BoxFit.cover,
+                                ),
                                 borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(15.0),
                                 ),
