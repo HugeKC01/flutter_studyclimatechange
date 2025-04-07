@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart'; // Import the main.dart file where the reusable navbar widgets are defined.
 //
 import 'package:climatechange/style/style.dart' as style;
-import 'm3_lesson1_p2.dart';
+import 'm3_lesson1_p6.dart';
 
 //pages
 
@@ -235,7 +235,7 @@ class Module3l1p1 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const Module3l1p2()),
+                builder: (context) => const Module3l1p6()),
           );
         },
         backgroundColor: Colors.lightBlue,
