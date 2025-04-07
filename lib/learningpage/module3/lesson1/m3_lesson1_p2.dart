@@ -18,20 +18,44 @@ class Module3l1p2 extends StatelessWidget {
         'title': '1. พลาสติกประเภทที่ 1 Polyethylene Terephthalate สัญลักษณ์ 1 และ PET',
         'description': 'มีความใส เหนียว ทนทาน และป้องกันการแพร่ผ่านของก๊าซได้ดี เช่น แก้วใส ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
-        'image': 'asset/module3/M3_01_pic/plastic01.jpg',
+        'image': 'asset/module3/m3_01_pic/plastic01.jpg',
       },
       {
         'title': '2. พลาสติกประเภทที่ 2 High-Density Polyethylene สัญลักษณ์ 2 และ HDPE',
         'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดนม ขวดน้ำมันพืช ถุงพลาสติก',
         'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-        'image': 'asset/module3/M3_01_pic/plastic02.jpg',
+        'image': 'asset/module3/m3_01_pic/plastic02.jpg',
       },
       {
         'title': '3. พลาสติกประเภทที่ 3 Polyvinyl Chloride สัญลักษณ์ 3 และ PVC',
         'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
         'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
-        'image': 'asset/module3/M3_01_pic/plastic03.jpg',
+        'image': 'asset/module3/m3_01_pic/plastic03.jpg',
       },
+      {
+      'title': '4. พลาสติกประเภทที่ 4 Low-Density Polyethylene สัญลักษณ์ 4 และ LDPE',
+      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
+      'image': 'asset/module3/m3_01_pic/plastic04.jpg',
+    },
+    {
+      'title': '5. พลาสติกประเภทที่ 5 Polypropylene สัญลักษณ์ 5 และ PP',
+      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
+      'image': 'asset/module3/m3_01_pic/plastic05.jpg',
+    },
+    {
+      'title': '6. พลาสติกประเภทที่ 6 Polystyrene สัญลักษณ์ 6 และ PS',
+      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
+      'image': 'asset/module3/m3_01_pic/plastic06.jpg',
+    },
+    {
+      'title': '7. พลาสติกประเภทที่ 7 Other สัญลักษณ์ 7 และ O',
+      'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+      'recycle': 'นำไปรีไซเคิลเป็นท่อประปา ถังขยะ',
+      'image': 'asset/module3/m3_01_pic/plastic07.jpg',
+    },
     ];
 
     return Scaffold(
