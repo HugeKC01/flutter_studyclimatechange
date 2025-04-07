@@ -12,11 +12,13 @@ class Module1Screen extends StatelessWidget {
       {
         'title': 'บทเรียนที่ 1',
         'subtitle': 'ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0101.png',
         'screen': Module1l1p1(),
       },
       {
         'title': 'บทเรียนที่ 2',
         'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0102.png',
         'screen': Module1l2p1(),
       },
     ];
@@ -61,7 +63,7 @@ class Module1Screen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.blue,
                             image: DecorationImage(
-                              image: AssetImage('asset/module1/background1.png'), // Replace with your cover image
+                              image: AssetImage(lesson['cover'] as String),
                               fit: BoxFit.cover,
                             ),
                             borderRadius: const BorderRadius.vertical(

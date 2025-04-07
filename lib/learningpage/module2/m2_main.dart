@@ -12,11 +12,13 @@ class Module2Screen extends StatelessWidget {
       {
         'title': 'บทเรียนที่ 1',
         'subtitle': 'สาเหตุของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0201.png',
         'screen': Module2l1p1(),
       },
       {
         'title': 'บทเรียนที่ 2',
         'subtitle': 'ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0202.png',
         'screen': Module2l2p1(),
       },
     ];
