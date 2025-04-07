@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm3_lesson1_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 
-class Module3l1p1 extends StatelessWidget {
-  const Module3l1p1 ({super.key});
+
+class Module3l1p5 extends StatelessWidget {
+  const Module3l1p5 ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,7 @@ class Module3l1p1 extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพทางภูมิอากาศและการปรับตัวของมนุษย์และธรรมชาติ',
+                            '1.1.1)ขยะในครัว',
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -96,17 +95,63 @@ class Module3l1p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '         วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศการเปลี่ยนแปลงสภาพภูมิอากาศเกิดจากการกระทำของมนุษย์ที่ส่งผลกระทบต่อธรรมชาติ เช่น การใช้พลังงานที่ก่อให้เกิดก๊าซเรือนกระจก การตัดไม้ทำลายป่า และการใช้ทรัพยากรธรรมชาติอย่างไม่ระมัดระวัง โดยการกระทำเหล่านี้ส่งผลให้อุณหภูมิพื้นผิวโลกสูงขึ้น ที่เรียกว่า ภาวะโลกร้อนซึ่งมีความเสี่ยงมากขึ้นที่จะเกิดสภาพอากาศรุนแรง เช่น คลื่นความร้อน ความแห้งแล้ง และ น้ำท่วม โดยในปัจจุบันความแห้งแล้งทั่วโลกได้เพิ่มสูงขึ้นมากกว่าใน 30 ปีที่ผ่านมาถึง 2 เท่า จนกลายเป็นวิกฤติโลกร้อน ที่กำลังส่งผลกระทบต่อระบบนิเวศ และการอยู่รอดของสิ่งมีชีวิตทุกๆ ชีวิตบนโลก ไม่เว้นแม้แต่ตัวมนุษย์เอง เราสามารถช่วยลดผลกระทบนี้ด้วยวิธีต่อไปนี้',
+                                '• เศษอาหาร',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
-                                    fontSize: 18),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
+                               Text(
+                                '         ควรนำไปทำปุ๋ยหมักหรือนำไปเลี้ยงสัตว์เพื่อลดขยะอินทรีย์ (ทิ้งในขยะอินทรีย์ - สีเขียว)',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m8.jpg',
+                                  imagePath: 'asset/module3/s1m14.jpg',
                                 ),
                               ),
+                              Text(
+                                '• น้ำมันที่ใช้แล้ว',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                               Text(
+                                '         รอให้เย็นแล้วเทใส่ขวด นำไปทิ้งที่ถังขยะทั่วไป (สีน้ำเงิน) หรือจะนำไปบริจาคหรือขายให้กับสถานที่รับซื้อน้ำมันใช้แล้วเพื่อแปรรูปน้ำมันไบโอดีเซล',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m15.jpg',
+                                ),
+                              ),
+                              Text(
+                                '• กล่องโฟม',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                               Text(
+                                '         หลีกเลี่ยงการใช้หากเป็นไปได้ เพราะย่อยสลายยาก ควรแยกทิ้งในถังขยะทั่วไป (สีน้ำเงิน) หรือจุดรับกำจัดขยะโฟมโดยเฉพาะ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m16.jpg',
+                                ),
+                              ),
+                              
                             ],
                           ),
                         ),
@@ -137,18 +182,14 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnBack',
                           onPressed: () {
-                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
-                            );
-                          
+                            
                           },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_back,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                              
                         ),
                       ),
                     ),
@@ -168,11 +209,7 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
-                            );
+                           
                           },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),

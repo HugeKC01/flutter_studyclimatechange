@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm3_lesson1_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'm3_lesson1_p4.dart';
 
-class Module3l1p1 extends StatelessWidget {
-  const Module3l1p1 ({super.key});
+class Module3l1p3 extends StatelessWidget {
+  const Module3l1p3 ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +95,55 @@ class Module3l1p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '         วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศการเปลี่ยนแปลงสภาพภูมิอากาศเกิดจากการกระทำของมนุษย์ที่ส่งผลกระทบต่อธรรมชาติ เช่น การใช้พลังงานที่ก่อให้เกิดก๊าซเรือนกระจก การตัดไม้ทำลายป่า และการใช้ทรัพยากรธรรมชาติอย่างไม่ระมัดระวัง โดยการกระทำเหล่านี้ส่งผลให้อุณหภูมิพื้นผิวโลกสูงขึ้น ที่เรียกว่า ภาวะโลกร้อนซึ่งมีความเสี่ยงมากขึ้นที่จะเกิดสภาพอากาศรุนแรง เช่น คลื่นความร้อน ความแห้งแล้ง และ น้ำท่วม โดยในปัจจุบันความแห้งแล้งทั่วโลกได้เพิ่มสูงขึ้นมากกว่าใน 30 ปีที่ผ่านมาถึง 2 เท่า จนกลายเป็นวิกฤติโลกร้อน ที่กำลังส่งผลกระทบต่อระบบนิเวศ และการอยู่รอดของสิ่งมีชีวิตทุกๆ ชีวิตบนโลก ไม่เว้นแม้แต่ตัวมนุษย์เอง เราสามารถช่วยลดผลกระทบนี้ด้วยวิธีต่อไปนี้',
+                                '• ปลูกต้นไม้เพื่อช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
-                                    fontSize: 18),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
+            
+                              
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m8.jpg',
+                                  imagePath: 'asset/module3/s1m11.jpg',
+                                ),
+                              ),
+                              Text(
+                                '• ใช้ทรัพยากรอย่างประหยัด ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         โดยเราต้องใช้ทรัพยากรให้คุ้มค่าที่สุด เช่น ประหยัดการใช้น้ำ การใช้กระดาษ 2 หน้า หรือหันไปใช้เอกสารอิเล็กทรอนิกส์แทน',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m12.jpg',
+                                ),
+                              ),
+                               Text(
+                                '• แยกขยะ และทิ้งขยะให้ถูกที่ ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         ซึ่งการแยกขยะให้ถูกต้องช่วยให้เราสามารถจำแนกประเภทของขยะได้เพื่อนำไปใช้ประโยชน์ต่อ เช่น ขวดน้ำก็ควรทิ้งในถังขยะรีไซเคิล เศษอาหารทิ้งในถังขยะสำหรับขยะเปียก',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m13.jpg',
                                 ),
                               ),
                             ],
@@ -137,18 +176,18 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnBack',
                           onPressed: () {
-                             Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
+                                  builder: (context) => const Module3l1p4()),
                             );
-                          
                           },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_back,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                              
                         ),
                       ),
                     ),
@@ -168,10 +207,10 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
+                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
+                                  builder: (context) => const Module3l1p4()),
                             );
                           },
                           backgroundColor:

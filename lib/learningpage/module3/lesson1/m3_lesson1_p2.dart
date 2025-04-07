@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../m3_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm3_lesson1_p2.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'm3_lesson1_p3.dart';
 
-class Module3l1p1 extends StatelessWidget {
-  const Module3l1p1 ({super.key});
+class Module3l1p2 extends StatelessWidget {
+  const Module3l1p2 ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +95,41 @@ class Module3l1p1 extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '         วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศการเปลี่ยนแปลงสภาพภูมิอากาศเกิดจากการกระทำของมนุษย์ที่ส่งผลกระทบต่อธรรมชาติ เช่น การใช้พลังงานที่ก่อให้เกิดก๊าซเรือนกระจก การตัดไม้ทำลายป่า และการใช้ทรัพยากรธรรมชาติอย่างไม่ระมัดระวัง โดยการกระทำเหล่านี้ส่งผลให้อุณหภูมิพื้นผิวโลกสูงขึ้น ที่เรียกว่า ภาวะโลกร้อนซึ่งมีความเสี่ยงมากขึ้นที่จะเกิดสภาพอากาศรุนแรง เช่น คลื่นความร้อน ความแห้งแล้ง และ น้ำท่วม โดยในปัจจุบันความแห้งแล้งทั่วโลกได้เพิ่มสูงขึ้นมากกว่าใน 30 ปีที่ผ่านมาถึง 2 เท่า จนกลายเป็นวิกฤติโลกร้อน ที่กำลังส่งผลกระทบต่อระบบนิเวศ และการอยู่รอดของสิ่งมีชีวิตทุกๆ ชีวิตบนโลก ไม่เว้นแม้แต่ตัวมนุษย์เอง เราสามารถช่วยลดผลกระทบนี้ด้วยวิธีต่อไปนี้',
+                                '• ลดการใช้พลังงาน ',
                                 textAlign: TextAlign.justify,
                                 style: const TextStyle(
-                                    fontSize: 18),
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         โดยวิธีการนี้เป็นวิธีการที่สามารถเริ่มด้วยตัวเราเองได้ เช่น ปิดไฟเมื่อไม่ใช้ และเลือกใช้พลังงานสะอาด',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
                               const SizedBox(height: 12),
                               Center(
                                 child: HoverableImage(
-                                  imagePath: 'asset/module3/s1m8.jpg',
+                                  imagePath: 'asset/module3/s1m9.jpg',
+                                ),
+                              ),
+                              Text(
+                                '• ใช้ระบบขนส่งที่ลดมลพิษ ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '         เพื่อลดการปล่อยก๊าซเรือนกระจก เช่น  ขี่จักรยาน เดิน หรือใช้รถสาธารณะ',
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              
+                              const SizedBox(height: 12),
+                              Center(
+                                child: HoverableImage(
+                                  imagePath: 'asset/module3/s1m10.jpg',
                                 ),
                               ),
                             ],
@@ -137,18 +162,18 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnBack',
                           onPressed: () {
-                             Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
+                                  builder: (context) => const Module3l1p3()),
                             );
-                          
                           },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_back,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                              
                         ),
                       ),
                     ),
@@ -168,10 +193,10 @@ class Module3l1p1 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
+                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p2()),
+                                  builder: (context) => const Module3l1p3()),
                             );
                           },
                           backgroundColor:
