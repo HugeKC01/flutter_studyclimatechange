@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1_p2.dart';
+import 'm3_lesson1_p8.dart';
 
 class Module3l1p3 extends StatelessWidget {
   const Module3l1p3({super.key});
@@ -114,7 +114,7 @@ class Module3l1p3 extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Module3l1p3(),
+              builder: (context) => Module3l1p8(),
             ),
           );
         },
