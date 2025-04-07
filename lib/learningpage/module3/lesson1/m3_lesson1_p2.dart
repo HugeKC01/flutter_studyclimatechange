@@ -101,6 +101,75 @@ class Module3l1p2 extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text('การรีไซเคิล : ${lesson['recycle']}'),
                     ),
+                    // Back and Forward buttons
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Back button
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 0, 122, 255),
+                              ),
+                              padding: const EdgeInsets.all(4),
+                              child: SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: FloatingActionButton(
+                                  heroTag: 'btnBack',
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Module3l1p1()),
+                                    );
+                                  },
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  shape: const CircleBorder(),
+                                  child: const Icon(Icons.arrow_back,
+                                      size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Forward button
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 0, 122, 255),
+                              ),
+                              padding: const EdgeInsets.all(4),
+                              child: SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: FloatingActionButton(
+                                  heroTag: 'btnForward',
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Module3l1p3()),
+                                    );
+                                  },
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  shape: const CircleBorder(),
+                                  child: const Icon(Icons.arrow_forward,
+                                      size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -108,24 +177,7 @@ class Module3l1p2 extends StatelessWidget {
           ),
           
           
-       ),
-      
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Module3l1p3(),
-            ),
-          );
-        },
-        child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.blue,
-     
-      )
-    );
-
-  
+       ),    
+      );
   }
-  
 }
