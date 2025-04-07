@@ -59,7 +59,11 @@ class Module1Screen extends StatelessWidget {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Colors.blue,
+                            image: DecorationImage(
+                              image: AssetImage('asset/module1/background1.png'), // Replace with your cover image
+                              fit: BoxFit.cover,
+                            ),
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(15.0),
                             ),
