@@ -10,12 +10,24 @@ class PostTestIntroduction extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Post Test Introduction'),
       ),
-      body: Padding(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.08, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ), 
+          Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Title
             const Text(
               'Welcome to the Post Test!',
               style: TextStyle(
@@ -25,6 +37,8 @@ class PostTestIntroduction extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16.0),
+
+            // Description
             const Text(
               'This test will evaluate your understanding of the topics covered in the modules. '
               'Take your time and answer each question carefully.',
@@ -32,6 +46,13 @@ class PostTestIntroduction extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32.0),
+
+            // Instructions
+            ..._buildInstructions(),
+
+            const SizedBox(height: 32.0),
+
+            // Start Post Test Button
             ElevatedButton(
               onPressed: () {
                 // Navigate to the post-test screen
@@ -53,6 +74,38 @@ class PostTestIntroduction extends StatelessWidget {
           ],
         ),
       ),
+        ]
+      )
     );
+  }
+
+  // Helper method to build instruction cards
+  List<Widget> _buildInstructions() {
+    const instructions = [
+      '1. Read each question carefully before answering.',
+      '2. There is no time limit, so take your time.',
+      '3. Once you submit, you cannot change your answers.',
+    ];
+
+    return instructions
+        .map(
+          (instruction) => Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Card(
+              elevation: 4.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  instruction,
+                  style: const TextStyle(fontSize: 16.0),
+                ),
+              ),
+            ),
+          ),
+        )
+        .toList();
   }
 }

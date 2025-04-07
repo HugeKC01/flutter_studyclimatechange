@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import '../m1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm1_lesson1_p3.dart';
+import 'package:climatechange/learningpage/module1/lesson2/m1_lesson2_p1.dart';
+import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/component/hoverable_images.dart' as component;
 
 class Module1l1p4 extends StatelessWidget {
   const Module1l1p4({super.key});
@@ -12,7 +14,7 @@ class Module1l1p4 extends StatelessWidget {
     final pagetitle = 'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.3) ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ';
-    final background = 'asset/module1/background1.png';
+    final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
@@ -22,15 +24,18 @@ class Module1l1p4 extends StatelessWidget {
       drawer: buildDrawer(
         context,
       ),
-      body: Container(
-        // Background decoration for the entire screen
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(background),
-            fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.5, // Adjust the opacity value as needed
+              child: Image.asset(
+                background, // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-        child: SafeArea(
+          SafeArea(
           child: Column(
             children: [
               Container(
@@ -43,15 +48,15 @@ class Module1l1p4 extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                      color: Colors.white, // Background color for the button
-                      shape: BoxShape.circle, // Circular shape
-                      boxShadow: [
-                        BoxShadow(
-                        color: Colors.black, // Shadow color
-                        blurRadius: 4, // Blur radius for the shadow
-                        offset: const Offset(0, 2), // Shadow offset
-                        ),
-                      ],
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                          color: Colors.black, // Shadow color
+                          blurRadius: 4, // Blur radius for the shadow
+                          offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
                       ),
                       child: IconButton(
                       icon: const Icon(Icons.exit_to_app, color: Colors.black),
@@ -114,7 +119,7 @@ class Module1l1p4 extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
+                                children: [component.HoverableImage(
                                   imagePath: 'asset/module1/dry.jpg',
                                   ),
                                 ],
@@ -129,7 +134,7 @@ class Module1l1p4 extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
+                                children: [component.HoverableImage(
                                   imagePath: 'asset/module1/polarb.jpg',
                                   ),
                                 ],
@@ -143,7 +148,7 @@ class Module1l1p4 extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
+                                children: [component.HoverableImage(
                                   imagePath: 'asset/module1/strom.jpg',
                                   ),
                                 ],
@@ -158,7 +163,7 @@ class Module1l1p4 extends StatelessWidget {
                               
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
+                                children: [component.HoverableImage(
                                   imagePath: 'asset/module1/ext.jpg',
                                   ),
                                 ],
@@ -177,6 +182,11 @@ class Module1l1p4 extends StatelessWidget {
             // Fixed footer
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(50), // Pill shape
+                ),
+                margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -210,6 +220,21 @@ class Module1l1p4 extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Page number
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                    color: Colors.white, // White background
+                    borderRadius: BorderRadius.circular(50), // Pill shape
+                    ),
+                    child: const Text(
+                    'Page 4 of 4',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  ),
                   // Forward button
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
@@ -225,100 +250,66 @@ class Module1l1p4 extends StatelessWidget {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()),
-                            );
-                          },
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('Complete'),
+                                content: const Text(
+                                  'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module1Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module1l2p1()),
+                                    );
+                                  },
+                                  child: const Text('ไปยังเรื่องที่ 2'),
+                                  ),
+                                ],
+                                );
+                              },
+                              );
+                            },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_forward,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        ],
       )
-    );
-  }
-}
-
-class HoverableImage extends StatefulWidget {
-  final String imagePath; // เส้นทางของรูปภาพ
-
-  const HoverableImage({super.key, required this.imagePath});
-
-  @override
-  HoverableImageState createState() => HoverableImageState();
-}
-
-class HoverableImageState extends State<HoverableImage> {
-  bool _isHovered = false; // สถานะ hover หรือกดค้าง
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          _isHovered = true; // เมื่อกดค้าง
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isHovered = false; // เมื่อปล่อย
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          _isHovered = false; // เมื่อยกเลิกการกด
-        });
-      },
-      child: AnimatedAlign(
-        duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-        curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
-        alignment: _isHovered
-            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-            : Alignment.center, // ตำแหน่งปกติ
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-          curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white, // เส้นขอบสีขาว
-              width: 4.0, // ความหนาของเส้นขอบ
-            ),
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
-                      blurRadius: 10.0,
-                      offset: const Offset(0, 5),
-                    ),
-                  ]
-                : [],
-          ),
-          transform: _isHovered
-              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
-              : Matrix4.identity(),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
-            child: Image.asset(
-              widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
-              fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

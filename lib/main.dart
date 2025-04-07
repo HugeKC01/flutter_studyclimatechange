@@ -7,7 +7,6 @@ import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
 import 'component/drawer.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
-import 'style/transition.dart';
 
 
 void main() async {
@@ -122,15 +121,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       },
       {
         'title': 'Module 2',
-        'subtitle': 'Effects of Climate Change',
-        'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'subtitle': 'Cause and effects of the Climate Change',
+        'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'cover' : 'asset/default/module02.png',
         'screen': Module2Screen(),
       },
       {
         'title': 'Module 3',
-        'subtitle': 'Fix The Problem And Stop The Cause',
-        'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+        'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
+        'description': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'cover' : 'asset/default/module03.png',
         'screen': Module3Screen(),
       },
@@ -151,7 +150,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       drawer: buildDrawer(
         context,
       ),
-      body: SafeArea(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.15, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ),
+          SafeArea(
         child: Scrollbar(
           thumbVisibility: true,
           controller: _scrollController, // Attach ScrollController to Scrollbar
@@ -263,6 +273,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             },
           ),
         ),
+      ),
+        ],
       ),
     );
   }
