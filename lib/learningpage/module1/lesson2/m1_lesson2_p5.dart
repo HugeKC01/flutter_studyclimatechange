@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
+import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
 import 'm1_lesson2_p4.dart';
-import 'm1_lesson2_p6.dart';
 
 class Module1l2p5 extends StatelessWidget {
   const Module1l2p5({super.key});
@@ -183,7 +183,7 @@ class Module1l2p5 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50), // Pill shape
                       ),
                       child: const Text(
-                      'Page 5 of 6',
+                      'Page 5 of 5',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -205,10 +205,50 @@ class Module1l2p5 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Module1l2p6()),
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('กิจกรรมเสริมความเข้าใจ'),
+                                content: const Text(
+                                  'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                  'คุณสามารถทำกิจกรรมความเข้าใจของคุณได้\n\n'
+                                  'หากคุณกลับหน้าหลัก จะต้องเริ่มการเรียนรู้เรื่องที่ 2 ใหม่\n\n'
+                                  'คุณต้องการทำกิจกรรมนี้หรือไม่?'),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module1Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const EnhancedM1Introduction()),
+                                    );
+                                  },
+                                  child: const Text('ไปทำกิจกรรม'),
+                                  ),
+                                ],
+                                );
+                              },
                               );
                             },
                             backgroundColor:

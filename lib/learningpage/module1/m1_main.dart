@@ -1,7 +1,9 @@
+import 'package:climatechange/learningpage/module1/m1_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m1_lesson1_p1.dart';
 import 'lesson2/m1_lesson2_p1.dart';
+import 'practice/practiceintro.dart';
 import 'package:climatechange/main.dart';
 
 class Module1Screen extends StatelessWidget {
@@ -20,11 +22,21 @@ class Module1Screen extends StatelessWidget {
         'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module1l2p1(),
       },
+      {
+        'title': 'แบบฝึกหัด',
+        'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': PracticeM1Introduction(),
+      },
+      {
+        'title': 'สรุปการเรียนรู้',
+        'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': Module1Sum(),
+      },
     ];
 
     return Scaffold(
       appBar: buildAppBar(
-        'Module 3',
+        'Module 1',
         context,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

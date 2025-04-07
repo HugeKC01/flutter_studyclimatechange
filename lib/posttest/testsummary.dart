@@ -123,4 +123,4 @@ class PostTestResultScreen extends StatelessWidget {
       ),
     );
   }
-}
+} //Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);

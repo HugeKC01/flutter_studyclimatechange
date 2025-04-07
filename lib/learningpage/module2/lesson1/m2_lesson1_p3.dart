@@ -115,7 +115,7 @@ class Module2l1p3 extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  '\n1. สาเหตุจากกิจกรรมการเกษตร',
+                                  '\n3. สาเหตุจากกิจกรรมการเกษตร',
                                   textAlign: TextAlign.justify,
                                   style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold

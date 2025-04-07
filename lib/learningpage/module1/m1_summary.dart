@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm1_lesson2_p5.dart';
-import '../m1_main.dart';
+import 'practice/practiceintro.dart';
+import 'lesson2/m1_lesson2_p5.dart';
+import 'm1_main.dart';
 
-class Module1l2p6 extends StatelessWidget {
-  const Module1l2p6({super.key});
+class Module1Sum extends StatelessWidget {
+  const Module1Sum({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = 'สรุป: ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pageheader = 'สรุป';
+    final pagesubtitle = 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
@@ -198,10 +199,49 @@ class Module1l2p6 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()),
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('Complete'),
+                                content: const Text(
+                                  'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                  'คุณสามารถทำแบบทดสอบเพื่อประเมินความเข้าใจของคุณได้\n\n'
+                                  'คุณต้องการทำแบบทดสอบหรือไม่?'),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module1Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const PracticeM1Introduction()),
+                                    );
+                                  },
+                                  child: const Text('ไปทำแบบทดสอบ'),
+                                  ),
+                                ],
+                                );
+                              },
                               );
                             },
                             backgroundColor:
