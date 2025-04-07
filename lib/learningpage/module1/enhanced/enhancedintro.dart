@@ -10,7 +10,18 @@ class EnhancedM1Introduction extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Practice Introduction'),
       ),
-      body: Padding(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.08, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ),
+        Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,6 +74,8 @@ class EnhancedM1Introduction extends StatelessWidget {
           ],
         ),
       ),
+        ]
+      )
     );
   }
 
