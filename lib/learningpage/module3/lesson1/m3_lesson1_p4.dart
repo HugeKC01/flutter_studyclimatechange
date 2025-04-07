@@ -10,7 +10,7 @@ class Module3l1p4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 1 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
-    final pageheader = 'เรื่องที่ 2';
+    final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.1)วิธีการทิ้งขยะที่เจอในชีวิตประจำวัน';
     final background = 'asset/module1/background1.png';
 
