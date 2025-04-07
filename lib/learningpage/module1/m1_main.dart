@@ -23,14 +23,14 @@ class Module1Screen extends StatelessWidget {
         'screen': Module1l2p1(),
       },
       {
-        'title': 'แบบฝึกหัด',
-        'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'screen': PracticeM1Introduction(),
-      },
-      {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module1Sum(),
+      },
+      {
+        'title': 'แบบฝึกหัด',
+        'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': PracticeM1Introduction(),
       },
     ];
 

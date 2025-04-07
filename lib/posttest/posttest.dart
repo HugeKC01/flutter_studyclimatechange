@@ -35,8 +35,16 @@ class QuizPageState extends State<PostTestScreen> {
 
   @override
   void initState() {
-    super.initState();
-    _startTimer();
+  super.initState();
+  _shuffleAnswers(); // Shuffle answers when the quiz starts
+  _startTimer();
+  }
+
+  void _shuffleAnswers() {
+    for (var question in questions) {
+      final answers = question['answers'] as List<String>;
+      answers.shuffle(); // Shuffle the answers
+    }
   }
 
   @override
@@ -237,8 +245,13 @@ class QuizPageState extends State<PostTestScreen> {
     final answers = question['answers'] as List<String>;
     final selectedAnswer = question['selectedAnswer'] as String;
 
-    return answers.map((answer) {
+    return answers.asMap().entries.map((entry) {
+      final index = entry.key;
+      final answer = entry.value;
       final isSelected = selectedAnswer == answer;
+
+      // Map index to corresponding letter (a, b, c, d)
+      final optionLetter = String.fromCharCode(97 + index); // 97 is ASCII for 'a'
 
       return Expanded(
         child: Container(
@@ -256,7 +269,7 @@ class QuizPageState extends State<PostTestScreen> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                answer,
+                '$optionLetter) $answer', // Add the letter prefix
                 style: const TextStyle(fontSize: 18.0), // Increased font size
               ),
             ),

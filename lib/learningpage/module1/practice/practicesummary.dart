@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // Import SharedPreferences
 import 'package:climatechange/learningpage/module1/m1_main.dart';
+import 'package:climatechange/component/shared_state.dart'; // Import shared state
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/appbar.dart';
 
@@ -23,6 +25,25 @@ class PracticeM1ResultScreen extends StatelessWidget {
     return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 
+  Future<void> _unlockModule2() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Retrieve the current locked status list
+    final List<bool> lockedStatus = moduleLockedStatusNotifier.value;
+
+    // Unlock Module 2 (index 1)
+    if (lockedStatus.length > 1) {
+      lockedStatus[1] = false; // Unlock Module 2
+    }
+
+    // Notify listeners
+    moduleLockedStatusNotifier.value = List.from(lockedStatus);
+
+    // Save the updated status to SharedPreferences
+    final List<String> statusToSave = lockedStatus.map((status) => status.toString()).toList();
+    await prefs.setStringList('moduleLockedStatus', statusToSave);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,15 +55,15 @@ class PracticeM1ResultScreen extends StatelessWidget {
       body: Stack(
         children: [
           // Background image
-            Positioned.fill(
+          Positioned.fill(
             child: Opacity(
               opacity: 0.08, // Adjust the opacity value as needed
               child: Image.asset(
-              'asset/overall/background1.png', // Replace with your image path
-              fit: BoxFit.cover,
+                'asset/overall/background1.png', // Replace with your image path
+                fit: BoxFit.cover,
               ),
             ),
-            ),
+          ),
           // Content overlay
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -140,6 +161,7 @@ class PracticeM1ResultScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () {
+                      _unlockModule2(); // Unlock Module 2
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -147,7 +169,7 @@ class PracticeM1ResultScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text('กลับไปที่หน้าหลัก'),
+                    child: const Text('Back to Home'),
                   ),
                 ),
               ),

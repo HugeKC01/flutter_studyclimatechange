@@ -17,15 +17,33 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศมีผลกระทบโดยตรงต่อสิ่งใดบ้างมากที่สุด?',
-      'answers': ['a) อาหารที่เรากิน', 'b) อาชีพที่เราทำ', 'c) คู่ชีวิตในอนาคต', 'd) ราคาน้ำมัน'],
-      'correctAnswer': 'a) อาหารที่เรากิน',
+      'questionText': 'ข้อใดอธิบายความหมายของ "ภูมิอากาศ" ได้ถูกต้อง?',
+      'answers': ['สภาพอากาศที่เปลี่ยนแปลงทุกวัน', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ปริมาณฝนที่ตกในแต่ละวัน'],
+      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'สัตว์ชนิดใดที่มักอพยพไปอยู่ในที่ที่มีอุณหภูมิพอเหมาะเมื่อฤดูกาลเปลี่ยนไป?',
-      'answers': ['a) ช้าง', 'b) นก', 'c) แมว', 'd) ลิง'],
-      'correctAnswer': 'a) ช้าง',
+      'questionText': 'ข้อใดไม่เกี่ยวข้องกับการเปลี่ยนแปลงสภาพภูมิอากาศ?',
+      'answers': ['การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก', 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต', 'เกิดจากการกระทำของมนุษย์', 'เกิดจากธรรมชาติ'],
+      'correctAnswer': 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต',
+      'selectedAnswer': '',
+    },
+    {
+      'questionText': 'ข้อใดเป็นสาเหตุที่เกิดจากมนุษย์และทำให้สภาพภูมิอากาศเปลี่ยนแปลง?',
+      'answers': ['ภูเขาไฟระเบิด', 'การเผาไหม้เชื้อเพลิงฟอสซิล', 'การหมุนของโลก', 'การเปลี่ยนแปลงของดวงอาทิตย์'],
+      'correctAnswer': 'การเผาไหม้เชื้อเพลิงฟอสซิล',
+      'selectedAnswer': '',
+    },
+    {
+      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
+      'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
+      'correctAnswer': 'พายุและฝนตกหนักลดลง',
+      'selectedAnswer': '',
+    },
+    {
+      'questionText': 'น้ำแข็งขั้วโลกละลายมีผลกระทบต่อสิ่งมีชีวิตอย่างไร?',
+      'answers': ['ทำให้สัตว์บางชนิดสูญพันธุ์', 'ทำให้สัตว์อาศัยอยู่ได้ง่ายขึ้น', 'ทำให้ป่ามีต้นไม้มากขึ้น', 'ทำให้อุณหภูมิลดลงทั่วโลก'],
+      'correctAnswer': 'ทำให้สัตว์บางชนิดสูญพันธุ์',
       'selectedAnswer': '',
     },
   ];
@@ -35,8 +53,16 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
 
   @override
   void initState() {
-    super.initState();
-    _startTimer();
+  super.initState();
+  _shuffleAnswers(); // Shuffle answers when the quiz starts
+  _startTimer();
+  }
+
+  void _shuffleAnswers() {
+    for (var question in questions) {
+      final answers = question['answers'] as List<String>;
+      answers.shuffle(); // Shuffle the answers
+    }
   }
 
   @override
@@ -237,8 +263,13 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     final answers = question['answers'] as List<String>;
     final selectedAnswer = question['selectedAnswer'] as String;
 
-    return answers.map((answer) {
+    return answers.asMap().entries.map((entry) {
+      final index = entry.key;
+      final answer = entry.value;
       final isSelected = selectedAnswer == answer;
+
+      // Map index to corresponding letter (a, b, c, d)
+      final optionLetter = String.fromCharCode(97 + index); // 97 is ASCII for 'a'
 
       return Expanded(
         child: Container(
@@ -256,7 +287,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                answer,
+                '$optionLetter) $answer', // Add the letter prefix
                 style: const TextStyle(fontSize: 18.0), // Increased font size
               ),
             ),

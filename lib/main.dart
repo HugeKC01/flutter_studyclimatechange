@@ -116,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       },
       {
         'title': 'Module 2',
-        'subtitle': 'Effects of Climate Change',
-        'description': 'ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'subtitle': 'Cause and effects of the Climate Change',
+        'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module2Screen(),
       },
       {

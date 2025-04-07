@@ -17,15 +17,21 @@ class EnhancedM1PageState extends State<EnhancedM1Screen> {
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศมีผลกระทบโดยตรงต่อสิ่งใดบ้างมากที่สุด?',
-      'answers': ['a) อาหารที่เรากิน', 'b) อาชีพที่เราทำ', 'c) คู่ชีวิตในอนาคต', 'd) ราคาน้ำมัน'],
-      'correctAnswer': 'a) อาหารที่เรากิน',
+      'questionText': 'ข้อใดอธิบายความหมายของ "สภาพอากาศ" ได้ถูกต้อง?',
+      'answers': ['ฤดูกาลที่เกิดขึ้นทุกๆปี', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ ในแต่ละวัน', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ฤดูร้อนที่อากาศร้อน หลายเดือน'],
+      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ ในแต่ละวัน',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'สัตว์ชนิดใดที่มักอพยพไปอยู่ในที่ที่มีอุณหภูมิพอเหมาะเมื่อฤดูกาลเปลี่ยนไป?',
-      'answers': ['a) ช้าง', 'b) นก', 'c) แมว', 'd) ลิง'],
-      'correctAnswer': 'a) ช้าง',
+      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศหมายถึงอะไร?',
+      'answers': ['การเปลี่ยนแปลงของสภาพอากาศในระยะสั้น', 'การเปลี่ยนแปลงของสภาพอากาศในระยะยาว เช่น อุณหภูมิโลกสูงขึ้น', 'การเปลี่ยนแปลงของลมและฝนในแต่ละวัน', 'การเกิดฝนตกหนักเพียงครั้งเดียวในปีนั้น'],
+      'correctAnswer': 'การเปลี่ยนแปลงของสภาพอากาศในระยะยาว เช่น อุณหภูมิโลกสูงขึ้น',
+      'selectedAnswer': '',
+    },
+    {
+      'questionText': 'ข้อใดบ้างไม่ใช่ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ',
+      'answers': ['โรคลมแดด', 'ฝนตกในหน้าร้อน', 'แผ่นดินไหว', 'น้ำท่วมนาข้าว'],
+      'correctAnswer': 'แผ่นดินไหว',
       'selectedAnswer': '',
     },
   ];
@@ -35,8 +41,16 @@ class EnhancedM1PageState extends State<EnhancedM1Screen> {
 
   @override
   void initState() {
-    super.initState();
-    _startTimer();
+  super.initState();
+  _shuffleAnswers(); // Shuffle answers when the quiz starts
+  _startTimer();
+  }
+
+  void _shuffleAnswers() {
+    for (var question in questions) {
+      final answers = question['answers'] as List<String>;
+      answers.shuffle(); // Shuffle the answers
+    }
   }
 
   @override
@@ -237,8 +251,13 @@ class EnhancedM1PageState extends State<EnhancedM1Screen> {
     final answers = question['answers'] as List<String>;
     final selectedAnswer = question['selectedAnswer'] as String;
 
-    return answers.map((answer) {
+    return answers.asMap().entries.map((entry) {
+      final index = entry.key;
+      final answer = entry.value;
       final isSelected = selectedAnswer == answer;
+
+      // Map index to corresponding letter (a, b, c, d)
+      final optionLetter = String.fromCharCode(97 + index); // 97 is ASCII for 'a'
 
       return Expanded(
         child: Container(
@@ -256,7 +275,7 @@ class EnhancedM1PageState extends State<EnhancedM1Screen> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                answer,
+                '$optionLetter) $answer', // Add the letter prefix
                 style: const TextStyle(fontSize: 18.0), // Increased font size
               ),
             ),

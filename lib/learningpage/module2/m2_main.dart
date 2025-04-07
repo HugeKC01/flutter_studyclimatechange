@@ -24,7 +24,7 @@ class Module2Screen extends StatelessWidget {
 
     return Scaffold(
       appBar: buildAppBar(
-        'Module 3',
+        'Module 2',
         context,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

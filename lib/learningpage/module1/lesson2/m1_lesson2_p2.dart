@@ -3,6 +3,7 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'm1_lesson2_p3.dart';
+import 'm1_lesson2_p1.dart';
 
 class Module1l2p2 extends StatelessWidget {
   const Module1l2p2({super.key});
@@ -160,7 +161,11 @@ class Module1l2p2 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnBack',
                             onPressed: () {
-                              Navigator.pop(context); // Navigate back
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Module1l2p1()),
+                              );
                             },
                             backgroundColor:
                                 const Color.fromARGB(255, 255, 255, 255),
