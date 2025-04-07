@@ -207,7 +207,7 @@ class Module3l1p2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50), // Pill shape
                         ),
                         child: const Text(
-                        'Page 2 of 5',
+                        'Page 2 of 8',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

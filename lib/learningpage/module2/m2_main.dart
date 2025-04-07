@@ -27,11 +27,13 @@ class Module2Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module2/module0202.png',
         'screen': Module2Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module2/module0202.png',
         'screen': PracticeM2Introduction(),
       },
     ];
@@ -102,13 +104,6 @@ class Module2Screen extends StatelessWidget {
                                 ),
                                 borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(15.0),
-                                ),
-                              ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: const Center(
-                                child: Text(
-                                  'Cover Section',
-                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),

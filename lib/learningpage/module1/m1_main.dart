@@ -27,11 +27,13 @@ class Module1Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0102.png',
         'screen': Module1Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module1/module0102.png',
         'screen': PracticeM1Introduction(),
       },
     ];
@@ -102,13 +104,6 @@ class Module1Screen extends StatelessWidget {
                                 ),
                                 borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(15.0),
-                                ),
-                              ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: const Center(
-                                child: Text(
-                                  'Cover Section',
-                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),

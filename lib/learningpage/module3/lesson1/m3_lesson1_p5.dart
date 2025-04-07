@@ -3,7 +3,8 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module3/m3_main.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
-
+import 'm3_lesson1_p4.dart';
+import 'm3_lesson1_p6.dart';
 
 class Module3l1p5 extends StatelessWidget {
   const Module3l1p5 ({super.key});
@@ -203,7 +204,11 @@ class Module3l1p5 extends StatelessWidget {
                             child: FloatingActionButton(
                               heroTag: 'btnBack',
                               onPressed: () {
-                                
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Module3l1p4()),
+                                );
                               },
                               backgroundColor:
                                   const Color.fromARGB(255, 255, 255, 255),
@@ -223,7 +228,7 @@ class Module3l1p5 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50), // Pill shape
                         ),
                         child: const Text(
-                        'Page 5 of 5',
+                        'Page 5 of 8',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -245,7 +250,11 @@ class Module3l1p5 extends StatelessWidget {
                             child: FloatingActionButton(
                               heroTag: 'btnForward',
                               onPressed: () {
-                              
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Module3l1p6()),
+                                );
                               },
                               backgroundColor:
                                   const Color.fromARGB(255, 255, 255, 255),

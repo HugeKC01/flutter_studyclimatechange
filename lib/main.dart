@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         'title': 'Module 1',
         'subtitle': 'Introduction to Climate Change',
         'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/module01.png',
+        'cover' : 'asset/default/Module01.png',
         'screen': Module1Screen(),
         
       },
@@ -123,14 +123,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         'title': 'Module 2',
         'subtitle': 'Cause and effects of the Climate Change',
         'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/module02.png',
+        'cover' : 'asset/default/Module02.png',
         'screen': Module2Screen(),
       },
       {
         'title': 'Module 3',
         'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
         'description': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/module03.png',
+        'cover' : 'asset/default/Module03.png',
         'screen': Module3Screen(),
       },
       {
@@ -223,14 +223,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        module['title'] as String,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
+                                      
                                       if (isLocked)
                                         const Icon(
                                           Icons.lock,

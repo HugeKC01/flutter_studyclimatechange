@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1_p1.dart';
 import 'm3_lesson1_p7.dart';
+import 'package:climatechange/learningpage/module3/lesson2/m3_lesson2_p1.dart';
+
 
 import 'package:climatechange/style/style.dart' as style;
 
@@ -32,7 +33,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
   @override
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ หน้า 8';
-    final background = 'asset/module1/background1.png';
+    final background = 'asset/overall/background1.png';
 
     final lessons = [
       {
@@ -65,13 +66,18 @@ class _Module3l1p8State extends State<Module3l1p8> {
       drawer: buildDrawer(
         context,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(background),
-            fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.5, // Adjust the opacity value as needed
+              child: Image.asset(
+                background, // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
+          SafeArea(
         child: Column(
           children: [
             Expanded(
@@ -159,6 +165,11 @@ class _Module3l1p8State extends State<Module3l1p8> {
             // Back and Forward buttons
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    borderRadius: BorderRadius.circular(50), // Pill shape
+                  ),
+                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -180,7 +191,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Module3l1p1()),
+                                  builder: (context) => const Module3l1p7()),
                             );
                           },
                           backgroundColor:
@@ -192,6 +203,21 @@ class _Module3l1p8State extends State<Module3l1p8> {
                       ),
                     ),
                   ),
+                  // Page number
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                        color: Colors.white, // White background
+                        borderRadius: BorderRadius.circular(50), // Pill shape
+                        ),
+                        child: const Text(
+                        'Page 8 of 8',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        ),
+                      ),
                   // Forward button
                   Padding(
                     padding: const EdgeInsets.only(right: 15),
@@ -207,12 +233,49 @@ class _Module3l1p8State extends State<Module3l1p8> {
                         child: FloatingActionButton(
                           heroTag: 'btnForward',
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module3l1p3()),
-                            );
-                          },
+                                showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                  title: const Text('Complete'),
+                                  content: const Text(
+                                    'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
+                                  actions: [
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                    },
+                                    child: const Text('ยกเลิก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const Module3Screen()),
+                                      ); // Close the dialog
+                                    },
+                                    child: const Text('กลับหน้าหลัก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const Module3l2p1()),
+                                      );
+                                    },
+                                    child: const Text('ไปยังเรื่องที่ 2'),
+                                    ),
+                                  ],
+                                  );
+                                },
+                                );
+                              },
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                           shape: const CircleBorder(),
@@ -227,6 +290,8 @@ class _Module3l1p8State extends State<Module3l1p8> {
             ),
           ],
         ),
+      ),
+        ],
       ),
     );
   }

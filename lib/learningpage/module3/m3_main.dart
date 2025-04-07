@@ -27,11 +27,13 @@ class Module3Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module3/module0302.png',
         'screen': Module3Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover' : 'asset/module3/module0302.png',
         'screen': PracticeM3Introduction(),
       },
     ];
@@ -102,13 +104,6 @@ class Module3Screen extends StatelessWidget {
                                 ),
                                 borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(15.0),
-                                ),
-                              ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: const Center(
-                                child: Text(
-                                  'Cover Section',
-                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),
