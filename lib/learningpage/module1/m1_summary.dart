@@ -3,6 +3,7 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'practice/practiceintro.dart';
 import 'm1_main.dart';
+import 'package:climatechange/component/hoverable_images.dart' as component;
 
 class Module1Sum extends StatelessWidget {
   const Module1Sum({super.key});
@@ -113,7 +114,7 @@ class Module1Sum extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 12),
                                 Center(
-                                  child: HoverableImage(
+                                  child: component.HoverableImage(
                                     imagePath: 'asset/module1/Designer5.jpeg',
                                   ),
                                 ),
@@ -256,78 +257,6 @@ class Module1Sum extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class HoverableImage extends StatefulWidget {
-  final String imagePath; // Path to the image
-
-  const HoverableImage({super.key, required this.imagePath});
-
-  @override
-  HoverableImageState createState() => HoverableImageState();
-}
-
-class HoverableImageState extends State<HoverableImage> {
-  bool _isHovered = false; // Hover state
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          _isHovered = true; // On hover
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isHovered = false; // On release
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          _isHovered = false; // On cancel
-        });
-      },
-      child: AnimatedAlign(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-        alignment: _isHovered
-            ? const Alignment(-0.5, 0.0) // Slight left shift on hover
-            : Alignment.center, // Default position
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeInOut,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white,
-              width: 4.0,
-            ),
-            borderRadius: BorderRadius.circular(16.0),
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: Colors.black.withAlpha((0.2 * 255).toInt()),
-                      blurRadius: 10.0,
-                      offset: const Offset(0, 5),
-                    ),
-                  ]
-                : [],
-          ),
-          transform: _isHovered
-              ? (Matrix4.identity()..scale(1.1)) // Scale up on hover
-              : Matrix4.identity(),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: Image.asset(
-              widget.imagePath,
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.7 : 0.6),
-              fit: BoxFit.contain,
-            ),
           ),
         ),
       ),

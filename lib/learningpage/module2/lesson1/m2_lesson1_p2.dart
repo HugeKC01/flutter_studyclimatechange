@@ -4,6 +4,7 @@ import 'm2_lesson1_p3.dart'; // Import m3_learn2_p2.dart file where the next scr
 import 'package:climatechange/learningpage/module2/m2_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/component/hoverable_images.dart' as component;
 
 class Module2l1p2 extends StatelessWidget {
   const Module2l1p2({super.key});
@@ -132,7 +133,7 @@ class Module2l1p2 extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 12),
                                 Center(
-                                  child: HoverableImage(
+                                  child: component.HoverableImage(
                                     imagePath: 'asset/module2/AirCompany.png',
                                   ),
                                 ),
@@ -239,78 +240,6 @@ class Module2l1p2 extends StatelessWidget {
           ),
         ),
       )
-    );
-  }
-}
-
-class HoverableImage extends StatefulWidget {
-  final String imagePath; //เส้นทางของรูปภาพ
-
-  const HoverableImage({super.key, required this.imagePath});
-
-  @override
-  HoverableImageState createState() => HoverableImageState();
-}
-
-class HoverableImageState extends State<HoverableImage> {
-  bool _isHovered = false; // สถานะ Hover หรือกดค้าง
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          _isHovered = true; // เมื่อกดค้าง
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isHovered = false; // เมื่อปล่อย
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          _isHovered = false; // เมื่อยกเลิกการกด
-        });
-      },
-      child: AnimatedAlign(
-        duration: const Duration(milliseconds: 200), //ระยะเวลาในการเปลี่ยนแปลง
-        curve: Curves.easeInOut, //ลักษณะการเคลื่อนไหว
-        alignment: _isHovered
-        ? const Alignment(-0.1, 0.0) //ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-        : Alignment.center, //ตำแหน่งปกติ
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200), //ระยะเวลาในการเปลี่ยนแปลง
-          curve: Curves.easeInOut, //ลักษณะการเคลื่อนไหว
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white, //เส้นขอบสีขาว
-              width: 4.0, //ความหนาของเส้นขอบ
-            ),
-            borderRadius: BorderRadius.circular(16.0), //กำหนดขอบมน
-            boxShadow: _isHovered
-            ? [
-              BoxShadow(
-                color: Colors.black.withAlpha((0.2 * 255).toInt()), //ใช้ withAlpha แทน withOpacity
-                blurRadius: 10.0,
-                offset: const Offset(0, 5),
-              ),
-            ]
-            : [],
-          ),
-          transform: _isHovered
-          ? (Matrix4.identity()..scale(1.1)) //ขยายขนาดเมื่อ hover
-          : Matrix4.identity(),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0), //กำหนดขอบมนให้กับรูปภาพ
-            child: Image.asset(
-              widget.imagePath, //ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), //ขยายขนาดเมื่อ hover
-              fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
