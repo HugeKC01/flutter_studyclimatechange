@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'testsummary.dart';
@@ -28,6 +29,35 @@ class QuizPageState extends State<PostTestScreen> {
       'selectedAnswer': '',
     },
   ];
+
+  late Timer _timer;
+  int _elapsedSeconds = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _elapsedSeconds++;
+      });
+    });
+  }
+
+  String _formatTime(int seconds) {
+    final minutes = seconds ~/ 60;
+    final remainingSeconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
 
   void answerQuestion(String answer) {
     setState(() {
@@ -74,68 +104,102 @@ class QuizPageState extends State<PostTestScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Test'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Card(
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Center(
+              child: Text(
+                _formatTime(_elapsedSeconds),
+                style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+        ],
+      ),
+      body: Column(
+        children: [
+          // Header bar for the question text
+          Container(
+            width: double.infinity,
+            color: Theme.of(context).colorScheme.primary.withAlpha((0.1 * 255).toInt()),
+            padding: const EdgeInsets.all(30.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // Question Text
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    currentQuestion['questionText'] as String,
-                    style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                // Question number
+                Text(
+                  'Question ${questionIndex + 1}',
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Divider(),
-                const SizedBox(height: 20.0),
-
-                // Answer Options
-                ..._buildAnswerOptions(currentQuestion),
-
-                const SizedBox(height: 20.0),
-                const Divider(),
-
-                // Navigation Buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (questionIndex > 0)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: previousQuestion,
-                          child: const Text('Previous'),
-                        ),
-                      ),
-                    if (questionIndex < questions.length - 1)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: nextQuestion,
-                          child: const Text('Next'),
-                        ),
-                      )
-                    else
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: submitQuiz,
-                          child: const Text('Submit'),
-                        ),
-                      ),
-                  ],
+                const SizedBox(height: 8.0),
+                // Question text
+                Text(
+                  currentQuestion['questionText'] as String,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                const SizedBox(height: 20.0),
               ],
             ),
           ),
-        ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // Answer Options
+                      ..._buildAnswerOptions(currentQuestion),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Footer with navigation buttons
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (questionIndex > 0)
+                  ElevatedButton(
+                    onPressed: previousQuestion,
+                    child: const Text('Previous'),
+                  ),
+                if (questionIndex < questions.length - 1)
+                  ElevatedButton(
+                    onPressed: nextQuestion,
+                    child: const Text('Next'),
+                  )
+                else
+                  ElevatedButton(
+                    onPressed: submitQuiz,
+                    child: const Text('Submit'),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
