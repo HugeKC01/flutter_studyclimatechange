@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import '../m3_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'm3_lesson1_p1.dart';
-import 'm3_lesson1_p3.dart';
+import 'm3_lesson1_p2.dart';
 
-class Module3l1p2 extends StatelessWidget {
-  const Module3l1p2({super.key});
+class Module3l1p3 extends StatelessWidget {
+  const Module3l1p3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,10 +121,9 @@ class Module3l1p2 extends StatelessWidget {
         child: Icon(Icons.arrow_back),
         backgroundColor: Colors.blue,
      
-      )
-    );
+      ),
 
-  
+    );
   }
   
 }
