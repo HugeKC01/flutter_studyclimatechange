@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'm1_lesson1_p3.dart';
-import 'package:climatechange/learningpage/module1/lesson2/m1_lesson2_p1.dart';
-import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'm3_main.dart';
+import 'lesson2/m3_lesson2_p6.dart';
+import 'practice/practiceintro.dart';
 
-class Module1l1p4 extends StatelessWidget {
-  const Module1l1p4({super.key});
+class Module3Sum extends StatelessWidget {
+  const Module3Sum({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ';
-    final pageheader = 'เรื่องที่ 1';
-    final pagesubtitle = '1.3) ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pagetitle = 'Module 3 Summary';
+    final pageheader = 'สรุป';
+    final pagesubtitle = 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
@@ -60,7 +60,7 @@ class Module1l1p4 extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                  builder: (context) => const Module1Screen()
+                                  builder: (context) => const Module3Screen()
                             ),
                           );  // Exit the current page
                       },
@@ -106,153 +106,110 @@ class Module1l1p4 extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                ' ⦿ อากาศร้อนขึ้น อุณหภูมิโลกสูงขึ้น ทำให้เกิดคลื่นความร้อน ไฟป่า และภัยแล้ง     ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
-                                  imagePath: 'asset/module1/dry.jpg',
+                              children: [
+                                const SizedBox(height: 8),
+                                Text(
+                                  '         การเปลี่ยนแปลงสภาพภูมิอากาศเป็นปัญหาที่ทุกคนต้องช่วยกันแก้ไข เราสามารถช่วยได้โดยการลดการใช้พลังงาน ทิ้งขยะให้ถูกต้อง และปรับตัวต่อสภาพอากาศที่เปลี่ยนแปลง เพื่อให้โลกของเราน่าอยู่ต่อไปในอนาคต',
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                                
+                                const SizedBox(height: 12),
+                                Center(
+                                  child: HoverableImage(
+                                    imagePath: 'asset/module3/s1_m7.png',
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                ' ⦿ น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
-                                  imagePath: 'asset/module1/polarb.jpg',
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                ' ⦿ เกิดพายุรุนแรงมากขึ้น เช่น พายุเฮอริเคน ไต้ฝุ่น',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
-                                  imagePath: 'asset/module1/strom.jpg',
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                ' ⦿ เกิดการเปลี่ยนแปลงของระบบนิเวศ เช่น การสูญพันธุ์ของสัตว์และพืช',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                              const SizedBox(height: 12),
-                              
-                              Row(
-                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [HoverableImage(
-                                  imagePath: 'asset/module1/ext.jpg',
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                            ],
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            // Fixed footer
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              // Fixed footer
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.inversePrimary,
                   borderRadius: BorderRadius.circular(50), // Pill shape
                 ),
                 margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module1l1p3()),
-                            );
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Back button
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnBack',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Module3l2p6()),
+                              );
+                            },
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_back,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  // Page number
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                    color: Colors.white, // White background
-                    borderRadius: BorderRadius.circular(50), // Pill shape
-                    ),
-                    child: const Text(
-                    'Page 4 of 4',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                  ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
+                    // Page number
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                      color: Colors.white, // White background
+                      borderRadius: BorderRadius.circular(50), // Pill shape
                       ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
+                      child: const Text(
+                      'Page 7 of 7',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      ),
+                    ),
+                    // Forward button
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 0, 122, 255),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: FloatingActionButton(
+                            heroTag: 'btnForward',
+                            onPressed: () {
                               showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                 title: const Text('Complete'),
                                 content: const Text(
-                                  'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
+                                  'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                  'คุณสามารถทำแบบทดสอบเพื่อประเมินความเข้าใจของคุณได้\n\n'
+                                  'คุณต้องการทำแบบทดสอบหรือไม่?'),
                                 actions: [
                                   TextButton(
                                   onPressed: () {
@@ -267,7 +224,7 @@ class Module1l1p4 extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                        const Module1Screen()),
+                                        const Module3Screen()),
                                     ); // Close the dialog
                                   },
                                   child: const Text('กลับหน้าหลัก'),
@@ -279,32 +236,32 @@ class Module1l1p4 extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                        const Module1l2p1()),
+                                        const PracticeM3Introduction()),
                                     );
                                   },
-                                  child: const Text('ไปยังเรื่องที่ 2'),
+                                  child: const Text('ไปทำแบบทดสอบ'),
                                   ),
                                 ],
                                 );
                               },
                               );
                             },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            shape: const CircleBorder(),
+                            child: const Icon(Icons.arrow_forward,
+                                size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      )
     );
   }
 }

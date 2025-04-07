@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson2_p5.dart';
-import 'm3_lesson2_p7.dart';
 import 'package:climatechange/learningpage/module3/m3_main.dart';
+import 'package:climatechange/learningpage/module3/enhanced/enhancedintro.dart';
 
 class Module3l2p6 extends StatelessWidget {
   const Module3l2p6({super.key});
@@ -236,10 +236,50 @@ class Module3l2p6 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Module3l2p7()),
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('กิจกรรมเสริมความเข้าใจ'),
+                                content: const Text(
+                                  'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                  'คุณสามารถทำกิจกรรมความเข้าใจของคุณได้\n\n'
+                                  'หากคุณกลับหน้าหลัก จะต้องเริ่มการเรียนรู้เรื่องที่ 2 ใหม่\n\n'
+                                  'คุณต้องการทำกิจกรรมนี้หรือไม่?'),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module3Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const EnhancedM3Introduction()),
+                                    );
+                                  },
+                                  child: const Text('ไปทำกิจกรรม'),
+                                  ),
+                                ],
+                                );
+                              },
                               );
                             },
                             backgroundColor:

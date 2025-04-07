@@ -154,7 +154,18 @@ class QuizPageState extends State<PostTestScreen> {
           ),
         ],
       ),
-      body: SafeArea(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.08, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ),
+          SafeArea(
         child: Column(
           children: [
             // Header bar for the question text
@@ -236,6 +247,8 @@ class QuizPageState extends State<PostTestScreen> {
             ),
           ],
         ),
+      ),
+        ],
       ),
     );
   }

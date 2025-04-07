@@ -30,7 +30,18 @@ class PostTestResultScreen extends StatelessWidget {
         context,
       ),
       drawer: buildDrawer(context),
-      body: Column(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.08, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ),
+        Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Page title under the AppBar
@@ -119,6 +130,8 @@ class PostTestResultScreen extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
         ],
       ),
     );

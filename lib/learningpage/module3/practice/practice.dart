@@ -3,47 +3,47 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'practicesummary.dart';
 
-class PracticeM1Screen extends StatefulWidget {
-  const PracticeM1Screen({super.key});
+class PracticeM3Screen extends StatefulWidget {
+  const PracticeM3Screen({super.key});
 
   @override
-  PracticeM1PageState createState() => PracticeM1PageState();
+  PracticeM3PageState createState() => PracticeM3PageState();
 }
 
-class PracticeM1PageState extends State<PracticeM1Screen> {
+class PracticeM3PageState extends State<PracticeM3Screen> {
   int questionIndex = 0;
   int score = 0;
-  final Logger _logger = Logger('PracticeM1State');
+  final Logger _logger = Logger('PracticeM3State');
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'ข้อใดอธิบายความหมายของ "ภูมิอากาศ" ได้ถูกต้อง?',
-      'answers': ['สภาพอากาศที่เปลี่ยนแปลงทุกวัน', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ปริมาณฝนที่ตกในแต่ละวัน'],
-      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่',
+      'questionText': 'ข้อใดเป็นวิธีที่ช่วยให้ร่างกายเย็นลงเมื่ออุณหภูมิสูงขึ้น?',
+      'answers': ['ดื่มน้ำมากขึ้น', 'ใส่เสื้อผ้าหนา ๆ', 'ออกแดดตอนเที่ยงวัน', 'ปิดหน้าต่างให้สนิท'],
+      'correctAnswer': 'ดื่มน้ำมากขึ้น',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดไม่เกี่ยวข้องกับการเปลี่ยนแปลงสภาพภูมิอากาศ?',
-      'answers': ['การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก', 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต', 'เกิดจากการกระทำของมนุษย์', 'เกิดจากธรรมชาติ'],
-      'correctAnswer': 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต',
+      'questionText': 'ทำไมการปลูกต้นไม้รอบบ้านจึงช่วยลดอุณหภูมิได้?',
+      'answers': ['เพราะต้นไม้ทำให้แดดร้อนขึ้น', 'เพราะต้นไม้ดูดซับน้ำฝน', 'เพราะต้นไม้ให้ร่มเงาและช่วยลดความร้อน', 'เพราะต้นไม้ทำให้ลมแรงขึ้น'],
+      'correctAnswer': 'เพราะต้นไม้ให้ร่มเงาและช่วยลดความร้อน',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดเป็นสาเหตุที่เกิดจากมนุษย์และทำให้สภาพภูมิอากาศเปลี่ยนแปลง?',
-      'answers': ['ภูเขาไฟระเบิด', 'การเผาไหม้เชื้อเพลิงฟอสซิล', 'การหมุนของโลก', 'การเปลี่ยนแปลงของดวงอาทิตย์'],
-      'correctAnswer': 'การเผาไหม้เชื้อเพลิงฟอสซิล',
+      'questionText': 'เพราะเหตุใดการติดตามข่าวพยากรณ์อากาศจึงสำคัญ?',
+      'answers': ['เพื่อให้รู้ว่าใครเป็นผู้ประกาศข่าว', 'เพื่อเตรียมตัวและวางแผนกิจกรรมให้เหมาะสม', 'เพื่อให้สามารถเปลี่ยนฤดูกาลได้', 'เพื่อให้รู้ว่าเมฆสีอะไร'],
+      'correctAnswer': 'เพื่อเตรียมตัวและวางแผนกิจกรรมให้เหมาะสม',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
-      'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
-      'correctAnswer': 'พายุและฝนตกหนักลดลง',
+      'questionText': 'ข้อใดคือสีของถังขยะ ที่ใช้ทิ้งขยะทั่วไป (ขยะที่ย่อยสลายหรือรีไซเคิลไม่ได้)',
+      'answers': ['เขียว', 'เหลือง', 'น้ำเงิน', 'แดง'],
+      'correctAnswer': 'น้ำเงิน',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'น้ำแข็งขั้วโลกละลายมีผลกระทบต่อสิ่งมีชีวิตอย่างไร?',
-      'answers': ['ทำให้สัตว์บางชนิดสูญพันธุ์', 'ทำให้สัตว์อาศัยอยู่ได้ง่ายขึ้น', 'ทำให้ป่ามีต้นไม้มากขึ้น', 'ทำให้อุณหภูมิลดลงทั่วโลก'],
-      'correctAnswer': 'ทำให้สัตว์บางชนิดสูญพันธุ์',
+      'questionText': 'ทำไมการปลูกพืชที่เติบโตได้ในทุกฤดูกาลจึงเป็นประโยชน์?',
+      'answers': ['เพราะไม่ต้องดูแลต้นไม้', 'เพราะสามารถเก็บเกี่ยวผลผลิตได้ตลอดปี', 'เพราะทำให้ต้นไม้โตเร็วขึ้น', 'เพราะช่วยเพิ่มฝน'],
+      'correctAnswer': 'เพราะสามารถเก็บเกี่ยวผลผลิตได้ตลอดปี',
       'selectedAnswer': '',
     },
   ];
@@ -114,7 +114,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PracticeM1ResultScreen(
+        builder: (context) => PracticeM3ResultScreen(
           score: score,
           totalQuestions: questions.length,
           questions: questions,

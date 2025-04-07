@@ -122,8 +122,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       },
       {
         'title': 'Module 3',
-        'subtitle': 'Fix The Problem And Stop The Cause',
-        'description': 'การแก้ปัญหาและปรับตัวเพื่อโลกของเรา',
+        'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
+        'description': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module3Screen(),
       },
       {
@@ -142,7 +142,17 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       drawer: buildDrawer(
         context,
       ),
-      body: SafeArea(
+      body: Stack(
+        children: [
+          Positioned.fill(
+        child: Opacity(
+          opacity: 0.08, // Adjust the opacity value as needed
+          child: Image.asset(
+            'asset/overall/background1.png', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+          ), SafeArea(
         child: Scrollbar(
           thumbVisibility: true,
           child: ValueListenableBuilder<List<bool>>(
@@ -248,6 +258,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             },
           ),
         ),
+      ),
+        ],
       ),
     );
   }

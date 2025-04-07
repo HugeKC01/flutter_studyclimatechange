@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/learningpage/module2/m2_main.dart';
+import 'package:climatechange/learningpage/module2/lesson2/m2_lesson2_p1.dart';
 import 'm2_lesson1_p2.dart'; // Import m3_learn2_p2.dart file where the next screen is defined.
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
@@ -228,10 +229,47 @@ class Module2l1p3 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Module2Screen()),
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('Complete'),
+                                content: const Text(
+                                  'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module2Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module2l2p1()),
+                                    );
+                                  },
+                                  child: const Text('ไปยังเรื่องที่ 2'),
+                                  ),
+                                ],
+                                );
+                              },
                               );
                             },
                             backgroundColor:

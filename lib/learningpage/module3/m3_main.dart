@@ -3,6 +3,8 @@ import 'package:climatechange/main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m3_lesson1_p1.dart';
 import 'lesson2/m3_lesson2_p1.dart';
+import 'm3_summary.dart';
+import 'practice/practiceintro.dart';
 
 class Module3Screen extends StatelessWidget {
   const Module3Screen({super.key});
@@ -19,6 +21,16 @@ class Module3Screen extends StatelessWidget {
         'title': 'เรื่องที่ 2',
         'subtitle': 'การปรับตัวและการใช้ชีวิต',
         'screen': Module3l2p1(),
+      },
+      {
+        'title': 'สรุปการเรียนรู้',
+        'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': Module3Sum(),
+      },
+      {
+        'title': 'แบบฝึกหัด',
+        'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': PracticeM3Introduction(),
       },
     ];
 

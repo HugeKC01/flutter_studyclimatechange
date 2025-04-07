@@ -1,49 +1,37 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'practicesummary.dart';
+import 'enhancedsummary.dart';
 
-class PracticeM1Screen extends StatefulWidget {
-  const PracticeM1Screen({super.key});
+class EnhancedM2Screen extends StatefulWidget {
+  const EnhancedM2Screen({super.key});
 
   @override
-  PracticeM1PageState createState() => PracticeM1PageState();
+  EnhancedM2PageState createState() => EnhancedM2PageState();
 }
 
-class PracticeM1PageState extends State<PracticeM1Screen> {
+class EnhancedM2PageState extends State<EnhancedM2Screen> {
   int questionIndex = 0;
   int score = 0;
-  final Logger _logger = Logger('PracticeM1State');
+  final Logger _logger = Logger('EnhancedM2State');
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'ข้อใดอธิบายความหมายของ "ภูมิอากาศ" ได้ถูกต้อง?',
-      'answers': ['สภาพอากาศที่เปลี่ยนแปลงทุกวัน', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ปริมาณฝนที่ตกในแต่ละวัน'],
-      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่',
+      'questionText': 'ข้อใดเป็นผลกระทบจากโรงงานอุตสาหกรรมที่ปล่อยก๊าซเรือนกระจก?',
+      'answers': ['ทำให้อุณหภูมิโลกลดลง', 'ทำให้เกิดพายุลดลง', 'ทำให้เกิดภาวะโลกร้อน', 'ทำให้ดินอุดมสมบูรณ์ขึ้น'],
+      'correctAnswer': 'ทำให้เกิดภาวะโลกร้อน',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดไม่เกี่ยวข้องกับการเปลี่ยนแปลงสภาพภูมิอากาศ?',
-      'answers': ['การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก', 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต', 'เกิดจากการกระทำของมนุษย์', 'เกิดจากธรรมชาติ'],
-      'correctAnswer': 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต',
+      'questionText': 'ข้อใดเป็นผลกระทบจากการเผาพื้นที่เกษตรเพื่อเตรียมการเพาะปลูก?',
+      'answers': ['ทำให้อากาศบริสุทธิ์ขึ้น', 'ทำให้เกิดควันและก๊าซเรือนกระจก', 'ทำให้ต้นไม้เติบโตเร็วขึ้น', 'ทำให้ฝนตกมากขึ้น'],
+      'correctAnswer': 'ทำให้เกิดควันและก๊าซเรือนกระจก',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดเป็นสาเหตุที่เกิดจากมนุษย์และทำให้สภาพภูมิอากาศเปลี่ยนแปลง?',
-      'answers': ['ภูเขาไฟระเบิด', 'การเผาไหม้เชื้อเพลิงฟอสซิล', 'การหมุนของโลก', 'การเปลี่ยนแปลงของดวงอาทิตย์'],
-      'correctAnswer': 'การเผาไหม้เชื้อเพลิงฟอสซิล',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
-      'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
-      'correctAnswer': 'พายุและฝนตกหนักลดลง',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'น้ำแข็งขั้วโลกละลายมีผลกระทบต่อสิ่งมีชีวิตอย่างไร?',
-      'answers': ['ทำให้สัตว์บางชนิดสูญพันธุ์', 'ทำให้สัตว์อาศัยอยู่ได้ง่ายขึ้น', 'ทำให้ป่ามีต้นไม้มากขึ้น', 'ทำให้อุณหภูมิลดลงทั่วโลก'],
-      'correctAnswer': 'ทำให้สัตว์บางชนิดสูญพันธุ์',
+      'questionText': 'ถ้าน้ำแข็งที่ขั้วโลกละลาย จะเกิดอะไรขึ้นกับน้ำทะเล?',
+      'answers': ['น้ำทะเลจะเย็นลง', 'น้ำทะเลจะเค็มน้อยลง', 'น้ำทะเลจะสูงขึ้น', 'น้ำทะเลจะใสขึ้น'],
+      'correctAnswer': 'น้ำทะเลจะสูงขึ้น',
       'selectedAnswer': '',
     },
   ];
@@ -114,7 +102,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PracticeM1ResultScreen(
+        builder: (context) => EnhancedM2ResultScreen(
           score: score,
           totalQuestions: questions.length,
           questions: questions,
@@ -159,7 +147,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
         );
           },
         ),
-        title: const Text('Post Test'),
+        title: const Text('กิจกรรมเสริมความเข้าใจ'),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -172,18 +160,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-        child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
-          child: Image.asset(
-            'asset/overall/background1.png', // Replace with your image path
-            fit: BoxFit.cover,
-          ),
-        ),
-          ), 
-        SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             // Header bar for the question text
@@ -265,8 +242,6 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
             ),
           ],
         ),
-      ),
-        ],
       ),
     );
   }

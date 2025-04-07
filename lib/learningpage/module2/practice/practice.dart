@@ -3,47 +3,47 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'practicesummary.dart';
 
-class PracticeM1Screen extends StatefulWidget {
-  const PracticeM1Screen({super.key});
+class PracticeM2Screen extends StatefulWidget {
+  const PracticeM2Screen({super.key});
 
   @override
-  PracticeM1PageState createState() => PracticeM1PageState();
+  PracticeM2PageState createState() => PracticeM2PageState();
 }
 
-class PracticeM1PageState extends State<PracticeM1Screen> {
+class PracticeM2PageState extends State<PracticeM2Screen> {
   int questionIndex = 0;
   int score = 0;
-  final Logger _logger = Logger('PracticeM1State');
+  final Logger _logger = Logger('PracticeM2State');
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'ข้อใดอธิบายความหมายของ "ภูมิอากาศ" ได้ถูกต้อง?',
-      'answers': ['สภาพอากาศที่เปลี่ยนแปลงทุกวัน', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ปริมาณฝนที่ตกในแต่ละวัน'],
-      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่',
+      'questionText': 'ข้อใดเป็นสาเหตุที่ทำให้เกิดการเปลี่ยนแปลงสภาพภูมิอากาศจากมนุษย์?',
+      'answers': ['การหมุนของโลก', 'การใช้รถยนต์ที่ปล่อยก๊าซคาร์บอนไดออกไซด์', 'การเกิดพายุธรรมชาติ', 'การเกิดแผ่นดินไหว'],
+      'correctAnswer': 'การใช้รถยนต์ที่ปล่อยก๊าซคาร์บอนไดออกไซด์',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดไม่เกี่ยวข้องกับการเปลี่ยนแปลงสภาพภูมิอากาศ?',
-      'answers': ['การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก', 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต', 'เกิดจากการกระทำของมนุษย์', 'เกิดจากธรรมชาติ'],
-      'correctAnswer': 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต',
+      'questionText': 'การใช้รถยนต์และมอเตอร์ไซค์มากเกินไปส่งผลอย่างไรต่อสภาพภูมิอากาศ?',
+      'answers': ['ทำให้โลกเย็นลง', 'ทำให้เกิดฝนตกมากขึ้น', 'ทำให้เกิดก๊าซคาร์บอนไดออกไซด์เพิ่มขึ้นในชั้นบรรยากาศ', 'ทำให้อากาศสดชื่นขึ้น'],
+      'correctAnswer': 'ทำให้เกิดก๊าซคาร์บอนไดออกไซด์เพิ่มขึ้นในชั้นบรรยากาศ',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดเป็นสาเหตุที่เกิดจากมนุษย์และทำให้สภาพภูมิอากาศเปลี่ยนแปลง?',
-      'answers': ['ภูเขาไฟระเบิด', 'การเผาไหม้เชื้อเพลิงฟอสซิล', 'การหมุนของโลก', 'การเปลี่ยนแปลงของดวงอาทิตย์'],
-      'correctAnswer': 'การเผาไหม้เชื้อเพลิงฟอสซิล',
+      'questionText': 'การตัดไม้ทำลายป่าส่งผลอย่างไรต่อสิ่งแวดล้อม?',
+      'answers': ['ทำให้ออกซิเจนลดลงและก๊าซคาร์บอนไดออกไซด์เพิ่มขึ้น', 'ทำให้สัตว์ป่าเพิ่มขึ้น', 'ทำให้อากาศเย็นขึ้น', 'ทำให้ฝนตกทุกวัน'],
+      'correctAnswer': 'ทำให้ออกซิเจนลดลงและก๊าซคาร์บอนไดออกไซด์เพิ่มขึ้น',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
-      'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
-      'correctAnswer': 'พายุและฝนตกหนักลดลง',
+      'questionText': 'สัตว์ที่อาศัยอยู่ในที่ที่มีอากาศหนาวเย็นมากๆ เช่น หมีขั้วโลก จะได้รับผลกระทบจากการเปลี่ยนแปลงสภาพอากาศอย่างไร?',
+      'answers': ['มีอาหารมากขึ้น', 'มีที่อยู่อาศัยกว้างขึ้น', 'น้ำแข็งละลาย ทำให้ไม่มีที่อยู่', 'ขนยาวและหนาขึ้น'],
+      'correctAnswer': 'น้ำแข็งละลาย ทำให้ไม่มีที่อยู่',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'น้ำแข็งขั้วโลกละลายมีผลกระทบต่อสิ่งมีชีวิตอย่างไร?',
-      'answers': ['ทำให้สัตว์บางชนิดสูญพันธุ์', 'ทำให้สัตว์อาศัยอยู่ได้ง่ายขึ้น', 'ทำให้ป่ามีต้นไม้มากขึ้น', 'ทำให้อุณหภูมิลดลงทั่วโลก'],
-      'correctAnswer': 'ทำให้สัตว์บางชนิดสูญพันธุ์',
+      'questionText': 'การเปลี่ยนแปลงสภาพอากาศอาจทำให้เกิดภัยแล้ง หมายถึงอะไร?',
+      'answers': ['มีฝนตกมากผิดปกติ', 'มีลมพัดแรงตลอดเวลา', 'มีน้ำท่วมสูง', 'มีฝนน้อยหรือไม่มีฝนเป็นเวลานาน'],
+      'correctAnswer': 'มีฝนน้อยหรือไม่มีฝนเป็นเวลานาน',
       'selectedAnswer': '',
     },
   ];
@@ -114,7 +114,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PracticeM1ResultScreen(
+        builder: (context) => PracticeM2ResultScreen(
           score: score,
           totalQuestions: questions.length,
           questions: questions,

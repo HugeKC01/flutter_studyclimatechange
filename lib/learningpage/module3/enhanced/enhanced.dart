@@ -1,49 +1,37 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'practicesummary.dart';
+import 'enhancedsummary.dart';
 
-class PracticeM1Screen extends StatefulWidget {
-  const PracticeM1Screen({super.key});
+class EnhancedM3Screen extends StatefulWidget {
+  const EnhancedM3Screen({super.key});
 
   @override
-  PracticeM1PageState createState() => PracticeM1PageState();
+  EnhancedM3PageState createState() => EnhancedM3PageState();
 }
 
-class PracticeM1PageState extends State<PracticeM1Screen> {
+class EnhancedM3PageState extends State<EnhancedM3Screen> {
   int questionIndex = 0;
   int score = 0;
-  final Logger _logger = Logger('PracticeM1State');
+  final Logger _logger = Logger('EnhancedM3State');
 
   final List<Map<String, Object>> questions = [
     {
-      'questionText': 'ข้อใดอธิบายความหมายของ "ภูมิอากาศ" ได้ถูกต้อง?',
-      'answers': ['สภาพอากาศที่เปลี่ยนแปลงทุกวัน', 'ลักษณะของอากาศที่เกิดขึ้นในระยะเวลาสั้น ๆ', 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่', 'ปริมาณฝนที่ตกในแต่ละวัน'],
-      'correctAnswer': 'ลักษณะของอากาศที่เกิดขึ้นเป็นระยะเวลานานคิดเป็นค่าเฉลี่ยในแต่ละพื้นที่',
+      'questionText': 'เสื้อผ้าที่เหมาะสมสำหรับอากาศร้อนควรมีลักษณะอย่างไร?',
+      'answers': ['หนาและรัดรูป', 'สีเข้มและหนา', 'ระบายอากาศได้ดี', 'เป็นผ้าขนสัตว์'],
+      'correctAnswer': 'ระบายอากาศได้ดี',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดไม่เกี่ยวข้องกับการเปลี่ยนแปลงสภาพภูมิอากาศ?',
-      'answers': ['การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก', 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต', 'เกิดจากการกระทำของมนุษย์', 'เกิดจากธรรมชาติ'],
-      'correctAnswer': 'ไม่ส่งผลกระทบต่อสิ่งมีชีวิต',
+      'questionText': 'เพราะเหตุใดเราจึงควรแยกขยะก่อนทิ้ง?',
+      'answers': ['เพื่อให้ขยะเยอะขึ้น', 'เพื่อความสะอาดและสามารถรีไซเคิลได้ง่าย', 'เพื่อให้ถังขยะเต็มเร็ว', 'เพื่อความสนุก'],
+      'correctAnswer': 'เพื่อความสะอาดและสามารถรีไซเคิลได้ง่าย',
       'selectedAnswer': '',
     },
     {
-      'questionText': 'ข้อใดเป็นสาเหตุที่เกิดจากมนุษย์และทำให้สภาพภูมิอากาศเปลี่ยนแปลง?',
-      'answers': ['ภูเขาไฟระเบิด', 'การเผาไหม้เชื้อเพลิงฟอสซิล', 'การหมุนของโลก', 'การเปลี่ยนแปลงของดวงอาทิตย์'],
-      'correctAnswer': 'การเผาไหม้เชื้อเพลิงฟอสซิล',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
-      'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
-      'correctAnswer': 'พายุและฝนตกหนักลดลง',
-      'selectedAnswer': '',
-    },
-    {
-      'questionText': 'น้ำแข็งขั้วโลกละลายมีผลกระทบต่อสิ่งมีชีวิตอย่างไร?',
-      'answers': ['ทำให้สัตว์บางชนิดสูญพันธุ์', 'ทำให้สัตว์อาศัยอยู่ได้ง่ายขึ้น', 'ทำให้ป่ามีต้นไม้มากขึ้น', 'ทำให้อุณหภูมิลดลงทั่วโลก'],
-      'correctAnswer': 'ทำให้สัตว์บางชนิดสูญพันธุ์',
+      'questionText': 'ขยะประเภทไหนที่ สามารถนำกลับมาใช้ใหม่ได้ (รีไซเคิล)?',
+      'answers': ['เปลือกผลไม้', 'ขวดแก้ว', 'ถุงขยะที่เปื้อนเศษอาหาร', 'เศษกระดูก'],
+      'correctAnswer': 'ขวดแก้ว',
       'selectedAnswer': '',
     },
   ];
@@ -114,7 +102,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PracticeM1ResultScreen(
+        builder: (context) => EnhancedM3ResultScreen(
           score: score,
           totalQuestions: questions.length,
           questions: questions,
@@ -159,7 +147,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
         );
           },
         ),
-        title: const Text('Post Test'),
+        title: const Text('กิจกรรมเสริมความเข้าใจ'),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -172,18 +160,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-        child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
-          child: Image.asset(
-            'asset/overall/background1.png', // Replace with your image path
-            fit: BoxFit.cover,
-          ),
-        ),
-          ), 
-        SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             // Header bar for the question text
@@ -265,8 +242,6 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
             ),
           ],
         ),
-      ),
-        ],
       ),
     );
   }

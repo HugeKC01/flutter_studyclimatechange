@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'practice/practiceintro.dart';
-import 'lesson2/m1_lesson2_p5.dart';
 import 'm1_main.dart';
 
 class Module1Sum extends StatelessWidget {
@@ -11,12 +10,12 @@ class Module1Sum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageheader = 'สรุป';
-    final pagesubtitle = 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pagesubtitle = 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
-        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'Module 1 Summary',
         context,
       ),
       drawer: buildDrawer(
@@ -157,7 +156,7 @@ class Module1Sum extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Module1l2p5()),
+                                    builder: (context) => const Module1Screen()),
                               );
                             },
                             backgroundColor:

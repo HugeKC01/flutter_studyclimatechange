@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import '../m3_main.dart';
-import 'm3_lesson2_p6.dart';
+import 'm2_main.dart';
+import 'package:climatechange/learningpage/module2/practice/practiceintro.dart';
 
-class Module3l2p7 extends StatelessWidget {
-  const Module3l2p7({super.key});
+class Module2Sum extends StatelessWidget {
+  const Module2Sum({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 2 การปรับตัวและการใช้ชีวิต';
-    final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = 'สรุป';
+    final pageheader = 'สรุป';
+    final pagesubtitle = 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
-        pagetitle,
+        'Module 2 Summary',
         context,
       ),
       drawer: buildDrawer(
@@ -33,6 +32,7 @@ class Module3l2p7 extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+              // Header Section
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
@@ -43,26 +43,26 @@ class Module3l2p7 extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                      color: Colors.white, // Background color for the button
-                      shape: BoxShape.circle, // Circular shape
-                      boxShadow: [
-                        BoxShadow(
-                        color: Colors.black, // Shadow color
-                        blurRadius: 4, // Blur radius for the shadow
-                        offset: const Offset(0, 2), // Shadow offset
-                        ),
-                      ],
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black, // Shadow color
+                            blurRadius: 4, // Blur radius for the shadow
+                            offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
                       ),
                       child: IconButton(
-                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                      onPressed: () {
-                        Navigator.push(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                        onPressed: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                  builder: (context) => const Module3Screen()
+                                  builder: (context) => const Module2Screen()
                             ),
-                          );  // Exit the current page
-                      },
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(width: 20), // Add spacing between the icon and the header
@@ -106,17 +106,21 @@ class Module3l2p7 extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(height: 8),
                                 Text(
-                                  '         การเปลี่ยนแปลงสภาพภูมิอากาศเป็นปัญหาที่ทุกคนต้องช่วยกันแก้ไข เราสามารถช่วยได้โดยการลดการใช้พลังงาน ทิ้งขยะให้ถูกต้อง และปรับตัวต่อสภาพอากาศที่เปลี่ยนแปลง เพื่อให้โลกของเราน่าอยู่ต่อไปในอนาคต',
+                                  '         สาเหตุหลักมาจากการกระทำของมนุษย์ ทั้งชีวิตประจำวันและความต้องการพัฒนาที่ไม่ยั่งยืน กิจกรรมต่างๆ เช่น การเผาผลาญเชื้อเพลิงฟอสซิล การเกษตร (โดยเฉพาะปศุสัตว์) และการตัดไม้ทำลายป่า ปล่อยก๊าซเรือนกระจกปริมาณมาก ทำให้โลกร้อนขึ้น',
                                   textAlign: TextAlign.start,
                                   style: const TextStyle(fontSize: 18),
                                 ),
-                                
+                                const SizedBox(height: 12),
+                                Text(
+                                  '         อุณหภูมิสูงขึ้นนำไปสู่คลื่นความร้อน ภัยแล้ง น้ำท่วม ระดับน้ำทะเลสูงขึ้น ระบบนิเวศทะเลเสียหาย พายุรุนแรงขึ้น กระทบสุขภาพ อาหาร น้ำ เศรษฐกิจ และสังคม การร่วมมือกันลดการปล่อยก๊าซเรือนกระจกจึงสำคัญ',
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
                                 const SizedBox(height: 12),
                                 Center(
                                   child: HoverableImage(
-                                    imagePath: 'asset/module3/s1_m7.png',
+                                    imagePath: 'asset/module1/Designer5.jpeg',
                                   ),
                                 ),
                                 const SizedBox(height: 12),
@@ -158,7 +162,7 @@ class Module3l2p7 extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Module3l2p6()),
+                                    builder: (context) => const Module2Screen()),
                               );
                             },
                             backgroundColor:
@@ -178,7 +182,7 @@ class Module3l2p7 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50), // Pill shape
                       ),
                       child: const Text(
-                      'Page 7 of 7',
+                      'Page 6 of 6',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -200,10 +204,49 @@ class Module3l2p7 extends StatelessWidget {
                           child: FloatingActionButton(
                             heroTag: 'btnForward',
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Module3Screen()),
+                              showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                title: const Text('Complete'),
+                                content: const Text(
+                                  'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                  'คุณสามารถทำแบบทดสอบเพื่อประเมินความเข้าใจของคุณได้\n\n'
+                                  'คุณต้องการทำแบบทดสอบหรือไม่?'),
+                                actions: [
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                  },
+                                  child: const Text('ยกเลิก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const Module2Screen()),
+                                    ); // Close the dialog
+                                  },
+                                  child: const Text('กลับหน้าหลัก'),
+                                  ),
+                                  TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); // Close the dialog
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                        const PracticeM2Introduction()),
+                                    );
+                                  },
+                                  child: const Text('ไปทำแบบทดสอบ'),
+                                  ),
+                                ],
+                                );
+                              },
                               );
                             },
                             backgroundColor:
@@ -227,7 +270,7 @@ class Module3l2p7 extends StatelessWidget {
 }
 
 class HoverableImage extends StatefulWidget {
-  final String imagePath; // เส้นทางของรูปภาพ
+  final String imagePath; // Path to the image
 
   const HoverableImage({super.key, required this.imagePath});
 
@@ -236,45 +279,45 @@ class HoverableImage extends StatefulWidget {
 }
 
 class HoverableImageState extends State<HoverableImage> {
-  bool _isHovered = false; // สถานะ hover หรือกดค้าง
+  bool _isHovered = false; // Hover state
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (_) {
         setState(() {
-          _isHovered = true; // เมื่อกดค้าง
+          _isHovered = true; // On hover
         });
       },
       onTapUp: (_) {
         setState(() {
-          _isHovered = false; // เมื่อปล่อย
+          _isHovered = false; // On release
         });
       },
       onTapCancel: () {
         setState(() {
-          _isHovered = false; // เมื่อยกเลิกการกด
+          _isHovered = false; // On cancel
         });
       },
       child: AnimatedAlign(
-        duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-        curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
         alignment: _isHovered
-            ? const Alignment(-0.1, 0.0) // ขยับไปทางซ้ายเล็กน้อยเมื่อ hover
-            : Alignment.center, // ตำแหน่งปกติ
+            ? const Alignment(-0.5, 0.0) // Slight left shift on hover
+            : Alignment.center, // Default position
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200), // ระยะเวลาในการเปลี่ยนแปลง
-          curve: Curves.easeInOut, // ลักษณะการเคลื่อนไหว
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.white, // เส้นขอบสีขาว
-              width: 4.0, // ความหนาของเส้นขอบ
+              color: Colors.white,
+              width: 4.0,
             ),
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมน
+            borderRadius: BorderRadius.circular(16.0),
             boxShadow: _isHovered
                 ? [
                     BoxShadow(
-                      color: Colors.black.withAlpha((0.2 * 255).toInt()), // ใช้ withAlpha แทน withOpacity
+                      color: Colors.black.withAlpha((0.2 * 255).toInt()),
                       blurRadius: 10.0,
                       offset: const Offset(0, 5),
                     ),
@@ -282,14 +325,14 @@ class HoverableImageState extends State<HoverableImage> {
                 : [],
           ),
           transform: _isHovered
-              ? (Matrix4.identity()..scale(1.1)) // ขยายขนาดเมื่อ hover
+              ? (Matrix4.identity()..scale(1.1)) // Scale up on hover
               : Matrix4.identity(),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
+            borderRadius: BorderRadius.circular(16.0),
             child: Image.asset(
-              widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), // ขยายขนาดเมื่อ hover
-              fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
+              widget.imagePath,
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.7 : 0.6),
+              fit: BoxFit.contain,
             ),
           ),
         ),

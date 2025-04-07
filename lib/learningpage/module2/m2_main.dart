@@ -1,8 +1,10 @@
+import 'package:climatechange/learningpage/module2/m2_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m2_lesson1_p1.dart';
 import 'lesson2/m2_lesson2_p1.dart';
 import 'package:climatechange/main.dart';
+import 'practice/practiceintro.dart';
 
 class Module2Screen extends StatelessWidget {
   const Module2Screen({super.key});
@@ -19,6 +21,16 @@ class Module2Screen extends StatelessWidget {
         'title': 'เรื่องที่ 2',
         'subtitle': 'ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'screen': Module2l2p1(),
+      },
+      {
+        'title': 'สรุปการเรียนรู้',
+        'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': Module2Sum(),
+      },
+      {
+        'title': 'แบบฝึกหัด',
+        'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'screen': PracticeM2Introduction(),
       },
     ];
 
