@@ -134,7 +134,7 @@ class Module1l1p2 extends StatelessWidget {
                                   const SizedBox(height: 8),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/grobal climate.jpeg',
+                                      imagePath: 'asset/module1/global_climate.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),

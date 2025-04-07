@@ -127,7 +127,7 @@ class Module1l1p3 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/human_act.jpeg',
+                                      imagePath: 'asset/module1/human_act.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -139,7 +139,7 @@ class Module1l1p3 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/nature_act.jpeg',
+                                      imagePath: 'asset/module1/nature_act.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
