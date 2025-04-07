@@ -24,125 +24,234 @@ class Module2l2p3 extends StatelessWidget {
       drawer: buildDrawer(
         context,
       ),
-      body: Container(
-        // Background decoration for the entire screen
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(background),
-            fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.5, // Adjust the opacity value as needed
+              child: Image.asset(
+                background, // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 214, 237, 252),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                      color: Colors.white, // Background color for the button
-                      shape: BoxShape.circle, // Circular shape
-                      boxShadow: [
-                        BoxShadow(
-                        color: Colors.black, // Shadow color
-                        blurRadius: 4, // Blur radius for the shadow
-                        offset: const Offset(0, 2), // Shadow offset
-                        ),
-                      ],
-                      ),
-                      child: IconButton(
-                      icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                  builder: (context) => const Module2Screen()
-                            ),
-                          );  // Exit the current page
-                      },
-                      ),
-                    ),
-                    const SizedBox(width: 20), // Add spacing between the icon and the header
-                    Expanded( // Ensures the text wraps into a new line
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            pageheader,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            pagesubtitle,
-                            style: const TextStyle(fontSize: 20),
+          SafeArea(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 214, 237, 252),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                          color: Colors.black, // Shadow color
+                          blurRadius: 4, // Blur radius for the shadow
+                          offset: const Offset(0, 2), // Shadow offset
                           ),
                         ],
+                        ),
+                        child: IconButton(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                    builder: (context) => const Module2Screen()
+                              ),
+                            );  // Exit the current page
+                        },
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 20), // Add spacing between the icon and the header
+                      Expanded( // Ensures the text wraps into a new line
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              pageheader,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              pagesubtitle,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              // Scrollable content
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Card(
-                          color: const Color.fromARGB(200, 255, 255, 255),
-                          elevation: 4,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                // Scrollable content
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Card(
+                            color: const Color.fromARGB(200, 255, 255, 255),
+                            elevation: 4,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '3.) พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Text(
+                                    'เมื่อโลกของเราร้อนขึ้น อากาศก็จะแห้งแล้งมากขึ้น ทำให้ดินแตกระแหงและปลูกพืชไม่ได้เหมือนเดิม เหมือนเวลาที่เราไม่ได้รดน้ำต้นไม้ ต้นไม้ก็จะเหี่ยวเฉาและตายไป',
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Text(
+                                    'เมื่อไม่มีน้ำและดินไม่ดี เกษตรกรก็ปลูกข้าว ผัก และผลไม้ไม่ได้ ทำให้เราไม่มีอาหารกิน และอาหารก็จะมีราคาแพงขึ้น เหมือนเวลาที่เราอยากกินขนม แต่ร้านค้าไม่มีขนมขาย เราก็ต้องจ่ายเงินแพงขึ้นเพื่อซื้อขนม',
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Text(
+                                    'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และมีอาหารกินกันอย่างเพียงพอนะ!',
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(height: 24),
+                                  Center(
+                                    child: component.HoverableImage(
+                                      imagePath:
+                                          'asset/module2/module2_learn2_pic3.png',
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                ],
+                              ),
+                            ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '3.) พื้นที่แห้งแล้งเพิ่มขึ้นและส่งผลต่อการเพาะปลูกอาหาร',
-                                  textAlign: TextAlign.left,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                // Fixed footer
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    borderRadius: BorderRadius.circular(50), // Pill shape
+                  ),
+                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Back button
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(255, 0, 122, 255),
+                          ),
+                          padding: const EdgeInsets.all(4),
+                          child: SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: FloatingActionButton(
+                              heroTag: 'btnBack',
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Module2l2p2(),
                                   ),
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'เมื่อโลกของเราร้อนขึ้น อากาศก็จะแห้งแล้งมากขึ้น ทำให้ดินแตกระแหงและปลูกพืชไม่ได้เหมือนเดิม เหมือนเวลาที่เราไม่ได้รดน้ำต้นไม้ ต้นไม้ก็จะเหี่ยวเฉาและตายไป',
-                                  textAlign: TextAlign.left,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'เมื่อไม่มีน้ำและดินไม่ดี เกษตรกรก็ปลูกข้าว ผัก และผลไม้ไม่ได้ ทำให้เราไม่มีอาหารกิน และอาหารก็จะมีราคาแพงขึ้น เหมือนเวลาที่เราอยากกินขนม แต่ร้านค้าไม่มีขนมขาย เราก็ต้องจ่ายเงินแพงขึ้นเพื่อซื้อขนม',
-                                  textAlign: TextAlign.left,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้น้ำอย่างประหยัด เพื่อให้โลกของเราเย็นลง และมีอาหารกินกันอย่างเพียงพอนะ!',
-                                  textAlign: TextAlign.left,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                                const SizedBox(height: 24),
-                                Center(
-                                  child: component.HoverableImage(
-                                    imagePath:
-                                        'asset/module2/module2_learn2_pic3.png',
+                                );
+                              },
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                255,
+                                255,
+                                255,
+                              ),
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.arrow_back,
+                                size: 20,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Page number
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                        color: Colors.white, // White background
+                        borderRadius: BorderRadius.circular(50), // Pill shape
+                        ),
+                        child: const Text(
+                        'Page 3 of 9',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        ),
+                      ),
+                      // Forward button
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(255, 0, 122, 255),
+                          ),
+                          padding: const EdgeInsets.all(4),
+                          child: SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: FloatingActionButton(
+                              heroTag: 'btnForward',
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Module2l2p4(),
                                   ),
-                                ),
-                                const SizedBox(height: 12),
-                              ],
+                                );
+                              },
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                255,
+                                255,
+                                255,
+                              ),
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                size: 20,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
                             ),
                           ),
                         ),
@@ -150,115 +259,10 @@ class Module2l2p3 extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-              // Fixed footer
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  borderRadius: BorderRadius.circular(50), // Pill shape
-                ),
-                margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Back button
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color.fromARGB(255, 0, 122, 255),
-                        ),
-                        padding: const EdgeInsets.all(4),
-                        child: SizedBox(
-                          width: 40,
-                          height: 40,
-                          child: FloatingActionButton(
-                            heroTag: 'btnBack',
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Module2l2p2(),
-                                ),
-                              );
-                            },
-                            backgroundColor: const Color.fromARGB(
-                              255,
-                              255,
-                              255,
-                              255,
-                            ),
-                            shape: const CircleBorder(),
-                            child: const Icon(
-                              Icons.arrow_back,
-                              size: 20,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Page number
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      decoration: BoxDecoration(
-                      color: Colors.white, // White background
-                      borderRadius: BorderRadius.circular(50), // Pill shape
-                      ),
-                      child: const Text(
-                      'Page 3 of 9',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      ),
-                    ),
-                    // Forward button
-                    Padding(
-                      padding: const EdgeInsets.only(right: 15),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color.fromARGB(255, 0, 122, 255),
-                        ),
-                        padding: const EdgeInsets.all(4),
-                        child: SizedBox(
-                          width: 40,
-                          height: 40,
-                          child: FloatingActionButton(
-                            heroTag: 'btnForward',
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Module2l2p4(),
-                                ),
-                              );
-                            },
-                            backgroundColor: const Color.fromARGB(
-                              255,
-                              255,
-                              255,
-                              255,
-                            ),
-                            shape: const CircleBorder(),
-                            child: const Icon(
-                              Icons.arrow_forward,
-                              size: 20,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -24,15 +24,18 @@ class Module1l1p4 extends StatelessWidget {
       drawer: buildDrawer(
         context,
       ),
-      body: Container(
-        // Background decoration for the entire screen
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(background),
-            fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.5, // Adjust the opacity value as needed
+              child: Image.asset(
+                background, // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-        child: SafeArea(
+          SafeArea(
           child: Column(
             children: [
               Container(
@@ -45,15 +48,15 @@ class Module1l1p4 extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                      color: Colors.white, // Background color for the button
-                      shape: BoxShape.circle, // Circular shape
-                      boxShadow: [
-                        BoxShadow(
-                        color: Colors.black, // Shadow color
-                        blurRadius: 4, // Blur radius for the shadow
-                        offset: const Offset(0, 2), // Shadow offset
-                        ),
-                      ],
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                          color: Colors.black, // Shadow color
+                          blurRadius: 4, // Blur radius for the shadow
+                          offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
                       ),
                       child: IconButton(
                       icon: const Icon(Icons.exit_to_app, color: Colors.black),
@@ -295,16 +298,17 @@ class Module1l1p4 extends StatelessWidget {
                           shape: const CircleBorder(),
                           child: const Icon(Icons.arrow_forward,
                               size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        ],
       )
     );
   }
