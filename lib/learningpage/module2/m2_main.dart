@@ -73,7 +73,7 @@ class Module2Screen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: const Center(
                             child: Text(
-                              'Cover Section',
+                              '',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
