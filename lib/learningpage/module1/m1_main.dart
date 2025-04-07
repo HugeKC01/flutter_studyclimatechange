@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m1_lesson1_p1.dart';
 import 'lesson2/m1_lesson2_p1.dart';
+import 'package:climatechange/main.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -23,8 +24,18 @@ class Module1Screen extends StatelessWidget {
 
     return Scaffold(
       appBar: buildAppBar(
-        'Module 2',
+        'Module 3',
         context,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const MyApp()),
+              (route) => false, // Remove all previous routes
+            );
+          },
+        ),
       ),
       body: SafeArea(
         child: Padding(

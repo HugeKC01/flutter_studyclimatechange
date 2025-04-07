@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'm1_lesson2_p2.dart';
 import 'm1_lesson2_p4.dart';
 
@@ -56,7 +57,12 @@ class Module1l2p3 extends StatelessWidget {
                       child: IconButton(
                         icon: const Icon(Icons.exit_to_app, color: Colors.black),
                         onPressed: () {
-                          Navigator.pop(context); // Exit the current page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                  builder: (context) => const Module1Screen()
+                            ),
+                          );
                         },
                       ),
                     ),

@@ -56,7 +56,12 @@ class Module1l2p6 extends StatelessWidget {
                       child: IconButton(
                         icon: const Icon(Icons.exit_to_app, color: Colors.black),
                         onPressed: () {
-                          Navigator.pop(context); // Exit the current page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                  builder: (context) => const Module1Screen()
+                            ),
+                          );
                         },
                       ),
                     ),
