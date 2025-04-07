@@ -24,7 +24,7 @@ class QuizPageState extends State<PostTestScreen> {
     {
       'questionText': 'สัตว์ชนิดใดที่มักอพยพไปอยู่ในที่ที่มีอุณหภูมิพอเหมาะเมื่อฤดูกาลเปลี่ยนไป?',
       'answers': ['a) ช้าง', 'b) นก', 'c) แมว', 'd) ลิง'],
-      'correctAnswer': 'a) ช้าง',
+      'correctAnswer': 'b) นก',
       'selectedAnswer': '',
     },
   ];
@@ -36,29 +36,25 @@ class QuizPageState extends State<PostTestScreen> {
   }
 
   void nextQuestion() {
-    setState(() {
-      questionIndex = (questionIndex + 1) % questions.length;
-    });
+    if (questionIndex < questions.length - 1) {
+      setState(() {
+        questionIndex++;
+      });
+    }
   }
 
   void previousQuestion() {
-    setState(() {
-      questionIndex = (questionIndex - 1 + questions.length) % questions.length;
-    });
+    if (questionIndex > 0) {
+      setState(() {
+        questionIndex--;
+      });
+    }
   }
 
   void submitQuiz() {
-    setState(() {
-      score = 0;
-      for (var question in questions) {
-        if (question['selectedAnswer'] == question['correctAnswer']) {
-          score++;
-        }
-      }
-      _logger.info('Quiz Submitted! Final Score: $score');
-    });
-    // Add any additional submission logic here
-    // Navigate to the QuizResultScreen
+    score = questions.where((question) => question['selectedAnswer'] == question['correctAnswer']).length;
+    _logger.info('Quiz Submitted! Final Score: $score');
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -73,84 +69,100 @@ class QuizPageState extends State<PostTestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[questionIndex];
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz App'),
+        title: const Text('Post Test'),
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Card(
-              elevation: 5,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Question Text
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    currentQuestion['questionText'] as String,
+                    style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Divider(),
+                const SizedBox(height: 20.0),
+
+                // Answer Options
+                ..._buildAnswerOptions(currentQuestion),
+
+                const SizedBox(height: 20.0),
+                const Divider(),
+
+                // Navigation Buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        questions[questionIndex]['questionText'] as String,
-                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Divider(),
-                    SizedBox(height: 20.0),
-                    ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-                      bool isSelected = questions[questionIndex]['selectedAnswer'] == answer;
-                      return Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.symmetric(vertical: 5.0),
+                    if (questionIndex > 0)
+                      Expanded(
                         child: ElevatedButton(
-                          onPressed: () => answerQuestion(answer),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
-                            foregroundColor: isSelected ? Colors.white : null,
-                          ),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(answer),
-                          ),
+                          onPressed: previousQuestion,
+                          child: const Text('Previous'),
                         ),
-                      );
-                    }),
-                    SizedBox(height: 20.0),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        if (questionIndex > 0)
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: previousQuestion,
-                              child: Text('Previous'),
-                            ),
-                          ),
-                        if (questionIndex < questions.length - 1)
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: nextQuestion,
-                              child: Text('Next'),
-                            ),
-                          )
-                        else
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: submitQuiz,
-                              child: Text('Submit'),
-                            ),
-                          ),
-                      ],
-                    ),
-                    SizedBox(height: 20.0),
+                      ),
+                    if (questionIndex < questions.length - 1)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: nextQuestion,
+                          child: const Text('Next'),
+                        ),
+                      )
+                    else
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: submitQuiz,
+                          child: const Text('Submit'),
+                        ),
+                      ),
                   ],
                 ),
-              ),
+                const SizedBox(height: 20.0),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  // Helper method to build answer options
+  List<Widget> _buildAnswerOptions(Map<String, Object> question) {
+    final answers = question['answers'] as List<String>;
+    final selectedAnswer = question['selectedAnswer'] as String;
+
+    return answers.map((answer) {
+      final isSelected = selectedAnswer == answer;
+
+      return Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(vertical: 5.0),
+        child: ElevatedButton(
+          onPressed: () => answerQuestion(answer),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: isSelected ? Theme.of(context).colorScheme.secondary : null,
+            foregroundColor: isSelected ? Colors.white : null,
+          ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(answer),
+          ),
+        ),
+      );
+    }).toList();
   }
 }

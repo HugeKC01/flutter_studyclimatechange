@@ -13,7 +13,7 @@ class Module2l1p2 extends StatelessWidget {
     final pagetitle = 'เรื่องที่ 1 สาเหตุของการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.1) สาเหตุของการเปลี่ยนแปลงสภาพภูมิอากาศ';
-    final background = 'asset/module1/background1.png';
+    final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
@@ -149,6 +149,11 @@ class Module2l1p2 extends StatelessWidget {
               //Fixed footer
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(50), // Pill shape
+                ),
+                margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -180,6 +185,21 @@ class Module2l1p2 extends StatelessWidget {
                             size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
+                      ),
+                    ),
+                    // Page number
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                      color: Colors.white, // White background
+                      borderRadius: BorderRadius.circular(50), // Pill shape
+                      ),
+                      child: const Text(
+                      'Page 2 of 3',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                       ),
                     ),
                     // Forward button

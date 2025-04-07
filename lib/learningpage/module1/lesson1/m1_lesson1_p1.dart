@@ -12,7 +12,7 @@ Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.1) ความหมายของสภาพอากาศและภูมิอากาศ';
-    final background = 'asset/module1/background1.png';
+    final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
@@ -167,6 +167,11 @@ Widget build(BuildContext context) {
               // Fixed footer
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(50), // Pill shape
+                ),
+                margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -198,6 +203,21 @@ Widget build(BuildContext context) {
                                 size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
+                      ),
+                    ),
+                    // Page number
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                      color: Colors.white, // White background
+                      borderRadius: BorderRadius.circular(50), // Pill shape
+                      ),
+                      child: const Text(
+                      'Page 1 of 4',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                       ),
                     ),
                     // Forward button
