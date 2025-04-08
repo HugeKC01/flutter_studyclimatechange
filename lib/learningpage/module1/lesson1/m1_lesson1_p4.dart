@@ -120,7 +120,7 @@ class Module1l1p4 extends StatelessWidget {
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                 children: [component.HoverableImage(
-                                  imagePath: 'asset/module1/dry.jpg',
+                                  imagePath: 'asset/module1/dry.png',
                                   ),
                                 ],
                               ),
@@ -135,7 +135,7 @@ class Module1l1p4 extends StatelessWidget {
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                 children: [component.HoverableImage(
-                                  imagePath: 'asset/module1/polarb.jpg',
+                                  imagePath: 'asset/module1/polarbear.png',
                                   ),
                                 ],
                               ),
@@ -149,7 +149,7 @@ class Module1l1p4 extends StatelessWidget {
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                 children: [component.HoverableImage(
-                                  imagePath: 'asset/module1/strom.jpg',
+                                  imagePath: 'asset/module1/storm.png',
                                   ),
                                 ],
                               ),
@@ -164,7 +164,7 @@ class Module1l1p4 extends StatelessWidget {
                               Row(
                                 mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                 children: [component.HoverableImage(
-                                  imagePath: 'asset/module1/ext.jpg',
+                                  imagePath: 'asset/module1/extinc.png',
                                   ),
                                 ],
                               ),
