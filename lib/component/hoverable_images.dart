@@ -62,7 +62,7 @@ class HoverableImageState extends State<HoverableImage> {
             borderRadius: BorderRadius.circular(16.0), // กำหนดขอบมนให้กับรูปภาพ
             child: Image.asset(
               widget.imagePath, // ใช้เส้นทางรูปภาพจากพารามิเตอร์
-              width: MediaQuery.of(context).size.width * (_isHovered ? 0.8 : 0.7), //Change the width image size when hover : normal
+              width: MediaQuery.of(context).size.width * (_isHovered ? 0.4 : 0.4), //Change the width image size when hover : normal
               fit: BoxFit.contain, // ปรับขนาดรูปภาพให้พอดี
             ),
           ),
