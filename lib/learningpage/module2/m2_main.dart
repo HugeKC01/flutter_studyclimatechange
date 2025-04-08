@@ -27,13 +27,13 @@ class Module2Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module2/module0202.png',
+        'cover' : 'asset/default/summary_.png',
         'screen': Module2Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module2/module0202.png',
+        'cover' : 'asset/default/testimage_.png',
         'screen': PracticeM2Introduction(),
       },
     ];

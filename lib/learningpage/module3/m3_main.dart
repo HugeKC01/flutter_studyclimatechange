@@ -27,13 +27,13 @@ class Module3Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module3/module0302.png',
+        'cover' : 'asset/default/summary_.png',
         'screen': Module3Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module3/module0302.png',
+        'cover' : 'asset/default/testimage_.png',
         'screen': PracticeM3Introduction(),
       },
     ];
