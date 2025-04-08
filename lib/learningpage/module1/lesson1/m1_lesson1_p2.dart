@@ -166,7 +166,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                                 opacity: 1 - _opacity,
                                                 child: component.HoverableImage(
                                                   imagePath:
-                                                      'asset/module1/m1_l1_pic4_clean.png',
+                                                      'asset/module1/global_climate_clean.png',
                                                 ),
                                               ),
                                               // Second image (fades in/out)

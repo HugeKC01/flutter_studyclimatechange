@@ -3,7 +3,7 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'm1_lesson2_p3.dart';
-import 'm1_lesson2_p5Tree.dart';
+import 'm1_lesson2_p5.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
 class Module1l2p4 extends StatelessWidget {
@@ -131,7 +131,7 @@ class Module1l2p4 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/Designer3.jpeg',
+                                      imagePath: 'asset/module3/module0301.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
