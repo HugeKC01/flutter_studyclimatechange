@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         'title': 'Post Test',
         'subtitle': 'ทดสอบหลังเรียน',
         'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-        'cover' : 'asset/default/Module01.png',
+        'cover' : 'asset/default/testimage_.png',
         'screen': PostTestIntroduction(),
       },
     ];
