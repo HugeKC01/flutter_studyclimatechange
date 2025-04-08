@@ -12,6 +12,49 @@ class ManualPage extends StatelessWidget {
     'asset/manual/postTest.png',
   ];
 
+  final pages = [
+    {
+      'title' : 'หน้าหลัก',
+      'description' : 'หน้าหลักของแอปพลิเคชัน',
+      'cover' : 'asset/manual/home.png',
+    },
+    {
+      'title' : 'เมนูด้านข้าง',
+      'description' : 'เมนูด้านข้างที่ให้คุณเข้าถึงฟีเจอร์ต่างๆ',
+      'cover' : 'asset/manual/drawer.png',
+    },
+    {
+      'title' : 'ตัวฉัน',
+      'description' : 'โปรไฟล์ของผู้ใช้ที่แสดงข้อมูลส่วนตัว',
+      'cover' : 'asset/manual/profile.png',
+    },
+    {
+      'title' : 'เริ่มเรียน',
+      'description' : 'หน้าที่แสดงหน่วยการเรียนรู้ต่าง ๆ',
+      'cover' : 'asset/manual/modulePage.png',
+    },
+    {
+      'title' : 'เนื้อหา',
+      'description' : 'เนื้อหาภายในหน่วยการเรียนรู้',
+      'cover' : 'asset/manual/moduleContent.png',
+    },
+    {
+      'title' : 'จบการเรียนรู้',
+      'description' : 'หน้าที่แสดงว่าหน่วยการเรียนรู้เสร็จสมบูรณ์แล้ว',
+      'cover' : 'asset/manual/moduleComplete.png',
+    },
+    {
+      'title' : 'ทดสอบท้ายหน่วย',
+      'description' : 'หน้าที่ให้ทำแบบทดสอบหลังเรียนจบโมดูล',
+      'cover' : 'asset/manual/moduleTest.png',
+    },
+    {
+      'title' : 'ทดสอบหลังเรียน',
+      'description' : 'หน้าที่ให้ทำแบบทดสอบหลังเรียนจบเนื้อหาทั้งหมด',
+      'cover' : 'asset/manual/postTest.png',
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double cardHeight = MediaQuery.of(context).size.height / 3;
@@ -21,26 +64,43 @@ class ManualPage extends StatelessWidget {
         title: Text('Manual'),
       ),
       body: ListView.builder(
-        itemCount: imagePaths.length,
+        itemCount: pages.length,
         itemBuilder: (context, index) {
+          final page = pages[index];
           return Card(
             margin: EdgeInsets.all(8.0),
             child: SizedBox(
-              height: cardHeight,
-              child: Column(
+              height: cardHeight * 1.25, // Increased size by 25%
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Center the row content
                 children: [
                   Expanded(
+                    flex: 1,
                     child: Image.asset(
-                      imagePaths[index],
+                      page['cover']!,
                       fit: BoxFit.contain,
                       width: double.infinity,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Step ${index + 1}',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center, // Center the column content
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            page['title']!,
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            page['description']!,
+                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

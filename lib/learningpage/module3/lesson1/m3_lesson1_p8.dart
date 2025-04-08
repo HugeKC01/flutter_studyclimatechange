@@ -151,6 +151,12 @@ class _Module3l1p8State extends State<Module3l1p8> {
                                     ],
                                   ),
                                 ),
+                                  Image.asset(
+                                    'asset/module3/m3_l1_p8.png',
+                                    fit: BoxFit.contain, // Adjusted to prevent cropping
+                                    width: double.infinity,
+                                    height: 200,
+                                  ),
                                 ],
                               ),
                             ),
