@@ -6,8 +6,26 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
-class Module1l1p2 extends StatelessWidget {
+class Module1l1p2 extends StatefulWidget {
   const Module1l1p2({super.key});
+
+  @override
+  State<Module1l1p2> createState() => _Module1l1p2State();
+}
+
+class _Module1l1p2State extends State<Module1l1p2> {
+  double _opacity = 0.5; // Initial opacity value
+
+  // Function to determine slider color based on value
+  Color _getSliderColor(double value) {
+    if (value < 0.33) {
+      return Colors.blue; // Low value
+    } else if (value < 0.66) {
+      return Colors.orange; // Medium value
+    } else {
+      return Colors.red; // High value
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,30 +66,30 @@ class Module1l1p2 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
+                          color: Colors.white, // Background color for the button
+                          shape: BoxShape.circle, // Circular shape
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black, // Shadow color
+                              blurRadius: 4, // Blur radius for the shadow
+                              offset: const Offset(0, 2), // Shadow offset
+                            ),
+                          ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()
-                              ),
-                            );  // Exit the current page
-                        },
+                                  builder: (context) => const Module1Screen()),
+                            ); // Exit the current page
+                          },
                         ),
                       ),
                       const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      Expanded(
+                        // Ensures the text wraps into a new line
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -120,24 +138,70 @@ class Module1l1p2 extends StatelessWidget {
                                     TextSpan(
                                       children: [
                                         const TextSpan(
-                                          text: '         การเปลี่ยนแปลงสภาพภูมิอากาศ (climate change)',
+                                          text:
+                                              '         การเปลี่ยนแปลงสภาพภูมิอากาศ (climate change)',
                                           style: TextStyle(
-                                              fontSize: 18,
+                                              fontSize: 25,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        const TextSpan(text: ' หมายถึง การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก ซึ่งอาจเกิดจากการกระทำของมนุษย์หรือจากธรรมชาติ โดยการเปลี่ยนแปลงนี้สามารถส่งผลกระทบต่อสิ่งมีชีวิตและสิ่งแวดล้อมได้ เช่น อุณหภูมิโลกที่สูงขึ้น น้ำแข็งขั้วโลกละลาย หรือฤดูกาลที่เปลี่ยนไป ซึ่งเกิดขึ้นจากปัจจัยต่าง ๆ' ),                                   
+                                        const TextSpan(
+                                            text:
+                                                ' หมายถึง การเปลี่ยนแปลงที่เกิดขึ้นในสภาพภูมิอากาศของโลก ซึ่งอาจเกิดจากการกระทำของมนุษย์หรือจากธรรมชาติ โดยการเปลี่ยนแปลงนี้สามารถส่งผลกระทบต่อสิ่งมีชีวิตและสิ่งแวดล้อมได้ เช่น อุณหภูมิโลกที่สูงขึ้น น้ำแข็งขั้วโลกละลาย หรือฤดูกาลที่เปลี่ยนไป ซึ่งเกิดขึ้นจากปัจจัยต่าง ๆ'),
                                       ],
                                     ),
                                     textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
+                                    style: const TextStyle(fontSize: 20),
                                   ),
-                                  const SizedBox(height: 8),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/global_climate.png',
-                                    ),
+                                  const SizedBox(height: 50),
+                                  // Vertical slider with fade-in/out images
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            // First image
+                                            Opacity(
+                                              opacity: 1 - _opacity,
+                                              child: component.HoverableImage(
+                                                imagePath:
+                                                    'asset/module1/global_climate.png',
+                                              ),
+                                            ),
+                                            // Second image (fades in/out)
+                                            Opacity(
+                                              opacity: _opacity,
+                                              child: component.HoverableImage(
+                                                imagePath:
+                                                    'asset/module1/human_act.png',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      // Vertical slider
+                                      RotatedBox(
+                                        quarterTurns: 3,
+                                        child: SliderTheme(
+                                          data: SliderTheme.of(context).copyWith(
+                                            activeTrackColor:
+                                                _getSliderColor(_opacity), // Dynamic color
+                                            thumbColor: _getSliderColor(_opacity), // Dynamic thumb color
+                                          ),
+                                          child: Slider(
+                                            value: _opacity,
+                                            min: 0.0,
+                                            max: 1.0,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _opacity = value; // Update opacity
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 12),
                                 ],
                               ),
                             ),
@@ -147,12 +211,11 @@ class Module1l1p2 extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 // Fixed footer
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                    color: Theme.of(context).colorScheme.inversePrimary,
                     borderRadius: BorderRadius.circular(50), // Pill shape
                   ),
                   margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
@@ -191,17 +254,18 @@ class Module1l1p2 extends StatelessWidget {
                       ),
                       // Page number
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
-                        color: Colors.white, // White background
-                        borderRadius: BorderRadius.circular(50), // Pill shape
+                          color: Colors.white, // White background
+                          borderRadius: BorderRadius.circular(50), // Pill shape
                         ),
                         child: const Text(
-                        'Page 2 of 4',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                          'Page 2 of 4',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       // Forward button
@@ -241,7 +305,7 @@ class Module1l1p2 extends StatelessWidget {
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }
