@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'm1_lesson2_p3.dart';
-import 'm1_lesson2_p1.dart';
+import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
+import 'm1_lesson2_p4.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
-class Module1l2p2 extends StatelessWidget {
-  const Module1l2p2({super.key});
+class Module1l2p5 extends StatelessWidget {
+  const Module1l2p5({super.key});
 
   @override
   Widget build(BuildContext context) {
     final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = '2.1) ทำไมเราต้องสนใจเรื่องนี้?';
+    final pagesubtitle = '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
@@ -66,7 +66,7 @@ class Module1l2p2 extends StatelessWidget {
                               MaterialPageRoute(
                                     builder: (context) => const Module1Screen()
                               ),
-                            ); // Exit the current page
+                            );
                           },
                         ),
                       ),
@@ -112,21 +112,20 @@ class Module1l2p2 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '2. ทำให้ภัยพิบัติรุนแรงขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold),
+                                    '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '         เรากำลังเผชิญกับพายุที่รุนแรงขึ้น อุณหภูมิที่สูงขึ้นทำให้เกิดคลื่นความร้อน น้ําแข็งขั้วโลกละลายและฝนตกแปรปรวนก่อให้เกิดน้ำท่วมและภัยแล้งที่รุนแรงกว่าเดิม',
-                                    textAlign: TextAlign.left,
+                                    '⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
+                                    textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/Designer1.png',
+                                      imagePath: 'asset/module1/Designer4.jpeg',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -168,7 +167,7 @@ class Module1l2p2 extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Module1l2p1()),
+                                      builder: (context) => const Module1l2p4()),
                                 );
                               },
                               backgroundColor:
@@ -188,7 +187,7 @@ class Module1l2p2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50), // Pill shape
                         ),
                         child: const Text(
-                        'Page 2 of 5',
+                        'Page 5 of 5',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -210,10 +209,50 @@ class Module1l2p2 extends StatelessWidget {
                             child: FloatingActionButton(
                               heroTag: 'btnForward',
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Module1l2p3()),
+                                showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                  title: const Text('กิจกรรมเสริมความเข้าใจ'),
+                                  content: const Text(
+                                    'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                    'คุณสามารถทำกิจกรรมความเข้าใจของคุณได้\n\n'
+                                    'หากคุณกลับหน้าหลัก จะต้องเริ่มการเรียนรู้เรื่องที่ 2 ใหม่\n\n'
+                                    'คุณต้องการทำกิจกรรมนี้หรือไม่?'),
+                                  actions: [
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                    },
+                                    child: const Text('ยกเลิก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const Module1Screen()),
+                                      ); // Close the dialog
+                                    },
+                                    child: const Text('กลับหน้าหลัก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const EnhancedM1Introduction()),
+                                      );
+                                    },
+                                    child: const Text('ไปทำกิจกรรม'),
+                                    ),
+                                  ],
+                                  );
+                                },
                                 );
                               },
                               backgroundColor:
