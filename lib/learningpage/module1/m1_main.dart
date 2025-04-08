@@ -27,13 +27,13 @@ class Module1Screen extends StatelessWidget {
       {
         'title': 'สรุปการเรียนรู้',
         'subtitle': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module1/module0102.png',
+        'cover' : 'asset/default/summary_.png',
         'screen': Module1Sum(),
       },
       {
         'title': 'แบบฝึกหัด',
         'subtitle': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/module1/module0102.png',
+        'cover' : 'asset/default/testimage_.png',
         'screen': PracticeM1Introduction(),
       },
     ];
