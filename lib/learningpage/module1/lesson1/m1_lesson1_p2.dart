@@ -157,46 +157,53 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child: Stack(
-                                          alignment: Alignment.center,
-                                          children: [
-                                            // First image
-                                            Opacity(
-                                              opacity: 1 - _opacity,
-                                              child: component.HoverableImage(
-                                                imagePath:
-                                                    'asset/module1/global_climate.png',
+                                        child: SizedBox(
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              // First image
+                                              Opacity(
+                                                opacity: 1 - _opacity,
+                                                child: component.HoverableImage(
+                                                  imagePath:
+                                                      'asset/module1/global_climate.png',
+                                                ),
                                               ),
-                                            ),
-                                            // Second image (fades in/out)
-                                            Opacity(
-                                              opacity: _opacity,
-                                              child: component.HoverableImage(
-                                                imagePath:
-                                                    'asset/module1/human_act.png',
+                                              // Second image (fades in/out)
+                                              Opacity(
+                                                opacity: _opacity,
+                                                child: component.HoverableImage(
+                                                  imagePath:
+                                                      'asset/module1/human_act.png',
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       // Vertical slider
                                       RotatedBox(
                                         quarterTurns: 3,
-                                        child: SliderTheme(
-                                          data: SliderTheme.of(context).copyWith(
-                                            activeTrackColor:
-                                                _getSliderColor(_opacity), // Dynamic color
-                                            thumbColor: _getSliderColor(_opacity), // Dynamic thumb color
-                                          ),
-                                          child: Slider(
-                                            value: _opacity,
-                                            min: 0.0,
-                                            max: 1.0,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                _opacity = value; // Update opacity
-                                              });
-                                            },
+                                        child: SizedBox(
+                                          height: 100, // Match the height of the image
+                                          width: 500,
+                                          child: SliderTheme(
+                                            data: SliderTheme.of(context).copyWith(
+                                              activeTrackColor:
+                                                  _getSliderColor(_opacity), // Dynamic color
+                                              thumbColor: _getSliderColor(_opacity), // Dynamic thumb color
+                                              trackHeight: 8.0, // Adjust the thickness of the slider track
+                                            ),
+                                            child: Slider(
+                                              value: _opacity,
+                                              min: 0.0,
+                                              max: 1.0,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _opacity = value; // Update opacity
+                                                });
+                                              },
+                                            ),
                                           ),
                                         ),
                                       ),
