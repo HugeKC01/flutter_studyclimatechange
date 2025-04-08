@@ -125,7 +125,7 @@ class Module1l2p5 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/Designer4.jpeg',
+                                      imagePath: 'asset/module1/m1_l2_pic5.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
