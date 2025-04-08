@@ -42,18 +42,6 @@ Widget buildDrawer(BuildContext context) {
             );
           },
         ),
-/*         ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Admin'),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AdminScreen(),
-              ),
-            );
-          },
-        ), */
       ],
     ),
   );
