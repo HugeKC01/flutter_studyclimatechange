@@ -204,14 +204,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                 ),
               ),
-              ElevatedButton(
+              /* ElevatedButton(
                 onPressed: _resetLockStatus, // Reset lock status to defaults
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                 ),
                 child: const Text('Reset Lock Status'),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16), */
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:climatechange/main.dart';
 import 'package:flutter/material.dart';
-import 'package:climatechange/admin.dart';
+//import 'package:climatechange/admin.dart';
+import 'package:climatechange/manual_page.dart'; // Ensure this is the correct path to ManualPage
 
 Widget buildDrawer(BuildContext context) {
   return Drawer(
@@ -33,9 +34,15 @@ Widget buildDrawer(BuildContext context) {
           title: Text('Manual'),
           onTap: () {
             // Handle the manual tap here
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ManualPage(),
+              ),
+            );
           },
         ),
-        ListTile(
+/*         ListTile(
           leading: Icon(Icons.settings),
           title: Text('Admin'),
           onTap: () {
@@ -46,7 +53,7 @@ Widget buildDrawer(BuildContext context) {
               ),
             );
           },
-        ),
+        ), */
       ],
     ),
   );
