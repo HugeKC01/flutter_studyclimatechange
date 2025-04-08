@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'm1_lesson2_p3.dart';
-import 'm1_lesson2_p5Tree.dart';
+import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
+import 'm1_lesson2_p4.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
-class Module1l2p4 extends StatelessWidget {
-  const Module1l2p4({super.key});
+class Module1l2p5 extends StatelessWidget {
+  const Module1l2p5({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -112,26 +112,20 @@ class Module1l2p4 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '⦿    ลดการใช้พลังงานเกินความจำเป็น เช่น ปิดไฟเมื่อไม่ใช้ ปรับอุณหภูมิแอร์ให้เหมาะสม',
+                                    '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '⦿    ใช้พาหนะที่เป็นมิตรต่อสิ่งแวดล้อมลดการปล่อยก๊าซคาร์บอนไดออกไซด์ เช่น เดิน ขี่จักรยาน หรือใช้ขนส่งสาธารณะ',
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '⦿    ปลูกต้นไม้ ต้นไม้ช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ซึ่งเป็นสาเหตุของภาวะโลกร้อน',
+                                    '⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/Designer3.jpeg',
+                                      imagePath: 'asset/module1/m1_l2_pic5.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -140,104 +134,127 @@ class Module1l2p4 extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                        const DragAndHoverImageSet(),
                       ],
                     ),
                   ),
                 ),
-                // Fixed footer
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                    borderRadius: BorderRadius.circular(50), // Pill shape
-                  ),
-                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Back button
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 0, 122, 255),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: FloatingActionButton(
-                              heroTag: 'btnBack',
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Module1l2p3()),
-                                );
-                              },
-                              backgroundColor:
-                                  const Color.fromARGB(255, 255, 255, 255),
-                              shape: const CircleBorder(),
-                              child: const Icon(Icons.arrow_back,
-                                  size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Page number
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                        color: Colors.white, // White background
-                        borderRadius: BorderRadius.circular(50), // Pill shape
-                        ),
-                        child: const Text(
-                        'Page 4 of 5',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        ),
-                      ),
-                      // Forward button
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 0, 122, 255),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: FloatingActionButton(
-                              heroTag: 'btnForward',
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Module1l2p5()),
-                                );
-                              },
-                              backgroundColor:
-                                  const Color.fromARGB(255, 255, 255, 255),
-                              shape: const CircleBorder(),
-                              child: const Icon(Icons.arrow_forward,
-                                  size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                
               ],
             ),
           ),
         ],
       ),
+    );
+    
+  }
+}
+
+class DragAndHoverImageSet extends StatefulWidget {
+  const DragAndHoverImageSet({super.key});
+
+  @override
+  _DragAndHoverImageSetState createState() => _DragAndHoverImageSetState();
+}
+
+class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
+  int _currentState = 0; // Tracks the current state of the image set (0-4)
+  Offset _dragPosition = const Offset(150, 300); // Initial position of the draggable
+  bool _isHovering = false; // Tracks whether the draggable is hovering over the image set
+
+  void _incrementState() {
+    setState(() {
+      _currentState = (_currentState + 1) % 5; // Cycles through 0-4
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Image set with 5 states
+        Center(
+          child: DragTarget<String>(
+            onWillAccept: (data) {
+              if (data == 'drag') {
+                setState(() {
+                  _isHovering = true; // Set hovering to true when draggable is above
+                });
+                return true;
+              }
+              return false;
+            },
+            onLeave: (data) {
+              setState(() {
+                _isHovering = false; // Reset hovering when draggable leaves
+              });
+            },
+            onAccept: (data) {
+              _incrementState(); // Increment state when draggable is dropped
+              setState(() {
+                _isHovering = false; // Reset hovering after acceptance
+              });
+            },
+            builder: (context, candidateData, rejectedData) {
+              return Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: _isHovering ? Colors.blue : Colors.transparent, // Highlight on hover
+                    width: 3,
+                  ),
+                ),
+                child: Image.asset(
+                  'asset/module1/state$_currentState.png', // Dynamically load image based on state
+                  width: 200,
+                  height: 200,
+                ),
+              );
+            },
+          ),
+        ),
+        // Draggable image
+        Positioned(
+          left: _dragPosition.dx,
+          top: _dragPosition.dy,
+          child: Draggable<String>(
+            data: 'drag', // Data to be passed to DragTarget
+            feedback: Material(
+              color: Colors.transparent,
+              child: Image.asset(
+                'asset/module1/draggable.png', // Image for dragging
+                width: 100,
+                height: 100,
+              ),
+            ),
+            childWhenDragging: Opacity(
+              opacity: 0.5, // Make the original widget semi-transparent while dragging
+              child: Image.asset(
+                'asset/module1/draggable.png',
+                width: 100,
+                height: 100,
+              ),
+            ),
+            child: Image.asset(
+              'asset/module1/draggable.png', // Static image when not dragging
+              width: 100,
+              height: 100,
+            ),
+            onDragUpdate: (details) {
+              setState(() {
+                _dragPosition += details.delta; // Update position as the draggable moves
+              });
+            },
+            onDragEnd: (details) {
+              setState(() {
+                // Convert global offset to local offset
+                final RenderBox renderBox = context.findRenderObject() as RenderBox;
+                _dragPosition = renderBox.globalToLocal(details.offset); // Convert to local coordinates
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 }
