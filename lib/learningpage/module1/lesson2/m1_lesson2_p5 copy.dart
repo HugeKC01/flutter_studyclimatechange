@@ -1,24 +1,23 @@
-import 'package:flutter/material.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm1_lesson1_p2.dart';
-import 'm1_lesson1_p4.dart';
-import 'package:climatechange/learningpage/module1/m1_main.dart';
+import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/learningpage/module1/m1_main.dart';
+import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
+import 'm1_lesson2_p4.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
-class Module1l1p3 extends StatelessWidget {
-  const Module1l1p3({super.key});
+class Module1l2p5 extends StatelessWidget {
+  const Module1l2p5({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ';
-    final pageheader = 'เรื่องที่ 1';
-    final pagesubtitle = '1.2) การเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pageheader = 'เรื่องที่ 2';
+    final pagesubtitle = '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
       appBar: buildAppBar(
-        pagetitle,
+        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         context,
       ),
       drawer: buildDrawer(
@@ -34,39 +33,40 @@ class Module1l1p3 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
+          ), 
           SafeArea(
             child: Column(
               children: [
+                // Header Section
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 214, 237, 252),
                   ),
-                    child: Row(
+                  child: Row(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black, // Shadow color
-                            blurRadius: 4, // Blur radius for the shadow
-                            offset: const Offset(0, 2), // Shadow offset
+                          color: Colors.white, // Background color for the button
+                          shape: BoxShape.circle, // Circular shape
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black, // Shadow color
+                              blurRadius: 4, // Blur radius for the shadow
+                              offset: const Offset(0, 2), // Shadow offset
                             ),
                           ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                     builder: (context) => const Module1Screen()
                               ),
-                            );  // Exit the current page
+                            );
                           },
                         ),
                       ),
@@ -110,36 +110,22 @@ class Module1l1p3 extends StatelessWidget {
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [                            
+                                children: [
                                   Text(
-                                    '  ปัจจัยที่ทำให้เกิดการเปลี่ยนแปลงสภาพภูมิอากาศ\n',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold),
+                                    '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '         ปัจจัยที่เกิดจากกิจกรรมของมนุษย์ เช่น การปล่อยก๊าซเรือนกระจกจากกิจกรรมของมนุษย์'
-                                    ' เช่น การเผาไหม้เชื้อเพลิงฟอสซิล การตัดไม้ทำลายป่า และการเกษตรกรรม',                                
-                                    textAlign: TextAlign.left,
+                                    '⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
+                                    textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/human_act.png',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Text(
-                                    ' ปัจจัยทางธรรมชาติ เช่น การเปลี่ยนแปลงของวงโคจรของโลกและการระเบิดของภูเขาไฟ',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/nature_act.png',
+                                      imagePath: 'asset/module1/Designer4.jpeg',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -152,15 +138,14 @@ class Module1l1p3 extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 // Fixed footer
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                      borderRadius: BorderRadius.circular(50), // Pill shape
-                    ),
-                    margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    borderRadius: BorderRadius.circular(50), // Pill shape
+                  ),
+                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -182,7 +167,7 @@ class Module1l1p3 extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Module1l1p2()),
+                                      builder: (context) => const Module1l2p4()),
                                 );
                               },
                               backgroundColor:
@@ -202,7 +187,7 @@ class Module1l1p3 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50), // Pill shape
                         ),
                         child: const Text(
-                        'Page 3 of 4',
+                        'Page 5 of 5',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -224,10 +209,50 @@ class Module1l1p3 extends StatelessWidget {
                             child: FloatingActionButton(
                               heroTag: 'btnForward',
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Module1l1p4()),
+                                showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                  title: const Text('กิจกรรมเสริมความเข้าใจ'),
+                                  content: const Text(
+                                    'คุณได้เรียนรู้เรื่องที่ 2 เสร็จสิ้นแล้ว\n'
+                                    'คุณสามารถทำกิจกรรมความเข้าใจของคุณได้\n\n'
+                                    'หากคุณกลับหน้าหลัก จะต้องเริ่มการเรียนรู้เรื่องที่ 2 ใหม่\n\n'
+                                    'คุณต้องการทำกิจกรรมนี้หรือไม่?'),
+                                  actions: [
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                    },
+                                    child: const Text('ยกเลิก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const Module1Screen()),
+                                      ); // Close the dialog
+                                    },
+                                    child: const Text('กลับหน้าหลัก'),
+                                    ),
+                                    TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the dialog
+                                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                          const EnhancedM1Introduction()),
+                                      );
+                                    },
+                                    child: const Text('ไปทำกิจกรรม'),
+                                    ),
+                                  ],
+                                  );
+                                },
                                 );
                               },
                               backgroundColor:
@@ -246,7 +271,7 @@ class Module1l1p3 extends StatelessWidget {
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }
