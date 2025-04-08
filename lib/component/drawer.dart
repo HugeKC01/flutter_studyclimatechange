@@ -1,6 +1,5 @@
 import 'package:climatechange/main.dart';
 import 'package:flutter/material.dart';
-import 'package:climatechange/admin.dart';
 
 Widget buildDrawer(BuildContext context) {
   return Drawer(
@@ -33,18 +32,6 @@ Widget buildDrawer(BuildContext context) {
           title: Text('Manual'),
           onTap: () {
             // Handle the manual tap here
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Admin'),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AdminScreen(),
-              ),
-            );
           },
         ),
       ],
