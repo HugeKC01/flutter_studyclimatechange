@@ -5,6 +5,8 @@ import 'package:climatechange/learningpage/module2/m2_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
+import 'package:climatechange/component/footer_navigator.dart';
+import 'package:climatechange/component/page_config.dart';
 
 class Module2l2p7 extends StatelessWidget {
   const Module2l2p7({super.key});
@@ -15,6 +17,7 @@ class Module2l2p7 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.3) อธิบายผลกระทบที่มีต่อสิ่งแวดล้อม';
     final background = 'asset/overall/background1.png';
+    final int totalPages = PageConfig.lessonPageCounts['m2lesson2'] ?? 1;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -156,109 +159,23 @@ class Module2l2p7 extends StatelessWidget {
                   ),
                 ),
                 // Fixed footer
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                    borderRadius: BorderRadius.circular(50), // Pill shape
-                  ),
-                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Back button
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 0, 122, 255),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: FloatingActionButton(
-                              heroTag: 'btnBack',
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Module2l2p6(),
-                                  ),
-                                );
-                              },
-                              backgroundColor: const Color.fromARGB(
-                                255,
-                                255,
-                                255,
-                                255,
-                              ),
-                              shape: const CircleBorder(),
-                              child: const Icon(
-                                Icons.arrow_back,
-                                size: 20,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Page number
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                        color: Colors.white, // White background
-                        borderRadius: BorderRadius.circular(50), // Pill shape
-                        ),
-                        child: const Text(
-                        'Page 7 of 9',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        ),
-                      ),
-                      // Forward button
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 0, 122, 255),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: FloatingActionButton(
-                              heroTag: 'btnForward',
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Module2l2p8(),
-                                  ),
-                                );
-                              },
-                              backgroundColor: const Color.fromARGB(
-                                255,
-                                255,
-                                255,
-                                255,
-                              ),
-                              shape: const CircleBorder(),
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                size: 20,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                FooterNavigation(
+                  onBackPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Module2l2p8()),
+                    );
+                  },
+                  onForwardPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Module2l2p6()),
+                    );
+                  },
+                  currentPage: 7, // Current page index
+                  totalPages: totalPages,  // Total number of pages
                 ),
               ],
             ),

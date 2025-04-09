@@ -4,6 +4,9 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson1_p7.dart';
 import 'package:climatechange/learningpage/module3/lesson2/m3_lesson2_p1.dart';
+import 'package:climatechange/component/footer_navigator.dart';
+import 'package:climatechange/component/page_config.dart';
+import 'package:climatechange/component/dialog.dart';
 
 
 import 'package:climatechange/style/style.dart' as style;
@@ -34,6 +37,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ หน้า 8';
     final background = 'asset/overall/background1.png';
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
 
     final lessons = [
       {
@@ -169,130 +173,37 @@ class _Module3l1p8State extends State<Module3l1p8> {
               ),
             ),
             // Back and Forward buttons
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                    borderRadius: BorderRadius.circular(50), // Pill shape
-                  ),
-                  margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
+            FooterNavigation(
+              onBackPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Module3l1p7()),
+                );
+              },
+              onForwardPressed: () {
+                showLesson1CompletionDialog(
+                  context: context,
+                  backToMain: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Module3Screen(),
                       ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module3l1p7()),
-                            );
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
+                    );
+                  },
+                  lesson2Continue: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Module3l2p1(),
                       ),
-                    ),
-                  ),
-                  // Page number
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                        color: Colors.white, // White background
-                        borderRadius: BorderRadius.circular(50), // Pill shape
-                        ),
-                        child: const Text(
-                        'Page 8 of 8',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        ),
-                      ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
-                                showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                  title: const Text('Complete'),
-                                  content: const Text(
-                                    'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
-                                  actions: [
-                                    TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop(); // Close the dialog
-                                    },
-                                    child: const Text('ยกเลิก'),
-                                    ),
-                                    TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                          const Module3Screen()),
-                                      ); // Close the dialog
-                                    },
-                                    child: const Text('กลับหน้าหลัก'),
-                                    ),
-                                    TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop(); // Close the dialog
-                                      Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                          const Module3l2p1()),
-                                      );
-                                    },
-                                    child: const Text('ไปยังเรื่องที่ 2'),
-                                    ),
-                                  ],
-                                  );
-                                },
-                                );
-                              },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                    );
+                  },
+                );
+              },
+              currentPage: 8, // Current page index
+              totalPages: totalPages,  // Total number of pages
             ),
           ],
         ),
