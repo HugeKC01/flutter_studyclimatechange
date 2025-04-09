@@ -5,6 +5,7 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
+import 'package:climatechange/component/page_config.dart';
 import 'package:climatechange/style/style.dart';
 
 class Module1l1p1 extends StatelessWidget {
@@ -17,6 +18,7 @@ class Module1l1p1 extends StatelessWidget {
     final pagesubtitle = '1.1) ความหมายของสภาพอากาศและภูมิอากาศ';
     final background = 'asset/overall/background1.png';
     const fontsize = 20.0;
+    final int totalPages = PageConfig.lessonPageCounts['m1lesson1'] ?? 1;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -187,7 +189,8 @@ class Module1l1p1 extends StatelessWidget {
                           builder: (context) => const Module1l1p2()),
                     );
                   },
-                  pageNumber: 'Page 1 of 4',
+                  currentPage: 1, // Current page index
+                  totalPages: totalPages,  // Total number of pages
                 ),
               ],
             ),

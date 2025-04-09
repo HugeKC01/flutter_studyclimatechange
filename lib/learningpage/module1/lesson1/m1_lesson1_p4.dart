@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'm1_lesson1_p3.dart';
 import 'package:climatechange/learningpage/module1/lesson2/m1_lesson2_p1.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
+import 'package:climatechange/component/footer_navigator.dart';
+import 'package:climatechange/component/dialog.dart';
+import 'package:climatechange/component/page_config.dart';
 
 class Module1l1p4 extends StatelessWidget {
   const Module1l1p4({super.key});
@@ -15,6 +17,7 @@ class Module1l1p4 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.3) ผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
+    final int totalPages = PageConfig.lessonPageCounts['m1lesson1'] ?? 1;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -180,134 +183,41 @@ class Module1l1p4 extends StatelessWidget {
             ),
 
             // Fixed footer
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  borderRadius: BorderRadius.circular(50), // Pill shape
-                ),
-                margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back button
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnBack',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Module1l1p3()),
-                            );
-                          },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_back,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // Page number
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                    color: Colors.white, // White background
-                    borderRadius: BorderRadius.circular(50), // Pill shape
-                    ),
-                    child: const Text(
-                    'Page 4 of 4',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                  ),
-                  // Forward button
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 0, 122, 255),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FloatingActionButton(
-                          heroTag: 'btnForward',
-                          onPressed: () {
-                              showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                title: const Text('Complete'),
-                                content: const Text(
-                                  'คุณต้องการไปยังเรื่องที่ 2 หรือไม่?',),
-                                actions: [
-                                  TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(); // Close the dialog
-                                  },
-                                  child: const Text('ยกเลิก'),
-                                  ),
-                                  TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                        const Module1Screen()),
-                                    ); // Close the dialog
-                                  },
-                                  child: const Text('กลับหน้าหลัก'),
-                                  ),
-                                  TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(); // Close the dialog
-                                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                        const Module1l2p1()),
-                                    );
-                                  },
-                                  child: const Text('ไปยังเรื่องที่ 2'),
-                                  ),
-                                ],
-                                );
-                              },
-                              );
-                            },
-                          backgroundColor:
-                              const Color.fromARGB(255, 255, 255, 255),
-                          shape: const CircleBorder(),
-                          child: const Icon(Icons.arrow_forward,
-                              size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+            FooterNavigation(
+                  onBackPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Module1Screen()),
+                    );
+                  },
+                  onForwardPressed: () {
+                    showLesson1CompletionDialog(
+                      context: context,
+                      backToMain: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Module1Screen(),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
+                        );
+                      },
+                      lesson2Continue: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Module1l2p1(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  currentPage: 4, // Current page index
+                  totalPages: totalPages,  // Total number of pages
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
         ],
       )
     );
