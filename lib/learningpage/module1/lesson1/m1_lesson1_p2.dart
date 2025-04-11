@@ -164,20 +164,19 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                           child: Stack(
                                             alignment: Alignment.center,
                                             children: [
+                                              Opacity(
+                                                opacity: 1,
+                                                child: component.HoverableImage(
+                                                  imagePath:
+                                                      'asset/module1/global_climate.png',
+                                                ),
+                                              ),
                                               // First image
                                               Opacity(
                                                 opacity: 1 - _opacity,
                                                 child: component.HoverableImage(
                                                   imagePath:
                                                       'asset/module1/global_climate_clean.png',
-                                                ),
-                                              ),
-                                              // Second image (fades in/out)
-                                              Opacity(
-                                                opacity: _opacity,
-                                                child: component.HoverableImage(
-                                                  imagePath:
-                                                      'asset/module1/global_climate.png',
                                                 ),
                                               ),
                                             ],
