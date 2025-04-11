@@ -5,7 +5,7 @@ import 'package:climatechange/profile.dart';
 PreferredSizeWidget buildAppBar(String title, BuildContext context, {Widget? leading}) {
   return AppBar(
     title: Text(title),
-    leading: leading, // Show leading only if provided
+    leading: leading,
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.all(8.0),

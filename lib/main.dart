@@ -5,6 +5,7 @@ import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/appbar.dart';
+import 'component/adaptivenavigation.dart';
 import 'component/drawer.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
 
@@ -142,14 +143,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       },
     ];
 
-    return Scaffold(
-      appBar: buildAppBar(
-        widget.title,
-        context,
-      ),
-      drawer: buildDrawer(
-        context,
-      ),
+    return AdaptiveNavigation(
+      title: widget.title,
+      child: Scaffold(        
       body: Stack(
         children: [
           Positioned.fill(
@@ -269,6 +265,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
         ],
       ),
+      )
     );
   }
 }
