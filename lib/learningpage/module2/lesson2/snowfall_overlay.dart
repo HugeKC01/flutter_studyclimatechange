@@ -17,7 +17,7 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
   late AnimationController _controller;
   late Animation<double> _animation = const AlwaysStoppedAnimation(0.0);
   final Random _random = Random();
-  late Size _screenSize;
+  late Size _screenSize = Size.zero; // กำหนดค่าเริ่มต้นให้กับ _screenSize
 
   @override
   void initState() {
@@ -31,12 +31,15 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _screenSize = MediaQuery.of(context).size;
-        _initializeSnowflakes();
+        _initializeSnowflakes(); // เรียก _initializeSnowflakes() ทันทีที่ได้ขนาดหน้าจอ
       }
     });
   }
 
   void _initializeSnowflakes() {
+    if (_screenSize == Size.zero)
+      return; // ป้องกันการทำงานถ้า _screenSize ยังเป็นค่าเริ่มต้น
+
     _snowflakes = List.generate(widget.numberOfSnowflakes, (_) {
       return SnowflakeData(
         x: _random.nextDouble() * _screenSize.width,
@@ -49,6 +52,9 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
   }
 
   void _updateSnowflakes(double t) {
+    if (_screenSize == Size.zero || _snowflakes == null)
+      return; // ป้องกันการทำงานถ้ายังไม่มีขนาดหรือเกล็ดหิมะ
+
     for (var snowflake in _snowflakes) {
       snowflake.y += snowflake.speed;
       if (snowflake.y > _screenSize.height) {
@@ -64,7 +70,11 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // ไม่จำเป็นต้องกำหนด _screenSize ที่นี่อีก
+    final newScreenSize = MediaQuery.of(context).size;
+    if (_screenSize != newScreenSize) {
+      _screenSize = newScreenSize;
+      _initializeSnowflakes();
+    }
   }
 
   @override
@@ -81,14 +91,16 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
         _updateSnowflakes(_animation.value);
         return Stack(
           children:
-              _snowflakes.map((data) {
+              _snowflakes?.map((data) {
+                // ใช้ ?. เพื่อป้องกัน error ถ้า _snowflakes ยังไม่ถูก initialize
                 return Snowflake(
                   x: data.x,
                   y: data.y,
                   size: data.size,
                   opacity: data.opacity,
                 );
-              }).toList(),
+              })?.toList() ??
+              [], // ถ้า _snowflakes เป็น null ให้คืน List ว่าง
         );
       },
     );
