@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:climatechange/component/adaptivenavigation.dart';
 
 class ManualPage extends StatelessWidget {
   final List<String> imagePaths = [
@@ -59,10 +60,9 @@ class ManualPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double cardHeight = MediaQuery.of(context).size.height / 3;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Manual'),
-      ),
+    return AdaptiveNavigation(
+      title: 'Manual',
+      child: Scaffold(
       body: ListView.builder(
         itemCount: pages.length,
         itemBuilder: (context, index) {
@@ -109,6 +109,7 @@ class ManualPage extends StatelessWidget {
           );
         },
       ),
+    ),
     );
   }
 }
