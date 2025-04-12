@@ -4,7 +4,7 @@ import 'm1_lesson1_p3.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'package:climatechange/component/hoverable_images.dart' as component;
+import 'package:climatechange/component/hoverable_images_new.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
 
@@ -168,7 +168,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                             children: [
                                               Opacity(
                                                 opacity: 1,
-                                                child: component.HoverableImage(
+                                                child: component.HoverableImageNEW(
                                                   imagePath:
                                                       'asset/module1/global_climate.png',
                                                 ),
@@ -176,7 +176,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                               // First image
                                               Opacity(
                                                 opacity: 1 - _opacity,
-                                                child: component.HoverableImage(
+                                                child: component.HoverableImageNEW(
                                                   imagePath:
                                                       'asset/module1/global_climate_clean.png',
                                                 ),
@@ -190,8 +190,8 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                       RotatedBox(
                                         quarterTurns: 3,
                                         child: SizedBox(
-                                          height:30, // Match the height of the image
-                                          width: MediaQuery.of(context).size.width * 0.4,
+                                          height: MediaQuery.of(context).size.width * 0.075, // Match the height of the image
+                                          width: MediaQuery.of(context).size.width * 0.5,
                                        
                                           child: SliderTheme(
                                             data: SliderTheme.of(context).copyWith(
@@ -221,7 +221,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                   const SizedBox(height: 10),
                                   Center(
                                     child: Text(
-                                      'ลองเลื่อนอุณหภูมิเพื่อดูการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                                      'ลองเลื่อนอุณหภูมิเพื่อดูการเปลี่ยนแปลงโลก',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 18,
