@@ -158,9 +158,11 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                   const SizedBox(height: 50),
                                   // Vertical slider with fade-in/out images
                                   Row(
+                                    // Center the slider and image
+                                    crossAxisAlignment:CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Expanded(
-                                        child: SizedBox(
+                                        SizedBox(
                                           child: Stack(
                                             alignment: Alignment.center,
                                             children: [
@@ -182,13 +184,15 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                             ],
                                           ),
                                         ),
-                                      ),
+                                      
                                       // Vertical slider
+                                     // Add spacing between the image and the slider
                                       RotatedBox(
                                         quarterTurns: 3,
                                         child: SizedBox(
-                                          height: 100, // Match the height of the image
-                                          width: 500,
+                                          height:30, // Match the height of the image
+                                          width: MediaQuery.of(context).size.width * 0.4,
+                                       
                                           child: SliderTheme(
                                             data: SliderTheme.of(context).copyWith(
                                               activeTrackColor:
@@ -197,9 +201,11 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                               trackHeight: 8.0, // Adjust the thickness of the slider track
                                             ),
                                             child: Slider(
+                                              
                                               value: _opacity,
                                               min: 0.0,
                                               max: 1.0,
+                                              
                                               onChanged: (value) {
                                                 setState(() {
                                                   _opacity = value; // Update opacity
@@ -207,9 +213,21 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                               },
                                             ),
                                           ),
+                                      )
                                         ),
-                                      ),
+                                      
                                     ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Center(
+                                    child: Text(
+                                      'ลองเลื่อนอุณหภูมิเพื่อดูการเปลี่ยนแปลงสภาพภูมิอากาศ',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.grey[600],
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
