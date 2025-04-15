@@ -56,7 +56,7 @@ class ManualPage extends StatelessWidget {
     },
   ];
 
-  const ManualPage({super.key});
+  ManualPage({super.key});
 
   @override
   Widget build(BuildContext context) {

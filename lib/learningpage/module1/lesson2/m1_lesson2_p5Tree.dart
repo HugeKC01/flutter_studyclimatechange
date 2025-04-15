@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
-import 'm1_lesson2_p4.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 
 class Module1l2p5 extends StatelessWidget {
