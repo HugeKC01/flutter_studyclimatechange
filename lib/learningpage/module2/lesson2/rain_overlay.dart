@@ -3,14 +3,9 @@ import 'dart:math';
 import 'raindrop.dart';
 
 class RainOverlay extends StatefulWidget {
-  final int? numberOfRaindrops;
   final double screenWidth;
 
-  const RainOverlay({
-    super.key,
-    this.numberOfRaindrops,
-    required this.screenWidth,
-  });
+  const RainOverlay({super.key, required this.screenWidth});
 
   @override
   State<RainOverlay> createState() => _RainOverlayState();
@@ -18,73 +13,35 @@ class RainOverlay extends StatefulWidget {
 
 class _RainOverlayState extends State<RainOverlay>
     with SingleTickerProviderStateMixin {
-  late List<RaindropData> _raindrops;
   late AnimationController _controller;
-  late Animation<double> _animation = const AlwaysStoppedAnimation(0.0);
+  List<_RaindropData> _raindrops = [];
   final Random _random = Random();
-  late Size _screenSize = Size.zero;
+  final double _intensity = 0.2;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(
+        milliseconds: 1500,
+      ), // ปรับ duration สำหรับความเร็ว
       vsync: this,
     )..repeat();
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        _screenSize = MediaQuery.of(context).size;
-        _initializeRaindrops();
-      }
-    });
+    // ย้ายการเรียก _generateRaindrops() ไปที่ didUpdateWidget() หรือ didChangeDependencies()
   }
 
-  void _initializeRaindrops() {
-    if (_screenSize == Size.zero) {
-      return;
-    }
-
-    final int calculatedRaindrops =
-        widget.numberOfRaindrops ?? (widget.screenWidth / 10).ceil();
-
-    _raindrops = List.generate(calculatedRaindrops, (_) {
-      return RaindropData(
-        x: _random.nextDouble() * _screenSize.width,
-        y: _random.nextDouble() * _screenSize.height * 0.5 - 50,
-        length: _random.nextDouble() * 10 + 10,
-        speed: _random.nextDouble() * 15 + 15,
-        opacity: _random.nextDouble() * 0.5 + 0.5,
-      );
-    });
-  }
-
-  void _updateRaindrops(double t) {
-    if (_screenSize == Size.zero || _raindrops.isEmpty) {
-      return;
-    }
-
-    for (var raindrop in _raindrops) {
-      raindrop.y += raindrop.speed;
-      if (raindrop.y > _screenSize.height) {
-        raindrop.y = -50;
-        raindrop.x = _random.nextDouble() * _screenSize.width;
-        raindrop.length = _random.nextDouble() * 10 + 10;
-        raindrop.speed = _random.nextDouble() * 15 + 15;
-        raindrop.opacity = _random.nextDouble() * 0.5 + 0.5;
-      }
+  @override
+  void didUpdateWidget(covariant RainOverlay oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.screenWidth != widget.screenWidth) {
+      _generateRaindrops();
     }
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final newScreenSize = MediaQuery.of(context).size;
-    if (_screenSize != newScreenSize) {
-      _screenSize = newScreenSize;
-      _initializeRaindrops();
-    }
+    _generateRaindrops(); // เรียกที่นี่เพื่อให้แน่ใจว่า context พร้อมใช้งาน
   }
 
   @override
@@ -93,20 +50,45 @@ class _RainOverlayState extends State<RainOverlay>
     super.dispose();
   }
 
+  void _generateRaindrops() {
+    if (!mounted) return; // ตรวจสอบว่า Widget ยังอยู่ใน Tree
+    _raindrops.clear();
+    final screenHeight =
+        MediaQuery.of(context).size.height; // เข้าถึง MediaQuery ที่นี่
+    final int numberOfRaindrops =
+        (widget.screenWidth * 1.5 * _intensity).floor();
+    for (int i = 0; i < numberOfRaindrops; i++) {
+      _raindrops.add(
+        _RaindropData(
+          x: _random.nextDouble() * widget.screenWidth,
+          y: _random.nextDouble() * screenHeight,
+          length: _random.nextDouble() * 15 + 5,
+          speed: _random.nextDouble() * 10 + 5,
+          opacity: _random.nextDouble() * 0.8, // ตั้งค่าความจางที่นี่โดยตรง
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _animation,
+      animation: _controller,
       builder: (context, child) {
-        _updateRaindrops(_animation.value);
         return Stack(
           children:
-              _raindrops.map((data) {
+              _raindrops.map((raindrop) {
+                final double yPosition =
+                    raindrop.y +
+                    _controller.value *
+                        MediaQuery.of(context).size.height *
+                        raindrop.speed /
+                        10;
                 return Raindrop(
-                  x: data.x,
-                  y: data.y,
-                  length: data.length,
-                  opacity: data.opacity,
+                  x: raindrop.x,
+                  y: yPosition % MediaQuery.of(context).size.height,
+                  length: raindrop.length,
+                  opacity: raindrop.opacity,
                 );
               }).toList(),
         );
@@ -115,14 +97,14 @@ class _RainOverlayState extends State<RainOverlay>
   }
 }
 
-class RaindropData {
+class _RaindropData {
   double x;
   double y;
   double length;
   double speed;
   double opacity;
 
-  RaindropData({
+  _RaindropData({
     required this.x,
     required this.y,
     required this.length,

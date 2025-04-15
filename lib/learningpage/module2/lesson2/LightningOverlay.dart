@@ -58,7 +58,7 @@ class _LightningOverlayState extends State<LightningOverlay>
     if (_screenSize == Size.zero) return;
     _bolts.clear();
     final int numberOfBolts =
-        (_screenSize.width / 225).floor(); // คำนวณจำนวนฟ้าผ่าและปัดเศษทิ้ง
+        (_screenSize.width / 450).floor(); // คำนวณจำนวนฟ้าผ่าและปัดเศษทิ้ง
     final List<int> delays = _generateDelays(numberOfBolts);
 
     for (int i = 0; i < numberOfBolts; i++) {
