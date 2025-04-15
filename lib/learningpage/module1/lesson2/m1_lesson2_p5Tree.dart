@@ -12,7 +12,8 @@ class Module1l2p5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pagesubtitle =
+        '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
 
     return Scaffold(
@@ -20,9 +21,7 @@ class Module1l2p5 extends StatelessWidget {
         'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         context,
       ),
-      drawer: buildDrawer(
-        context,
-      ),
+      drawer: buildDrawer(context),
       body: Stack(
         children: [
           Positioned.fill(
@@ -33,7 +32,7 @@ class Module1l2p5 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ), 
+          ),
           SafeArea(
             child: Column(
               children: [
@@ -48,7 +47,8 @@ class Module1l2p5 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white, // Background color for the button
+                          color:
+                              Colors.white, // Background color for the button
                           shape: BoxShape.circle, // Circular shape
                           boxShadow: [
                             BoxShadow(
@@ -59,19 +59,25 @@ class Module1l2p5 extends StatelessWidget {
                           ],
                         ),
                         child: IconButton(
-                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                          icon: const Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black,
+                          ),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()
+                                builder: (context) => const Module1Screen(),
                               ),
                             );
                           },
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      const SizedBox(
+                        width: 20,
+                      ), // Add spacing between the icon and the header
+                      Expanded(
+                        // Ensures the text wraps into a new line
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -104,7 +110,9 @@ class Module1l2p5 extends StatelessWidget {
                             color: const Color.fromARGB(200, 255, 255, 255),
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8),
+                              ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -140,14 +148,12 @@ class Module1l2p5 extends StatelessWidget {
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),
         ],
       ),
     );
-    
   }
 }
 
@@ -160,8 +166,12 @@ class DragAndHoverImageSet extends StatefulWidget {
 
 class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
   int _currentState = 0; // Tracks the current state of the image set (0-4)
-  Offset _dragPosition = const Offset(150, 300); // Initial position of the draggable
-  bool _isHovering = false; // Tracks whether the draggable is hovering over the image set
+  Offset _dragPosition = const Offset(
+    150,
+    300,
+  ); // Initial position of the draggable
+  bool _isHovering =
+      false; // Tracks whether the draggable is hovering over the image set
 
   void _incrementState() {
     setState(() {
@@ -176,10 +186,11 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
         // Image set with 5 states
         Center(
           child: DragTarget<String>(
-            onWillAccept: (data) {
+            onWillAcceptWithDetails: (data) {
               if (data == 'drag') {
                 setState(() {
-                  _isHovering = true; // Set hovering to true when draggable is above
+                  _isHovering =
+                      true; // Set hovering to true when draggable is above
                 });
                 return true;
               }
@@ -190,7 +201,7 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
                 _isHovering = false; // Reset hovering when draggable leaves
               });
             },
-            onAccept: (data) {
+            onAcceptWithDetails: (data) {
               _incrementState(); // Increment state when draggable is dropped
               setState(() {
                 _isHovering = false; // Reset hovering after acceptance
@@ -200,7 +211,10 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
               return Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: _isHovering ? Colors.blue : Colors.transparent, // Highlight on hover
+                    color:
+                        _isHovering
+                            ? Colors.blue
+                            : Colors.transparent, // Highlight on hover
                     width: 3,
                   ),
                 ),
@@ -228,7 +242,8 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
               ),
             ),
             childWhenDragging: Opacity(
-              opacity: 0.5, // Make the original widget semi-transparent while dragging
+              opacity:
+                  0.5, // Make the original widget semi-transparent while dragging
               child: Image.asset(
                 'asset/module1/draggable.png',
                 width: 100,
@@ -242,14 +257,18 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
             ),
             onDragUpdate: (details) {
               setState(() {
-                _dragPosition += details.delta; // Update position as the draggable moves
+                _dragPosition +=
+                    details.delta; // Update position as the draggable moves
               });
             },
             onDragEnd: (details) {
               setState(() {
                 // Convert global offset to local offset
-                final RenderBox renderBox = context.findRenderObject() as RenderBox;
-                _dragPosition = renderBox.globalToLocal(details.offset); // Convert to local coordinates
+                final RenderBox renderBox =
+                    context.findRenderObject() as RenderBox;
+                _dragPosition = renderBox.globalToLocal(
+                  details.offset,
+                ); // Convert to local coordinates
               });
             },
           ),

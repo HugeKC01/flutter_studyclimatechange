@@ -23,7 +23,7 @@ class Snowflake extends StatelessWidget {
         opacity: opacity,
         child: Icon(
           Icons.grain,
-          color: const Color.fromARGB(255, 25, 43, 26),
+          color: const Color.fromARGB(255, 31, 56, 40),
           size: size,
         ),
       ),

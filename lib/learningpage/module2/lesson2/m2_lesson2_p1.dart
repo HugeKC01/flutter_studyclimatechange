@@ -6,8 +6,7 @@ import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
-import 'snowflake.dart';
-import 'snowfall_overlay.dart';
+import 'snowfall_overlay_1.dart'; // ตรวจสอบชื่อไฟล์ SnowfallOverlay ของคุณ
 
 class Module2l2p1 extends StatelessWidget {
   const Module2l2p1({super.key});
@@ -116,10 +115,10 @@ class Module2l2p1 extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         '1.) อุณหภูมิโลกเพิ่มขึ้นเนื่องมาจากก๊าซเรือนกระจกที่สะสมในบรรยากาศ',
                                         textAlign: TextAlign.left,
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -158,8 +157,16 @@ class Module2l2p1 extends StatelessWidget {
                           ],
                         ),
                       ),
-                      // วาง SnowfallOverlay ให้อยู่ใน Stack ของส่วนเนื้อหา
-                      const SnowfallOverlay(numberOfSnowflakes: 70),
+                      LayoutBuilder(
+                        builder: (
+                          BuildContext context,
+                          BoxConstraints constraints,
+                        ) {
+                          return SnowfallOverlay(
+                            screenWidth: constraints.maxWidth,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),

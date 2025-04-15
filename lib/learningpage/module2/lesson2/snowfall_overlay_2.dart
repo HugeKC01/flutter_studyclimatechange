@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'snowflake.dart';
+import 'snowflake_2.dart';
 
 class SnowfallOverlay extends StatefulWidget {
-  final int numberOfSnowflakes;
+  final int? numberOfSnowflakes;
+  final double screenWidth;
 
-  const SnowfallOverlay({super.key, this.numberOfSnowflakes = 50});
+  const SnowfallOverlay({
+    super.key,
+    this.numberOfSnowflakes,
+    required this.screenWidth,
+  });
 
   @override
   State<SnowfallOverlay> createState() => _SnowfallOverlayState();
@@ -17,7 +22,7 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
   late AnimationController _controller;
   late Animation<double> _animation = const AlwaysStoppedAnimation(0.0);
   final Random _random = Random();
-  late Size _screenSize = Size.zero; // กำหนดค่าเริ่มต้นให้กับ _screenSize
+  late Size _screenSize = Size.zero;
 
   @override
   void initState() {
@@ -31,20 +36,24 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         _screenSize = MediaQuery.of(context).size;
-        _initializeSnowflakes(); // เรียก _initializeSnowflakes() ทันทีที่ได้ขนาดหน้าจอ
+        _initializeSnowflakes();
       }
     });
   }
 
   void _initializeSnowflakes() {
-    if (_screenSize == Size.zero)
-      return; // ป้องกันการทำงานถ้า _screenSize ยังเป็นค่าเริ่มต้น
+    if (_screenSize == Size.zero) {
+      return;
+    }
 
-    _snowflakes = List.generate(widget.numberOfSnowflakes, (_) {
+    final int calculatedSnowflakes =
+        widget.numberOfSnowflakes ?? (widget.screenWidth / 10).ceil();
+
+    _snowflakes = List.generate(calculatedSnowflakes, (_) {
       return SnowflakeData(
         x: _random.nextDouble() * _screenSize.width,
         y: _random.nextDouble() * _screenSize.height * 0.5 - 50,
-        size: _random.nextDouble() * 4 + 4,
+        size: _random.nextDouble() * 8 + 8,
         speed: _random.nextDouble() * 2 + 1,
         opacity: _random.nextDouble() * 0.5 + 0.5,
       );
@@ -52,15 +61,16 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
   }
 
   void _updateSnowflakes(double t) {
-    if (_screenSize == Size.zero || _snowflakes == null)
-      return; // ป้องกันการทำงานถ้ายังไม่มีขนาดหรือเกล็ดหิมะ
+    if (_screenSize == Size.zero || _snowflakes.isEmpty) {
+      return;
+    }
 
     for (var snowflake in _snowflakes) {
       snowflake.y += snowflake.speed;
       if (snowflake.y > _screenSize.height) {
         snowflake.y = -50;
         snowflake.x = _random.nextDouble() * _screenSize.width;
-        snowflake.size = _random.nextDouble() * 4 + 4;
+        snowflake.size = _random.nextDouble() * 8 + 8;
         snowflake.speed = _random.nextDouble() * 2 + 1;
         snowflake.opacity = _random.nextDouble() * 0.5 + 0.5;
       }
@@ -91,16 +101,14 @@ class _SnowfallOverlayState extends State<SnowfallOverlay>
         _updateSnowflakes(_animation.value);
         return Stack(
           children:
-              _snowflakes?.map((data) {
-                // ใช้ ?. เพื่อป้องกัน error ถ้า _snowflakes ยังไม่ถูก initialize
+              _snowflakes.map((data) {
                 return Snowflake(
                   x: data.x,
                   y: data.y,
                   size: data.size,
                   opacity: data.opacity,
                 );
-              })?.toList() ??
-              [], // ถ้า _snowflakes เป็น null ให้คืน List ว่าง
+              }).toList(),
         );
       },
     );
