@@ -176,7 +176,7 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
         // Image set with 5 states
         Center(
           child: DragTarget<String>(
-            onWillAccept: (data) {
+            onWillAcceptWithDetails: (data) {
               if (data == 'drag') {
                 setState(() {
                   _isHovering = true; // Set hovering to true when draggable is above
@@ -190,7 +190,7 @@ class _DragAndHoverImageSetState extends State<DragAndHoverImageSet> {
                 _isHovering = false; // Reset hovering when draggable leaves
               });
             },
-            onAccept: (data) {
+            onAcceptWithDetails: (data) {
               _incrementState(); // Increment state when draggable is dropped
               setState(() {
                 _isHovering = false; // Reset hovering after acceptance

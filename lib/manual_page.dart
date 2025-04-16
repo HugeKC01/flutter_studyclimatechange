@@ -56,6 +56,8 @@ class ManualPage extends StatelessWidget {
     }
   ];
 
+  ManualPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final double cardHeight = MediaQuery.of(context).size.height / 3;

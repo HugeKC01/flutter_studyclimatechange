@@ -6,7 +6,6 @@ import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
-import 'package:climatechange/style/style.dart';
 
 class Module1l1p1 extends StatelessWidget {
   const Module1l1p1({super.key});

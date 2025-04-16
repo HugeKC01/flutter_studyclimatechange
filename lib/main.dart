@@ -4,9 +4,7 @@ import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
-import 'component/appbar.dart';
 import 'component/adaptivenavigation.dart';
-import 'component/drawer.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
 
 
@@ -158,111 +156,117 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         ),
           ),
           SafeArea(
-        child: Scrollbar(
-          thumbVisibility: true,
-          controller: _scrollController, // Attach ScrollController to Scrollbar
-          child: ValueListenableBuilder<List<bool>>(
-            valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
-            builder: (context, lockedStatus, child) {
-              return GridView.builder(
-                controller: _scrollController, // Attach ScrollController to GridView
-                padding: const EdgeInsets.all(8.0),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
-                  childAspectRatio: 1 / 1,
-                ),
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  final module = modules[index];
-                  final isLocked = lockedStatus[index];
+  child: Scrollbar(
+    thumbVisibility: true,
+    controller: _scrollController, // Attach ScrollController to Scrollbar
+    child: Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 1200, // Limit the maximum width of the grid
+        ),
+        child: ValueListenableBuilder<List<bool>>(
+          valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
+          builder: (context, lockedStatus, child) {
+            return GridView.builder(
+              controller: _scrollController, // Attach ScrollController to GridView
+              padding: const EdgeInsets.all(8.0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+                childAspectRatio: 1 / 1,
+              ),
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                final module = modules[index];
+                final isLocked = lockedStatus[index];
 
-                  return FadeTransition(
-                    opacity: _fadeAnimations[index],
-                    child: SlideTransition(
-                      position: _offsetAnimations[index],
-                      child: GestureDetector(
-                        onTap: isLocked
-                            ? null
-                            : () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => module['screen'] as Widget,
+                return FadeTransition(
+                  opacity: _fadeAnimations[index],
+                  child: SlideTransition(
+                    position: _offsetAnimations[index],
+                    child: GestureDetector(
+                      onTap: isLocked
+                          ? null
+                          : () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => module['screen'] as Widget,
+                                ),
+                              );
+                            },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        elevation: 5.0,
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: isLocked
+                                      ? Colors.grey
+                                      : Theme.of(context).colorScheme.primary,
+                                  image: DecorationImage(
+                                    image: AssetImage(module['cover'] as String),
+                                    fit: BoxFit.cover,
                                   ),
-                                );
-                              },
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          elevation: 5.0,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: isLocked
-                                        ? Colors.grey
-                                        : Theme.of(context).colorScheme.primary,
-                                    image: DecorationImage(
-                                      image: AssetImage(module['cover'] as String),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(15.0),
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      
-                                      if (isLocked)
-                                        const Icon(
-                                          Icons.lock,
-                                          color: Colors.white,
-                                          size: 24.0,
-                                        ),
-                                    ],
+                                  borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(15.0),
                                   ),
                                 ),
-                              ),
-                              ListTile(
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                title: Text(
-                                  module['title'] as String,
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(module['subtitle'] as String),
-                                    Text(module['description'] as String),
+                                    if (isLocked)
+                                      const Icon(
+                                        Icons.lock,
+                                        color: Colors.white,
+                                        size: 24.0,
+                                      ),
                                   ],
                                 ),
-                                trailing: Icon(
-                                  isLocked ? Icons.lock : Icons.lock_open,
-                                  color: isLocked ? Colors.red : Colors.green,
+                              ),
+                            ),
+                            ListTile(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                              title: Text(
+                                module['title'] as String,
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ],
-                          ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(module['subtitle'] as String),
+                                  Text(module['description'] as String),
+                                ],
+                              ),
+                              trailing: Icon(
+                                isLocked ? Icons.lock : Icons.lock_open,
+                                color: isLocked ? Colors.red : Colors.green,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  );
-                },
-              );
-            },
-          ),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
+    ),
+  ),
+),
         ],
       ),
       )
