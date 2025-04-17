@@ -146,7 +146,7 @@ class Module1l1p1 extends StatelessWidget {
                                   Text.rich(
                                     TextSpan(children:[
                                       const TextSpan(
-                                        text: '         ภูมิอากาศ (climate)',
+                                        text: '         ภูมิอากาศ หรือ สภาพภูมิอากาศ (climate)',
                                         style: TextStyle(
                                             fontSize: fontsize,
                                             fontWeight: FontWeight.bold),
@@ -173,6 +173,7 @@ class Module1l1p1 extends StatelessWidget {
                     ),
                   ),
                 ),
+                
                 // Fixed footer
                 FooterNavigation(
                   onBackPressed: () {
