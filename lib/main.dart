@@ -174,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             physics: const NeverScrollableScrollPhysics(), // Disable GridView's internal scrolling
                             padding: const EdgeInsets.all(8.0),
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
+                              crossAxisCount: MediaQuery.of(context).size.width < 700 ? 1 : 2,
                               crossAxisSpacing: 8.0,
                               mainAxisSpacing: 8.0,
                               childAspectRatio: 1 / 1,
