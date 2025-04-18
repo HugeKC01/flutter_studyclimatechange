@@ -20,13 +20,8 @@ class Module2l2p2 extends StatelessWidget {
     final int totalPages = PageConfig.lessonPageCounts['m2lesson2'] ?? 1;
 
     return Scaffold(
-      appBar: buildAppBar(
-        pagetitle,
-        context,
-      ),
-      drawer: buildDrawer(
-        context,
-      ),
+      appBar: buildAppBar(pagetitle, context),
+      drawer: buildDrawer(context),
       body: Stack(
         children: [
           Positioned.fill(
@@ -51,30 +46,37 @@ class Module2l2p2 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
+                          color:
+                              Colors.white, // Background color for the button
+                          shape: BoxShape.circle, // Circular shape
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black, // Shadow color
+                              blurRadius: 4, // Blur radius for the shadow
+                              offset: const Offset(0, 2), // Shadow offset
+                            ),
+                          ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module2Screen()
+                                builder: (context) => const Module2Screen(),
                               ),
-                            );  // Exit the current page
-                        },
+                            ); // Exit the current page
+                          },
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      const SizedBox(
+                        width: 20,
+                      ), // Add spacing between the icon and the header
+                      Expanded(
+                        // Ensures the text wraps into a new line
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -107,7 +109,9 @@ class Module2l2p2 extends StatelessWidget {
                             color: const Color.fromARGB(200, 255, 255, 255),
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8),
+                              ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -164,18 +168,20 @@ class Module2l2p2 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p1()),
+                        builder: (context) => const Module2l2p1(),
+                      ),
                     );
                   },
                   onForwardPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p3()),
+                        builder: (context) => const Module2l2p3(),
+                      ),
                     );
                   },
                   currentPage: 2, // Current page index
-                  totalPages: totalPages,  // Total number of pages
+                  totalPages: totalPages, // Total number of pages
                 ),
               ],
             ),
