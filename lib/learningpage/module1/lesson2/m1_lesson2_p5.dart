@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
 import 'm1_lesson2_p4.dart';
+import 'm1_lesson2_p6.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
-import 'package:climatechange/component/dialog.dart';
 import 'package:climatechange/component/page_config.dart';
 
 class Module1l2p5 extends StatelessWidget {
@@ -116,20 +115,26 @@ class Module1l2p5 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
+                                    '⦿    ลดการใช้พลังงานเกินความจำเป็น เช่น ปิดไฟเมื่อไม่ใช้ ปรับอุณหภูมิแอร์ให้เหมาะสม',
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
+                                    '⦿    ใช้พาหนะที่เป็นมิตรต่อสิ่งแวดล้อมลดการปล่อยก๊าซคาร์บอนไดออกไซด์ เช่น เดิน ขี่จักรยาน หรือใช้ขนส่งสาธารณะ',
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    '⦿    ปลูกต้นไม้ ต้นไม้ช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ซึ่งเป็นสาเหตุของภาวะโลกร้อน',
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module1/m1_l2_pic5.png',
+                                      imagePath: 'asset/module3/module0301.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -152,24 +157,10 @@ class Module1l2p5 extends StatelessWidget {
                     );
                   },
                   onForwardPressed: () {
-                    showLesson2CompletionDialog(
-                      context: context,
-                      backToMain: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Module1Screen(),
-                          ),
-                        );
-                      },
-                      activity: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const EnhancedM1Introduction(),
-                          ),
-                        );
-                      },
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Module1l2p6()),
                     );
                   },
                   currentPage: 5, // Current page index

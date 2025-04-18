@@ -7,7 +7,6 @@ import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
 import 'component/shared_state.dart'; // Import the shared ValueNotifier
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _loadLockStatus(); // Load lock status before running the app
@@ -20,7 +19,8 @@ Future<void> _loadLockStatus() async {
   final List<String>? savedStatus = prefs.getStringList('moduleLockedStatus');
 
   if (savedStatus != null) {
-    moduleLockedStatusNotifier.value = savedStatus.map((status) => status == 'true').toList();
+    moduleLockedStatusNotifier.value =
+        savedStatus.map((status) => status == 'true').toList();
   }
 }
 
@@ -48,11 +48,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late List<Animation<Offset>> _offsetAnimations;
   late List<Animation<double>> _fadeAnimations;
-  final ScrollController _scrollController = ScrollController(); // Add ScrollController
+  final ScrollController _scrollController =
+      ScrollController(); // Add ScrollController
 
   @override
   void initState() {
@@ -71,28 +73,17 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ).animate(
         CurvedAnimation(
           parent: _animationController,
-          curve: Interval(
-            index * 0.1,
-            1.0,
-            curve: Curves.easeOut,
-          ),
+          curve: Interval(index * 0.1, 1.0, curve: Curves.easeOut),
         ),
       );
     });
 
     // Create fade animations for each card
     _fadeAnimations = List.generate(4, (index) {
-      return Tween<double>(
-        begin: 0.0,
-        end: 1.0,
-      ).animate(
+      return Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
-          curve: Interval(
-            index * 0.1,
-            1.0,
-            curve: Curves.easeIn,
-          ),
+          curve: Interval(index * 0.1, 1.0, curve: Curves.easeIn),
         ),
       );
     });
@@ -113,30 +104,31 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       {
         'title': 'Module 1',
         'subtitle': 'Introduction to Climate Change',
-        'description': 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/Module01.png',
+        'description':
+            'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover': 'asset/default/Module01.png',
         'screen': Module1Screen(),
-        
       },
       {
         'title': 'Module 2',
         'subtitle': 'Cause and effects of the Climate Change',
         'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/Module02.png',
+        'cover': 'asset/default/Module02.png',
         'screen': Module2Screen(),
       },
       {
         'title': 'Module 3',
         'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
-        'description': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover' : 'asset/default/Module03.png',
+        'description':
+            'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover': 'asset/default/Module03.png',
         'screen': Module3Screen(),
       },
       {
         'title': 'Post Test',
         'subtitle': 'ทดสอบหลังเรียน',
         'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-        'cover' : 'asset/default/testimage_.png',
+        'cover': 'asset/default/testimage_.png',
         'screen': PostTestIntroduction(),
       },
     ];

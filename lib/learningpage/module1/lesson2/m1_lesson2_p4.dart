@@ -14,7 +14,7 @@ class Module1l2p4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
+    final pagesubtitle = '2.1) ทำไมเราต้องสนใจเรื่องนี้?';
     final background = 'asset/overall/background1.png';
     final int totalPages = PageConfig.lessonPageCounts['m1lesson2'] ?? 1;
 
@@ -115,26 +115,21 @@ class Module1l2p4 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '⦿    ลดการใช้พลังงานเกินความจำเป็น เช่น ปิดไฟเมื่อไม่ใช้ ปรับอุณหภูมิแอร์ให้เหมาะสม',
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(fontSize: 18),
+                                    '3. อาหารหายากขึ้น',
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '⦿    ใช้พาหนะที่เป็นมิตรต่อสิ่งแวดล้อมลดการปล่อยก๊าซคาร์บอนไดออกไซด์ เช่น เดิน ขี่จักรยาน หรือใช้ขนส่งสาธารณะ',
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '⦿    ปลูกต้นไม้ ต้นไม้ช่วยดูดซับก๊าซคาร์บอนไดออกไซด์ซึ่งเป็นสาเหตุของภาวะโลกร้อน',
-                                    textAlign: TextAlign.start,
+                                    '         ความแปรปรวนของสภาพอากาศส่งผลต่อผลผลิตทางการเกษตร เช่น อุณหภูมิที่สูงขึ้นทำให้พืชเติบโตได้ยากขึ้น และน้ำทะเลที่สูงขึ้นทำให้พื้นที่เพาะปลูกและผลผลิตทางการเกษตรบางส่วนถูกทำลาย',
+                                    textAlign: TextAlign.left,
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/module0301.png',
+                                      imagePath: 'asset/module1/m1_l2_pic3.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
