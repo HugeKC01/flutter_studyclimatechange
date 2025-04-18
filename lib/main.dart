@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage>
 
     return AdaptiveNavigation(
       title: widget.title,
-      child: Scaffold(
+      child: Scaffold(        
         body: Stack(
           children: [
             Positioned.fill(
@@ -150,132 +150,134 @@ class _MyHomePageState extends State<MyHomePage>
             SafeArea(
               child: Scrollbar(
                 thumbVisibility: true,
-                controller:
-                    _scrollController, // Attach ScrollController to Scrollbar
-                child: ValueListenableBuilder<List<bool>>(
-                  valueListenable:
-                      moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
-                  builder: (context, lockedStatus, child) {
-                    return GridView.builder(
-                      controller:
-                          _scrollController, // Attach ScrollController to GridView
-                      padding: const EdgeInsets.all(8.0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount:
-                            MediaQuery.of(context).size.width < 600 ? 1 : 2,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
-                        childAspectRatio: 1 / 1,
+                controller: _scrollController, // Attach ScrollController to Scrollbar
+                child: SingleChildScrollView(
+                  controller: _scrollController, // Attach ScrollController to the scrollable content
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: 1200, // Limit the maximum width of the grid
                       ),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        final module = modules[index];
-                        final isLocked = lockedStatus[index];
+                      child: ValueListenableBuilder<List<bool>>(
+                        valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
+                        builder: (context, lockedStatus, child) {
+                          return GridView.builder(
+                            shrinkWrap: true, // Allow GridView to shrink to fit its content
+                            physics: const NeverScrollableScrollPhysics(), // Disable GridView's internal scrolling
+                            padding: const EdgeInsets.all(8.0),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: MediaQuery.of(context).size.width < 700 ? 1 : 2,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8.0,
+                              childAspectRatio: 1 / 1,
+                            ),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              final module = modules[index];
+                              final isLocked = lockedStatus[index];
 
-                        return FadeTransition(
-                          opacity: _fadeAnimations[index],
-                          child: SlideTransition(
-                            position: _offsetAnimations[index],
-                            child: GestureDetector(
-                              onTap:
-                                  isLocked
-                                      ? null
-                                      : () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder:
-                                                (context) =>
-                                                    module['screen'] as Widget,
-                                          ),
-                                        );
-                                      },
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                elevation: 5.0,
-                                child: Column(
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              isLocked
-                                                  ? Colors.grey
-                                                  : Theme.of(
-                                                    context,
-                                                  ).colorScheme.primary,
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                              module['cover'] as String,
+                              return FadeTransition(
+                                opacity: _fadeAnimations[index],
+                                child: SlideTransition(
+                                  position: _offsetAnimations[index],
+                                  child: GestureDetector(
+                                    onTap: isLocked
+                                        ? null
+                                        : () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => module['screen'] as Widget,
+                                              ),
+                                            );
+                                          },
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                      elevation: 5.0,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: Stack(
+                                              children: [
+                                                // Background image
+                                                Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: isLocked
+                                                        ? Colors.grey
+                                                        : Theme.of(context).colorScheme.primary,
+                                                    image: DecorationImage(
+                                                      image: AssetImage(module['cover'] as String),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                    borderRadius: const BorderRadius.vertical(
+                                                      top: Radius.circular(15.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                // Grey overlay for locked cards
+                                                if (isLocked)
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.black.withAlpha((0.5 * 255).toInt()), // Semi-transparent grey
+                                                      borderRadius: const BorderRadius.vertical(
+                                                        top: Radius.circular(15.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                // Lock icon
+                                                if (isLocked)
+                                                  const Center(
+                                                    child: Icon(
+                                                      Icons.lock,
+                                                      color: Colors.white,
+                                                      size: 48.0,
+                                                    ),
+                                                  ),
+                                              ],
                                             ),
-                                            fit: BoxFit.cover,
                                           ),
-                                          borderRadius:
-                                              const BorderRadius.vertical(
-                                                top: Radius.circular(15.0),
+                                          ListTile(
+                                            contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                            title: Text(
+                                              module['title'] as String,
+                                              style: const TextStyle(
+                                                fontSize: 18.0,
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                        ),
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            if (isLocked)
-                                              const Icon(
-                                                Icons.lock,
-                                                color: Colors.white,
-                                                size: 24.0,
-                                              ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    ListTile(
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                            horizontal: 16.0,
+                                            ),
+                                            subtitle: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(module['subtitle'] as String),
+                                                Text(module['description'] as String),
+                                              ],
+                                            ),
+                                            trailing: Icon(
+                                              isLocked ? Icons.lock : Icons.lock_open,
+                                              color: isLocked ? Colors.red : Colors.green,
+                                            ),
                                           ),
-                                      title: Text(
-                                        module['title'] as String,
-                                        style: const TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      subtitle: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(module['subtitle'] as String),
-                                          Text(module['description'] as String),
                                         ],
                                       ),
-                                      trailing: Icon(
-                                        isLocked ? Icons.lock : Icons.lock_open,
-                                        color:
-                                            isLocked
-                                                ? Colors.red
-                                                : Colors.green,
-                                      ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  },
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
           ],
         ),
-      ),
+      )
     );
   }
 }
