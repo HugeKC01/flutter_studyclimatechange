@@ -248,116 +248,118 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
     _controller.dispose();
     super.dispose();
   }
-  // Toggle between weather and climate
+  // Center the toggle widget content
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           GestureDetector(
             onTap: toggle,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
-              margin: const EdgeInsets.symmetric(horizontal: 40),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: isWeather ? Colors.blue : Colors.green,
                 borderRadius: BorderRadius.circular(20),
               ),
-                child: Column(
+              child: Column(
                 children: [
                   Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 500),
-                    transitionBuilder: (child, animation) {
-                      return ScaleTransition(scale: animation, child: child);
-                    },
-                    child: Icon(
-                      isWeather ? Icons.wb_sunny : Icons.terrain,
-                      key: ValueKey<bool>(isWeather),
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                    isWeather ? 'สภาพอากาศ' : 'สภาพภูมิอากาศ',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                  ],
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 500),
+                        transitionBuilder: (child, animation) {
+                          return ScaleTransition(scale: animation, child: child);
+                        },
+                        child: Icon(
+                          isWeather ? Icons.wb_sunny : Icons.terrain,
+                          key: ValueKey<bool>(isWeather),
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        isWeather ? 'สภาพอากาศ' : 'สภาพภูมิอากาศ',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
                   AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500),
-                  transitionBuilder: (child, animation) {
-                    return FadeTransition(opacity: animation, child: child);
-                  },
-                  child: Column(
-                    key: ValueKey<bool>(isWeather), // Unique key for each weather and climate state
-                    children: isWeather
-                      // Weather example
-                      ? [
-                        Row(
-                        children: [                          
-                          Icon(Icons.water_drop_outlined, color: Colors.white),
-                          const SizedBox(width: 10),
-                          const Text(
-                          'วันนั้นที่มีฝนตกชุก',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                        children: [
-                          Icon(Icons.wb_sunny_outlined, color: Colors.white),
-                          const SizedBox(width: 10),
-                          const Text(
-                          'แดดออกในช่วงบ่าย',
-                          style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                        ),
-                      ] 
-                      // Climate example
-                      : [
-                        Row(
-                        children: [
-                          Icon(Icons.thermostat, color: Colors.white),
-                          const SizedBox(width: 10),
-                          const Text(
-                          'ฤดูร้อนนี้มีอุณหภูมิสูงขึ้นกว่า 10ปีที่แล้ว',
-                          style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                        children: [
-                          Icon(Icons.water, color: Colors.white),
-                          const SizedBox(width: 10),
-                          const Text(
-                          'ปีนี้มีปริมาณน้ำฝนมากกว่าปีที่แล้ว',
-                          style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                        ),
-                      ],
-                  ),
+                    duration: const Duration(milliseconds: 500),
+                    transitionBuilder: (child, animation) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                    child: Column(
+                      key: ValueKey<bool>(isWeather),
+                      children: isWeather
+                          ? [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.water_drop_outlined, color: Colors.white),
+                                  const SizedBox(width: 10),
+                                  const Text(
+                                    'สัปดาห์ที่แล้วมีฝนตกชุก',
+                                    style: TextStyle(color: Colors.white, fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.wb_sunny_outlined, color: Colors.white),
+                                  const SizedBox(width: 10),
+                                  const Text(
+                                    'แดดออกในช่วงบ่าย',
+                                    style: TextStyle(color: Colors.white, fontSize:16),
+                                  ),
+                                ],
+                              ),
+                            ]
+                          : [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.thermostat, color: Colors.white),
+                                  const SizedBox(width: 10),
+                                  const Text(
+                                    'อุณหภูมิสูงขึ้นในช่วงฤดูร้อน',
+                                    style: TextStyle(color: Colors.white, fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.water, color: Colors.white),
+                                  const SizedBox(width: 10),
+                                  const Text(
+                                    'ปีนี้มีปริมาณน้ำฝนมากกว่าปีที่แล้ว',
+                                    style: TextStyle(color: Colors.white, fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ],
+                    ),
                   ),
                 ],
-                ),
+              ),
             ),
           ),
           const SizedBox(height: 20),
-
           ElevatedButton(
             onPressed: toggle,
             child: Text(isWeather ? 'ภูมิอากาศ' : 'สภาพอากาศ'),
@@ -367,8 +369,9 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
             'ลองคลิกที่ปุ่มเพื่อเปลี่ยนระหว่างสภาพอากาศและภูมิอากาศ',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16),
-          ),      
-      ],
+          ),
+        ],
+      ),
     );
   }
 }
