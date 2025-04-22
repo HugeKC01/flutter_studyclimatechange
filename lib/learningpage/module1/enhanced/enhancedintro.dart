@@ -13,70 +13,100 @@ class EnhancedM1Introduction extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-        child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
-          child: Image.asset(
-            'asset/overall/background1.png', // Replace with your image path
-            fit: BoxFit.cover,
-          ),
-        ),
-          ),
-        Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Title
-            const Text(
-              'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
+            child: Opacity(
+              opacity: 0.08, // Adjust the opacity value as needed
+              child: Image.asset(
+                'asset/overall/background1.png', // Replace with your image path
+                fit: BoxFit.cover,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16.0),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Title
+                    const Text(
+                      'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16.0),
 
-            // Description
-            const Text(
-              'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
-              'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
-              style: TextStyle(fontSize: 16.0),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32.0),
+                    // Description
+                    const Text(
+                      'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
+                      'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
+                      style: TextStyle(fontSize: 16.0),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32.0),
 
-            // Instructions
-            ..._buildInstructions(),
+                    // Instructions
+                    Expanded(
+                      child: _buildInstructionsContainer(constraints),
+                    ),
 
-            const SizedBox(height: 32.0),
+                    const SizedBox(height: 32.0),
 
-            // Start Post Test Button
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the post-test screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EnhancedM1Screen(),
-                  ),
+                    // Start Post Test Button
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the post-test screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EnhancedM1Screen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      ),
+                      child: const Text(
+                        'เริ่มกิจกรรมเสริมความเข้าใจ',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  ],
                 );
               },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-              ),
-              child: const Text(
-                'เริ่มกิจกรรมเสริมความเข้าใจ',
-                style: TextStyle(fontSize: 18.0),
-              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-        ]
-      )
     );
+  }
+
+  Widget _buildInstructionsContainer(BoxConstraints constraints) {
+    final instructions = _buildInstructions();
+    final estimatedHeight = instructions.length * 100.0; // Approximate height of instructions
+
+    if (estimatedHeight > constraints.maxHeight - 200) {
+      // Use scrollable behavior if instructions overflow
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: instructions,
+        ),
+      );
+    } else {
+      // Expand instructions to fill available space
+      return Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: instructions,
+        ),
+      );
+    }
   }
 
   // Helper method to build instruction cards
@@ -92,16 +122,19 @@ class EnhancedM1Introduction extends StatelessWidget {
         .map(
           (instruction) => Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: Card(
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  instruction,
-                  style: const TextStyle(fontSize: 16.0),
+            child: SizedBox(
+              width: double.infinity, // Expand to full width
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    instruction,
+                    style: const TextStyle(fontSize: 16.0),
+                  ),
                 ),
               ),
             ),

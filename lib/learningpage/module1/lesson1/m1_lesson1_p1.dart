@@ -6,7 +6,6 @@ import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
-import 'package:climatechange/style/style.dart';
 
 class Module1l1p1 extends StatelessWidget {
   const Module1l1p1({super.key});
@@ -22,13 +21,8 @@ class Module1l1p1 extends StatelessWidget {
     final int totalPages = PageConfig.lessonPageCounts['m1lesson1'] ?? 1;
 
     return Scaffold(
-      appBar: buildAppBar(
-        pagetitle,
-        context,
-      ),
-      drawer: buildDrawer(
-        context,
-      ),
+      appBar: buildAppBar(pagetitle, context),
+      drawer: buildDrawer(context),
       body: Stack(
         children: [
           Positioned.fill(
@@ -53,30 +47,37 @@ class Module1l1p1 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
+                          color:
+                              Colors.white, // Background color for the button
+                          shape: BoxShape.circle, // Circular shape
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black, // Shadow color
+                              blurRadius: 4, // Blur radius for the shadow
+                              offset: const Offset(0, 2), // Shadow offset
+                            ),
+                          ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()
+                                builder: (context) => const Module1Screen(),
                               ),
-                            );  // Exit the current page
-                        },
+                            ); // Exit the current page
+                          },
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      const SizedBox(
+                        width: 20,
+                      ), // Add spacing between the icon and the header
+                      Expanded(
+                        // Ensures the text wraps into a new line
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -109,7 +110,9 @@ class Module1l1p1 extends StatelessWidget {
                             color: const Color.fromARGB(200, 255, 255, 255),
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8),
+                              ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(30.0),
@@ -128,10 +131,14 @@ class Module1l1p1 extends StatelessWidget {
                                         TextSpan(
                                           text: '         สภาพอากาศ (weather)',
                                           style: TextStyle(
-                                              fontSize: fontsize,
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: fontsize,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                        TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย' ),                                   
+                                        TextSpan(
+                                          text:
+                                              ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย',
+                                        ),
                                       ],
                                     ),
                                     textAlign: TextAlign.left,
@@ -145,14 +152,19 @@ class Module1l1p1 extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 30),
                                   Text.rich(
-                                    TextSpan(children:[
-                                      const TextSpan(
-                                        text: '         ภูมิอากาศ หรือ สภาพภูมิอากาศ (climate)',
-                                        style: TextStyle(
+                                    TextSpan(
+                                      children: [
+                                        const TextSpan(
+                                          text: '         ภูมิอากาศ (climate)',
+                                          style: TextStyle(
                                             fontSize: fontsize,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const TextSpan(text: ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว' ),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const TextSpan(
+                                          text:
+                                              ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว',
+                                        ),
                                       ],
                                     ),
                                     textAlign: TextAlign.left,
@@ -182,24 +194,26 @@ class Module1l1p1 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module1Screen()),
+                        builder: (context) => const Module1Screen(),
+                      ),
                     );
                   },
                   onForwardPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module1l1p2()),
+                        builder: (context) => const Module1l1p2(),
+                      ),
                     );
                   },
                   currentPage: 1, // Current page index
-                  totalPages: totalPages,  // Total number of pages
+                  totalPages: totalPages, // Total number of pages
                 ),
               ],
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }

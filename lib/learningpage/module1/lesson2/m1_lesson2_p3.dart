@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'm1_lesson2_p2.dart';
 import 'm1_lesson2_p4.dart';
-import 'package:climatechange/component/hoverable_images.dart' as component;
+import 'm1_lesson2_p2.dart';
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
+import 'm1_lesson2_minigame.dart';
 
 class Module1l2p3 extends StatelessWidget {
   const Module1l2p3({super.key});
@@ -14,7 +14,7 @@ class Module1l2p3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = '2.1) ทำไมเราต้องสนใจเรื่องนี้?';
+    final pagesubtitle = '2.1.1) เกมช่วยสมชายจัดกระเป๋า';
     final background = 'asset/overall/background1.png';
     final int totalPages = PageConfig.lessonPageCounts['m1lesson2'] ?? 1;
 
@@ -69,7 +69,7 @@ class Module1l2p3 extends StatelessWidget {
                               MaterialPageRoute(
                                     builder: (context) => const Module1Screen()
                               ),
-                            );
+                            ); // Exit the current page
                           },
                         ),
                       ),
@@ -114,30 +114,14 @@ class Module1l2p3 extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    '3. อาหารหายากขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '         ความแปรปรวนของสภาพอากาศส่งผลต่อผลผลิตทางการเกษตร เช่น อุณหภูมิที่สูงขึ้นทำให้พืชเติบโตได้ยากขึ้น และน้ำทะเลที่สูงขึ้นทำให้พื้นที่เพาะปลูกและผลผลิตทางการเกษตรบางส่วนถูกทำลาย',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/m1_l2_pic3.png',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
+                                  const SizedBox(height: 20),
+                        Module1l2MiniGame(), // Insert the minigame here
                                 ],
                               ),
                             ),
                           ),
                         ),
+                        
                       ],
                     ),
                   ),
