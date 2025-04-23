@@ -140,7 +140,7 @@ class Module2l1p2 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module2/AirCompany.png',
+                                      imagePath: 'asset/module2/m2_l1_p2_pic01.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),

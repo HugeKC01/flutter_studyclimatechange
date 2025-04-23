@@ -141,22 +141,9 @@ class Module2l1p3 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module2/BurnFields.jpg',
+                                      imagePath: 'asset/module2/m2_l1_p3_pic01.png',
                                     ),
                                   ),
-                                  const SizedBox(height: 12),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module2/Chemistry.jpg',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module2/Farming.jpg',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 12),
                                 ],
                               ),
                             ),
