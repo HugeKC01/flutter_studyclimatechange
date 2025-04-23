@@ -18,7 +18,7 @@ class Module3l2p6 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 6;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -160,7 +160,7 @@ class Module3l2p6 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1_m6.png',
+                                      imagePath: 'asset/module3/m3_l2_p6.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),

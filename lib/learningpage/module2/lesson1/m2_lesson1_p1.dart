@@ -181,7 +181,7 @@ class Module2l1p1 extends StatelessWidget {
                           builder: (context) => const Module2l1p2()),
                     );
                   },
-                  currentPage: 2, // Current page index
+                  currentPage: 1, // Current page index
                   totalPages: totalPages,  // Total number of pages
                 ),
               ],

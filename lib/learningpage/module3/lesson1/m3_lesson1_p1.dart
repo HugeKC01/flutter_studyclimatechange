@@ -16,7 +16,7 @@ class Module3l1p1 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = 'วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพทางภูมิอากาศและการปรับตัวของมนุษย์และธรรมชาติ';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -122,7 +122,7 @@ class Module3l1p1 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m8.jpg',
+                                      imagePath: 'asset/module3/m3_l1_p1_pic01.png',
                                     ),
                                   ),
                                 ],

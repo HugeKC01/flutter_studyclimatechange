@@ -16,7 +16,7 @@ class Module3l2p1 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.1) วิธีปรับตัวและใช้ชีวิตต่ออุณหภูมิที่เปลี่ยนแปลง';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 6;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -139,7 +139,7 @@ class Module3l2p1 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1_m1.png',
+                                      imagePath: 'asset/module3/m3_l2_p1.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),

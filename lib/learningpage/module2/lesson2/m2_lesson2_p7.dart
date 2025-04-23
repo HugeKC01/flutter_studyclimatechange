@@ -164,14 +164,14 @@ class Module2l2p7 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p8()),
+                          builder: (context) => const Module2l2p6()),
                     );
                   },
                   onForwardPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p6()),
+                          builder: (context) => const Module2l2p8()),
                     );
                   },
                   currentPage: 7, // Current page index
