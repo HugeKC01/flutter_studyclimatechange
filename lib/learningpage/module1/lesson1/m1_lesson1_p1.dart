@@ -176,6 +176,7 @@ class Module1l1p1 extends StatelessWidget {
                                       imagePath: 'asset/module1/climate.png',
                                     ),
                                   ),
+                                  const SizedBox(height: 50),
                                    //toggle between weather and climate example
                                   WeatherVsClimateToggle(),
                                 ],

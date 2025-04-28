@@ -7,7 +7,6 @@ import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
-import 'rain_overlay.dart';
 import 'LightningOverlay.dart'; // Import ไฟล์ LightningOverlay
 
 class Module2l2p6 extends StatelessWidget {
@@ -162,7 +161,7 @@ class Module2l2p6 extends StatelessWidget {
                           BuildContext context,
                           BoxConstraints constraints,
                         ) {
-                          return RainOverlay(screenWidth: constraints.maxWidth);
+                          return Container(); // Replace with your desired widget
                         },
                       ),
                       // เพิ่ม LightningOverlay ตรงนี้
