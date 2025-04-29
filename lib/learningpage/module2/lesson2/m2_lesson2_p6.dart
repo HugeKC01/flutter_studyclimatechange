@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p7.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm2_lesson2_p7.dart';
 import 'm2_lesson2_p5.dart';
 import 'package:climatechange/learningpage/module2/m2_main.dart';
 import 'package:climatechange/component/appbar.dart';
@@ -7,6 +7,7 @@ import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
+import 'LightningOverlay.dart'; // Import ไฟล์ LightningOverlay
 
 class Module2l2p6 extends StatelessWidget {
   const Module2l2p6({super.key});
@@ -20,22 +21,14 @@ class Module2l2p6 extends StatelessWidget {
     final int totalPages = PageConfig.lessonPageCounts['m2lesson2'] ?? 1;
 
     return Scaffold(
-      appBar: buildAppBar(
-        pagetitle,
-        context,
-      ),
-      drawer: buildDrawer(
-        context,
-      ),
+      appBar: buildAppBar(pagetitle, context),
+      drawer: buildDrawer(context),
       body: Stack(
         children: [
           Positioned.fill(
             child: Opacity(
-              opacity: 0.5, // Adjust the opacity value as needed
-              child: Image.asset(
-                background, // Replace with your image path
-                fit: BoxFit.cover,
-              ),
+              opacity: 0.5,
+              child: Image.asset(background, fit: BoxFit.cover),
             ),
           ),
           SafeArea(
@@ -50,31 +43,34 @@ class Module2l2p6 extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black,
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module2Screen()
+                                builder: (context) => const Module2Screen(),
                               ),
-                            );  // Exit the current page
-                        },
+                            );
+                          },
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      const SizedBox(width: 20),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -95,93 +91,114 @@ class Module2l2p6 extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Scrollable content
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Card(
-                            color: const Color.fromARGB(200, 255, 255, 255),
-                            elevation: 4,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '3.) พายุและภัยธรรมชาติเกิดขึ้นบ่อยและรุนแรงมากขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                  child: Stack(
+                    children: [
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Card(
+                                color: const Color.fromARGB(200, 255, 255, 255),
+                                elevation: 4,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'เมื่อโลกของเราร้อนขึ้น พายุและภัยธรรมชาติก็เหมือนเพื่อนที่ไม่ดี ที่ชอบมาหาเราบ่อยขึ้น แถมยังมาแต่ละครั้งก็รุนแรงกว่าเดิม! พายุอาจจะพัดแรงจนหลังคาบ้านปลิว น้ำอาจจะท่วมสูงจนเดินทางไม่ได้ แผ่นดินอาจจะสั่นไหวรุนแรงกว่าเดิม หรือไฟป่าอาจจะลุกลามเร็วมากจนน่ากลัว เหมือนเวลาที่เราเล่นตึกต่อไม้ แล้วมีคนมาเขย่าแรง ๆ ตึกก็จะพังง่ายขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'อากาศที่ร้อนขึ้นเป็นเหมือนตัวกระตุ้น ที่ทำให้พายุและภัยธรรมชาติเหล่านี้เกิดขึ้นบ่อยขึ้น เหมือนเวลาที่เราเติมลมลูกโป่งมากเกินไป มันก็พร้อมที่จะแตกได้ง่ายขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และดูแลโลกของเราให้ดี เพื่อลดความเสี่ยงที่จะเกิดพายุและภัยธรรมชาติที่รุนแรงเหล่านี้กันนะ!',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-
-                                  const SizedBox(height: 24),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        '3.) พายุและภัยธรรมชาติเกิดขึ้นบ่อยและรุนแรงมากขึ้น',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      const Text(
+                                        'เมื่อโลกของเราร้อนขึ้น พายุและภัยธรรมชาติก็เหมือนเพื่อนที่ไม่ดี ที่ชอบมาหาเราบ่อยขึ้น แถมยังมาแต่ละครั้งก็รุนแรงกว่าเดิม! พายุอาจจะพัดแรงจนหลังคาบ้านปลิว น้ำอาจจะท่วมสูงจนเดินทางไม่ได้ แผ่นดินอาจจะสั่นไหวรุนแรงกว่าเดิม หรือไฟป่าอาจจะลุกลามเร็วมากจนน่ากลัว เหมือนเวลาที่เราเล่นตึกต่อไม้ แล้วมีคนมาเขย่าแรง ๆ ตึกก็จะพังง่ายขึ้น',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      const Text(
+                                        'อากาศที่ร้อนขึ้นเป็นเหมือนตัวกระตุ้น ที่ทำให้พายุและภัยธรรมชาติเหล่านี้เกิดขึ้นบ่อยขึ้น เหมือนเวลาที่เราเติมลมลูกโป่งมากเกินไป มันก็พร้อมที่จะแตกได้ง่ายขึ้น',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      const Text(
+                                        'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และดูแลโลกของเราให้ดี เพื่อลดความเสี่ยงที่จะเกิดพายุและภัยธรรมชาติที่รุนแรงเหล่านี้กันนะ!',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      const SizedBox(height: 24),
                                   Center(
                                     child: component.HoverableImage(
                                       imagePath:
                                           'asset/module2/m2_l2_p6_pic01.png',
                                     ),
+                                      const SizedBox(height: 12),
+                                    ],
+
                                   ),
-                                  const SizedBox(height: 12),
-                                ],
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      LayoutBuilder(
+                        builder: (
+                          BuildContext context,
+                          BoxConstraints constraints,
+                        ) {
+                          return Container(); // Replace with your desired widget
+                        },
+                      ),
+                      // เพิ่ม LightningOverlay ตรงนี้
+                      const LightningOverlay(
+                        color: Colors.lightBlueAccent,
+                        baseDuration: Duration(
+                          milliseconds: 1000,
+                        ), // ปรับ duration ให้เหมาะสม
+                      ),
+                    ],
                   ),
                 ),
-                // Fixed footer
                 FooterNavigation(
                   onBackPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p5()),
+                        builder: (context) => const Module2l2p5(),
+                      ),
                     );
                   },
                   onForwardPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module2l2p7()),
+                        builder: (context) => const Module2l2p7(),
+                      ),
                     );
                   },
-                  currentPage: 6, // Current page index
-                  totalPages: totalPages,  // Total number of pages
+                  currentPage: 6,
+                  totalPages: totalPages,
                 ),
               ],
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'm3_lesson2_p2.dart';
-import 'm3_lesson2_p4.dart';
+import 'drag_and_drop_game.dart';
 import 'package:climatechange/learningpage/module3/m3_main.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
@@ -171,7 +171,7 @@ class Module3l2p3 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module3l2p4()),
+                          builder: (context) => const DragAndDropGame()),
                     );
                   },
                   currentPage: 3, // Current page index

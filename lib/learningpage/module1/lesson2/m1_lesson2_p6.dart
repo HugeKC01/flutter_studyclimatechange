@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
-import 'm2_lesson2_p3.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
-import 'm2_lesson2_p1.dart';
-import 'package:climatechange/learningpage/module2/m2_main.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
+import 'package:climatechange/learningpage/module1/m1_main.dart';
+import 'package:climatechange/learningpage/module1/enhanced/enhancedintro.dart';
+import 'm1_lesson2_p5.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
+import 'package:climatechange/component/dialog.dart';
 import 'package:climatechange/component/page_config.dart';
 
-class Module2l2p2 extends StatelessWidget {
-  const Module2l2p2({super.key});
+class Module1l2p6 extends StatelessWidget {
+  const Module1l2p6({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 2 ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final pageheader = 'เรื่องที่ 2';
-    final pagesubtitle = '2.1) อธิบายโลกร้อน';
+    final pagesubtitle = '2.2) สิ่งที่เราสามารถทำได้เพื่อช่วยลดการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m2lesson2'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m1lesson2'] ?? 1;
 
     return Scaffold(
-      appBar: buildAppBar(pagetitle, context),
-      drawer: buildDrawer(context),
+      appBar: buildAppBar(
+        'เรื่องที่ 2 ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        context,
+      ),
+      drawer: buildDrawer(
+        context,
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -32,10 +37,11 @@ class Module2l2p2 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
+          ), 
           SafeArea(
             child: Column(
               children: [
+                // Header Section
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
@@ -46,8 +52,7 @@ class Module2l2p2 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color:
-                              Colors.white, // Background color for the button
+                          color: Colors.white, // Background color for the button
                           shape: BoxShape.circle, // Circular shape
                           boxShadow: [
                             BoxShadow(
@@ -58,25 +63,19 @@ class Module2l2p2 extends StatelessWidget {
                           ],
                         ),
                         child: IconButton(
-                          icon: const Icon(
-                            Icons.exit_to_app,
-                            color: Colors.black,
-                          ),
+                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Module2Screen(),
+                                    builder: (context) => const Module1Screen()
                               ),
-                            ); // Exit the current page
+                            );
                           },
                         ),
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ), // Add spacing between the icon and the header
-                      Expanded(
-                        // Ensures the text wraps into a new line
+                      const SizedBox(width: 20), // Add spacing between the icon and the header
+                      Expanded( // Ensures the text wraps into a new line
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -109,9 +108,7 @@ class Module2l2p2 extends StatelessWidget {
                             color: const Color.fromARGB(200, 255, 255, 255),
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(8)),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -119,37 +116,20 @@ class Module2l2p2 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '2.) ทำให้น้ำแข็งขั้วโลกละลาย ระดับน้ำทะเลสูงขึ้น และเกิดภัยพิบัติมากขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'อากาศที่ร้อนขึ้น ทำให้ก้อนน้ำแข็งใหญ่ ๆ ที่ขั้วโลกละลาย เมื่อน้ำแข็งละลาย น้ำก็จะไหลลงทะเล ทำให้ระดับน้ำทะเลสูงขึ้น เหมือนเวลาที่เราใส่น้ำแข็งในแก้วน้ำ แล้วน้ำแข็งละลาย น้ำในแก้วก็จะสูงขึ้น',
-                                    textAlign: TextAlign.left,
+                                    '⦿    ลดขยะและรีไซเคิล ลดการใช้พลาสติกและแยกขยะเพื่อให้สามารถนำกลับมาใช้ใหม่ได้',
+                                    textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 8),
                                   Text(
-                                    'เมื่อน้ำทะเลสูงขึ้น น้ำก็จะท่วมบ้านเรือนที่อยู่ใกล้ทะเล สัตว์ที่อาศัยอยู่แถวชายฝั่งก็จะไม่มีที่อยู่ นอกจากนี้ อากาศที่ร้อนขึ้นยังทำให้เกิดพายุและภัยพิบัติอื่น ๆ มากขึ้น เช่น น้ำท่วม แผ่นดินไหว และไฟป่า',
-                                    textAlign: TextAlign.left,
+                                    '⦿    ร่วมรณรงค์และให้ความรู้แก่คนรอบข้าง บอกต่อเรื่องความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศให้กับเพื่อนและครอบครัว',
+                                    textAlign: TextAlign.start,
                                     style: const TextStyle(fontSize: 18),
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'เด็ก ๆ ช่วยกันลดใช้พลังงาน ปลูกต้นไม้ แยกขยะ และใช้ถุงผ้า เพื่อให้โลกของเราเย็นลง และป้องกันไม่ให้เกิดภัยพิบัติเหล่านี้มากขึ้นนะ!',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-
-                                  const SizedBox(height: 24),
+                                  const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath:
-                                          'asset/module2/m2_l2_p2_pic01.png',
+                                      imagePath: 'asset/module1/m1_l2_pic5.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -168,20 +148,32 @@ class Module2l2p2 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Module2l2p1(),
-                      ),
+                          builder: (context) => const Module1l2p5()),
                     );
                   },
                   onForwardPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Module2l2p3(),
-                      ),
+                    showLesson2CompletionDialog(
+                      context: context,
+                      backToMain: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Module1Screen(),
+                          ),
+                        );
+                      },
+                      activity: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EnhancedM1Introduction(),
+                          ),
+                        );
+                      },
                     );
                   },
-                  currentPage: 2, // Current page index
-                  totalPages: totalPages, // Total number of pages
+                  currentPage: 6, // Current page index
+                  totalPages: totalPages,  // Total number of pages
                 ),
               ],
             ),
