@@ -13,69 +13,71 @@ class EnhancedM3Introduction extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-        child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
-          child: Image.asset(
-            'asset/overall/background1.png', // Replace with your image path
-            fit: BoxFit.cover,
-          ),
-        ),
-          ),
-        Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Title
-            const Text(
-              'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
+            child: Opacity(
+              opacity: 0.08, // Adjust the opacity value as needed
+              child: Image.asset(
+                'asset/overall/background1.png', // Replace with your image path
+                fit: BoxFit.cover,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16.0),
-
-            // Description
-            const Text(
-              'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
-              'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
-              style: TextStyle(fontSize: 16.0),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32.0),
-
-            // Instructions
-            ..._buildInstructions(),
-
-            const SizedBox(height: 32.0),
-
-            // Start Post Test Button
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the post-test screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EnhancedM3Screen(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Title
+                  const Text(
+                    'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-              ),
-              child: const Text(
-                'เริ่มกิจกรรมเสริมความเข้าใจ',
-                style: TextStyle(fontSize: 18.0),
+                  const SizedBox(height: 16.0),
+
+                  // Description
+                  const Text(
+                    'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
+                    'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
+                    style: TextStyle(fontSize: 16.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32.0),
+
+                  // Instructions
+                  ..._buildInstructions(),
+
+                  const SizedBox(height: 32.0),
+
+                  // Start Post Test Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the post-test screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EnhancedM3Screen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    ),
+                    child: const Text(
+                      'เริ่มกิจกรรมเสริมความเข้าใจ',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-        ]
-      )
     );
   }
 

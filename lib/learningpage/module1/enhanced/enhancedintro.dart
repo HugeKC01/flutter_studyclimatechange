@@ -23,61 +23,57 @@ class EnhancedM1Introduction extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Title
-                    const Text(
-                      'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Title
+                  const Text(
+                    'ยินต้อนรับเข้าสู่กิจกรรมเสริมความเข้าใจ!',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 16.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16.0),
 
-                    // Description
-                    const Text(
-                      'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
-                      'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
-                      style: TextStyle(fontSize: 16.0),
-                      textAlign: TextAlign.center,
+                  // Description
+                  const Text(
+                    'กิจกรรมนี้จะช่วยให้คุณเข้าใจเนื้อหาที่เรียนได้ดียิ่งขึ้น '
+                    'โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
+                    style: TextStyle(fontSize: 16.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32.0),
+
+                  // Instructions
+                  _buildInstructionsContainer(),
+
+                  const SizedBox(height: 32.0),
+
+                  // Start Post Test Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the post-test screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EnhancedM1Screen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
-                    const SizedBox(height: 32.0),
-
-                    // Instructions
-                    Expanded(
-                      child: _buildInstructionsContainer(constraints),
+                    child: const Text(
+                      'เริ่มกิจกรรมเสริมความเข้าใจ',
+                      style: TextStyle(fontSize: 18.0),
                     ),
-
-                    const SizedBox(height: 32.0),
-
-                    // Start Post Test Button
-                    ElevatedButton(
-                      onPressed: () {
-                        // Navigate to the post-test screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const EnhancedM1Screen(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      ),
-                      child: const Text(
-                        'เริ่มกิจกรรมเสริมความเข้าใจ',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ),
-                  ],
-                );
-              },
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -85,28 +81,13 @@ class EnhancedM1Introduction extends StatelessWidget {
     );
   }
 
-  Widget _buildInstructionsContainer(BoxConstraints constraints) {
+  Widget _buildInstructionsContainer() {
     final instructions = _buildInstructions();
-    final estimatedHeight = instructions.length * 100.0; // Approximate height of instructions
 
-    if (estimatedHeight > constraints.maxHeight - 200) {
-      // Use scrollable behavior if instructions overflow
-      return SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: instructions,
-        ),
-      );
-    } else {
-      // Expand instructions to fill available space
-      return Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: instructions,
-        ),
-      );
-    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: instructions,
+    );
   }
 
   // Helper method to build instruction cards

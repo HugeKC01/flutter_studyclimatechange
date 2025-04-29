@@ -13,78 +13,79 @@ class PostTestIntroduction extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-        child: Opacity(
-          opacity: 0.08, // Adjust the opacity value as needed
-          child: Image.asset(
-            'asset/overall/background1.png', // Replace with your image path
-            fit: BoxFit.cover,
+            child: Opacity(
+              opacity: 0.08, // Adjust the opacity value as needed
+              child: Image.asset(
+                'asset/overall/background1.png', // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-          ), 
           Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Title
-            const Text(
-              'Welcome to the Post Test!',
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16.0),
-
-            // Description
-            const Text(
-              'This test will evaluate your understanding of the topics covered in the modules. '
-              'Take your time and answer each question carefully.',
-              style: TextStyle(fontSize: 16.0),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32.0),
-
-            // Instructions
-            ..._buildInstructions(),
-
-            const SizedBox(height: 32.0),
-
-            // Start Post Test Button
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the post-test screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PostTestScreen(),
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Title
+                  const Text(
+                    'ยินต้อนรับเข้าสู่แบบทดสอบหลังเรียน!',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-              ),
-              child: const Text(
-                'Start Post Test',
-                style: TextStyle(fontSize: 18.0),
+                  const SizedBox(height: 16.0),
+
+                  // Description
+                  const Text(
+                    'แบบทดสอบหลังเรียนทดสอบเนื้อหาที่เรียนทั้งหมด โดยการตอบคำถามที่เกี่ยวข้องกับเนื้อหาที่เรียน',
+                    style: TextStyle(fontSize: 16.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32.0),
+
+                  // Instructions
+                  ..._buildInstructions(),
+
+                  const SizedBox(height: 32.0),
+
+                  // Start Post Test Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the post-test screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PostTestScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    ),
+                    child: const Text(
+                      'Start Post Test',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-        ]
-      )
     );
   }
 
   // Helper method to build instruction cards
   List<Widget> _buildInstructions() {
     const instructions = [
-      '1. Read each question carefully before answering.',
-      '2. There is no time limit, so take your time.',
-      '3. Once you submit, you cannot change your answers.',
+      '1. กิจกรรมนี้มีทั้งหมด 15 ข้อ',
+      '2. เมื่อคุณส่งคำตอบแล้วจะไม่สามารถเปลี่ยนแปลงคำตอบได้',
+      '3. ไม่มีการเฉลยคำตอบเมื่อคุณทำกิจกรรมเสร็จสิ้น',
     ];
 
     return instructions

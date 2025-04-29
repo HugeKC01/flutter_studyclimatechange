@@ -160,7 +160,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                                   Row(
                                     // Center the slider and image
                                     crossAxisAlignment:CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                         SizedBox(
                                           child: Stack(

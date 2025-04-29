@@ -142,12 +142,12 @@ class Module2l2p1 extends StatelessWidget {
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       const SizedBox(height: 24),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath:
-                                          'asset/module2/m2_l2_p1_pic01.png',
-                                    ),
-                                      const SizedBox(height: 12),
+                                      Center(
+                                        child: component.HoverableImage(
+                                          imagePath:
+                                              'asset/module2/m2_l2_p1_pic01.png',
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),
