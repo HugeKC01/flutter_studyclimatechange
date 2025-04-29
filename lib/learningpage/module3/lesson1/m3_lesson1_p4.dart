@@ -17,7 +17,7 @@ class Module3l1p4 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.1)วิธีการทิ้งขยะที่เจอในชีวิตประจำวัน';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -126,7 +126,7 @@ class Module3l1p4 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m11.jpg',
+                                      imagePath: 'asset/module3/m3_l1_p4_pic01.png',
                                     ),
                                   ),
                                   Text(
@@ -145,7 +145,7 @@ class Module3l1p4 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m12.png',
+                                      imagePath: 'asset/module3/m3_l1_p4_pic02.png',
                                     ),
                                   ),
                                 ],

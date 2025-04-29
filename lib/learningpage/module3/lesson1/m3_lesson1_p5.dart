@@ -17,7 +17,7 @@ class Module3l1p5 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 1';
     final pagesubtitle = '1.1.1) ขยะในครัว';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -130,7 +130,7 @@ class Module3l1p5 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m14.png',
+                                      imagePath: 'asset/module3/m3_l1_p5_pic01.png',
                                     ),
                                   ),
                                   Text(
@@ -149,7 +149,7 @@ class Module3l1p5 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m15.png',
+                                      imagePath: 'asset/module3/m3_l1_p5_pic02.png',
                                     ),
                                   ),
                                   Text(
@@ -168,7 +168,7 @@ class Module3l1p5 extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1m16.jpg',
+                                      imagePath: 'asset/module3/m3_l1_p5_pic03.png',
                                     ),
                                   ),
                                   

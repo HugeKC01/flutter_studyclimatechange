@@ -37,7 +37,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ หน้า 8';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
 
     final lessons = [
       {

@@ -13,14 +13,14 @@ class Module3l1p7 extends StatelessWidget {
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
-    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 1;
+    final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
 
     final lessons = [
       {
         'title': '1. อุปกรณ์อิเล็กทรอนิกส์ขนาดใหญ่',
         'description': 'เช่น ตู้เย็น เครื่องซักผ้า เครื่องปรับอากาศ เตาอบไมโครเวฟ เครื่องโทรทัศน์',
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
-        'image': 'asset/module3/m3_01_p7/image01.jpg',
+        'image': 'asset/module3/m3_l1_p7/type_01.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
       
       },
@@ -28,7 +28,7 @@ class Module3l1p7 extends StatelessWidget {
         'title': '2. อุปกรณ์อิเล็กทรอนิกส์ขนาดเล็ก',
         'description': 'เช่น โทรศัพท์มือถือ คอมพิวเตอร์ แท็บเล็ต เครื่องคิดเลข เครื่องพิมพ์',
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
-        'image': 'asset/module3/m3_01_p7/image02.jpg',
+        'image': 'asset/module3/m3_l1_p7/type_02.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
       
       },
@@ -36,14 +36,14 @@ class Module3l1p7 extends StatelessWidget {
         'title': '3. อุปกรณ์โทรคมนาคม',
         'description': 'เช่น โทรศัพท์บ้าน โทรศัพท์มือถือ อุปกรณ์เครือข่าย',
         'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
-        'image': 'asset/module3/m3_01_p7/image03.jpg',
+        'image': 'asset/module3/m3_l1_p7/type_03.PNG',
         'bin': 'ถังขยะ',
       },
       {
         'title': '4. เครื่องมือแพทย์',
         'description': 'เช่น เครื่องเอกซเรย์ เครื่องวัดชีพจร อุปกรณ์ผ่าตัด',
         'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
-        'image': 'asset/module3/m3_01_p7/image04.jpg',
+        'image': 'asset/module3/m3_l1_p7/type_04.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
       
       },
@@ -51,7 +51,7 @@ class Module3l1p7 extends StatelessWidget {
         'title': '5. อุปกรณ์อิเล็กทรอนิกส์อื่นๆ',
         'description': 'เช่น ถ่านไฟฉาย แบตเตอรี่ หลอดไฟ แผงวงจร',
         'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
-        'image': 'asset/module3/m3_01_p7/image05.jpg',
+        'image': 'asset/module3/m3_l1_p7/type_05.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
       },
       
