@@ -121,33 +121,32 @@ class EnhancedM3PageState extends State<EnhancedM3Screen> {
         leading: IconButton(
           icon: const Icon(Icons.exit_to_app),
           onPressed: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-          title: const Text('Confirm Exit'),
-          content: const Text('Are you sure you want to exit the post test? Your progress will be lost.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-            Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-            Navigator.of(context).pop(); // Close the dialog
-            Navigator.of(context).pop(); // Exit the screen
-              },
-              child: const Text('Exit'),
-            ),
-          ],
-            );
-          },
-        );
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+            title: const Text('Confirm Exit'),
+            content: const Text('Are you sure you want to exit the post test? Your progress will be lost.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).popUntil((route) => route.isFirst); // Close all routes until the first screen
+                },
+                child: const Text('Exit'),
+              ),
+            ],
+              );
+            },
+          );
           },
         ),
-        title: const Text('กิจกรรมเสริมความเข้าใจ'),
+        title: const Text('กิจกรรมเสริมความเข้าใจ Module 3'),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),

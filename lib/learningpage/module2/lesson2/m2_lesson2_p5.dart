@@ -146,7 +146,7 @@ class Module2l2p5 extends StatelessWidget {
                                           imagePath:
                                             'asset/module2/m2_l2_p5_pic01.png',
                                       ),
-                                      SizedBox(height: 12),
+                            ),
                                     ],
                                   ),
                                 ),

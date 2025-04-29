@@ -24,7 +24,7 @@ class QuizPageState extends State<PostTestScreen> {
     'วันนี้ฝนตกหนักและมีลมแรง',
     'ฤดูหนาวมีอุณหภูมิลดลงในหลายพื้นที่',
   ],
-  'correctAnswer': 'ฤดูหนาวมีอุณหภูมิลดลงในหลายพื้นที่',
+  'correctAnswer': 'วันนี้ฝนตกหนักและมีลมแรง',
   'selectedAnswer': '',
 },
 {
