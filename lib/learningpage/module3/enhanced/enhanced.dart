@@ -136,7 +136,8 @@ class EnhancedM3PageState extends State<EnhancedM3Screen> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst); // Close all routes until the first screen
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).popUntil((route) => route.isFirst); // Navigate to the first screen
                 },
                 child: const Text('Exit'),
               ),

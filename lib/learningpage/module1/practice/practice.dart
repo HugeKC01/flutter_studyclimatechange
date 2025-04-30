@@ -37,7 +37,7 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
     {
       'questionText': 'การเปลี่ยนแปลงสภาพภูมิอากาศทำให้เกิดผลกระทบในข้อใด?',
       'answers': ['อากาศเย็นขึ้นทุกปี', 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น', 'ปริมาณน้ำในแม่น้ำลดลงทุกวัน', 'พายุและฝนตกหนักลดลง'],
-      'correctAnswer': 'พายุและฝนตกหนักลดลง',
+      'correctAnswer': 'น้ำแข็งขั้วโลกละลาย ทำให้ระดับน้ำทะเลสูงขึ้น',
       'selectedAnswer': '',
     },
     {
@@ -148,7 +148,8 @@ class PracticeM1PageState extends State<PracticeM1Screen> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst); // Close all routes until the first screen
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).popUntil((route) => route.isFirst); // Navigate to the first screen
                 },
                 child: const Text('Exit'),
               ),

@@ -5,6 +5,7 @@ import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
 import 'm3_lesson1_p5.dart';
 import 'm3_lesson1_p7.dart';
+import 'package:climatechange/learningpage/module3/m3_main.dart';
 
 class Module3l1p6 extends StatelessWidget {
   const Module3l1p6({super.key});
@@ -14,6 +15,8 @@ class Module3l1p6 extends StatelessWidget {
     final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
     final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
+    final pageheader = 'เรื่องที่ 2';
+    final pagesubtitle = 'ประเภทของพลาสติกและการรีไซเคิล';
 
     final lessons = [
       {
@@ -24,37 +27,37 @@ class Module3l1p6 extends StatelessWidget {
       },
       {
         'title': '2. พลาสติกประเภทที่ 2 สัญลักษณ์ 2 และ HDPE',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดนม ขวดน้ำมันพืช ถุงพลาสติก',
+        'description': 'มีความหนาแน่นสูง แข็งแรง สีขุ่นหรือสีทึบ เช่น ถุงหูหิ้ว ถุงขยะ',
         'recycle': 'นำไปรีไซเคิลเป็นเฟอร์นิเจอร์ ศาลา ม้านั่ง',
         'image': 'asset/module3/m3_l1_p6/02_hdpe.PNG',
       },
       {
         'title': '3. พลาสติกประเภทที่ 3 สัญลักษณ์ 3 และ PVC',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'description': 'มีความแข็งแรง ไอน้ำและอากาศสามารถซึมผ่านได้ และป้องกันไขมันได้ดี เช่น ท่อน้ำประปา ขวดสบู่ ขวดแชมพู อุปกรณ์การแพทย์ ผ้าม่านห้องน้ำ',
         'recycle': 'นำไปรีไซเคิลเป็นท่อประปาทางการเกษตรและกรวยจราจร',
         'image': 'asset/module3/m3_l1_p6/03_pvc.PNG',
       },
       {
         'title': '4. พลาสติกประเภทที่ 4 สัญลักษณ์ 4 และ LDPE',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'description': 'โปร่งแสง ความหนาแน่นต่ำ ยืดหยุ่นได้ เช่น ถุงบรรจุอาหารแช่แข็ง แผ่นฟิล์มห่ออาหาร',
         'recycle': 'นำไปรีไซเคิลเป็นถุงใส่ขยะ',
         'image': 'asset/module3/m3_l1_p6/04_ldpe.PNG',
       },
       {
         'title': '5. พลาสติกประเภทที่ 5 สัญลักษณ์ 5 และ PP',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'description': 'น้ำหนักเบา แข็งแรง ทนทาน และทนความร้อนได้ดี เช่น แก้วแข็ง หลอด ถุงบรรจุอาหาร กล่องบรรจุอาหาร ถ้วยโยเกิร์ต ถ้วยบะหมี่กึ่งสำเร็จรูป ฝาขวดน้ำ',
         'recycle': 'นำไปรีไซเคิลเป็นจานรองแก้ว กล่องแบตเตอรี่รถยนต์',
         'image': 'asset/module3/m3_l1_p6/05_pp.PNG',
       },
       {
         'title': '6. พลาสติกประเภทที่ 6 สัญลักษณ์ 6 และ PS',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'description': 'มีความโปร่งใส แข็งแรง แต่เปราะบาง ผลิตเป็นรูปต่าง ๆ ได้ง่าย เช่น ช้อน ส้อม ถ้วย จาน กล่องเบเกอรี่และกล่องโฟม',
         'recycle': 'นำไปรีไซเคิลเป็นจานรองแก้ว และหากโฟมนำไปบดแล้วสามารถนำไปผสมกับเม็ดโฟมใหม่ แล้วนำไปผลิตเป็นโฟมซ้ำได้อีก',
         'image': 'asset/module3/m3_l1_p6/06_ps.PNG',
       },
       {
-        'title': '7. พลาสติกประเภทที่ 7 Other สัญลักษณ์ 7 และ O',
-        'description': 'มีความเหนียว ทนทานต่อการกระแทกและการดัดงอ เช่น ขวดน้ำอัดลม ขวดน้ำดื่มและขวดน้ำมันพืช',
+        'title': '7. พลาสติกประเภทที่ 7 Other สัญลักษณ์ 7 และ OTHER',
+        'description': 'เป็นพลาสติกที่ไม่ใช่ 6 ชนิดแรก มีการผสมของพลาสติกและสารหลายชนิด จะนำไปรีไซเคิลค่อนข้างยาก เพราะจะไม่ทราบว่าเป็นพลาสติกชนิดใดผสมอยู่',
         'recycle': 'จะนำไปรีไซเคิลค่อนข้างยาก เพราะจะไม่ทราบว่าเป็นพลาสติกชนิดใดผสมอยู่',
         'image': 'asset/module3/m3_l1_p6/07_other.PNG',
       },
@@ -83,16 +86,59 @@ class Module3l1p6 extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                'ประเภทพลาสติก',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 214, 237, 252),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                          color: Colors.black, // Shadow color
+                          blurRadius: 4, // Blur radius for the shadow
+                          offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
+                        ),
+                        child: IconButton(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                    builder: (context) => const Module3Screen()
+                              ),
+                            );  // Exit the current page
+                        },
+                        ),
+                      ),
+                      const SizedBox(width: 20), // Add spacing between the icon and the header
+                      Expanded( // Ensures the text wraps into a new line
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              pageheader,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              pagesubtitle,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
             Expanded(
               child: ListView.builder(
                 itemCount: lessons.length,

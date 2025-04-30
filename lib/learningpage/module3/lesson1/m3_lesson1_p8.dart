@@ -35,9 +35,11 @@ class _Module3l1p8State extends State<Module3l1p8> {
 
   @override
   Widget build(BuildContext context) {
-    final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ หน้า 8';
+    final pagetitle = 'เรื่องที่ 3 วิธีการแก้ปัญหาการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
     final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
+    final pageheader = 'เรื่องที่ 5';
+    final pagesubtitle = 'ขยะติดเชื้อ';
 
     final lessons = [
       {
@@ -84,6 +86,60 @@ class _Module3l1p8State extends State<Module3l1p8> {
           SafeArea(
         child: Column(
           children: [
+            Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 214, 237, 252),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                        color: Colors.white, // Background color for the button
+                        shape: BoxShape.circle, // Circular shape
+                        boxShadow: [
+                          BoxShadow(
+                          color: Colors.black, // Shadow color
+                          blurRadius: 4, // Blur radius for the shadow
+                          offset: const Offset(0, 2), // Shadow offset
+                          ),
+                        ],
+                        ),
+                        child: IconButton(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                    builder: (context) => const Module3Screen()
+                              ),
+                            );  // Exit the current page
+                        },
+                        ),
+                      ),
+                      const SizedBox(width: 20), // Add spacing between the icon and the header
+                      Expanded( // Ensures the text wraps into a new line
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              pageheader,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              pagesubtitle,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             Expanded(
               child: Scrollbar(
                 thumbVisibility: true,
