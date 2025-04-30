@@ -122,7 +122,7 @@ class _Module1l1p2State extends State<Module1l1p2> {
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Card(
-                            color: const Color.fromARGB(200, 255, 255, 255),
+                            color: Theme.of(context).colorScheme.surfaceContainerHighest,
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(8)),

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'component/shared_state.dart'; // Import the shared ValueNotifier
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
-import 'component/shared_state.dart'; // Import the shared ValueNotifier
+import 'style/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _loadLockStatus(); // Load lock status before running the app
+  await _loadDarkModeSetting(); // Load dark mode setting
   runApp(const MyApp());
+}
+
+// Load dark mode setting from SharedPreferences
+Future<void> _loadDarkModeSetting() async {
+  final prefs = await SharedPreferences.getInstance();
+  final isDarkMode = prefs.getBool('isDarkMode') ?? false; // Default to light mode
+  darkModeNotifier.value = isDarkMode; // Update the shared ValueNotifier
 }
 
 // Load lock status from SharedPreferences
@@ -29,12 +38,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const MyHomePage(title: 'Climate Change App'),
+    return ValueListenableBuilder<bool>(
+      valueListenable: darkModeNotifier, // Listen to the shared ValueNotifier
+      builder: (context, isDarkMode, child) {
+        return MaterialApp(
+          title: 'Climate Change',
+          theme: isDarkMode 
+              ? ThemeData.from(colorScheme: MaterialTheme.darkScheme()) 
+              : ThemeData.from(colorScheme: MaterialTheme.lightScheme()),
+          home: const MyHomePage(title: 'Climate Change App'),
+        );
+      },
     );
   }
 }

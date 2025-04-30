@@ -103,7 +103,7 @@ class Module2l1p1 extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Card(
-                            color: const Color.fromARGB(200, 255, 255, 255),
+                            color: Theme.of(context).colorScheme.surfaceContainerHighest,
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(8)),

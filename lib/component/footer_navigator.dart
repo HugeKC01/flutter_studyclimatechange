@@ -40,10 +40,10 @@ class FooterNavigation extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: onBackPressed,
-                  style: ElevatedButton.styleFrom(
+                    style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                     padding: EdgeInsets.zero,
-                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                   child: Icon(
                     Icons.arrow_back,
@@ -58,7 +58,7 @@ class FooterNavigation extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.white, // White background
+                color: Theme.of(context).colorScheme.surface, // Use color scheme surface color
               borderRadius: BorderRadius.circular(50), // Pill shape
             ),
             child: Text(
@@ -86,7 +86,7 @@ class FooterNavigation extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                     padding: EdgeInsets.zero,
-                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                   child: Icon(
                     Icons.arrow_forward,

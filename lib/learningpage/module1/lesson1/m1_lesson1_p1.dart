@@ -40,28 +40,27 @@ class Module1l1p1 extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.onPrimary, // Updated
                   ),
                   child: Row(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color:
-                              Colors.white, // Background color for the button
-                          shape: BoxShape.circle, // Circular shape
+                            color: Theme.of(context).colorScheme.onPrimary, // Updated
+                          shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black, // Shadow color
-                              blurRadius: 4, // Blur radius for the shadow
-                              offset: const Offset(0, 2), // Shadow offset
+                              color: Theme.of(context).colorScheme.shadow, // Updated
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
                             ),
                           ],
                         ),
                         child: IconButton(
-                          icon: const Icon(
+                            icon: Icon(
                             Icons.exit_to_app,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -107,7 +106,7 @@ class Module1l1p1 extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Card(
-                            color: const Color.fromARGB(200, 255, 255, 255),
+                            color: Theme.of(context).colorScheme.surfaceContainerHighest,
                             elevation: 4,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(

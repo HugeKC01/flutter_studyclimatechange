@@ -89,8 +89,8 @@ class _Module3l1p8State extends State<Module3l1p8> {
             Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surface, // Updated color
                   ),
                   child: Row(
                     children: [
@@ -100,9 +100,9 @@ class _Module3l1p8State extends State<Module3l1p8> {
                         shape: BoxShape.circle, // Circular shape
                         boxShadow: [
                           BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
+                            color: Theme.of(context).colorScheme.shadow, // Updated color
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
                           ),
                         ],
                         ),
