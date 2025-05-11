@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../m1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
 import 'm1_lesson2_p2.dart';
+import 'm1_lesson2_p0.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
@@ -154,7 +155,7 @@ class Module1l2p1 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module1Screen()),
+                          builder: (context) => const Module1l2p0()),
                     );
                   },
                   onForwardPressed: () {
@@ -164,7 +165,7 @@ class Module1l2p1 extends StatelessWidget {
                           builder: (context) => const Module1l2p2()),
                     );
                   },
-                  currentPage: 1, // Current page index
+                  currentPage: 2, // Current page index
                   totalPages: totalPages,  // Total number of pages
                 ),
               ],

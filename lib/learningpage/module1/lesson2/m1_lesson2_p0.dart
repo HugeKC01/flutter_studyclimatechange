@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import '../m1_main.dart'; // ตรวจสอบว่าไฟล์นี้มี MyApp หรือไม่
+import 'm1_lesson2_p1.dart';
+import 'm1_lesson2_quiz.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'package:climatechange/learningpage/module1/m1_main.dart';
-import 'm1_lesson2_p3.dart';
-import 'm1_lesson2_p5.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
 
-class Module1l2p4 extends StatelessWidget {
-  const Module1l2p4({super.key});
+class Module1l2p0 extends StatefulWidget {
+  const Module1l2p0({super.key});
+
+  @override
+  State<Module1l2p0> createState() => _Module1l2p0State();
+}
+
+class _Module1l2p0State extends State<Module1l2p0> {
+  bool _showExplanation = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +74,9 @@ class Module1l2p4 extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()
+                                builder: (context) => const Module1Screen(),
                               ),
-                            );
+                            ); // Exit the current page
                           },
                         ),
                       ),
@@ -103,39 +110,65 @@ class Module1l2p4 extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Card(
-                            color: const Color.fromARGB(200, 255, 255, 255),
-                            elevation: 4,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '3. อาหารหายากขึ้น',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '         ความแปรปรวนของสภาพอากาศส่งผลต่อผลผลิตทางการเกษตร เช่น อุณหภูมิที่สูงขึ้นทำให้พืชเติบโตได้ยากขึ้น และน้ำทะเลที่สูงขึ้นทำให้พื้นที่เพาะปลูกและผลผลิตทางการเกษตรบางส่วนถูกทำลาย',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: 18),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/m1_l2_pic3.png',
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              final double maxWidth = constraints.maxWidth > 700
+                                  ? 700
+                                  : constraints.maxWidth * 0.95;
+                              return Center(
+                                child: SizedBox(
+                                  width: maxWidth,
+                                  child: Card(
+                                    color: const Color.fromARGB(225, 255, 255, 255),
+                                    elevation: 6, // Increased elevation
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12), // More rounded corners
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          if (_showExplanation)
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'คำอธิบายก่อนทำแบบทดสอบ:',
+                                                  style: TextStyle(
+                                                    fontSize: 25, // Slightly larger font
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 12), // Extra spacing
+                                                const Text(
+                                                  'คุณกำลังจะทำแบบทดสอบสั้น ๆ 3 ข้อ '
+                                                  'เพื่อทบทวนความรู้ก่อนเข้าสู่บทเรียนถัดไป',
+                                                ),
+                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.2),                                                Center(
+                                                  child: ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                    _showExplanation = false;
+                                                    });
+                                                  },
+                                                  child: const Text('เริ่มทำแบบทดสอบ'),
+                                                  ),
+                                                ),
+                                                
+                                                SizedBox(height: MediaQuery.of(context).size.height * 0.18),
+                                              ],
+                                            )
+                                          else
+                                            Module1l2Quiz(),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(height: 12),
-                                ],
-                              ),
-                            ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -148,17 +181,17 @@ class Module1l2p4 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module1l2p3()),
+                          builder: (context) => const Module1Screen()),
                     );
                   },
                   onForwardPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Module1l2p5()),
+                          builder: (context) => const Module1l2p1()),
                     );
                   },
-                  currentPage: 5, // Current page index
+                  currentPage: 1, // Current page index
                   totalPages: totalPages,  // Total number of pages
                 ),
               ],
