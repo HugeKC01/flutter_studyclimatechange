@@ -1,447 +1,390 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
-import 'package:weather_animation/weather_animation.dart';
 import 'm3_lesson2_p4.dart';
 
-class DragAndDropGame extends StatefulWidget {
-  const DragAndDropGame({Key? key}) : super(key: key);
+class WordArrangeGame extends StatefulWidget {
+  final String difficultyLevel;
+  final bool challengeMode;
+  const WordArrangeGame({Key? key, required this.difficultyLevel, required this.challengeMode}) : super(key: key);
 
   @override
-  _DragAndDropGameState createState() => _DragAndDropGameState();
+  _WordArrangeGameState createState() => _WordArrangeGameState();
 }
 
-class _DragAndDropGameState extends State<DragAndDropGame> with SingleTickerProviderStateMixin {
-  final Map<String, bool> score = {};
-  int currentStage = 1;
-  String currentClothing = ''; // Tracks the current clothing of the person
-  Color outlineColor = Colors.transparent; // Add a variable to track the outline color
-  bool isNextEnabled = false; // Add a flag to enable/disable the Next button
-  String explanation = ''; // Add a variable to store the explanation
-  bool showTooltipOverlay = false; // Add a flag to control the tooltip overlay
-  bool showArrowOverlay = false; // Show arrow and helper text when tooltip is pressed
-  double personPosition = 0; // Track the vertical position of the person
-  String instruction = 'ลากไอเท็มที่ถูกต้องไปยังตัวละคร!'; // Dynamic instructions (TH)
-  Timer? _tooltipTimer; // Timer for hiding tooltip instruction
-  late AnimationController _personAnimController;
-  late Animation<double> _personOffsetAnim;
-
-  final List<Map<String, String>> stageData = [
+class _WordArrangeGameState extends State<WordArrangeGame> {
+  final List<Map<String, dynamic>> stages = [
     {
-      'เสื้อยืด': '👕',
-      'เสื้อแจ็คเก็ต': '🧥',
-    }, // Stage 1: Hot weather
+      'target': 'ฉันรักธรรมชาติ',
+      'words': ['ฉัน', 'รัก', 'ธรรมชาติ', 'แมว', 'กิน', 'ข้าว'],
+      'explanation': 'ประโยคนี้หมายถึงการแสดงความรักต่อธรรมชาติ',
+    },
     {
-      'ผ้าพันคอ': '🧣',
-      'กางเกงขาสั้น': '🩳',
-    }, // Stage 2: Cold weather
+      'target': 'อากาศร้อนทำให้เหงื่อออก',
+      'words': ['อากาศ', 'ร้อน', 'ทำให้', 'เหงื่อ', 'ออก', 'ฝน', 'ตก'],
+      'explanation': 'ประโยคนี้อธิบายผลของอากาศร้อนที่ทำให้ร่างกายมีเหงื่อ',
+    },
     {
-      'ร่ม': '☂️',
-      'หมวก': '🧢',
-    }, // Stage 3: Rainy weather
+      'target': 'เราควรช่วยกันรักษาสิ่งแวดล้อม',
+      'words': ['เราควร', 'ช่วยกัน', 'รักษา', 'สิ่งแวดล้อม', 'เล่น', 'ฟุตบอล'],
+      'explanation': 'ประโยคนี้สื่อถึงการร่วมมือกันดูแลสิ่งแวดล้อม',
+    },
+    {
+      'target': 'ต้นไม้ช่วยดูดซับคาร์บอนไดออกไซด์',
+      'words': ['ต้นไม้', 'ช่วย', 'ดูดซับ', 'คาร์บอนไดออกไซด์', 'รถ', 'บ้าน'],
+      'explanation': 'ต้นไม้มีบทบาทสำคัญในการดูดซับก๊าซคาร์บอนไดออกไซด์',
+    },
+    {
+      'target': 'ฝนตกทำให้ถนนลื่น',
+      'words': ['ฝน', 'ตก', 'ทำให้', 'ถนน', 'ลื่น', 'ไฟ'],
+      'explanation': 'ฝนตกอาจทำให้ถนนลื่นและเกิดอุบัติเหตุได้',
+    },
+    {
+      'target': 'การรีไซเคิลช่วยลดขยะ',
+      'words': ['การรีไซเคิล', 'ช่วย', 'ลด', 'ขยะ', 'น้ำ', 'ลม'],
+      'explanation': 'การรีไซเคิลเป็นวิธีหนึ่งที่ช่วยลดปริมาณขยะ',
+    },
+    {
+      'target': 'ควรปิดไฟเมื่อไม่ใช้งาน',
+      'words': ['ควร', 'ปิด', 'ไฟ', 'เมื่อ', 'ไม่', 'ใช้งาน', 'ต้นไม้'],
+      'explanation': 'การปิดไฟเมื่อไม่ใช้งานช่วยประหยัดพลังงาน',
+    },
+    {
+      'target': 'ขยะพลาสติกเป็นอันตรายต่อสัตว์ทะเล',
+      'words': ['ขยะ', 'พลาสติก', 'เป็น', 'อันตราย', 'ต่อ', 'สัตว์', 'ทะเล', 'บ้าน'],
+      'explanation': 'ขยะพลาสติกส่งผลกระทบต่อสิ่งแวดล้อมและสัตว์ทะเล',
+    },
+    {
+      'target': 'เราควรปลูกต้นไม้เพิ่ม',
+      'words': ['เราควร', 'ปลูก', 'ต้นไม้', 'เพิ่ม', 'ข้าว', 'รถ'],
+      'explanation': 'การปลูกต้นไม้ช่วยเพิ่มพื้นที่สีเขียวและลดโลกร้อน',
+    },
+    {
+      'target': 'อากาศบริสุทธิ์ดีต่อสุขภาพ',
+      'words': ['อากาศ', 'บริสุทธิ์', 'ดี', 'ต่อ', 'สุขภาพ', 'ฝน'],
+      'explanation': 'อากาศบริสุทธิ์ช่วยให้สุขภาพดีขึ้น',
+    },
   ];
 
-  final List<String> stageTargets = [
-    'อากาศร้อน', // Stage 1
-    'อากาศหนาว', // Stage 2
-    'อากาศฝนตก', // Stage 3
-  ];
-
-  final List<String> stageExplanations = [
-    'เสื้อยืดเหมาะกับอากาศร้อนเพราะบางและระบายอากาศได้ดี ส่วนเสื้อแจ็คเก็ตจะทำให้ร้อนเกินไป',
-    'ผ้าพันคอช่วยให้อบอุ่นในอากาศหนาว ส่วนกางเกงขาสั้นไม่เหมาะเพราะจะทำให้ขาเย็น',
-    'ร่มช่วยกันฝนในวันที่ฝนตก ส่วนหมวกช่วยป้องกันแดด แต่กันฝนไม่ได้',
-  ];
+  late List<Map<String, dynamic>> gameStages;
+  late String difficultyLevel;
+  late bool challengeMode;
+  int currentStage = 0;
+  List<String> selectedWords = [];
+  List<bool> usedWords = [];
+  int score = 0;
+  int highScore = 0;
+  int timeLeft = 60;
+  Timer? _timer;
+  bool gameEnded = false;
+  String feedback = '';
+  int totalGames = 0;
+  int totalScore = 0;
+  int totalCorrect = 0;
+  int totalQuestions = 0;
+  bool hintUsed = false;
 
   @override
   void initState() {
     super.initState();
-    _personAnimController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 350),
-    );
-    _personOffsetAnim = Tween<double>(begin: 0, end: -40).animate(
-      CurvedAnimation(parent: _personAnimController, curve: Curves.easeInOut),
-    );
+    difficultyLevel = widget.difficultyLevel;
+    challengeMode = widget.challengeMode;
+    setupGame();
+    startTimer();
   }
 
-  @override
-  void dispose() {
-    _tooltipTimer?.cancel();
-    _personAnimController.dispose();
-    super.dispose();
+  void setupGame() {
+    gameStages = List<Map<String, dynamic>>.from(stages.map((e) => Map<String, dynamic>.from(e)));
+    int numQuestions = gameStages.length;
+    int wordBankExtra = 0;
+    int baseTime = 60;
+    if (difficultyLevel == 'easy') {
+      numQuestions = 5;
+      wordBankExtra = 0;
+      baseTime = 80;
+    } else if (difficultyLevel == 'normal') {
+      numQuestions = 7;
+      wordBankExtra = 1;
+      baseTime = 60;
+    } else if (difficultyLevel == 'hard') {
+      numQuestions = 10;
+      wordBankExtra = 3;
+      baseTime = 40;
+    }
+    gameStages.shuffle(Random());
+    gameStages = gameStages.take(numQuestions).toList();
+    for (var stage in gameStages) {
+      List<String> baseWords = List<String>.from(stage['words']);
+      if (wordBankExtra > 0) {
+        // เพิ่มคำสุ่มที่ไม่เกี่ยวข้อง
+        List<String> distractors = ['แมว', 'กิน', 'ข้าว', 'ฝน', 'ตก', 'เล่น', 'ฟุตบอล', 'บ้าน', 'รถ', 'ต้นไม้', 'น้ำ', 'ไฟ', 'ดิน', 'ลม'];
+        distractors.removeWhere((w) => baseWords.contains(w));
+        distractors.shuffle(Random());
+        baseWords.addAll(distractors.take(wordBankExtra));
+      }
+      baseWords.shuffle(Random());
+      stage['words'] = baseWords;
+    }
+    if (challengeMode) baseTime -= 20;
+    timeLeft = baseTime;
+    currentStage = 0;
+    selectedWords.clear();
+    usedWords = List.filled(gameStages[0]['words'].length, false);
+    feedback = '';
+    gameEnded = false;
+    hintUsed = false;
   }
 
-  void toggleTooltip() {
-    setState(() {
-      showTooltipOverlay = true;
-      showArrowOverlay = true;
-      instruction = 'ลากไอเท็มไปยังตัวละคร!';
-    });
-    _personAnimController.forward().then((_) {
-      _personAnimController.reverse();
-    });
-    _tooltipTimer?.cancel();
-    _tooltipTimer = Timer(const Duration(seconds: 3), () {
+  void startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
-        showTooltipOverlay = false;
-        showArrowOverlay = false;
-        if (currentStage != 1) {
-          instruction = '';
+        if (timeLeft > 0) {
+          timeLeft--;
+        } else {
+          endGame();
         }
       });
     });
   }
 
+  void endGame() {
+    _timer?.cancel();
+    setState(() {
+      gameEnded = true;
+      totalGames++;
+      totalScore += score;
+      totalQuestions += stages.length;
+      totalCorrect += score ~/ 30;
+      if (score > highScore) highScore = score;
+    });
+  }
+
+  void selectWord(int idx) {
+    if (usedWords[idx] || gameEnded) return;
+    setState(() {
+      selectedWords.add(gameStages[currentStage]['words'][idx]);
+      usedWords[idx] = true;
+    });
+  }
+
+  void removeWord(int idx) {
+    if (gameEnded) return;
+    String word = selectedWords[idx];
+    int wordIdx = gameStages[currentStage]['words'].indexOf(word);
+    setState(() {
+      selectedWords.removeAt(idx);
+      if (wordIdx != -1) usedWords[wordIdx] = false;
+    });
+  }
+
+  void useHint() {
+    if (gameEnded || selectedWords.length >= gameStages[currentStage]['target'].toString().split('').length) return;
+    String target = gameStages[currentStage]['target'];
+    List<String> targetWords = [];
+    // แยกคำใน target ตามที่มีใน word bank
+    for (var w in gameStages[currentStage]['words']) {
+      if (target.contains(w) && !selectedWords.contains(w)) {
+        targetWords.add(w);
+      }
+    }
+    // หาคำถัดไปที่ควรเลือก
+    for (var w in targetWords) {
+      if (!selectedWords.contains(w)) {
+        int idx = gameStages[currentStage]['words'].indexOf(w);
+        if (idx != -1 && !usedWords[idx]) {
+          setState(() {
+            selectedWords.add(w);
+            usedWords[idx] = true;
+            hintUsed = true;
+          });
+          break;
+        }
+      }
+    }
+  }
+
+  void submit() {
+    if (gameEnded) return;
+    String answer = selectedWords.join('');
+    String target = gameStages[currentStage]['target'];
+    String explanation = gameStages[currentStage]['explanation'] ?? '';
+    if (answer == target) {
+      int stageScore = selectedWords.length * 10;
+      setState(() {
+        score += stageScore;
+        feedback = 'ถูกต้อง! +$stageScore คะแนน\n\nเฉลย: $target\n$explanation';
+      });
+      Future.delayed(const Duration(seconds: 2), () {
+        nextStage();
+      });
+    } else {
+      setState(() {
+        feedback = 'ยังไม่ถูกต้อง ลองใหม่!\n\nเฉลย: $target\n$explanation';
+      });
+      Future.delayed(const Duration(seconds: 2), () {
+        nextStage();
+      });
+    }
+  }
+
+  void nextStage() {
+    if (currentStage < gameStages.length - 1) {
+      setState(() {
+        currentStage++;
+        selectedWords.clear();
+        usedWords = List.filled(gameStages[currentStage]['words'].length, false);
+        feedback = '';
+        hintUsed = false;
+      });
+    } else {
+      endGame();
+    }
+  }
+
+  void restart() {
+    setState(() {
+      setupGame();
+      score = 0;
+      hintUsed = false;
+    });
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        // Responsive scaling for iPhone SE, Galaxy S8+, etc.
-        final double baseWidth = 375.0;
-        double scale = constraints.maxWidth / baseWidth;
-        // For iPhone SE and smaller, reduce scale further for better fit
-        if (constraints.maxWidth <= 340) {
-          scale = 0.70;
-        } else {
-          scale = scale.clamp(0.80, 1.15);
-        }
-        double responsive(double value) => value * scale;
-
-        final pagetitle = 'เกมลากและวาง';
-        final pageheader = 'ด่านที่ $currentStage';
-        final pagesubtitle = 'จับคู่ไอเท็มกับสภาพอากาศที่ถูกต้อง';
-        final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 1;
-
-        final data = stageData[currentStage - 1];
-        final target = stageTargets[currentStage - 1];
-
-        // Define backgrounds for each stage
-        final List<WeatherScene> stageBackgrounds = [
-          WeatherScene.scorchingSun, // Stage 1: Hot weather
-          WeatherScene.snowfall,     // Stage 2: Cold weather
-          WeatherScene.stormy,         // Stage 3: Rainy weather
-        ];
-
-        return Scaffold(
-          appBar: buildAppBar(
-            pagetitle,
-            context,
-          ),
-          drawer: buildDrawer(
-            context,
-          ),
-          body: Stack(
-            children: [
-              SizedBox.expand(
-                child: WrapperScene.weather(scene: stageBackgrounds[currentStage - 1]), // Dynamic background
+    final stage = gameStages[currentStage];
+    return Scaffold(
+      appBar: buildAppBar('เกมเรียงคำ', context),
+      drawer: buildDrawer(context),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('คะแนน: $score', style: const TextStyle(fontSize: 18)),
+                  Text('เวลาที่เหลือ: $timeLeft', style: const TextStyle(fontSize: 18)),
+                  Text('สูงสุด: $highScore', style: const TextStyle(fontSize: 18)),
+                ],
               ),
-              SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.all(responsive(14)),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 214, 237, 252),
-                      ),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                            iconSize: responsive(22),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          SizedBox(width: responsive(12)),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  pageheader,
-                                  style: TextStyle(
-                                    fontSize: responsive(18),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  pagesubtitle,
-                                  style: TextStyle(fontSize: responsive(13)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+            ),
+            if (!gameEnded) ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text('แตะเลือกคำเพื่อเรียงเป็นประโยคที่ถูกต้อง', style: const TextStyle(fontSize: 16)),
+              ),
+              Wrap(
+                spacing: 8,
+                children: List.generate(stage['words'].length, (i) {
+                  return ChoiceChip(
+                    label: Text(stage['words'][i]),
+                    selected: usedWords[i],
+                    onSelected: (_) => selectWord(i),
+                  );
+                }),
+              ),
+              const SizedBox(height: 24),
+              Wrap(
+                spacing: 8,
+                children: List.generate(selectedWords.length, (i) {
+                  return InputChip(
+                    label: Text(selectedWords[i]),
+                    onDeleted: () => removeWord(i),
+                  );
+                }),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: hintUsed ? null : useHint,
+                    icon: const Icon(Icons.lightbulb_outline),
+                    label: const Text('ขอคำใบ้'),
+                  ),
+                  if (hintUsed)
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Text('ใช้คำใบ้ไปแล้ว', style: TextStyle(color: Colors.orange)),
                     ),
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          if (showArrowOverlay)
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              child: Column(
-                                children: [
-                                  SizedBox(height: responsive(6)),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.arrow_downward, color: Colors.blue, size: responsive(26)),
-                                    ],
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(top: responsive(2), bottom: responsive(4)),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: responsive(4),
-                                      horizontal: responsive(8),
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue.shade50,
-                                      borderRadius: BorderRadius.circular(responsive(7)),
-                                      border: Border.all(color: Colors.blue, width: 1),
-                                    ),
-                                    child: Text(
-                                      'ลากหนึ่งในไอเท็มเหล่านี้ไปยังตัวละครด้านล่าง!',
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: responsive(11.5),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: data.keys.map((item) {
-                                  return Draggable<String>(
-                                    data: item,
-                                    feedback: Material(
-                                      color: Colors.transparent,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.blue, width: responsive(1.5)),
-                                          borderRadius: BorderRadius.circular(responsive(7)),
-                                        ),
-                                        padding: EdgeInsets.all(responsive(6)),
-                                        child: Text(
-                                          data[item]!,
-                                          style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: responsive(18),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    childWhenDragging: const Text(''),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.blue, width: responsive(1.5)),
-                                        borderRadius: BorderRadius.circular(responsive(7)),
-                                      ),
-                                      padding: EdgeInsets.all(responsive(6)),
-                                      child: Text(
-                                        data[item]!,
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: responsive(18),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
-                              DragTarget<String>(
-                                builder: (BuildContext context, List<String?> incoming, List rejected) {
-                                  return Column(
-                                    children: [
-                                      AnimatedBuilder(
-                                        animation: _personAnimController,
-                                        builder: (context, child) {
-                                          return Transform.translate(
-                                            offset: Offset(0, _personOffsetAnim.value + personPosition),
-                                            child: child,
-                                          );
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: outlineColor, width: responsive(3)),
-                                            borderRadius: BorderRadius.circular(responsive(7)),
-                                          ),
-                                          padding: EdgeInsets.all(responsive(7)),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                '👤',
-                                                style: TextStyle(fontSize: responsive(54)),
-                                              ),
-                                              Text(
-                                                currentClothing.isNotEmpty ? currentClothing : 'ไม่มีไอเท็ม',
-                                                style: TextStyle(fontSize: responsive(14)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      if (currentStage == 1 || showTooltipOverlay)
-                                        Padding(
-                                          padding: EdgeInsets.only(top: responsive(6)),
-                                          child: Text(
-                                            instruction,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(fontSize: responsive(11.5), color: Colors.black54),
-                                          ),
-                                        ),
-                                      if (explanation.isNotEmpty)
-                                        Padding(
-                                          padding: EdgeInsets.only(top: responsive(6)),
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                              vertical: responsive(7),
-                                              horizontal: responsive(8),
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.15),
-                                              borderRadius: BorderRadius.circular(responsive(8)),
-                                              border: Border.all(color: const Color.fromARGB(255, 0, 0, 0), width: responsive(1)),
-                                            ),
-                                            child: Text(
-                                              explanation,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: responsive(13),
-                                                color: const Color.fromARGB(255, 0, 0, 0),
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  );
-                                },
-                                onWillAccept: (data) => data != null,
-                                onAccept: (data) {
-                                  setState(() {
-                                    currentClothing = data;
-                                    if (data == stageData[currentStage - 1].keys.first) {
-                                      // Correct: allow to proceed
-                                      outlineColor = Colors.green;
-                                      score[data] = true;
-                                      isNextEnabled = true;
-                                      explanation = stageExplanations[currentStage - 1];
-                                      instruction = 'เยี่ยมมาก! กดถัดไปเพื่อไปยังด่านถัดไป';
-                                    } else {
-                                      // Incorrect: cannot proceed
-                                      outlineColor = Colors.red;
-                                      explanation = '';
-                                      isNextEnabled = false;
-                                      instruction = 'ลองใหม่อีกครั้ง! ลากไอเท็มที่ถูกต้อง';
-                                    }
-                                  });
-                                },
-                                onLeave: (data) {
-                                  setState(() {
-                                    outlineColor = Colors.transparent;
-                                    personPosition = 0;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    FooterNavigation(
-                      onBackPressed: () {
-                        Navigator.pop(context);
-                      },
-                      onForwardPressed: () {
-                        if (isNextEnabled) {
-                          if (currentStage < 3) {
-                            setState(() {
-                              currentStage++; // Increment the stage
-                              score.clear();
-                              currentClothing = ''; // Reset clothing for the next stage
-                              outlineColor = Colors.transparent; // Reset outline
-                              isNextEnabled = false; // Disable the Next button
-                              explanation = ''; // Reset explanation
-                              personPosition = 0; // Reset person position
-                              instruction = 'ลากไอเท็มที่ถูกต้องไปยังตัวละคร!'; // Reset instruction
-                            });
-                          } else {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: const Text('ยินดีด้วย!'),
-                                content: const Text('คุณผ่านทุกด่านแล้ว!'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const Module3l2p4(),
-                                        ),
-                                      );
-                                    },
-                                    child: const Text('ไปต่อ'),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: const Text('คำตอบไม่ถูกต้อง'),
-                              content: const Text('คุณต้องลากไอเท็มที่ถูกต้องเพื่อไปยังด่านถัดไป'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('ตกลง'),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      },
-                      currentPage: currentStage,
-                      totalPages: 3,
-                    ),
-                  ],
+                ],
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: selectedWords.isNotEmpty ? submit : null,
+                child: const Text('ส่งคำตอบ'),
+              ),
+              if (feedback.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(feedback, style: const TextStyle(fontSize: 16, color: Colors.blue)),
                 ),
+            ] else ...[
+              const SizedBox(height: 32),
+              Text('จบเกม! คะแนนของคุณ: $score', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 12),
+              Text('ประโยคที่ถูกต้อง: ${gameStages[currentStage]['target']}', style: const TextStyle(fontSize: 16)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(gameStages[currentStage]['explanation'], style: const TextStyle(fontSize: 15, color: Colors.green)),
               ),
-              Positioned(
-                bottom: responsive(60),
-                right: responsive(10),
-                child: Tooltip(
-                  message: 'คลิกเพื่อดูคำแนะนำ',
-                  child: IconButton(
-                    icon: const Icon(Icons.help_outline, color: Colors.blue),
-                    iconSize: responsive(20),
-                    onPressed: toggleTooltip,
+              const SizedBox(height: 16),
+              Card(
+                margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('สถิติการเล่น', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('จำนวนรอบที่เล่น: $totalGames'),
+                      Text('คะแนนสูงสุด: $highScore'),
+                      Text('คะแนนเฉลี่ย: ${totalGames > 0 ? (totalScore / totalGames).toStringAsFixed(1) : 0}'),
+                      Text('อัตราการตอบถูก: ${totalQuestions > 0 ? ((totalCorrect / totalQuestions) * 100).toStringAsFixed(1) : 0}%'),
+                    ],
                   ),
                 ),
               ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: restart,
+                child: const Text('เริ่มใหม่'),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Module3l2p4(),
+                    ),
+                  );
+                },
+                child: const Text('ไปหน้าต่อไป'),
+              ),
             ],
-          ),
-        );
-      },
+            const Spacer(),
+            FooterNavigation(
+              onBackPressed: () => Navigator.pop(context),
+              onForwardPressed: () {},
+              currentPage: currentStage + 1,
+              totalPages: gameStages.length,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
