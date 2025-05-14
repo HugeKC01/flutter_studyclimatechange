@@ -221,6 +221,8 @@ class Module1l1p1 extends StatelessWidget {
 // Toggle between weather and climate
 // This widget toggles between weather and climate examples with animations
 class WeatherVsClimateToggle extends StatefulWidget {
+  const WeatherVsClimateToggle({super.key});
+
   @override
   _WeatherVsClimateToggleState createState() => _WeatherVsClimateToggleState();
 }

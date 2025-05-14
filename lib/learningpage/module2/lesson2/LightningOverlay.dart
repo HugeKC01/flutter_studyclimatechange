@@ -20,7 +20,7 @@ class _LightningOverlayState extends State<LightningOverlay>
   late AnimationController _controller;
   late Animation<double> _animation;
   final Random _random = Random();
-  List<_LightningBoltData> _bolts = [];
+  final List<_LightningBoltData> _bolts = [];
   Size _screenSize = Size.zero;
 
   @override

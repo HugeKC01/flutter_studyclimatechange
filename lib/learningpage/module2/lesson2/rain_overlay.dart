@@ -14,7 +14,7 @@ class RainOverlay extends StatefulWidget {
 class _RainOverlayState extends State<RainOverlay>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  List<_RaindropData> _raindrops = [];
+  final List<_RaindropData> _raindrops = [];
   final Random _random = Random();
   final double _intensity = 0.2;
 

@@ -8,7 +8,7 @@ import 'package:weather_animation/weather_animation.dart';
 import 'm3_lesson2_p4.dart';
 
 class DragAndDropGame extends StatefulWidget {
-  const DragAndDropGame({Key? key}) : super(key: key);
+  const DragAndDropGame({super.key});
 
   @override
   _DragAndDropGameState createState() => _DragAndDropGameState();
@@ -330,8 +330,8 @@ class _DragAndDropGameState extends State<DragAndDropGame> with SingleTickerProv
                                     ],
                                   );
                                 },
-                                onWillAccept: (data) => data != null,
-                                onAccept: (data) {
+                                onWillAcceptWithDetails: (data) => data != null,
+                                onAcceptWithDetails: (data) {
                                   setState(() {
                                     currentClothing = data;
                                     if (data == stageData[currentStage - 1].keys.first) {

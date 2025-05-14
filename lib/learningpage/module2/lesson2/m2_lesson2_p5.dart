@@ -140,7 +140,7 @@ class Module2l2p5 extends StatelessWidget {
                                         textAlign: TextAlign.left,
                                         style: TextStyle(fontSize: 18),
                                       ),
-                                      const SizedBox(height: 24),
+                                      SizedBox(height: 24),
                                       Center(
                                         child: component.HoverableImage(
                                           imagePath:

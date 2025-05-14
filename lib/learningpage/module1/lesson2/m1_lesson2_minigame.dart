@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'm1_lesson2_p4.dart';
 
 class Module1l2MiniGame extends StatefulWidget {
-  const Module1l2MiniGame({Key? key}) : super(key: key);
+  const Module1l2MiniGame({super.key});
 
   @override
   State<Module1l2MiniGame> createState() => _Module1l2MiniGameState();
