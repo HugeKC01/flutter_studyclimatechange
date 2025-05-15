@@ -2,7 +2,7 @@ import 'package:climatechange/learningpage/module1/m1_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'lesson1/m1_lesson1_p1.dart';
-import 'lesson2/m1_lesson2_p1.dart';
+import 'lesson2/m1_lesson2_p0.dart';
 import 'practice/practiceintro.dart';
 import 'package:climatechange/main.dart';
 
@@ -22,7 +22,7 @@ class Module1Screen extends StatelessWidget {
         'title': 'เรื่องที่ 2',
         'subtitle': 'ความสำคัญของการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'cover': 'asset/module1/module0102.png',
-        'screen': Module1l2p1(),
+        'screen': Module1l2p0(),
       },
       {
         'title': 'สรุปการเรียนรู้',

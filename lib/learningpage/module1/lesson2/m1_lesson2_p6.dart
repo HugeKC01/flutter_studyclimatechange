@@ -172,7 +172,7 @@ class Module1l2p6 extends StatelessWidget {
                       },
                     );
                   },
-                  currentPage: 6, // Current page index
+                  currentPage: 7, // Current page index
                   totalPages: totalPages,  // Total number of pages
                 ),
               ],
