@@ -82,10 +82,13 @@ class _MyGamePageState extends State<MyGamePage> {
 
   void startGameLoop() {
     Timer.periodic(const Duration(milliseconds: 16), (_) {
+      if (!mounted) return;
       setState(() {
         // Move player
-        if (movingLeft) playerX = max(0, playerX - 3);
-        if (movingRight) playerX = min(canvasWidth - playerSize, playerX + 3);
+        if (movingLeft) playerX = playerX - 3;
+        if (movingRight) playerX = playerX + 3;
+        // Clamp playerX to stay within bounds
+        playerX = playerX.clamp(0, canvasWidth - playerSize);
 
         // Move bullets
         bullets.forEach((b) => b.move());
@@ -121,12 +124,15 @@ class _MyGamePageState extends State<MyGamePage> {
   }
 
   void spawnEnemy() {
+    if (!mounted) return;
     double x = random.nextDouble() * (canvasWidth - 50);
     double dx = random.nextBool() ? 1.0 : -1.0;
     int imageIndex = random.nextInt(5) + 1;
     String image = 'asset/yu/enamy$imageIndex.png';
 
-    enemies.add(Enemy(x: x, y: 0, dx: dx, image: image));
+    setState(() {
+      enemies.add(Enemy(x: x, y: 0, dx: dx, image: image));
+    });
   }
 
   void fireBullet() {
@@ -137,92 +143,134 @@ class _MyGamePageState extends State<MyGamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('My Game Page')),
-      body: Center(
-        child: Container(
-          width: canvasWidth,
-          height: canvasHeight,
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            border: Border.all(color: Colors.black, width: 2),
-          ),
-          child: Stack(
-            children: [
-              // Score Text
-              Positioned(
-                top: 10,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Text(
-                    'Score: $score',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+      body: Listener(
+        onPointerUp: (_) {
+          if (mounted) setState(() {
+            movingLeft = false;
+            movingRight = false;
+          });
+        },
+        onPointerCancel: (_) {
+          if (mounted) setState(() {
+            movingLeft = false;
+            movingRight = false;
+          });
+        },
+        child: Center(
+          child: Container(
+            width: canvasWidth,
+            height: canvasHeight,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              border: Border.all(color: Colors.black, width: 2),
+            ),
+            child: Stack(
+              children: [
+                // Score Text
+                Positioned(
+                  top: 10,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'Score: $score',
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              // Player
-              Positioned(
-                left: playerX,
-                top: playerY,
-                child: Image.asset('asset/yu/mychar.png', width: playerSize, height: playerSize),
-              ),
-
-              // Bullets
-              ...bullets.map((b) => Positioned(
-                    left: b.x,
-                    top: b.y,
-                    child: Image.asset('asset/yu/bullet.png', width: 10, height: 20),
-                  )),
-
-              // Enemies
-              ...enemies.map((e) => Positioned(
-                    left: e.x,
-                    top: e.y,
-                    child: Image.asset(e.image, width: 50, height: 50),
-                  )),
-
-              // Left Button
-              Positioned(
-                bottom: 10,
-                left: 10,
-                child: GestureDetector(
-                  onTapDown: (_) => setState(() => movingLeft = true),
-                  onTapUp: (_) => setState(() => movingLeft = false),
-                  onTapCancel: () => setState(() => movingLeft = false),
-                  child: Image.asset('asset/yu/leftButton.png', width: 60),
+                // Player
+                Positioned(
+                  left: playerX,
+                  top: playerY,
+                  child: Image.asset('asset/yu/mychar.png', width: playerSize, height: playerSize),
                 ),
-              ),
 
-              // Right Button
-              Positioned(
-                bottom: 10,
-                right: 10,
-                child: GestureDetector(
-                  onTapDown: (_) => setState(() => movingRight = true),
-                  onTapUp: (_) => setState(() => movingRight = false),
-                  onTapCancel: () => setState(() => movingRight = false),
-                  child: Image.asset('asset/yu/rightButton.png', width: 60),
-                ),
-              ),
+                // Bullets
+                ...bullets.map((b) => Positioned(
+                      left: b.x,
+                      top: b.y,
+                      child: Image.asset('asset/yu/bullet.png', width: 10, height: 20),
+                    )),
 
-              // Fire Button
-              Positioned(
-                bottom: 10,
-                left: (canvasWidth - 60) / 2,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      fireBullet();
-                    });
-                  },
-                  child: Image.asset('asset/yu/fireButton.png', width: 60),
+                // Enemies
+                ...enemies.map((e) => Positioned(
+                      left: e.x,
+                      top: e.y,
+                      child: Image.asset(e.image, width: 50, height: 50),
+                    )),
+
+                // Left Button
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  child: GestureDetector(
+                    onTapDown: (_) {
+                      if (mounted) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) setState(() => movingLeft = true);
+                        });
+                      }
+                    },
+                    onTapUp: (_) {
+                      if (mounted) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) setState(() => movingLeft = false);
+                        });
+                      }
+                    },
+                    onTapCancel: () {
+                      if (mounted) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) setState(() => movingLeft = false);
+                        });
+                      }
+                    },
+                    child: Image.asset('asset/yu/leftButton.png', width: 60),
+                  ),
                 ),
-              ),
-            ],
+
+                // Right Button
+                Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: GestureDetector(
+                    onTapDown: (_) {
+                      if (mounted) setState(() => movingRight = true);
+                    },
+                    onTapUp: (_) {
+                      if (mounted) setState(() => movingRight = false);
+                    },
+                    onTapCancel: () {
+                      if (mounted) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) setState(() => movingRight = false);
+                        });
+                      }
+                    },
+                    child: Image.asset('asset/yu/rightButton.png', width: 60),
+                  ),
+                ),
+
+                // Fire Button
+                Positioned(
+                  bottom: 10,
+                  left: (canvasWidth - 60) / 2,
+                  child: GestureDetector(
+                    onTap: () {
+                      if (mounted) {
+                        fireBullet();
+                      }
+                    },
+                    child: Image.asset('asset/yu/fireButton.png', width: 60),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
