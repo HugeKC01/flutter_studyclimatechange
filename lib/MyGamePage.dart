@@ -66,6 +66,8 @@ class _MyGamePageState extends State<MyGamePage> {
   bool movingRight = false;
 
   int score = 0;
+  int lives = 3; // Add lives (hearts)
+  bool gameOver = false;
 
   Random random = Random();
 
@@ -81,8 +83,8 @@ class _MyGamePageState extends State<MyGamePage> {
   }
 
   void startGameLoop() {
-    Timer.periodic(const Duration(milliseconds: 16), (_) {
-      if (!mounted) return;
+    Timer.periodic(const Duration(milliseconds: 16), (timer) {
+      if (!mounted || gameOver) return;
       setState(() {
         // Move player
         if (movingLeft) playerX = playerX - 3;
@@ -103,21 +105,36 @@ class _MyGamePageState extends State<MyGamePage> {
           enemies.removeWhere((enemy) {
             if (bullet.getRect().overlaps(enemy.getRect())) {
               hit = true;
-
+              // Only increase score for enamy1, enamy2, enamy3
               if (enemy.image.contains('enamy1') ||
                   enemy.image.contains('enamy2') ||
-                  enemy.image.contains('enamy3')) {
+                  enemy.image.contains('enamy3') ||
+                  enemy.image.contains('enamy4') ||
+                  enemy.image.contains('enamy5')) {
                 score++;
-              } else if (enemy.image.contains('enamy4') ||
-                         enemy.image.contains('enamy5')) {
-                score = max(0, score - 1);
               }
-
               return true;
             }
             return false;
           });
           return hit;
+        });
+
+        // Check if any enemy reached the player (game over logic)
+        enemies.removeWhere((enemy) {
+          if (enemy.y + 50 >= playerY) {
+            // Reduce life
+            lives--;
+            // Reduce score if enamy4 or enamy5 reaches player
+            if (enemy.image.contains('enamy4') || enemy.image.contains('enamy5')) {
+              score = max(0, score - 1);
+            }
+            if (lives <= 0) {
+              gameOver = true;
+            }
+            return true;
+          }
+          return false;
         });
       });
     });
@@ -137,6 +154,17 @@ class _MyGamePageState extends State<MyGamePage> {
 
   void fireBullet() {
     bullets.add(Bullet(x: playerX + playerSize / 2 - 5, y: playerY));
+  }
+
+  void restartGame() {
+    setState(() {
+      score = 0;
+      lives = 3;
+      gameOver = false;
+      bullets.clear();
+      enemies.clear();
+      playerX = canvasWidth / 2 - playerSize / 2;
+    });
   }
 
   @override
@@ -166,6 +194,21 @@ class _MyGamePageState extends State<MyGamePage> {
             ),
             child: Stack(
               children: [
+                // Hearts (lives)
+                Positioned(
+                  top: 10,
+                  left: 10,
+                  child: Row(
+                    children: List.generate(3, (i) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: Icon(
+                        Icons.favorite,
+                        color: i < lives ? Colors.red : Colors.grey,
+                        size: 32,
+                      ),
+                    )),
+                  ),
+                ),
                 // Score Text
                 Positioned(
                   top: 10,
@@ -269,6 +312,29 @@ class _MyGamePageState extends State<MyGamePage> {
                     child: Image.asset('asset/yu/fireButton.png', width: 60),
                   ),
                 ),
+
+                // Game Over Overlay
+                if (gameOver)
+                  Positioned.fill(
+                    child: Container(
+                      color: Colors.black54,
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('Game Over', style: TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 20),
+                            Text('Score: $score', style: const TextStyle(fontSize: 28, color: Colors.white)),
+                            const SizedBox(height: 30),
+                            ElevatedButton(
+                              onPressed: restartGame,
+                              child: const Text('Restart'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
