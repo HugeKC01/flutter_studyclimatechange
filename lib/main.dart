@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'component/shared_state.dart'; // Import the shared ValueNotifier
 import 'learningpage/module1/m1_main.dart';
 import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
-import 'minigame_main.dart';
-import 'style/theme.dart';
-import 'strapi/strapi.dart'; // Import Strapi screen
+import 'component/shared_state.dart'; // Import the shared ValueNotifier
+import 'dart:async';
+import 'openscene.dart'; // <-- Make sure this import exists
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _loadLockStatus(); // Load lock status before running the app
-  await _loadDarkModeSetting(); // Load dark mode setting
-  runApp(const MyApp());
-}
-
-// Load dark mode setting from SharedPreferences
-Future<void> _loadDarkModeSetting() async {
-  final prefs = await SharedPreferences.getInstance();
-  final isDarkMode = prefs.getBool('isDarkMode') ?? false; // Default to light mode
-  darkModeNotifier.value = isDarkMode; // Update the shared ValueNotifier
+  runApp(const EntryApp());
 }
 
 // Load lock status from SharedPreferences
@@ -35,22 +26,34 @@ Future<void> _loadLockStatus() async {
   }
 }
 
+// EntryApp decides which screen to show first
+class EntryApp extends StatelessWidget {
+  const EntryApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Climate Change',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      ),
+      home: OpenScene(), // <-- Show OpenScene first
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-      valueListenable: darkModeNotifier, // Listen to the shared ValueNotifier
-      builder: (context, isDarkMode, child) {
-        return MaterialApp(
-          title: 'Climate Change',
-          theme: isDarkMode 
-              ? ThemeData.from(colorScheme: MaterialTheme.darkScheme()) 
-              : ThemeData.from(colorScheme: MaterialTheme.lightScheme()),
-          home: const MyHomePage(title: 'Climate Change App'),
-        );
-      },
+    return MaterialApp(
+      title: 'Climate Change',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      ),
+      home: const MyHomePage(title: 'Climate Change App'),
     );
   }
 }
@@ -72,48 +75,6 @@ class _MyHomePageState extends State<MyHomePage>
   final ScrollController _scrollController =
       ScrollController(); // Add ScrollController
 
-  // Add this getter to always match the number of modules
-  List<Map<String, dynamic>> get modules => [
-    {
-      'title': 'Module 1',
-      'subtitle': 'Introduction to Climate Change',
-      'description':
-          'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-      'cover': 'asset/default/Module01.png',
-      'screen': Module1Screen(),
-    },
-    {
-      'title': 'Module 2',
-      'subtitle': 'Cause and effects of the Climate Change',
-      'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-      'cover': 'asset/default/Module02.png',
-      'screen': Module2Screen(),
-    },
-    {
-      'title': 'Module 3',
-      'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
-      'description':
-          'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-      'cover': 'asset/default/Module03.png',
-      'screen': Module3Screen(),
-    },
-    {
-      'title': 'Post Test',
-      'subtitle': 'ทดสอบหลังเรียน',
-      'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-      'cover': 'asset/default/testimage_.png',
-      'screen': PostTestIntroduction(),
-    },
-    {
-      'title': 'Minigame',
-      'subtitle': 'All minigame',
-      'description':
-          'all minigame for learning and practice',
-      'cover': 'asset/default/Module01.png',
-      'screen': MinigameScreen(),
-    },
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -123,8 +84,8 @@ class _MyHomePageState extends State<MyHomePage>
       vsync: this,
     );
 
-    // Use modules.length instead of 4
-    _offsetAnimations = List.generate(modules.length, (index) {
+    // Create staggered animations for each card
+    _offsetAnimations = List.generate(4, (index) {
       return Tween<Offset>(
         begin: const Offset(0, 0.3),
         end: Offset.zero,
@@ -136,7 +97,8 @@ class _MyHomePageState extends State<MyHomePage>
       );
     });
 
-    _fadeAnimations = List.generate(modules.length, (index) {
+    // Create fade animations for each card
+    _fadeAnimations = List.generate(4, (index) {
       return Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
@@ -157,6 +119,39 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
+    final modules = [
+      {
+        'title': 'Module 1',
+        'subtitle': 'Introduction to Climate Change',
+        'description':
+            'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover': 'asset/default/Module01.png',
+        'screen': Module1Screen(),
+      },
+      {
+        'title': 'Module 2',
+        'subtitle': 'Cause and effects of the Climate Change',
+        'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover': 'asset/default/Module02.png',
+        'screen': Module2Screen(),
+      },
+      {
+        'title': 'Module 3',
+        'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
+        'description':
+            'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+        'cover': 'asset/default/Module03.png',
+        'screen': Module3Screen(),
+      },
+      {
+        'title': 'Post Test',
+        'subtitle': 'ทดสอบหลังเรียน',
+        'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
+        'cover': 'asset/default/testimage_.png',
+        'screen': PostTestIntroduction(),
+      },
+    ];
+
     return AdaptiveNavigation(
       title: widget.title,
       child: Scaffold(        
@@ -195,10 +190,10 @@ class _MyHomePageState extends State<MyHomePage>
                               mainAxisSpacing: 8.0,
                               childAspectRatio: 1 / 1,
                             ),
-                            itemCount: modules.length, // <-- FIXED: show all cards
+                            itemCount: 4,
                             itemBuilder: (context, index) {
                               final module = modules[index];
-                              final isLocked = index < 4 ? lockedStatus[index] : false; // Minigame is never locked
+                              final isLocked = lockedStatus[index];
 
                               return FadeTransition(
                                 opacity: _fadeAnimations[index],
@@ -300,16 +295,6 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ArticleScreen()),
-            );
-          },
-          child: const Icon(Icons.web),
-          tooltip: 'Go to Strapi',
         ),
       )
     );
