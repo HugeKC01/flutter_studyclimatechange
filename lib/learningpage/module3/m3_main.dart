@@ -1,3 +1,4 @@
+import 'package:climatechange/learningpage/module3/lesson1/wordgame-1.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/main.dart';
 import 'package:climatechange/component/appbar.dart';
@@ -35,6 +36,12 @@ class Module3Screen extends StatelessWidget {
         'subtitle': 'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
         'cover': 'asset/default/testimage_.png',
         'screen': PracticeM3Introduction(),
+      },
+      {
+        'title': 'Minigame',
+        'subtitle': 'matching game',
+        'cover': 'asset/default/testimage_.png',
+        'screen': WordMatchGamePage(),
       },
     ];
 

@@ -6,6 +6,7 @@ import 'learningpage/module2/m2_main.dart';
 import 'learningpage/module3/m3_main.dart';
 import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
+import 'minigame_main.dart';
 import 'style/theme.dart';
 
 void main() async {
@@ -70,6 +71,48 @@ class _MyHomePageState extends State<MyHomePage>
   final ScrollController _scrollController =
       ScrollController(); // Add ScrollController
 
+  // Add this getter to always match the number of modules
+  List<Map<String, dynamic>> get modules => [
+    {
+      'title': 'Module 1',
+      'subtitle': 'Introduction to Climate Change',
+      'description':
+          'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+      'cover': 'asset/default/Module01.png',
+      'screen': Module1Screen(),
+    },
+    {
+      'title': 'Module 2',
+      'subtitle': 'Cause and effects of the Climate Change',
+      'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
+      'cover': 'asset/default/Module02.png',
+      'screen': Module2Screen(),
+    },
+    {
+      'title': 'Module 3',
+      'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
+      'description':
+          'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
+      'cover': 'asset/default/Module03.png',
+      'screen': Module3Screen(),
+    },
+    {
+      'title': 'Post Test',
+      'subtitle': 'ทดสอบหลังเรียน',
+      'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
+      'cover': 'asset/default/testimage_.png',
+      'screen': PostTestIntroduction(),
+    },
+    {
+      'title': 'Minigame',
+      'subtitle': 'All minigame',
+      'description':
+          'all minigame for learning and practice',
+      'cover': 'asset/default/Module01.png',
+      'screen': MinigameScreen(),
+    },
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -79,8 +122,8 @@ class _MyHomePageState extends State<MyHomePage>
       vsync: this,
     );
 
-    // Create staggered animations for each card
-    _offsetAnimations = List.generate(4, (index) {
+    // Use modules.length instead of 4
+    _offsetAnimations = List.generate(modules.length, (index) {
       return Tween<Offset>(
         begin: const Offset(0, 0.3),
         end: Offset.zero,
@@ -92,8 +135,7 @@ class _MyHomePageState extends State<MyHomePage>
       );
     });
 
-    // Create fade animations for each card
-    _fadeAnimations = List.generate(4, (index) {
+    _fadeAnimations = List.generate(modules.length, (index) {
       return Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
@@ -114,39 +156,6 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    final modules = [
-      {
-        'title': 'Module 1',
-        'subtitle': 'Introduction to Climate Change',
-        'description':
-            'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover': 'asset/default/Module01.png',
-        'screen': Module1Screen(),
-      },
-      {
-        'title': 'Module 2',
-        'subtitle': 'Cause and effects of the Climate Change',
-        'description': 'สาเหตุและผลกระทบของการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover': 'asset/default/Module02.png',
-        'screen': Module2Screen(),
-      },
-      {
-        'title': 'Module 3',
-        'subtitle': 'Fix The Problem And Adaptation for the Climate Change',
-        'description':
-            'วิธีการแก้ปัญหาและการปรับตัวกับการเปลี่ยนแปลงสภาพภูมิอากาศ',
-        'cover': 'asset/default/Module03.png',
-        'screen': Module3Screen(),
-      },
-      {
-        'title': 'Post Test',
-        'subtitle': 'ทดสอบหลังเรียน',
-        'description': 'ทดสอบหลังจากผ่านบทเรียนทั้งหมดแล้ว',
-        'cover': 'asset/default/testimage_.png',
-        'screen': PostTestIntroduction(),
-      },
-    ];
-
     return AdaptiveNavigation(
       title: widget.title,
       child: Scaffold(        
@@ -185,10 +194,10 @@ class _MyHomePageState extends State<MyHomePage>
                               mainAxisSpacing: 8.0,
                               childAspectRatio: 1 / 1,
                             ),
-                            itemCount: 4,
+                            itemCount: modules.length, // <-- FIXED: show all cards
                             itemBuilder: (context, index) {
                               final module = modules[index];
-                              final isLocked = lockedStatus[index];
+                              final isLocked = index < 4 ? lockedStatus[index] : false; // Minigame is never locked
 
                               return FadeTransition(
                                 opacity: _fadeAnimations[index],

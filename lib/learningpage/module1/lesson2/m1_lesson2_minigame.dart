@@ -288,6 +288,7 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
   @override
   void dispose() {
     _textTimer?.cancel();
+    _imageController.dispose(); // Properly dispose the AnimationController
     super.dispose();
   }
 }
