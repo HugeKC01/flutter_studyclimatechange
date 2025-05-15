@@ -7,6 +7,7 @@ import 'package:climatechange/learningpage/module3/m3_main.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
+import 'difficulty_select_page.dart';
 
 class Module3l2p3 extends StatelessWidget {
   const Module3l2p3({super.key});
@@ -171,7 +172,7 @@ class Module3l2p3 extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DragAndDropGame()),
+                          builder: (context) => const DifficultySelectPage()),
                     );
                   },
                   currentPage: 3, // Current page index
