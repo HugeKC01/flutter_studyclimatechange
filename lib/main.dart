@@ -8,7 +8,7 @@ import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
 import 'minigame_main.dart';
 import 'style/theme.dart';
-import 'strapi.dart'; // Import Strapi screen
+import 'strapi/strapi.dart'; // Import Strapi screen
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

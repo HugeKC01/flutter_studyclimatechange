@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'dart:convert';
+import 'package:climatechange/component/appbar.dart';
 
 const String strapiUrl = 'http://localhost:1337';
 
@@ -10,9 +11,7 @@ class PageSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PageSelectScreen(articleIndex: articleIndex),
-    );
+    return PageSelectScreen(articleIndex: articleIndex);
   }
 }
 
@@ -48,8 +47,15 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Strapi + Flutter'),
+      appBar: buildAppBar(
+        selectedArticle != null && selectedArticle!['title'] != null
+            ? selectedArticle!['title']
+            : 'Strapi + Flutter',
+        context,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: selectedArticle == null
           ? Center(child: CircularProgressIndicator())
