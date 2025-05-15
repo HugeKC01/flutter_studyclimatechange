@@ -8,6 +8,7 @@ import 'posttest/posttestintro.dart';
 import 'component/adaptivenavigation.dart';
 import 'minigame_main.dart';
 import 'style/theme.dart';
+import 'strapi.dart'; // Import Strapi screen
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -299,6 +300,16 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ArticleScreen()),
+            );
+          },
+          child: const Icon(Icons.web),
+          tooltip: 'Go to Strapi',
         ),
       )
     );
