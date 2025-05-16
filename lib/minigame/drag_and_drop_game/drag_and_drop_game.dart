@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
-import 'package:climatechange/component/footer_navigator.dart';
-import 'package:climatechange/component/page_config.dart';
 
 class WordArrangeGame extends StatefulWidget {
   final String difficultyLevel;
@@ -87,6 +85,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
   int totalQuestions = 0;
   bool hintUsed = false;
   bool canSubmit = false;
+  bool isSubmitting = false;
 
   @override
   void initState() {
@@ -164,23 +163,54 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
     });
   }
 
+  void submit() {
+    if (gameEnded || !canSubmit || isSubmitting) return;
+    setState(() {
+      canSubmit = false;
+      isSubmitting = true;
+    });
+    String answer = selectedWords.join('');
+    String target = gameStages[currentStage]['target'];
+    String explanation = gameStages[currentStage]['explanation'] ?? '';
+    bool isCorrect = answer == target;
+    int stageScore = selectedWords.length * 10;
+    setState(() {
+      if (isCorrect) {
+        score += stageScore;
+        feedback = 'ถูกต้อง! +$stageScore คะแนน\n\nเฉลย: $target\n$explanation';
+      } else {
+        feedback = 'ยังไม่ถูกต้อง ลองใหม่!\n\nเฉลย: $target\n$explanation';
+      }
+    });
+    Future.delayed(const Duration(seconds: 2), () {
+      nextStage();
+      setState(() {
+        isSubmitting = false;
+      });
+    });
+  }
+
   void selectWord(int idx) {
-    if (usedWords[idx] || gameEnded) return;
+    if (usedWords[idx] || gameEnded || feedback.isNotEmpty || isSubmitting) return;
     setState(() {
       selectedWords.add(gameStages[currentStage]['words'][idx]);
       usedWords[idx] = true;
-      canSubmit = selectedWords.isNotEmpty;
+      if (feedback.isEmpty && !isSubmitting) {
+        canSubmit = selectedWords.isNotEmpty;
+      }
     });
   }
 
   void removeWord(int idx) {
-    if (gameEnded) return;
+    if (gameEnded || feedback.isNotEmpty || isSubmitting) return;
     String word = selectedWords[idx];
     int wordIdx = gameStages[currentStage]['words'].indexOf(word);
     setState(() {
       selectedWords.removeAt(idx);
       if (wordIdx != -1) usedWords[wordIdx] = false;
-      canSubmit = selectedWords.isNotEmpty;
+      if (feedback.isEmpty && !isSubmitting) {
+        canSubmit = selectedWords.isNotEmpty;
+      }
     });
   }
 
@@ -207,35 +237,6 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
           break;
         }
       }
-    }
-  }
-
-  void submit() {
-    if (gameEnded || !canSubmit) return;
-    setState(() {
-      canSubmit = false; // Disable button immediately after click
-    });
-    String answer = selectedWords.join('');
-    String target = gameStages[currentStage]['target'];
-    String explanation = gameStages[currentStage]['explanation'] ?? '';
-    if (answer == target) {
-      int stageScore = selectedWords.length * 10;
-      setState(() {
-        canSubmit = false;
-        score += stageScore;
-        feedback = 'ถูกต้อง! +$stageScore คะแนน\n\nเฉลย: $target\n$explanation';
-      });
-      Future.delayed(const Duration(seconds: 2), () {
-        nextStage();
-      });
-    } else {
-      setState(() {
-        canSubmit = false;
-        feedback = 'ยังไม่ถูกต้อง ลองใหม่!\n\nเฉลย: $target\n$explanation';
-      });
-      Future.delayed(const Duration(seconds: 2), () {
-        nextStage();
-      });
     }
   }
 
@@ -373,14 +374,8 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
                 child: const Text('เริ่มใหม่'),
               ),
               const SizedBox(height: 12),
-                          ],
+            ],
             const Spacer(),
-            FooterNavigation(
-              onBackPressed: () => Navigator.pop(context),
-              onForwardPressed: () {},
-              currentPage: currentStage + 1,
-              totalPages: gameStages.length,
-            ),
           ],
         ),
       ),
