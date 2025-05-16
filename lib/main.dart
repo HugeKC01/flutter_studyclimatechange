@@ -187,11 +187,11 @@ class _MyHomePageState extends State<MyHomePage>
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ArticleScreen()),
+                MaterialPageRoute(builder: (context) => ArticleScreen()),
               );
             },
             child: const Icon(Icons.web),
-            tooltip: 'Go to Strapi',
+            tooltip: 'Checkpoint Book Store',
           ),
           body: Stack(
             children: [

@@ -6,10 +6,6 @@ import 'nutgame/providers/game_provider.dart';
 import 'package:provider/provider.dart';
 import 'nutgame/screens/result_screen.dart';
 
-void main() {
-  runApp(const CardGameApp());
-}
-
 class CardGameApp extends StatelessWidget {
   const CardGameApp({super.key});
 
@@ -27,8 +23,8 @@ class CardGameApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/game': (context) => const GameScreen(),
-          '/result': (context) => const ResultScreen(),     
-                },
+          '/result': (context) => const ResultScreen(didPlayerWin: true,),     
+                  },
       ),
     );
   }

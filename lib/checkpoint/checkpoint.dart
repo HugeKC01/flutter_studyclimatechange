@@ -1,3 +1,4 @@
+import 'package:climatechange/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -60,11 +61,21 @@ class _ArticleScreenState extends State<ArticleScreen> {
   @override
     Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(title: Text('Strapi + Flutter')),
+        appBar: AppBar(
+            backgroundColor: Color(0xFFF8F8F8),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MyApp())
+                );
+              },
+            ),
+          ),
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             //crossAxisCount: 2,
-            maxCrossAxisExtent: 300,
+            maxCrossAxisExtent: 265,
             mainAxisExtent: 200,
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 10.0,

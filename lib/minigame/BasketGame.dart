@@ -2,19 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 
-void main() {
-  runApp(const BasketGame());
-}
-
 class BasketGame extends StatelessWidget {
   const BasketGame({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: GameScreen(),
-    );
+    return GameScreen();
   }
 }
 
@@ -179,6 +172,20 @@ class _GameScreenState extends State<GameScreen> {
                 width: 100,
                 height: 50,
               ),
+            ),
+          ),
+          // Floating exit button
+          Positioned(
+            top: 40,
+            right: 20,
+            child: FloatingActionButton(
+              backgroundColor: Colors.redAccent,
+              mini: true,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.close),
+              tooltip: 'Exit',
             ),
           ),
         ],
