@@ -121,7 +121,7 @@ class Module3Sum extends StatelessWidget {
                                   const SizedBox(height: 12),
                                   Center(
                                     child: component.HoverableImage(
-                                      imagePath: 'asset/module3/s1_m7.png',
+                                      imagePath: 'asset/module3/module0302.png',
                                     ),
                                   ),
                                   const SizedBox(height: 12),
