@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   final bool didPlayerWin;
+  final VoidCallback onExit; // เพิ่ม parameter สำหรับฟังก์ชัน resetGame
 
-  const ResultScreen({super.key, required this.didPlayerWin});
+  const ResultScreen(
+      {super.key, required this.didPlayerWin, required this.onExit});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class ResultScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                onExit(); // เรียกใช้ฟังก์ชัน resetGame เมื่อกด Exit
                 Navigator.pop(context, false); // Exit the game
               },
               child: const Text('Exit'),

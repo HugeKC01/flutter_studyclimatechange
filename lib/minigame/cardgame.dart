@@ -4,7 +4,7 @@ import 'nutgame/screens/game_screen.dart';
 import 'nutgame/screens/result_screen.dart';
 import 'nutgame/providers/game_provider.dart';
 import 'package:provider/provider.dart';
-import 'nutgame/screens/result_screen.dart';
+
 
 class CardGameApp extends StatelessWidget {
   const CardGameApp({super.key});
@@ -23,7 +23,12 @@ class CardGameApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/game': (context) => const GameScreen(),
-          '/result': (context) => const ResultScreen(didPlayerWin: true,),     
+          '/result': (context) => ResultScreen(
+            didPlayerWin: true,
+            onExit: () {
+              Navigator.of(context).pop();
+            },
+          ),
                   },
       ),
     );

@@ -2,6 +2,7 @@ import 'package:climatechange/main.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/manual_page.dart'; // Ensure this is the correct path to ManualPage
 import 'package:climatechange/component/appbar.dart';
+import 'package:climatechange/minigame_main.dart'; // Import MinigameMain
 
 class AdaptiveNavigation extends StatelessWidget {
   final Widget child;
@@ -41,6 +42,13 @@ class AdaptiveNavigation extends StatelessWidget {
                           builder: (context) => ManualPage(),
                         ),
                       );
+                    } else if (index == 2) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MinigameScreen(),
+                        ),
+                      );
                     }
                   },
                   labelType: NavigationRailLabelType.all,
@@ -52,6 +60,10 @@ class AdaptiveNavigation extends StatelessWidget {
                     NavigationRailDestination(
                       icon: Icon(Icons.book_rounded),
                       label: Text('Manual'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.videogame_asset_rounded),
+                      label: Text('Minigame'),
                     ),
                   ],
                 ),
@@ -104,6 +116,20 @@ class AdaptiveNavigation extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => ManualPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.videogame_asset_rounded),
+                  title: const Text('Minigame'),
+                  selected: selectedIndex == 2, // Highlight if selected
+                  onTap: () {
+                    if (selectedIndex == 2) return;
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MinigameScreen(),
                       ),
                     );
                   },
