@@ -43,11 +43,14 @@ flutter:
     - lib/temp/
     - asset/basketgame/
 
-fonts:
-  - family : JS-Jindara
-    fonts:
-      - asset: assets/fonts/JS-Jindara-Normal.ttf
-      - asset: assets/fonts/JS-Jindara-Italic.ttf
-      - asset: assets/fonts/JS-Jindara-Bold.ttf
-      - asset: assets/fonts/JS-Jindara-Bold-Italic.ttf
-        weight: 700
+  fonts:
+    - family: JS-Jindara
+      fonts:
+        - asset: asset/fonts/JS-Jindara-Normal.ttf
+        - asset: asset/fonts/JS-Jindara-Italic.ttf
+          style: italic
+        - asset: asset/fonts/JS-Jindara-Bold.ttf
+          weight: 700
+        - asset: asset/fonts/JS-Jindara-Bold-Italic.ttf
+          weight: 700
+          style: italic

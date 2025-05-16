@@ -46,11 +46,11 @@ class _PageContentScreenState extends State<PageContentScreen> {
         await http.get(Uri.parse('$strapiUrl/api/book-contents?populate=book'));
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body)['data'];
-      print('Fetched data: $data');
-      print('Looking for bookId: ${widget.bookId}');
+      //print('Fetched data: $data');
+      //print('Looking for bookId: ${widget.bookId}');
       // Filter by bookId
       final filtered = data.where((item) => item['book']['book_id'] == '${widget.bookId}').toList();
-      print('Filtered: $filtered');
+      //print('Filtered: $filtered');
       setState(() {
         book_contents = filtered;
       });
@@ -80,6 +80,8 @@ class _PageContentScreenState extends State<PageContentScreen> {
   var content = book_contents[0]['content'];
   var title = book_contents[0]['book']['title'];
   //var bookId = 
+
+  content = replaceFontFamily(content, newFont: 'JS-Jindara');
 
   //remove background
   content = removeBackgroundStyles(content);
@@ -119,12 +121,12 @@ class _PageContentScreenState extends State<PageContentScreen> {
           // Show the title at the top
           return Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 title,
                 style: TextStyle(
-                  fontFamily: 'JS-Jindara',
-                  fontSize: 25,
+                  fontSize: 40,
+                  fontFamily: "JS-Jindara",
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -140,8 +142,9 @@ class _PageContentScreenState extends State<PageContentScreen> {
               child: HtmlWidget(
                 pages[index - 1],
                 textStyle: TextStyle(
-                  fontFamily: 'JS-Jindara',
-                  fontSize: 25,
+                  fontSize: 24,
+                  fontFamily: "JS-Jindara",
+                  fontWeight: FontWeight.normal,
                 ),
               ),
             ),
@@ -175,5 +178,13 @@ class _PageContentScreenState extends State<PageContentScreen> {
     // Remove inline background-color styles
     final bgStyleRegex = RegExp(r'background(-color)?:\s*[^;"]+;?', caseSensitive: false);
     return html.replaceAllMapped(bgStyleRegex, (match) => '');
+  }
+
+  //replace fonts
+  String replaceFontFamily(String html, {String newFont = 'JS-Jindara'}) {
+  // Remove all font-family declarations in <style> and inline style
+  final fontFamilyRegex = RegExp(r'font-family\s*:\s*[^;"]+;?', caseSensitive: false);
+  html = html.replaceAll(fontFamilyRegex, 'font-family: $newFont;');
+  return html;
   }
 }
