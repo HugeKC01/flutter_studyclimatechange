@@ -5,10 +5,6 @@ import 'nutgame/screens/result_screen.dart';
 import 'nutgame/providers/game_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const CardGameApp());
-}
-
 class CardGameApp extends StatelessWidget {
   const CardGameApp({super.key});
 

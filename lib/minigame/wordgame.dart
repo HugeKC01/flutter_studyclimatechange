@@ -2,25 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:math'; // สำหรับสุ่ม
 import 'dart:async'; // สำหรับ Timer
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'เกมจับคู่ขยะชนิดเดียวกัน',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: WordMatchGamePage(),
-      debugShowCheckedModeBanner: false, // ซ่อนแถบ Debug
-    );
-  }
-}
-
 class WordMatchGamePage extends StatefulWidget {
   @override
   _WordMatchGamePageState createState() => _WordMatchGamePageState();
