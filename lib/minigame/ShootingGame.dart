@@ -170,7 +170,7 @@ class _MyGamePageState extends State<MyGamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Game Page')),
+      appBar: AppBar(title: const Text('Shooting Game')),
       body: Listener(
         onPointerUp: (_) {
           if (mounted) setState(() {

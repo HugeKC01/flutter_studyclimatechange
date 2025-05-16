@@ -66,12 +66,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Climate Change',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const MyHomePage(title: 'Climate Change App'),
+    return ValueListenableBuilder<bool>(
+      valueListenable: darkModeNotifier,
+      builder: (context, isDarkMode, child) {
+        return MaterialApp(
+          title: 'Climate Change',
+          theme: isDarkMode
+              ? ThemeData.from(colorScheme: MaterialTheme.darkScheme())
+              : ThemeData.from(colorScheme: MaterialTheme.lightScheme()),
+          home: const MyHomePage(title: 'Climate Change App'),
+        );
+      },
     );
   }
 }

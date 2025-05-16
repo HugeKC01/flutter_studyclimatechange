@@ -86,6 +86,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
   int totalCorrect = 0;
   int totalQuestions = 0;
   bool hintUsed = false;
+  bool canSubmit = false;
 
   @override
   void initState() {
@@ -136,6 +137,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
     feedback = '';
     gameEnded = false;
     hintUsed = false;
+    canSubmit = false;
   }
 
   void startTimer() {
@@ -167,6 +169,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
     setState(() {
       selectedWords.add(gameStages[currentStage]['words'][idx]);
       usedWords[idx] = true;
+      canSubmit = selectedWords.isNotEmpty;
     });
   }
 
@@ -177,6 +180,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
     setState(() {
       selectedWords.removeAt(idx);
       if (wordIdx != -1) usedWords[wordIdx] = false;
+      canSubmit = selectedWords.isNotEmpty;
     });
   }
 
@@ -207,13 +211,17 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
   }
 
   void submit() {
-    if (gameEnded) return;
+    if (gameEnded || !canSubmit) return;
+    setState(() {
+      canSubmit = false; // Disable button immediately after click
+    });
     String answer = selectedWords.join('');
     String target = gameStages[currentStage]['target'];
     String explanation = gameStages[currentStage]['explanation'] ?? '';
     if (answer == target) {
       int stageScore = selectedWords.length * 10;
       setState(() {
+        canSubmit = false;
         score += stageScore;
         feedback = 'ถูกต้อง! +$stageScore คะแนน\n\nเฉลย: $target\n$explanation';
       });
@@ -222,6 +230,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
       });
     } else {
       setState(() {
+        canSubmit = false;
         feedback = 'ยังไม่ถูกต้อง ลองใหม่!\n\nเฉลย: $target\n$explanation';
       });
       Future.delayed(const Duration(seconds: 2), () {
@@ -238,6 +247,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
         usedWords = List.filled(gameStages[currentStage]['words'].length, false);
         feedback = '';
         hintUsed = false;
+        canSubmit = false;
       });
     } else {
       endGame();
@@ -249,6 +259,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
       setupGame();
       score = 0;
       hintUsed = false;
+      canSubmit = false;
     });
     startTimer();
   }
@@ -322,7 +333,7 @@ class _WordArrangeGameState extends State<WordArrangeGame> {
               ),
               const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: selectedWords.isNotEmpty ? submit : null,
+                onPressed: canSubmit ? submit : null,
                 child: const Text('ส่งคำตอบ'),
               ),
               if (feedback.isNotEmpty)
