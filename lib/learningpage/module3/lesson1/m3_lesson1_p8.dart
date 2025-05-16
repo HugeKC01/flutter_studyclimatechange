@@ -87,15 +87,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
           SafeArea(
         child: Column(
           children: [
-            Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface, // Updated color
-                  ),
-                  child: Row(
-                    children: [
-                      ArticleHeader(
+            ArticleHeader(
                    header: pageheader,
                    subtitle: pagesubtitle,
                    fontSize: fontsize,
@@ -108,28 +100,6 @@ class _Module3l1p8State extends State<Module3l1p8> {
                      );
                    },
                  ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
             Expanded(
               child: Scrollbar(
                 thumbVisibility: true,
