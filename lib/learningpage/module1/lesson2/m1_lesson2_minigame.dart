@@ -92,20 +92,25 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
   }
 
   void finishSelection() {
+    final parentContext = context;
     if (selected.containsAll(correctAnswers) && selected.length == correctAnswers.length) {
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (dialogContext) => AlertDialog(
           content: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.6,
+            width: MediaQuery.of(parentContext).size.width * 0.6,
             child: Image.asset('asset/module1/ImageFORGAME (11).png'),
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => const Module1l2p4()),
-              ),
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                if (!mounted) return;
+                Navigator.pushReplacement(
+                  parentContext,
+                  MaterialPageRoute(builder: (_) => const Module1l2p4()),
+                );
+              },
               child: const Text('หน้าต่อไป'),
             ),
           ],
@@ -114,14 +119,16 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
     } else {
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (dialogContext) => AlertDialog(
           content: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.6,
+            width: MediaQuery.of(parentContext).size.width * 0.6,
             child: Image.asset('asset/module1/ImageFORGAME (10).png'),
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
               child: const Text('ลองอีกครั้ง'),
             ),
           ],
