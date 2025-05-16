@@ -16,8 +16,8 @@ final List<CardModel> climateCards = [
     imageAsset: 'asset/images/Hot.jpg',
   ),
   CardModel(
-    title: 'Plant Tree',
-    value: 2,
+    title: 'Plant Garden',
+    value: 8,
     imageAsset: 'asset/images/polarb.jpg',
   ),
   CardModel(
@@ -27,7 +27,7 @@ final List<CardModel> climateCards = [
   ),
   CardModel(
     title: 'LED Lights',
-    value: 2,
+    value: 4,
     imageAsset: 'asset/images/human.jpeg',
   ),
 ];
