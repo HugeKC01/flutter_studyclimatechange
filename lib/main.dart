@@ -10,7 +10,8 @@ import 'dart:async';
 import 'openscene.dart';
 import 'minigame_main.dart';
 import 'style/theme.dart';
-import 'strapi/strapi.dart';
+//import 'strapi/strapi.dart';
+import 'checkpoint/checkpoint.dart';
 import 'component/animatedbackground.dart'; // <-- Import your animated background
 
 void main() async {

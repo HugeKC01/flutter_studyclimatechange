@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'page_select.dart';
+import 'page_select_OLD.dart';
 
 const String strapiUrl = 'http://localhost:1337';
 
