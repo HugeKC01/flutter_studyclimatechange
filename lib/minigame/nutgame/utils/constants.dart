@@ -1,5 +1,4 @@
 import '../models/card_model.dart';
-
 final List<CardModel> climateCards = [
   CardModel(
     title: 'Solar Panel',
@@ -29,6 +28,6 @@ final List<CardModel> climateCards = [
   CardModel(
     title: 'LED Lights',
     value: 2,
-    imageAsset: 'asset/images/human_act.jpeg',
+    imageAsset: 'asset/images/human.jpeg',
   ),
 ];
