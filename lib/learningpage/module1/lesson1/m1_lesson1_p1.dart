@@ -10,7 +10,6 @@ import 'package:climatechange/component/page_config.dart';
 class Module1l1p1 extends StatelessWidget {
   const Module1l1p1({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final pagetitle = 'เรื่องที่ 1 ทำความรู้จักการเปลี่ยนแปลงสภาพภูมิอากาศ';
@@ -37,66 +36,19 @@ class Module1l1p1 extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onPrimary, // Updated
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.onPrimary, // Updated
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(context).colorScheme.shadow, // Updated
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                            icon: Icon(
-                            Icons.exit_to_app,
-                            color: Theme.of(context).colorScheme.onSurface,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Module1Screen(),
-                              ),
-                            ); // Exit the current page
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ), // Add spacing between the icon and the header
-                      Expanded(
-                        // Ensures the text wraps into a new line
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: fontsize),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module1Screen(),
+                       ),
+                     );
+                   },
+                 ),
                 // Scrollable content
                 Expanded(
                   child: SingleChildScrollView(
@@ -105,80 +57,87 @@ class Module1l1p1 extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Card(
-                            color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                            elevation: 4,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
+                          child: Center(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxWidth: 600,
                               ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    '         สภาพอากาศและภูมิอากาศเป็นคำที่มักถูกใช้สลับกัน แต่จริง ๆ แล้วมีความหมายที่แตกต่างกัน',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(fontSize: fontsize),
+                              child: Card(
+                                color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                                elevation: 4,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
                                   ),
-                                  const SizedBox(height: 8),
-                                  Text.rich(
-                                    TextSpan(
-                                      children: [
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(30.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        '         สภาพอากาศและภูมิอากาศเป็นคำที่มักถูกใช้สลับกัน แต่จริง ๆ แล้วมีความหมายที่แตกต่างกัน',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(fontSize: fontsize),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text.rich(
                                         TextSpan(
-                                          text: '         สภาพอากาศ (weather)',
-                                          style: TextStyle(
-                                            fontSize: fontsize,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: '         สภาพอากาศ (weather)',
+                                              style: TextStyle(
+                                                fontSize: fontsize,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย',
+                                            ),
+                                          ],
                                         ),
+                                        textAlign: TextAlign.left,
+                                        style: const TextStyle(fontSize: fontsize),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      Center(
+                                        child: component.HoverableImage(
+                                          imagePath: 'asset/module1/weather.png',
+                                        ),
+                                      ),
+                                      const SizedBox(height: 30),
+                                      Text.rich(
                                         TextSpan(
-                                          text:
-                                              ' หมายถึง สภาพอากาศที่เกิดขึ้นในช่วงเวลาสั้น ๆ เช่น ชั่วโมง วัน หรือสัปดาห์ โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลา เช่น อาจมีฝนตกในช่วงเช้า แต่แดดออกในช่วงบ่าย',
+                                          children: [
+                                            const TextSpan(
+                                              text: '         ภูมิอากาศ (climate)',
+                                              style: TextStyle(
+                                                fontSize: fontsize,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            const TextSpan(
+                                              text:
+                                                  ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว',
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: fontsize),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/weather.png',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 30),
-                                  Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        const TextSpan(
-                                          text: '         ภูมิอากาศ (climate)',
-                                          style: TextStyle(
-                                            fontSize: fontsize,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        textAlign: TextAlign.left,
+                                        style: const TextStyle(fontSize: fontsize),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Center(
+                                        child: component.HoverableImage(
+                                          imagePath: 'asset/module1/climate.png',
                                         ),
-                                        const TextSpan(
-                                          text:
-                                              ' หมายถึง สภาพอากาศที่เกิดขึ้นในสถานที่หนึ่งๆบนโลก เป็นช่วงเวลาที่ยาวนาน เช่น เดือน ปี หรือหลายปี โดยจะมีการเปลี่ยนแปลงอยู่ตลอดเวลาเช่นกัน แต่จะมีการเปลี่ยนแปลงที่ช้ากว่าและมีแนวโน้มที่ชัดเจนกว่า เช่น อาจมีอุณหภูมิสูงขึ้นในช่วงฤดูร้อน และมีอุณหภูมิต่ำลงในช่วงฤดูหนาว',
-                                        ),
-                                      ],
-                                    ),
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(fontSize: fontsize),
+                                      ),
+                                      const SizedBox(height: 50),
+                                       //toggle between weather and climate example
+                                      WeatherVsClimateToggle(),
+                                    ],
                                   ),
-                                  const SizedBox(height: 8),
-                                  Center(
-                                    child: component.HoverableImage(
-                                      imagePath: 'asset/module1/climate.png',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 50),
-                                   //toggle between weather and climate example
-                                  WeatherVsClimateToggle(),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -228,7 +187,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
     with SingleTickerProviderStateMixin {
   bool isWeather = true;
   late AnimationController _controller;
-  late Animation<double> _animation;
+  // late Animation<double> _animation;
 
   @override
   void initState() {
@@ -237,7 +196,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
       duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+    // _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed ||

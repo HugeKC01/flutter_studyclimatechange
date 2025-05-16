@@ -4,6 +4,7 @@ import 'package:climatechange/component/drawer.dart';
 import 'practice/practiceintro.dart';
 import 'm1_main.dart';
 import 'package:climatechange/component/hoverable_images.dart' as component;
+import 'package:climatechange/component/footer_navigator.dart';
 
 class Module1Sum extends StatelessWidget {
   const Module1Sum({super.key});
@@ -13,6 +14,7 @@ class Module1Sum extends StatelessWidget {
     final pageheader = 'สรุป';
     final pagesubtitle = 'มาทำความรู้จักและทำไมต้องรู้กับการเปลี่ยนแปลงสภาพภูมิอากาศ';
     final background = 'asset/overall/background1.png';
+    const fontsize = 20.0;
 
     return Scaffold(
       appBar: buildAppBar(
@@ -37,60 +39,19 @@ class Module1Sum extends StatelessWidget {
             child: Column(
               children: [
                 // Header Section
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white, // Background color for the button
-                          shape: BoxShape.circle, // Circular shape
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black, // Shadow color
-                              blurRadius: 4, // Blur radius for the shadow
-                              offset: const Offset(0, 2), // Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                    builder: (context) => const Module1Screen()
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module1Screen(),
+                       ),
+                     );
+                   },
+                 ),
                 // Scrollable content
                 Expanded(
                   child: SingleChildScrollView(

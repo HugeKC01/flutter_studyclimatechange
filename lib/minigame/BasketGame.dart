@@ -36,6 +36,7 @@ class _GameScreenState extends State<GameScreen> {
     'asset/basketgame/item8.png',
     'asset/basketgame/item9.png',
   ];
+  final Set<int> minusScoreItems = {0, 1}; // Indexes of items that minus score (e.g., item1.png and item2.png)
 
   @override
   void initState() {
@@ -58,9 +59,9 @@ class _GameScreenState extends State<GameScreen> {
     score = 0;
     isGameRunning = true;
 
-    _timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 16), (timer) {
       setState(() {
-        elapsedTime += 0.05; // เพิ่มเวลาเกม
+        elapsedTime += 0.016; // เพิ่มเวลาเกม (60 FPS)
 
         if (elapsedTime >= 60) {
           // หมดเวลา 1 นาที
@@ -69,7 +70,7 @@ class _GameScreenState extends State<GameScreen> {
 
         for (int i = 0; i < itemY.length; i++) {
           if (elapsedTime >= itemStartTimes[i]) {
-            itemY[i] += 0.02; // ไอเทมเริ่มตก
+            itemY[i] += 0.008; // ไอเทมเริ่มตก (ปรับให้เหมาะกับ 60 FPS)
 
             if (itemY[i] > 1) {
               // ถ้าตกพื้น รีเซ็ตไอเทมนั้น
@@ -78,7 +79,11 @@ class _GameScreenState extends State<GameScreen> {
 
             if (itemY[i] > 0.9 && (itemX[i] - basketX).abs() < 0.2) {
               // ถ้าเก็บไอเทมได้
-              score++;
+              if (minusScoreItems.contains(i)) {
+                score = (score > 0) ? score - 1 : 0; // Minus score, not below 0
+              } else {
+                score++;
+              }
               _resetItem(i);
             }
           }
@@ -130,65 +135,74 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
-      body: Stack(
-        children: [
-          Align(
-            alignment: const Alignment(0, -0.9),
-            child: Text(
-              'Score: $score',
-              style: const TextStyle(color: Colors.white, fontSize: 24),
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('asset/overall/background1.png'),
+            fit: BoxFit.cover,
           ),
-          Align(
-            alignment: const Alignment(0, -0.8),
-            child: Text(
-              'Time: ${60 - elapsedTime.toInt()}s',
-              style: const TextStyle(color: Colors.white, fontSize: 24),
+        ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: const Alignment(0, -0.9),
+              child: Text(
+                'Score: $score',
+                style: const TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
-          ),
-          for (int i = 0; i < itemAssets.length; i++)
-            if (elapsedTime >= itemStartTimes[i])
-              AnimatedContainer(
-                alignment: Alignment(itemX[i], itemY[i]),
-                duration: const Duration(milliseconds: 0),
+            Align(
+              alignment: const Alignment(0, -0.8),
+              child: Text(
+                'Time: ${60 - elapsedTime.toInt()}s',
+                style: const TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            for (int i = 0; i < itemAssets.length; i++)
+              if (elapsedTime >= itemStartTimes[i])
+                AnimatedContainer(
+                  alignment: Alignment(itemX[i], itemY[i]),
+                  duration: const Duration(milliseconds: 0),
+                  child: Image.asset(
+                    itemAssets[i],
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+            Align(
+              alignment: Alignment(basketX, 0.9),
+              child: GestureDetector(
+                onHorizontalDragUpdate: (details) {
+                  setState(() {
+                    basketX += details.delta.dx / MediaQuery.of(context).size.width * 2;
+                    if (basketX > 1) basketX = 1;
+                    if (basketX < -1) basketX = -1;
+                  });
+                },
                 child: Image.asset(
-                  itemAssets[i],
-                  width: 50,
+                  'asset/basketgame/basket.png',
+                  width: 100,
                   height: 50,
                 ),
               ),
-          Align(
-            alignment: Alignment(basketX, 0.9),
-            child: GestureDetector(
-              onHorizontalDragUpdate: (details) {
-                setState(() {
-                  basketX += details.delta.dx / MediaQuery.of(context).size.width * 2;
-                  if (basketX > 1) basketX = 1;
-                  if (basketX < -1) basketX = -1;
-                });
-              },
-              child: Image.asset(
-                'asset/basketgame/basket.png',
-                width: 100,
-                height: 50,
+            ),
+            // Floating exit button
+            Positioned(
+              top: 40,
+              left: 20, // Move to the left
+              child: FloatingActionButton(
+                backgroundColor: Theme.of(context).colorScheme.primary, // Use primary color
+                shape: const CircleBorder(), // Make it a circle
+                mini: true,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Icon(Icons.close),
+                tooltip: 'Exit',
               ),
             ),
-          ),
-          // Floating exit button
-          Positioned(
-            top: 40,
-            right: 20,
-            child: FloatingActionButton(
-              backgroundColor: Colors.redAccent,
-              mini: true,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Icon(Icons.close),
-              tooltip: 'Exit',
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

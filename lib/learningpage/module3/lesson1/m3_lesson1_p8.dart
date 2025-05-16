@@ -40,6 +40,7 @@ class _Module3l1p8State extends State<Module3l1p8> {
     final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
     final pageheader = 'เรื่องที่ 5';
     final pagesubtitle = 'ขยะติดเชื้อ';
+    const fontsize = 20.0;
 
     final lessons = [
       {
@@ -94,30 +95,19 @@ class _Module3l1p8State extends State<Module3l1p8> {
                   ),
                   child: Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                            color: Theme.of(context).colorScheme.shadow, // Updated color
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                        ),
-                        child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                    builder: (context) => const Module3Screen()
-                              ),
-                            );  // Exit the current page
-                        },
-                        ),
-                      ),
+                      ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module3Screen(),
+                       ),
+                     );
+                   },
+                 ),
                       const SizedBox(width: 20), // Add spacing between the icon and the header
                       Expanded( // Ensures the text wraps into a new line
                         child: Column(

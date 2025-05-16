@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'minigame/cloth.dart';
 import 'minigame/quiz.dart';
 import 'minigame/cardgame.dart';
-import 'learningpage/module3/lesson1/wordgame-1.dart';
-import 'learningpage/module3/lesson2/difficulty_select_page.dart';
+import 'minigame/wordgame.dart';
+import 'minigame/drag_and_drop_game/difficulty_select_page.dart';
 import '../component/adaptivenavigation.dart';
 import 'minigame/ShootingGame.dart';
 import 'minigame/BasketGame.dart';
@@ -43,8 +43,8 @@ class MinigameScreen extends StatelessWidget {
         'screen': const DifficultySelectPage(),
       },
       {
-        'title': 'My Game',
-        'subtitle': 'My Game',
+        'title': 'Shooting Game',
+        'subtitle': 'Shooting Game',
         'description': 'เล่นเกมยิงปืนเพื่อทำคะแนน',
         'cover': 'asset/default/testimage_.png',
         'screen': const MyGamePage(),

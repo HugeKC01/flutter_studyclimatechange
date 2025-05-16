@@ -17,6 +17,7 @@ class Module2l2p1 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.1) อธิบายโลกร้อน';
     final background = 'asset/overall/background1.png';
+    const fontsize = 20.0;
     final int totalPages = PageConfig.lessonPageCounts['m2lesson2'] ?? 1;
 
     return Scaffold(
@@ -34,63 +35,19 @@ class Module2l2p1 extends StatelessWidget {
             child: Column(
               children: [
                 // Header ส่วนบน
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.exit_to_app,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Module2Screen(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module2Screen(),
+                       ),
+                     );
+                   },
+                 ),
                 // ส่วนเนื้อหาที่ต้องการให้หิมะตก
                 Expanded(
                   child: Stack(

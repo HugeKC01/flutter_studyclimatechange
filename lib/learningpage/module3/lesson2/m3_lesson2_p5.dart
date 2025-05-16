@@ -17,6 +17,7 @@ class Module3l2p5 extends StatelessWidget {
     final pageheader = 'เรื่องที่ 2';
     final pagesubtitle = '2.3) การปรับตัวของธรรมชาติและสิ่งมีชีวิต';
     final background = 'asset/overall/background1.png';
+    const fontsize = 20.0;
     final int totalPages = PageConfig.lessonPageCounts['m3lesson2'] ?? 6;
 
     return Scaffold(
@@ -41,60 +42,19 @@ class Module3l2p5 extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
-                        ),
-                        child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                    builder: (context) => const Module3Screen()
-                              ),
-                            );  // Exit the current page
-                        },
-                        ),
-                      ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module3Screen(),
+                       ),
+                     );
+                   },
+                 ),
                 // Scrollable content
                 Expanded(
                   child: SingleChildScrollView(
