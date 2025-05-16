@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'm1_lesson2_p4.dart';
+import '../../../minigame_main.dart';
 
 class Module1l2MiniGame extends StatefulWidget {
   const Module1l2MiniGame({super.key});
@@ -104,7 +104,7 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
             TextButton(
               onPressed: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => const Module1l2p4()),
+                MaterialPageRoute(builder: (_) => const MinigameScreen()),
               ),
               child: const Text('หน้าต่อไป'),
             ),
@@ -132,156 +132,179 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: !showGame
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  // สร้างกล่องข้อความสวยๆ
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    displayedText,
-                    style: const TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Transform.translate(
-                  offset: Offset(0, _imageAnimation.value),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.height * 0.2,
-                    child: Image.asset('asset/module1/ImageFORGAME.PNG'),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: nextDialogue,
-                  child: const Text('ถัดไป'),
-                ),
-              ],
-            )
-          : SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('เกมสมชาย'),
+        actions: [
+          // สามารถเพิ่ม action อื่นๆ ได้ที่นี่
+        ],
+      ),
+      body: Center(
+        child: !showGame
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 10),
                   Container(
-                        padding: const EdgeInsets.all(16), // เพิ่มระยะห่างภายในกล่อง
-                        margin: const EdgeInsets.symmetric(horizontal: 20), // เพิ่มระยะห่างภายนอก
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 255, 255, 255), // พื้นหลังสีฟ้าอ่อน
-                          borderRadius: BorderRadius.circular(12), // ขอบโค้งมน
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color.fromARGB(49, 200, 200, 200), // เงาสีเทา
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3), // ตำแหน่งเงา
-                            ),
-                          ],
+                    // สร้างกล่องข้อความสวยๆ
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
                         ),
-                        child: const Text(
-                          'เลือกสิ่งของที่จะช่วยสมชายในการเตรียมตัวรับมือกับฝนตก 4 อย่าง',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87, // สีข้อความ
-                          ),
-                          textAlign: TextAlign.center, // จัดข้อความให้อยู่ตรงกลาง
-                        ),
-                      ),
-
-                  
+                      ],
+                    ),
+                    child: Text(
+                      displayedText,
+                      style: const TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   const SizedBox(height: 20),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
-                  ? MediaQuery.of(context).size.width * 0.2 // ถ้าด้านกว้างมากกว่าด้านยาว 2 เท่า
-                  : MediaQuery.of(context).size.width * 0.25,
-                    child: Image.asset('asset/module1/ImageFORGAME (2).PNG'),
+                  Transform.translate(
+                    offset: Offset(0, _imageAnimation.value),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.height * 0.2,
+                      child: Image.asset('asset/module1/ImageFORGAME.PNG'),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: finishSelection,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 0, 136, 32),
+                    onPressed: nextDialogue,
+                    child: const Text('ถัดไป'),
+                  ),
+                ],
+              )
+            : SingleChildScrollView(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Card(
+                      color: const Color.fromARGB(225, 255, 255, 255),
+                      elevation: 6,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    ),
-                    child: const Text('เสร็จสิ้น' ,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white, // สีข้อความ
-                        )),
-                  ),
-                  const SizedBox(height: 20),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
-                  ? MediaQuery.of(context).size.width * 0.07 // ถ้าด้านกว้างมากกว่าด้านยาว 2 เท่า
-                  : MediaQuery.of(context).size.width * 0.07, // ค่าเริ่มต้น
-                    ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
-                    ? 4 // ถ้าด้านกว้างมากกว่าด้านยาว 2 เท่า ให้มี 4 คอลัมน์
-                    : 2, // ค่าเริ่มต้น
-                  childAspectRatio: 1,
-                   mainAxisSpacing: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
-                  ? MediaQuery.of(context).size.height * 0.02 // ถ้าด้านกว้างมากกว่าด้านยาว 2 เท่า
-                  : MediaQuery.of(context).size.height * 0.02, // ค่าเริ่มต้น
-              crossAxisSpacing: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
-                  ? MediaQuery.of(context).size.width * 0.02 // ถ้าด้านกว้างมากกว่าด้านยาว 2 เท่า
-                  : MediaQuery.of(context).size.width * 0.02, // ค่าเริ่มต้น
-                ),
-                    itemCount: options.length,
-                    itemBuilder: (context, index) {
-                      final sel = selected.contains(index);
-                      return GestureDetector(
-                        onTap: () => toggleSelection(index),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: sel ? const Color.fromARGB(255, 0, 167, 6) : Colors.grey,
-                              width: sel ? 3 : 1,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                            color: sel ? const Color.fromARGB(255, 185, 255, 186)  : const Color.fromARGB(0, 247, 247, 247),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.1,
-                                child: Image.asset(options[index]['img']!),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(height: 10),
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              margin: const EdgeInsets.symmetric(horizontal: 0),
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color.fromARGB(49, 200, 200, 200),
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 3),
+                                  ),
+                                ],
                               ),
-                              Text(options[index]['desc']!),
-                            ],
-                          ),
+                              child: const Text(
+                                'เลือกสิ่งของที่จะช่วยสมชายในการเตรียมตัวรับมือกับฝนตก 4 อย่าง',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
+                                  ? MediaQuery.of(context).size.width * 0.2
+                                  : MediaQuery.of(context).size.width * 0.25,
+                              child: Image.asset('asset/module1/ImageFORGAME (2).PNG'),
+                            ),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: finishSelection,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color.fromARGB(255, 0, 136, 32),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                              ),
+                              child: const Text('เสร็จสิ้น',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                            const SizedBox(height: 20),
+                            GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
+                                    ? MediaQuery.of(context).size.width * 0.07
+                                    : MediaQuery.of(context).size.width * 0.07,
+                              ),
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
+                                    ? 4
+                                    : 2,
+                                childAspectRatio: 1,
+                                mainAxisSpacing: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
+                                    ? MediaQuery.of(context).size.height * 0.02
+                                    : MediaQuery.of(context).size.height * 0.02,
+                                crossAxisSpacing: MediaQuery.of(context).size.width > MediaQuery.of(context).size.height * 2
+                                    ? MediaQuery.of(context).size.width * 0.02
+                                    : MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              itemCount: options.length,
+                              itemBuilder: (context, index) {
+                                final sel = selected.contains(index);
+                                return GestureDetector(
+                                  onTap: () => toggleSelection(index),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: sel ? const Color.fromARGB(255, 0, 167, 6) : Colors.grey,
+                                        width: sel ? 3 : 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: sel
+                                          ? const Color.fromARGB(255, 185, 255, 186)
+                                          : const Color.fromARGB(0, 247, 247, 247),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: MediaQuery.of(context).size.width * 0.1,
+                                          child: Image.asset(options[index]['img']!),
+                                        ),
+                                        Text(options[index]['desc']!),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ],
+                ),
               ),
-            ),
+      ),
     );
   }
 
