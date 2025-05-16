@@ -95,12 +95,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
               child: Stack(
                 //fit: StackFit.expand,
                 children: [
-                  // if (book['image] != null)
-                  Image.network(
-                    '$strapiUrl${book['cover']['url']}',
-                    height: 200,
-                    //fit: BoxFit.contain,
-                    fit: BoxFit.cover, //crop image but will fill card which looks good
+                  //if (book['cover'] != null && cover['url'] != null && cover['url'].toString().isNotEmpty)
+                  Center(
+                    child: Image.network(
+                      '$strapiUrl${book['cover']['url']}',
+                      height: 200,
+                      //fit: BoxFit.contain,
+                      fit: BoxFit.cover, //crop image but will fill card which looks good
+                    ),
                   ),
                   Positioned(
                     bottom: 0,
@@ -125,7 +127,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                             //card description, might delete because it must be short in order to be readable.
                             Text( 
                               overflow: TextOverflow.ellipsis,
-                              book['description'],
+                              book['description'] ?? '',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.normal,

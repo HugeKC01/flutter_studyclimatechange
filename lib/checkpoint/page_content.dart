@@ -19,7 +19,7 @@ class PageContent extends StatelessWidget {
       theme: ThemeData(
       scaffoldBackgroundColor: Color(0xFFF8F8F8), // Soft white
     ),
-      home: PageContentScreen(bookId: bookId,),
+      home: PageContentScreen(bookId: bookId),
     );
   }
 }
@@ -81,6 +81,8 @@ class _PageContentScreenState extends State<PageContentScreen> {
   var title = book_contents[0]['book']['title'];
   //var bookId = 
 
+  //remove background
+  content = removeBackgroundStyles(content);
   // Split into a list of pages
   List<String> pages = content.split('<strong>&lt;endpage&gt;</strong>');
 
@@ -94,10 +96,10 @@ class _PageContentScreenState extends State<PageContentScreen> {
     content = content.replaceAll('http://localhost:1337', '127.0.0.1');
   }
 
-  final screenWidth = MediaQuery.of(context).size.width;
+  /* final screenWidth = MediaQuery.of(context).size.width;
   if (screenWidth > 800) {
     content = '<div style="columns:2; -webkit-columns:2; -moz-columns:2; column-gap:20px;">$content</div>';
-  }
+  } */
 
   return Scaffold(
     appBar: AppBar(
@@ -167,5 +169,11 @@ class _PageContentScreenState extends State<PageContentScreen> {
       },
       transitionDuration: Duration(milliseconds: 200),
     );
+  }
+
+  String removeBackgroundStyles(String html) {
+    // Remove inline background-color styles
+    final bgStyleRegex = RegExp(r'background(-color)?:\s*[^;"]+;?', caseSensitive: false);
+    return html.replaceAllMapped(bgStyleRegex, (match) => '');
   }
 }
