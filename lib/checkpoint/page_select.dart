@@ -57,6 +57,7 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
       if (books.isEmpty) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Color(0xFFF8F8F8),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -70,6 +71,15 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
 
       var book = books[0];
       return Scaffold(
+        appBar: AppBar(
+            backgroundColor: Color(0xFFF8F8F8),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).push(_createPopupRoute());
+              },
+            ),
+          ),
         body: Column(
           children: [
             Container(
@@ -146,6 +156,7 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
                       //var book = books[index];
                       //debugPrint(book.toString());
                       return Card(
+                        color: Color.fromARGB(255, 247, 243, 243),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(0)
                         ),

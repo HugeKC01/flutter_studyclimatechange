@@ -191,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage>
               );
             },
             child: const Icon(Icons.web),
-            tooltip: 'Go to Strapi',
+            tooltip: 'Checkpoint Book Store',
           ),
           body: Stack(
             children: [

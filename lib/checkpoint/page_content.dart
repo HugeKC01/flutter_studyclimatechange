@@ -60,6 +60,7 @@ class _PageContentScreenState extends State<PageContentScreen> {
   if (book_contents.isEmpty || book_contents[0]?['content'] == null) {
     return Scaffold(
       appBar: AppBar(
+            backgroundColor: Color(0xFFF8F8F8),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -89,6 +90,7 @@ class _PageContentScreenState extends State<PageContentScreen> {
 
   return Scaffold(
     appBar: AppBar(
+          backgroundColor: Color(0xFFF8F8F8),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
