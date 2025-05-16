@@ -68,6 +68,7 @@ class MinigameScreen extends StatelessWidget {
 
     return AdaptiveNavigation(
       title: 'Minigames',
+      selectedIndex: 0,
       child: Scaffold(
         body: SafeArea(
           child: Center(

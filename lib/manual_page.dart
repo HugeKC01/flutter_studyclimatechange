@@ -64,62 +64,60 @@ class ManualPage extends StatelessWidget {
 
     return AdaptiveNavigation(
       title: 'Manual',
-      child: Scaffold(
-        body: ListView.builder(
-          itemCount: pages.length,
-          itemBuilder: (context, index) {
-            final page = pages[index];
-            return Card(
-              margin: EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: cardHeight * 1.25, // Increased size by 25%
-                child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center, // Center the row content
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Image.asset(
-                        page['cover']!,
-                        fit: BoxFit.contain,
-                        width: double.infinity,
+      selectedIndex: 1, // Provide a valid index as required
+      child: ListView.builder(
+        itemCount: pages.length,
+        itemBuilder: (context, index) {
+          final page = pages[index];
+          return Card(
+            margin: EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: cardHeight * 1.25, // Increased size by 25%
+              child: Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Center the row content
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Image.asset(
+                      page['cover']!,
+                      fit: BoxFit.contain,
+                      width: double.infinity,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment:
+                            MainAxisAlignment.center, // Center the column content
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            page['title']!,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            page['description']!,
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment:
-                              MainAxisAlignment
-                                  .center, // Center the column content
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              page['title']!,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 8.0),
-                            Text(
-                              page['description']!,
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

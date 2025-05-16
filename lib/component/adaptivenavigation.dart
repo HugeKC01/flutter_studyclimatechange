@@ -6,8 +6,9 @@ import 'package:climatechange/component/appbar.dart';
 class AdaptiveNavigation extends StatelessWidget {
   final Widget child;
   final String title;
+  final int selectedIndex; // Add selectedIndex
 
-  const AdaptiveNavigation({super.key, required this.child, required this.title});
+  const AdaptiveNavigation({super.key, required this.child, required this.title, required this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +24,18 @@ class AdaptiveNavigation extends StatelessWidget {
             body: Row(
               children: [
                 NavigationRail(
-                  selectedIndex: 0, // Default selected index
+                  selectedIndex: selectedIndex, // Use selectedIndex
                   onDestinationSelected: (int index) {
+                    if (index == selectedIndex) return; // Prevent pushing same page
                     if (index == 0) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const MyApp(),
                         ),
                       );
                     } else if (index == 1) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ManualPage(),
@@ -81,8 +83,10 @@ class AdaptiveNavigation extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.home_rounded),
                   title: const Text('Home'),
+                  selected: selectedIndex == 0, // Highlight if selected
                   onTap: () {
-                    Navigator.push(
+                    if (selectedIndex == 0) return;
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const MyApp(),
@@ -93,8 +97,10 @@ class AdaptiveNavigation extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.book_rounded),
                   title: const Text('Manual'),
+                  selected: selectedIndex == 1, // Highlight if selected
                   onTap: () {
-                    Navigator.push(
+                    if (selectedIndex == 1) return;
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ManualPage(),

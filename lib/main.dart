@@ -185,6 +185,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return AdaptiveNavigation(
       title: widget.title,
+      selectedIndex: 0, // Provide a default or appropriate selected index
       child: AnimatedBackground(
         child: Stack(
           children: [
