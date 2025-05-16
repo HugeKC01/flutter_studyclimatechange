@@ -59,34 +59,32 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
     final fullText = dialogues[dialogueIndex];
     int i = 0;
     _textTimer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        _textTimer = null;
+        return;
+      }
       if (i < fullText.length) {
-        if (mounted) {
-          setState(() {
-            displayedText += fullText[i];
-            i++;
-          });
-        } else {
-          timer.cancel();
-        }
+        setState(() {
+          displayedText += fullText[i];
+          i++;
+        });
       } else {
         timer.cancel();
+        _textTimer = null;
       }
     });
   }
 
   void nextDialogue() {
-    if (dialogueIndex < dialogues.length - 1) {
-      Navigator.of(context).pop(); // Close the dialog
-      setState(() {
+    setState(() {
+      if (dialogueIndex < dialogues.length - 1) {
         dialogueIndex++;
         startTextAnimation();
-      });
-    } else {
-      Navigator.of(context).pop(); // Close the dialog
-      setState(() {
+      } else {
         showGame = true;
-      });
-    }
+      }
+    });
   }
 
   void toggleSelection(int index) {
@@ -110,10 +108,17 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (_) => const MinigameScreen()),
-              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Future.delayed(Duration.zero, () {
+                  if (mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const MinigameScreen()),
+                    );
+                  }
+                });
+              },
               child: const Text('หน้าต่อไป'),
             ),
           ],
@@ -319,6 +324,7 @@ class _Module1l2MiniGameState extends State<Module1l2MiniGame> with SingleTicker
   @override
   void dispose() {
     _textTimer?.cancel();
+    _textTimer = null;
     _imageController.dispose(); // Properly dispose the AnimationController
     super.dispose();
   }
