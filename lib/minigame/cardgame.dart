@@ -23,12 +23,7 @@ class CardGameApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/game': (context) => const GameScreen(),
-          '/result': (context) => ResultScreen(
-            didPlayerWin: true,
-            onExit: () {
-              Navigator.of(context).pop();
-            },
-          ),
+          '/result': (context) => const ResultScreen(didPlayerWin: true,),     
                   },
       ),
     );
