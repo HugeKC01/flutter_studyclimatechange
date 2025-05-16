@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../minigame_main.dart';
+import 'm1_lesson2_p1.dart';
 
 class Module1l2Quiz extends StatefulWidget {
   const Module1l2Quiz({super.key});
@@ -64,62 +64,38 @@ class _Module1l2QuizState extends State<Module1l2Quiz> {
     final options = _questions[_current]['options'] as List<String>;
     final correct = _questions[_current]['answer'];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('เกมคำตอบ'),
-      ),
-      body: Center(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final double maxWidth = constraints.maxWidth > 700
-                ? 700
-                : constraints.maxWidth * 0.95;
-            return SizedBox(
-              width: maxWidth,
-              child: Card(
-                color: const Color.fromARGB(225, 255, 255, 255),
-                elevation: 6,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Text(
+            'คำถามที่ ${_current + 1}/${_questions.length}',
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 16),
+          Text(question, style: const TextStyle(fontSize: 20)),
+          const SizedBox(height: 20),
+          for (var option in options)
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              child: ElevatedButton(
+                onPressed: _selectedOption.isEmpty ? () => _checkAnswer(option) : null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 240, 247, 253),
+                  disabledBackgroundColor: option == correct
+                      ? Colors.green
+                      : option == option
+                          ? Colors.red
+                          : Colors.blue,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'คำถามที่ ${_current + 1}/${_questions.length}',
-                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(question, style: const TextStyle(fontSize: 20)),
-                      const SizedBox(height: 20),
-                      for (var option in options)
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.symmetric(vertical: 5),
-                          child: ElevatedButton(
-                            onPressed: _selectedOption.isEmpty ? () => _checkAnswer(option) : null,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(255, 240, 247, 253),
-                              disabledBackgroundColor: option == correct
-                                  ? Colors.green
-                                  : option == option
-                                      ? Colors.red
-                                      : Colors.blue,
-                            ),
-                            child: Text(
-                              option,
-                              style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
+                child: Text(
+                  option,
+                  style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+        ],
       ),
     );
   }
@@ -143,7 +119,7 @@ class _QuizResult extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const MinigameScreen()),
+                  MaterialPageRoute(builder: (_) => const Module1l2p1()),
                 );
               },
               child: const Text('หน้าถัดไป'),

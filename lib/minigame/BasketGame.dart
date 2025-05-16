@@ -174,6 +174,20 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
           ),
+          // Floating exit button
+          Positioned(
+            top: 40,
+            right: 20,
+            child: FloatingActionButton(
+              backgroundColor: Colors.redAccent,
+              mini: true,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.close),
+              tooltip: 'Exit',
+            ),
+          ),
         ],
       ),
     );
