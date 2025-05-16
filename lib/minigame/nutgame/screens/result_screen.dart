@@ -9,6 +9,8 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final didPlayerWin = ModalRoute.of(context)!.settings.arguments as bool;
+    
     return Scaffold(
       appBar: AppBar(title: const Text('Game Over')),
       body: Center(

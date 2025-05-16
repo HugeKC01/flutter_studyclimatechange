@@ -101,24 +101,21 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
                         ),
                       ),
                       Expanded(
-                        flex: isWide ? 2 : 1,
+                        flex: isWide ? 3 : 1,
                         child: Column(
                           children: [
                             Expanded(
                               flex: 2,
                               child: Container(
-                                //color: Colors.blue,
                                 padding: const EdgeInsets.all(8.0),
-                                alignment: Alignment.center,
                                 //color: Colors.deepOrange,
                                 child: ScaleDownText(
                                   text: book['title'] ?? '',
                                   //text: 'TopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopicTopic',
-                                  maxFontSize: 50,
-                                  minFontSize: 16,
+                                  maxFontSize: 18,
+                                  minFontSize: 6,
                                   maxLines: 3,
                                   style: TextStyle(
-                                    fontFamily: "JS-Jindara",
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -127,7 +124,6 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
                             Expanded(
                               flex: 3,
                               child: Container(
-                                //color: Colors.amber,
                                 alignment: Alignment.bottomCenter,
                                 //color: Colors.blue,
                                 child: Padding(
@@ -135,11 +131,9 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
                                   child: Text(
                                     book['description'] ?? '',
                                     style: TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "JS-Jindara",
+                                      fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
-                                    overflow: TextOverflow.clip,
                                   ),
                                 ),
                               ),
@@ -153,42 +147,51 @@ class _PageSelectScreenState extends State<PageSelectScreen> {
                 ),
               ),
             ),
-            Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 500),
-                child: Card(
-                      color: Color.fromARGB(255, 247, 243, 243),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)
-                      ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(context, 
-                            MaterialPageRoute(builder: (context) => PageContent(bookId: book['book_id'] ?? '')),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0).copyWith(top: 4),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Read',
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  fontFamily: "JS-Jindara",
-                                  //fontWeight: FontWeight.bold
+            Expanded(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 500),
+                  child: ListView.builder(
+                    itemCount: book['num_chapter'] ?? 0,
+                    itemBuilder: (context, index) {
+                      //var book = books[index];
+                      //debugPrint(book.toString());
+                      return Card(
+                        color: Color.fromARGB(255, 247, 243, 243),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0)
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(context, 
+                              MaterialPageRoute(builder: (context) => PageContent(bookId: book['book_id'] ?? '')),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0).copyWith(top: 4),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Chapter ${index + 1}',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
+                  ),
                 ),
               ),
+            ),
           ],
         ),
       );
@@ -226,8 +229,8 @@ class ScaleDownText extends StatelessWidget {
   const ScaleDownText({
     super.key,
     required this.text,
-    this.maxFontSize = 20,
-    this.minFontSize = 14,
+    this.maxFontSize = 18,
+    this.minFontSize = 10,
     this.maxLines = 3,
     this.style,
   });
