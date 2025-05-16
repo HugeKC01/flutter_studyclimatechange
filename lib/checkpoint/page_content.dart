@@ -83,6 +83,10 @@ class _PageContentScreenState extends State<PageContentScreen> {
 
   content = replaceFontFamily(content, newFont: 'JS-Jindara');
 
+   // Example usage:
+  //final embedTags = extractEmbedTags(content); // content is your HTML string
+  //print(embedTags); 
+
   //remove background
   content = removeBackgroundStyles(content);
   // Split into a list of pages
@@ -186,5 +190,11 @@ class _PageContentScreenState extends State<PageContentScreen> {
   final fontFamilyRegex = RegExp(r'font-family\s*:\s*[^;"]+;?', caseSensitive: false);
   html = html.replaceAll(fontFamilyRegex, 'font-family: $newFont;');
   return html;
+  }
+
+  // Extract all <embed> tags from a string
+  List<String> extractEmbedTags(String html) {
+    final embedTagRegex = RegExp(r'<embed\b[^>]*>', caseSensitive: false);
+    return embedTagRegex.allMatches(html).map((m) => m.group(0) ?? '').toList();
   }
 }
