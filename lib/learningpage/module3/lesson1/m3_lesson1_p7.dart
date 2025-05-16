@@ -21,6 +21,7 @@ class Module3l1p7 extends StatelessWidget {
     final int totalPages = PageConfig.lessonPageCounts['m3lesson1'] ?? 8;
     final pageheader = 'เรื่องที่ 4';
     final pagesubtitle = 'ขยะอิเล็กทรอนิกส์';
+    const fontsize = 20.0;
 
     final lessons = [
       {
@@ -82,60 +83,19 @@ class Module3l1p7 extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 214, 237, 252),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Module3Screen(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 60),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pageheader,
-                              style: const TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              pagesubtitle,
-                              style: const TextStyle(fontSize: 40),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ArticleHeader(
+                   header: pageheader,
+                   subtitle: pagesubtitle,
+                   fontSize: fontsize,
+                   onExit: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => const Module3Screen(),
+                       ),
+                     );
+                   },
+                 ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: lessons.length,

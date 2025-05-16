@@ -185,148 +185,155 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return AdaptiveNavigation(
       title: widget.title,
-      child: AnimatedBackground( // <-- Wrap with your animated background
-        child: Scaffold(
-          backgroundColor: Colors.transparent, // <-- Make scaffold transparent
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ArticleScreen()),
-              );
-            },
-            child: const Icon(Icons.web),
-            tooltip: 'Checkpoint Book Store',
-          ),
-          body: Stack(
-            children: [
-              SafeArea(
-                child: Scrollbar(
-                  thumbVisibility: true,
-                  controller: _scrollController, // Attach ScrollController to Scrollbar
-                  child: SingleChildScrollView(
-                    controller: _scrollController, // Attach ScrollController to the scrollable content
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: 1200, // Limit the maximum width of the grid
-                        ),
-                        child: ValueListenableBuilder<List<bool>>(
-                          valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
-                          builder: (context, lockedStatus, child) {
-                            return GridView.builder(
-                              shrinkWrap: true, // Allow GridView to shrink to fit its content
-                              physics: const NeverScrollableScrollPhysics(), // Disable GridView's internal scrolling
-                              padding: const EdgeInsets.all(8.0),
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: MediaQuery.of(context).size.width < 700 ? 1 : 2,
-                                crossAxisSpacing: 8.0,
-                                mainAxisSpacing: 8.0,
-                                childAspectRatio: 1 / 1,
-                              ),
-                              itemCount: modules.length,
-                              itemBuilder: (context, index) {
-                                final module = modules[index];
-                                final isLocked = index < 4 ? lockedStatus[index] : false;
-                                return FadeTransition(
-                                  opacity: _fadeAnimations[index],
-                                  child: SlideTransition(
-                                    position: _offsetAnimations[index],
-                                    child: GestureDetector(
-                                      onTap: isLocked
-                                          ? null
-                                          : () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => module['screen'] as Widget,
-                                                ),
-                                              );
-                                            },
-                                      child: Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15.0),
-                                        ),
-                                        elevation: 5.0,
-                                        child: Column(
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Stack(
-                                                children: [
-                                                  Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: isLocked
-                                                          ? Colors.grey
-                                                          : Theme.of(context).colorScheme.primary,
-                                                      image: DecorationImage(
-                                                        image: AssetImage(module['cover'] as String),
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                      borderRadius: const BorderRadius.vertical(
-                                                        top: Radius.circular(15.0),
-                                                      ),
+      child: AnimatedBackground(
+        child: Stack(
+          children: [
+            Container(
+              color: Theme.of(context).colorScheme.surface.withAlpha((0.7 * 255).toInt()),
+            ),
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ArticleScreen()),
+                  );
+                },
+                child: const Icon(Icons.web),
+                tooltip: 'Checkpoint Book Store',
+              ),
+              body: Stack(
+                children: [
+                  SafeArea(
+                    child: Scrollbar(
+                      thumbVisibility: true,
+                      controller: _scrollController, // Attach ScrollController to Scrollbar
+                      child: SingleChildScrollView(
+                        controller: _scrollController, // Attach ScrollController to the scrollable content
+                        child: Center(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: 1200, // Limit the maximum width of the grid
+                            ),
+                            child: ValueListenableBuilder<List<bool>>(
+                              valueListenable: moduleLockedStatusNotifier, // Listen to the shared ValueNotifier
+                              builder: (context, lockedStatus, child) {
+                                return GridView.builder(
+                                  shrinkWrap: true, // Allow GridView to shrink to fit its content
+                                  physics: const NeverScrollableScrollPhysics(), // Disable GridView's internal scrolling
+                                  padding: const EdgeInsets.all(8.0),
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: MediaQuery.of(context).size.width < 700 ? 1 : 2,
+                                    crossAxisSpacing: 8.0,
+                                    mainAxisSpacing: 8.0,
+                                    childAspectRatio: 1 / 1,
+                                  ),
+                                  itemCount: modules.length,
+                                  itemBuilder: (context, index) {
+                                    final module = modules[index];
+                                    final isLocked = index < 4 ? lockedStatus[index] : false;
+                                    return FadeTransition(
+                                      opacity: _fadeAnimations[index],
+                                      child: SlideTransition(
+                                        position: _offsetAnimations[index],
+                                        child: GestureDetector(
+                                          onTap: isLocked
+                                              ? null
+                                              : () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => module['screen'] as Widget,
                                                     ),
-                                                  ),
-                                                  if (isLocked)
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black.withAlpha((0.5 * 255).toInt()),
-                                                        borderRadius: const BorderRadius.vertical(
-                                                          top: Radius.circular(15.0),
+                                                  );
+                                                },
+                                          child: Card(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15.0),
+                                            ),
+                                            elevation: 5.0,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Expanded(
+                                                  child: Stack(
+                                                    children: [
+                                                      Container(
+                                                        width: double.infinity,
+                                                        decoration: BoxDecoration(
+                                                          color: isLocked
+                                                              ? Colors.grey
+                                                              : Theme.of(context).colorScheme.primary,
+                                                          image: DecorationImage(
+                                                            image: AssetImage(module['cover'] as String),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                          borderRadius: const BorderRadius.vertical(
+                                                            top: Radius.circular(15.0),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  if (isLocked)
-                                                    const Center(
-                                                      child: Icon(
-                                                        Icons.lock,
-                                                        color: Colors.white,
-                                                        size: 48.0,
-                                                      ),
-                                                    ),
-                                                ],
-                                              ),
-                                            ),
-                                            ListTile(
-                                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                              title: Text(
-                                                module['title'] as String,
-                                                style: const TextStyle(
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.bold,
+                                                      if (isLocked)
+                                                        Container(
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.black.withAlpha((0.5 * 255).toInt()),
+                                                            borderRadius: const BorderRadius.vertical(
+                                                              top: Radius.circular(15.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      if (isLocked)
+                                                        const Center(
+                                                          child: Icon(
+                                                            Icons.lock,
+                                                            color: Colors.white,
+                                                            size: 48.0,
+                                                          ),
+                                                        ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              subtitle: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(module['subtitle'] as String),
-                                                  Text(module['description'] as String),
-                                                ],
-                                              ),
-                                              trailing: Icon(
-                                                isLocked ? Icons.lock : Icons.lock_open,
-                                                color: isLocked ? Colors.red : Colors.green,
-                                              ),
+                                                ListTile(
+                                                  contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                                  title: Text(
+                                                    module['title'] as String,
+                                                    style: const TextStyle(
+                                                      fontSize: 18.0,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  subtitle: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(module['subtitle'] as String),
+                                                      Text(module['description'] as String),
+                                                    ],
+                                                  ),
+                                                  trailing: Icon(
+                                                    isLocked ? Icons.lock : Icons.lock_open,
+                                                    color: isLocked ? Colors.red : Colors.green,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ); // Properly close GridView.builder
-                          }, // Properly close builder function
-                        ), // Close ValueListenableBuilder
-                      ), // Close ConstrainedBox
-                    ), // Close Center
-                  ), // Close SingleChildScrollView
-                ), // Close Scrollbar
-              ), // Close SafeArea
-            ], // Close Stack children
-          ), // Close Stack
-        ), // Close Scaffold
+                                    );
+                                  },
+                                ); // Properly close GridView.builder
+                              }, // Properly close builder function
+                            ), // Close ValueListenableBuilder
+                          ), // Close ConstrainedBox
+                        ), // Close Center
+                      ), // Close SingleChildScrollView
+                    ), // Close Scrollbar
+                  ), // Close SafeArea
+                ], // Close Stack children
+              ), // Close Stack
+            ), // Close Scaffold
+          ], // Stack children
+        ), // Stack
       ), // Close AnimatedBackground
     ); // Close AdaptiveNavigation
   }
