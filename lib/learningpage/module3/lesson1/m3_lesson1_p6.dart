@@ -1,11 +1,14 @@
+import 'package:climatechange/checkpoint/checkpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
+import 'package:flutter/services.dart';
 import 'm3_lesson1_p5.dart';
 import 'm3_lesson1_p7.dart';
 import 'package:climatechange/learningpage/module3/m3_main.dart';
+import 'dart:math'; // Add this at the top with other imports
 
 class Module3l1p6 extends StatelessWidget {
   const Module3l1p6({super.key});
@@ -148,7 +151,37 @@ class Module3l1p6 extends StatelessWidget {
                     margin: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Image.asset(lesson['image']!),
+                        LayoutBuilder(
+                          builder: (context, constraints) {
+                            // Calculate image width as 130% of the image height (or content)
+                            final double imageHeight = 120;
+                            final double imageWidth = imageHeight * 1.3;
+
+                            return Container(
+                              margin: const EdgeInsets.all(12),
+                              width: imageWidth,
+                              height: imageHeight,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.blue, // Blue border
+                                  width: 3,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    blurRadius: 8,
+                                    offset: Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: _ShakingImage(
+                                imagePath: lesson['image']!,
+                                borderRadius: 12,
+                              ),
+                            );
+                          },
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -194,6 +227,78 @@ class Module3l1p6 extends StatelessWidget {
         ),
       ),
         ],
+      ),
+    );
+  }
+}
+
+// Add this widget below your Module3l1p6 class
+class _ShakingImage extends StatefulWidget {
+  final String imagePath;
+  final double borderRadius;
+  const _ShakingImage({required this.imagePath, this.borderRadius = 12, super.key});
+
+  @override
+  State<_ShakingImage> createState() => _ShakingImageState();
+}
+
+class _ShakingImageState extends State<_ShakingImage> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  bool _hovering = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 350),
+      vsync: this,
+    );
+  }
+
+  void _onEnter(PointerEnterEvent event) {
+    setState(() => _hovering = true);
+    _controller.repeat();
+  }
+
+  void _onExit(PointerExitEvent event) {
+    setState(() => _hovering = false);
+    _controller.stop();
+    _controller.reset();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: _onEnter,
+      onExit: _onExit,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          // Shake amplitude in pixels
+          final double amplitude = 12;
+          // 1 shake per second (slow shake)
+          final double shakesPerSecond = 1;
+          final double shake = _hovering
+              ? sin(_controller.value * 2 * pi * shakesPerSecond) * amplitude
+              : 0.0;
+          return Transform.translate(
+            offset: Offset(shake, 0),
+            child: child,
+          );
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          child: Image.asset(
+            widget.imagePath,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }

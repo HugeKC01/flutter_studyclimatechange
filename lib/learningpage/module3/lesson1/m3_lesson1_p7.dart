@@ -3,9 +3,13 @@ import 'package:climatechange/component/appbar.dart';
 import 'package:climatechange/component/drawer.dart';
 import 'package:climatechange/component/footer_navigator.dart';
 import 'package:climatechange/component/page_config.dart';
+import 'package:flutter/services.dart';
 import 'm3_lesson1_p6.dart';
 import 'm3_lesson1_p8.dart';
 import 'package:climatechange/learningpage/module3/m3_main.dart';
+import 'dart:math';
+import 'dart:async';
+import 'package:climatechange/component/animatedbackground.dart';
 
 class Module3l1p7 extends StatelessWidget {
   const Module3l1p7({super.key});
@@ -25,7 +29,6 @@ class Module3l1p7 extends StatelessWidget {
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
         'image': 'asset/module3/m3_l1_p7/type_01.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
-      
       },
       {
         'title': '2. อุปกรณ์อิเล็กทรอนิกส์ขนาดเล็ก',
@@ -33,7 +36,6 @@ class Module3l1p7 extends StatelessWidget {
         'recycle': 'นำไปรีไซเคิลเป็นเส้นใยโพลิเอสเตอร์ ทำเสื้อกันหนาว พรม',
         'image': 'asset/module3/m3_l1_p7/type_02.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
-      
       },
       {
         'title': '3. อุปกรณ์โทรคมนาคม',
@@ -48,7 +50,6 @@ class Module3l1p7 extends StatelessWidget {
         'recycle': 'นำไปทิ้งในสถานที่กำจัดขยะอันตราย',
         'image': 'asset/module3/m3_l1_p7/type_04.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
-      
       },
       {
         'title': '5. อุปกรณ์อิเล็กทรอนิกส์อื่นๆ',
@@ -57,7 +58,6 @@ class Module3l1p7 extends StatelessWidget {
         'image': 'asset/module3/m3_l1_p7/type_05.PNG',
         'bin': 'ถังขยะสีแดงมีสัญลักษณ์ขยะอันตราย',
       },
-      
     ];
 
     return Scaffold(
@@ -80,9 +80,9 @@ class Module3l1p7 extends StatelessWidget {
             ),
           ),
           SafeArea(
-        child: Column(
-          children: [
-            Container(
+            child: Column(
+              children: [
+                Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
@@ -92,43 +92,43 @@ class Module3l1p7 extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                        color: Colors.white, // Background color for the button
-                        shape: BoxShape.circle, // Circular shape
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.black, // Shadow color
-                          blurRadius: 4, // Blur radius for the shadow
-                          offset: const Offset(0, 2), // Shadow offset
-                          ),
-                        ],
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black,
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
                         child: IconButton(
-                        icon: const Icon(Icons.exit_to_app, color: Colors.black),
-                        onPressed: () {
-                          Navigator.push(
+                          icon: const Icon(Icons.exit_to_app, color: Colors.black),
+                          onPressed: () {
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                    builder: (context) => const Module3Screen()
+                                builder: (context) => const Module3Screen(),
                               ),
-                            );  // Exit the current page
-                        },
+                            );
+                          },
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between the icon and the header
-                      Expanded( // Ensures the text wraps into a new line
+                      const SizedBox(width: 60),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               pageheader,
                               style: const TextStyle(
-                                fontSize: 24,
+                                fontSize: 50,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               pagesubtitle,
-                              style: const TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 40),
                             ),
                           ],
                         ),
@@ -136,66 +136,159 @@ class Module3l1p7 extends StatelessWidget {
                     ],
                   ),
                 ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: lessons.length,
-                itemBuilder: (context, index) {
-                  final lesson = lessons[index];
-                  return Card(
-                    margin: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Image.asset(lesson['image']!),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            lesson['title']!,
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: lessons.length,
+                    itemBuilder: (context, index) {
+                      final lesson = lessons[index];
+                      return Card(
+                        margin: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(12),
+                              width: 500, // Smaller width
+                              height: 500, // Smaller height
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.blue,
+                                  width: 10,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    blurRadius: 10,
+                                    offset: Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: _ShakingImage(
+                                imagePath: lesson['image']!,
+                                borderRadius: 12,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                lesson['title']!,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(lesson['description']!),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('การรีไซเคิล : ${lesson['recycle']}'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('ถังขยะ : ${lesson['bin']}'),
+                            ),
+                          ],
                         ),
-                        
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(lesson['description']!),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('การรีไซเคิล : ${lesson['recycle']}'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('ถังขยะ : ${lesson['recycle']}'),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      );
+                    },
+                  ),
+                ),
+                FooterNavigation(
+                  onBackPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Module3l1p6(),
+                      ),
+                    );
+                  },
+                  onForwardPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Module3l1p8(),
+                      ),
+                    );
+                  },
+                  currentPage: 7,
+                  totalPages: totalPages,
+                ),
+              ],
             ),
-            // Back and Forward buttons
-            FooterNavigation(
-              onBackPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Module3l1p6()),
-                );
-              },
-              onForwardPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Module3l1p8()),
-                );
-              },
-              currentPage: 7, // Current page index
-              totalPages: totalPages,  // Total number of pages
-            ),
-          ],
-        ),
-      ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class _ShakingImage extends StatefulWidget {
+  final String imagePath;
+  final double borderRadius;
+  const _ShakingImage({required this.imagePath, this.borderRadius = 12, super.key});
+
+  @override
+  State<_ShakingImage> createState() => _ShakingImageState();
+}
+
+class _ShakingImageState extends State<_ShakingImage> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  bool _hovering = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 350),
+      vsync: this,
+    );
+  }
+
+  void _onEnter(PointerEnterEvent event) {
+    setState(() => _hovering = true);
+    _controller.repeat();
+  }
+
+  void _onExit(PointerExitEvent event) {
+    setState(() => _hovering = false);
+    _controller.stop();
+    _controller.reset();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: _onEnter,
+      onExit: _onExit,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          // Shake amplitude in pixels
+          final double amplitude = 12;
+          // 1 shake per second (slower)
+          final double shakesPerSecond = 1;
+          final double shake = _hovering
+              ? sin(_controller.value * 2 * pi * shakesPerSecond) * amplitude
+              : 0.0;
+          return Transform.translate(
+            offset: Offset(shake, 0),
+            child: child,
+          );
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          child: Image.asset(
+            widget.imagePath,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
