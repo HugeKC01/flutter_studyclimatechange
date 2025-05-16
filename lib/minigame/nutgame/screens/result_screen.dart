@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   final bool didPlayerWin;
-  final VoidCallback onExit; // เพิ่ม parameter สำหรับฟังก์ชัน resetGame
 
-  const ResultScreen(
-      {super.key, required this.didPlayerWin, required this.onExit});
+  const ResultScreen({super.key, required this.didPlayerWin});
 
   @override
   Widget build(BuildContext context) {
-    final didPlayerWin = ModalRoute.of(context)!.settings.arguments as bool;
-    
     return Scaffold(
       appBar: AppBar(title: const Text('Game Over')),
       body: Center(
@@ -30,7 +26,6 @@ class ResultScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                onExit(); // เรียกใช้ฟังก์ชัน resetGame เมื่อกด Exit
                 Navigator.pop(context, false); // Exit the game
               },
               child: const Text('Exit'),

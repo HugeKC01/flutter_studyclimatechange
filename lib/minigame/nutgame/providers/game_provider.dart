@@ -20,7 +20,12 @@ class GameProvider extends ChangeNotifier {
 
   List<CardModel> get playerCards => _playerCards;
   int get totalValue => _playerCards.fold(0, (sum, card) => sum + card.value);
-  int get currentEnemyHealth => _allEnemyHealths[_currentEnemyIndex];
+  int get currentEnemyHealth {
+    if (_currentEnemyIndex < 0 || _currentEnemyIndex >= _allEnemyHealths.length) {
+      return 0;
+    }
+    return _allEnemyHealths[_currentEnemyIndex];
+  }
   int get currentEnemyIndex => _currentEnemyIndex;
   bool get isGameOver => _isGameOver;
   bool get didPlayerWin => _didPlayerWin;
