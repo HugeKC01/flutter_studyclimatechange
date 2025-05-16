@@ -5,6 +5,7 @@ import 'lesson1/m1_lesson1_p1.dart';
 import 'lesson2/m1_lesson2_p0.dart';
 import 'practice/practiceintro.dart';
 import 'package:climatechange/main.dart';
+import 'package:climatechange/component/animatedbackground.dart';
 
 class Module1Screen extends StatelessWidget {
   const Module1Screen({super.key});
@@ -58,10 +59,7 @@ class Module1Screen extends StatelessWidget {
           Positioned.fill(
             child: Opacity(
               opacity: 0.2, // Adjust the opacity value as needed
-              child: Image.asset(
-                'asset/overall/background1.png', // Replace with your image path
-                fit: BoxFit.cover,
-              ),
+              child: AnimatedBackground(),
             ),
           ),
           SafeArea(
