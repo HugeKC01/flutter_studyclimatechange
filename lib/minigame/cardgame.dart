@@ -26,7 +26,7 @@ class CardGameApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/game': (context) => const GameScreen(),
-          '/result': (context) => const ResultScreen(),     
+          '/result': (context) => const ResultScreen(didPlayerWin: true,),     
                   },
       ),
     );
