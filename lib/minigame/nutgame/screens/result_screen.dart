@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-
-class ResultScreen extends StatelessWidget {
-  final bool didPlayerWin;
-
-  const ResultScreen({super.key, required this.didPlayerWin});
-
-  @override
+@override
   Widget build(BuildContext context) {
+    final didPlayerWin = ModalRoute.of(context)!.settings.arguments as bool;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Game Over')),
       body: Center(
