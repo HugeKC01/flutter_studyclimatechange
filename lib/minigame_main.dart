@@ -5,6 +5,7 @@ import 'learningpage/module3/lesson1/wordgame-1.dart';
 import 'learningpage/module3/lesson2/difficulty_select_page.dart';
 import '../component/adaptivenavigation.dart';
 import 'MyGamePage.dart';
+import 'minigame/BasketGame.dart';
 
 class MinigameScreen extends StatelessWidget {
   const MinigameScreen({super.key});
@@ -46,6 +47,13 @@ class MinigameScreen extends StatelessWidget {
         'description': 'เล่นเกมยิงปืนเพื่อทำคะแนน',
         'cover': 'asset/default/testimage_.png',
         'screen': const MyGamePage(),
+      },
+      {
+        'title': 'BasketGame',
+        'subtitle': 'My Game',
+        'description': 'เล่นเกมยิงปืนเพื่อทำคะแนน',
+        'cover': 'asset/default/testimage_.png',
+        'screen': const BasketGame(),
       },
       // Add more minigames here as needed
     ];
