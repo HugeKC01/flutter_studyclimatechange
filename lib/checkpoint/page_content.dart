@@ -7,6 +7,8 @@ import 'package:climatechange/checkpoint/checkpoint.dart';
 
 const String strapiUrl = 'http://localhost:1337';
 
+Color appBarColor = Color(0xFFF8F8F8);
+
 class PageContent extends StatelessWidget {
   final String bookId;
   const PageContent({super.key, required this.bookId});
@@ -59,12 +61,13 @@ class _PageContentScreenState extends State<PageContentScreen> {
   Widget build(BuildContext context) {
   if (book_contents.isEmpty || book_contents[0]?['content'] == null) {
     return Scaffold(
+      backgroundColor: appBarColor,
       appBar: AppBar(
-            backgroundColor: Color(0xFFF8F8F8),
+            backgroundColor: appBarColor,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.of(context).push(_createPopupRoute());
+                Navigator.of(context).push(_createPopupRoute(PageSelect(bookId: widget.bookId)));
               },
             ),
           ),
@@ -76,6 +79,14 @@ class _PageContentScreenState extends State<PageContentScreen> {
 
   var content = book_contents[0]['content'];
   var title = book_contents[0]['book']['title'];
+  //var bookId = 
+
+  // Split into a list of pages
+  List<String> pages = content.split('<strong>&lt;endpage&gt;</strong>');
+
+  // Optionally, trim whitespace from each page
+  pages = pages.map((e) => e.trim()).toList();
+
   if (Theme.of(context).platform == TargetPlatform.android) {
     content = content.replaceAll('http://localhost:1337', 'http://10.0.2.2:1337');
   }
@@ -90,53 +101,58 @@ class _PageContentScreenState extends State<PageContentScreen> {
 
   return Scaffold(
     appBar: AppBar(
-          backgroundColor: Color(0xFFF8F8F8),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).push(_createPopupRoute());
-            },
-          ),
-        ),
-    body: SingleChildScrollView(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Center(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontFamily: 'JS-Jindara',
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Center(
-              //color: Colors.amber,
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 800),
-                child: HtmlWidget(
-                  content,
-                  textStyle: TextStyle(
-                    fontFamily: 'JS-Jindara',
-                    fontSize: 25,
-                  ),
-                  ),
-              ),
-            ),
-          ),
-        ],
+      backgroundColor: appBarColor,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.of(context).push(_createPopupRoute(PageSelect(bookId: widget.bookId)));
+        },
       ),
+    ),
+    body: ListView.builder(
+      padding: const EdgeInsets.all(12.0),
+      itemCount: pages.length + 1, // +1 for the title at the top
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          // Show the title at the top
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontFamily: 'JS-Jindara',
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          );
+        }
+        // Show each page as HTML
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 800),
+              child: HtmlWidget(
+                pages[index - 1],
+                textStyle: TextStyle(
+                  fontFamily: 'JS-Jindara',
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     ),
   );
   }
 
-  Route _createPopupRoute() {
+  Route _createPopupRoute(Widget destination) {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => MainApp(),
+      pageBuilder: (context, animation, secondaryAnimation) => destination,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return ScaleTransition(
           scale: CurvedAnimation(
