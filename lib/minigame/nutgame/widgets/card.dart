@@ -13,21 +13,31 @@ class CardWidget extends StatelessWidget {
       child: Container(
         width: 120,
         padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Image.asset(
-              card.imageAsset,
-              height: 60,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              card.title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            Text('Value: ${card.value}'),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final imageSize = constraints.maxHeight * 0.3;
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: imageSize,
+                  height: imageSize,
+                  child: Image.asset(
+                    card.imageAsset,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 40),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  card.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                Text('Value: ${card.value}'),
+              ],
+            );
+          },
         ),
       ),
     );

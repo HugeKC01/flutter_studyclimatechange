@@ -42,6 +42,7 @@ flutter:
     - asset/yu/
     - lib/temp/
     - asset/basketgame/
+    - asset/images/
 
   fonts:
     - family: JS-Jindara
