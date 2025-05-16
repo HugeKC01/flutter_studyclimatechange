@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+class ResultScreen extends StatelessWidget {
+  const ResultScreen({super.key});
 @override
   Widget build(BuildContext context) {
     final didPlayerWin = ModalRoute.of(context)!.settings.arguments as bool;
