@@ -168,7 +168,7 @@ class _GameScreenState extends State<GameScreen> {
                 });
               },
               child: Image.asset(
-                'asset/basketgame/basket/basket.png',
+                'asset/basketgame/basket.png',
                 width: 100,
                 height: 50,
               ),
