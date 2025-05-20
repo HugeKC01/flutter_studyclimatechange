@@ -176,8 +176,8 @@ class Module1l1p1 extends StatelessWidget {
     );
   }
 }
-// Toggle between weather and climate
-// This widget toggles between weather and climate examples with animations
+
+// สร้าง widget ที่ใช้ในการสลับระหว่างตัวอย่างสภาพอากาศและภูมิอากาศ
 class WeatherVsClimateToggle extends StatefulWidget {
   @override
   _WeatherVsClimateToggleState createState() => _WeatherVsClimateToggleState();
@@ -187,26 +187,26 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
     with SingleTickerProviderStateMixin {
   bool isWeather = true;
   late AnimationController _controller;
-  // late Animation<double> _animation;
-
+  // สร้าง AnimationController ที่ใช้ในการควบคุมอนิเมชัน
+ 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
-    );
-    // _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-
+    );// กำหนดระยะเวลาอนิเมชันเป็น 500 มิลลิวินาที
+      
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
           status == AnimationStatus.dismissed) {
-        // Animation completed or dismissed, toggle the state
+        // สถานะของอนิเมชันที่ใช้ในการสลับระหว่างสภาพอากาศและภูมิอากาศ
       }
     });
   }
   void toggle() {
-    if (_controller.isAnimating) return; // Prevent toggling during animation
+    if (_controller.isAnimating) return; // ตรวจสอบว่าอนิเมชันกำลังทำงานอยู่หรือไม่
+    // สลับระหว่างสภาพอากาศและภูมิอากาศ
     setState(() {
       isWeather = !isWeather;
       if (isWeather) {
@@ -217,11 +217,11 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
     });
   }
   @override
-  void dispose() {
+  void dispose() {//เมื่อ widget นี้เปลี่ยนสถานะให้ยกเลิกการควบคุมอนิเมชัน
     _controller.dispose();
     super.dispose();
   }
-  // Center the toggle widget content
+  // สร้าง widget ที่ใช้ในการแสดงผล ให้เนื้อหาอยู่ตรงกลาง
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -230,7 +230,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
         children: [
           GestureDetector(
             onTap: toggle,
-            child: AnimatedContainer(
+            child: AnimatedContainer(// ใช้ AnimatedContainer เพื่อสร้างอนิเมชันการเปลี่ยนแปลงสี
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
               margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -245,6 +245,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       AnimatedSwitcher(
+                        // ใช้ AnimatedSwitcher เพื่อสร้างอนิเมชันเปลี่ยนเนื้อหาด้วยการใช้ ScaleTransition 
                         duration: const Duration(milliseconds: 500),
                         transitionBuilder: (child, animation) {
                           return ScaleTransition(scale: animation, child: child);
@@ -269,6 +270,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
                   ),
                   const SizedBox(height: 20),
                   AnimatedSwitcher(
+                    // ใช้ AnimatedSwitcher เพื่อสร้างอนิเมชันเปลี่ยนเนื้อหาตัวอย่างด้วยการใช้ FadeTransition
                     duration: const Duration(milliseconds: 500),
                     transitionBuilder: (child, animation) {
                       return FadeTransition(opacity: animation, child: child);
@@ -333,7 +335,7 @@ class _WeatherVsClimateToggleState extends State<WeatherVsClimateToggle>
             ),
           ),
           const SizedBox(height: 20),
-          ElevatedButton(
+          ElevatedButton(// สร้างปุ่มเพื่อสลับระหว่างสภาพอากาศและภูมิอากาศ
             onPressed: toggle,
             child: Text(isWeather ? 'ภูมิอากาศ' : 'สภาพอากาศ'),
           ),

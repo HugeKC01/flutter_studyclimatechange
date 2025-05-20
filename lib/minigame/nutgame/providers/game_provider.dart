@@ -15,7 +15,7 @@ class GameProvider extends ChangeNotifier {
 
   List<CardModel> get playerCards => _playerCards;
   int get totalValue => _playerCards.fold(0, (sum, card) => sum + card.value);
-  int get currentEnemyHealth => _enemyHealths[_currentEnemyIndex];
+  int get currentEnemyHealth => (_currentEnemyIndex < _enemyHealths.length) ? _enemyHealths[_currentEnemyIndex] : 0;
   int get currentEnemyIndex => _currentEnemyIndex;
   bool get isGameOver => _isGameOver;
   bool get didPlayerWin => _didPlayerWin;
@@ -62,6 +62,8 @@ class GameProvider extends ChangeNotifier {
       if (_currentEnemyIndex >= _enemyHealths.length) {
         _didPlayerWin = true;
         _isGameOver = true;
+        notifyListeners();
+        return;
       }
     } else {
       _isGameOver = true;
@@ -69,18 +71,16 @@ class GameProvider extends ChangeNotifier {
     }
 
     notifyListeners();
+    return;
   }
 
-  void resetGame() {
+  void resetGame() { 
     _playerCards.clear();
     _currentEnemyIndex = 0;
     _isGameOver = false;
     _didPlayerWin = false;
     _outOfCards = false;
-    _enemyHealths[0] = 15;
-    _enemyHealths[1] = 20;
-    _enemyHealths[2] = 25;
-    _enemyHealths.shuffle();
+    _enemyHealths.setAll(0, [15, 20, 25]); // Reset enemy healths
     notifyListeners();
   }
 }
